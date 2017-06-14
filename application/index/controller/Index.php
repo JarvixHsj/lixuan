@@ -29,8 +29,7 @@ class Index extends Controller {
      * 网站入口
      */
     public function index() {
-        var_dump(1);
-        // $this->redirect('@admin');
+        $this->redirect('@admin');
     }
 
 }
