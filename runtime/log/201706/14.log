@@ -1,0 +1,203 @@
+---------------------------------------------------------------
+[ 2017-06-14T22:14:30+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ info ] www.lixuan.dev/admin/login.html [运行时间：0.048800s][吞吐率：20.49req/s] [内存消耗：3,567.95kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000186s ]
+[ info ] [ RUN ] app\admin\controller\Login->index[ /Library/WebServer/Documents/lixuan/application/admin/controller/Login.php ]
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/login.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.006299s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-14T22:14:34+08:00 ] 127.0.0.1 127.0.0.1 POST /admin/login.html?spm=
+[ info ] www.lixuan.dev/admin/login.html?spm= [运行时间：0.127152s][吞吐率：7.86req/s] [内存消耗：3,538.80kb] [文件加载：61]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '49',
+  'accept' => '*/*',
+  'origin' => 'http://www.lixuan.dev',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.lixuan.dev/admin/login.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671',
+)
+[ info ] [ PARAM ] array (
+  'spm' => '',
+  'username' => 'admin',
+  'password' => 'admin',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000781s ]
+[ info ] [ RUN ] app\admin\controller\Login->index[ /Library/WebServer/Documents/lixuan/application/admin/controller/Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-14T22:14:35+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ info ] www.lixuan.dev/admin.html [运行时间：0.072151s][吞吐率：13.86req/s] [内存消耗：3,892.25kb] [文件加载：64]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.lixuan.dev/admin/login.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000845s ]
+[ info ] [ RUN ] app\admin\controller\Index->index[ /Library/WebServer/Documents/lixuan/application/admin/controller/Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/index.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+  2 => 'menus',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.000347s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-14T22:14:35+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/index/main.html?spm=m-2-3
+[ info ] www.lixuan.dev/admin/index/main.html?spm=m-2-3 [运行时间：0.106666s][吞吐率：9.38req/s] [内存消耗：3,642.46kb] [文件加载：60]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'main',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497449676; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-2-3',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.002959s ]
+[ info ] [ RUN ] app\admin\controller\Index->main[ /Library/WebServer/Documents/lixuan/application/admin/controller/Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/index.main.html [ array (
+  0 => 'classuri',
+  1 => 'mysql_ver',
+  2 => 'alert',
+  3 => 'title',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.000270s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-14T22:16:30+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] www.lixuan.dev/ [运行时间：0.032290s][吞吐率：30.97req/s] [内存消耗：2,273.09kb] [文件加载：46]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497449676; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000313s ]
+[ info ] [ RUN ] app\index\controller\Index->index[ /Library/WebServer/Documents/lixuan/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
