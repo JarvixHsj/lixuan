@@ -1,3 +1,24 @@
+<<<<<<< HEAD
 ---------------------------------------------------------------
 [ 2017-06-19T15:09:02+08:00 ] 127.0.0.1 127.0.0.1 GET /index.php/admin/login.html
 [ error ] [1049]SQLSTATE[HY000] [1049] Unknown database 'thinkadmin'[D:\WWW\Jarvix\lixuan\thinkphp\library\think\db\Connection.php:293]
+=======
+---------------------------------------------------------------
+[ 2017-06-19T22:25:02+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/product/add.html?spm=m-87-89&open_type=modal
+[ error ] [64]Cannot declare class app\lixuan\controller\Product because the name is already in use[/Library/WebServer/Documents/lixuan/application/lixuan/controller/Product.php:32]
+---------------------------------------------------------------
+[ 2017-06-19T22:25:06+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/product/index.html?spm=m-87-89
+[ error ] [64]Cannot declare class app\lixuan\controller\Product because the name is already in use[/Library/WebServer/Documents/lixuan/application/lixuan/controller/Product.php:32]
+---------------------------------------------------------------
+[ 2017-06-19T22:25:14+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/product/index.html?spm=m-87-89
+[ error ] [64]Cannot declare class app\lixuan\controller\Product because the name is already in use[/Library/WebServer/Documents/lixuan/application/lixuan/controller/Product.php:32]
+---------------------------------------------------------------
+[ 2017-06-19T22:25:34+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/product/index.html?spm=m-87-89
+[ error ] [4]语法解析错误[/Library/WebServer/Documents/lixuan/application/lixuan/controller/Product.php:136]
+---------------------------------------------------------------
+[ 2017-06-19T22:25:52+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/product/index.html?spm=m-87-89
+[ error ] [64]Cannot declare class app\lixuan\controller\Product because the name is already in use[/Library/WebServer/Documents/lixuan/application/lixuan/controller/Product.php:32]
+---------------------------------------------------------------
+[ 2017-06-19T22:36:31+08:00 ] 127.0.0.1 127.0.0.1 POST /lixuan/products/add.html?spm=m-87-89&open_type=modal
+[ error ] [8]未定义变量: Products[/Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php:160]
+>>>>>>> 273b4f5a79de52ecafd5ae7237ad73f73e896542
