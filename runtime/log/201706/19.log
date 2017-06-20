@@ -1,0 +1,2732 @@
+---------------------------------------------------------------
+[ 2017-06-19T21:47:05+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ info ] www.lixuan.dev/admin.html [运行时间：0.428476s][吞吐率：2.33req/s] [内存消耗：3,662.80kb] [文件加载：62]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.lixuan.dev/admin/login.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-87-88=2; m-61-65=2; rows=20; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497792698',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.003934s ]
+[ info ] [ RUN ] app\admin\controller\Index->index[ /Library/WebServer/Documents/lixuan/application/admin/controller/Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/index.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+  2 => 'menus',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.005036s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T21:47:06+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/product/index.html?spm=m-87-89
+[ info ] www.lixuan.dev/lixuan/product/index.html?spm=m-87-89 [运行时间：0.394133s][吞吐率：2.54req/s] [内存消耗：3,422.59kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'product',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-87-88=2; m-61-65=2; rows=20; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497792698; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.002246s ]
+[ info ] [ RUN ] app\lixuan\controller\Product->index[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Product.php ]
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/lixuan/view/product.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.075256s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T21:47:09+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/product/add.html?spm=m-87-89&open_type=modal
+[ info ] www.lixuan.dev/lixuan/product/add.html?spm=m-87-89&open_type=modal [运行时间：0.071155s][吞吐率：14.05req/s] [内存消耗：3,417.98kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'product',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-87-88=2; m-61-65=2; rows=20; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497880026',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+  'open_type' => 'modal',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.001111s ]
+[ info ] [ RUN ] app\lixuan\controller\Product->add[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Product.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/lixuan/view/product.form.html [ array (
+  0 => 'classuri',
+  1 => 'vo',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.007672s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T21:47:14+08:00 ] 127.0.0.1 127.0.0.1 GET /index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image
+[ info ] www.lixuan.dev/index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image [运行时间：0.158669s][吞吐率：6.30req/s] [内存消耗：3,465.05kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'plugs',
+    2 => 'upfile',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-87-88=2; m-61-65=2; rows=20; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497880026',
+)
+[ info ] [ PARAM ] array (
+  'uptype' => '',
+  'type' => 'ico,png',
+  'field' => 'image',
+  'mode' => 'one',
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000298s ]
+[ info ] [ RUN ] app\admin\controller\Plugs->upfile[ /Library/WebServer/Documents/lixuan/application/admin/controller/Plugs.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/plugs.upfile.html [ array (
+  0 => 'classuri',
+  1 => 'mode',
+  2 => 'types',
+  3 => 'uptype',
+  4 => 'mimes',
+  5 => 'field',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.002322s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T21:47:18+08:00 ] 127.0.0.1 127.0.0.1 POST /index.php/admin/plugs/upstate.html
+[ info ] www.lixuan.dev/index.php/admin/plugs/upstate.html [运行时间：0.242035s][吞吐率：4.13req/s] [内存消耗：3,435.24kb] [文件加载：57]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'plugs',
+    2 => 'upstate',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '116',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://www.lixuan.dev',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.lixuan.dev/index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-87-88=2; m-61-65=2; rows=20; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497880035',
+)
+[ info ] [ PARAM ] array (
+  'id' => 'WU_FILE_0',
+  'md5' => '802a130e15ed8af66f9b947a62fc358d',
+  'uptype' => 'local',
+  'filename' => '剧场版打boos.png',
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000295s ]
+[ info ] [ RUN ] app\admin\controller\Plugs->upstate[ /Library/WebServer/Documents/lixuan/application/admin/controller/Plugs.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T21:47:18+08:00 ] 127.0.0.1 127.0.0.1 POST /index.php/admin/plugs/upload.html
+[ info ] www.lixuan.dev/index.php/admin/plugs/upload.html [运行时间：0.114866s][吞吐率：8.71req/s] [内存消耗：2,509.13kb] [文件加载：50]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'plugs',
+    2 => 'upload',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '697653',
+  'origin' => 'http://www.lixuan.dev',
+  'x_requested_with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundaryw6PlTA1ZNZ3lpHeY',
+  'accept' => '*/*',
+  'referer' => 'http://www.lixuan.dev/index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-87-88=2; m-61-65=2; rows=20; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497880035',
+)
+[ info ] [ PARAM ] array (
+  'OSSAccessKeyId' => '',
+  'success_action_status' => '200',
+  'id' => 'WU_FILE_0',
+  'name' => '剧场版打boos.png',
+  'type' => 'image/png',
+  'lastModifiedDate' => 'Tue Apr 12 2016 22:12:00 GMT+0800 (CST)',
+  'size' => '696252',
+  'allowed_types' => 'ico|png',
+  'md5' => '802a130e15ed8af66f9b947a62fc358d',
+  'key' => '802a130e15ed8af6/6f9b947a62fc358d.png',
+  'token' => '',
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000336s ]
+[ info ] [ RUN ] app\admin\controller\Plugs->upload[ /Library/WebServer/Documents/lixuan/application/admin/controller/Plugs.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T21:47:44+08:00 ] 127.0.0.1 127.0.0.1 POST /lixuan/product/add.html?spm=m-87-89&open_type=modal
+[ info ] www.lixuan.dev/lixuan/product/add.html?spm=m-87-89&open_type=modal [运行时间：0.085094s][吞吐率：11.75req/s] [内存消耗：2,340.03kb] [文件加载：47]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'product',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '114',
+  'accept' => '*/*',
+  'origin' => 'http://www.lixuan.dev',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-87-88=2; m-61-65=2; rows=20; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497880035',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+  'open_type' => 'modal',
+  'name' => '1235',
+  'intro' => '6890',
+  'image' => 'http://www.lixuan.dev/static/upload/802a130e15ed8af6/6f9b947a62fc358d.png',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.002108s ]
+[ info ] [ RUN ] app\lixuan\controller\Product->add[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Product.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T21:50:42+08:00 ] 127.0.0.1 127.0.0.1 POST /lixuan/product/add.html?spm=m-87-89&open_type=modal
+[ info ] www.lixuan.dev/lixuan/product/add.html?spm=m-87-89&open_type=modal [运行时间：0.193789s][吞吐率：5.16req/s] [内存消耗：2,338.75kb] [文件加载：47]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'product',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '114',
+  'accept' => '*/*',
+  'origin' => 'http://www.lixuan.dev',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-87-88=2; m-61-65=2; rows=20; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497880035',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+  'open_type' => 'modal',
+  'name' => '1235',
+  'intro' => '6890',
+  'image' => 'http://www.lixuan.dev/static/upload/802a130e15ed8af6/6f9b947a62fc358d.png',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.004142s ]
+[ info ] [ RUN ] app\lixuan\controller\Product->add[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Product.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T21:51:13+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ info ] www.lixuan.dev/admin.html [运行时间：1.304504s][吞吐率：0.77req/s] [内存消耗：3,662.86kb] [文件加载：62]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.lixuan.dev/admin/login.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-87-88=2; m-61-65=2; rows=20; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497880035',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.004590s ]
+[ info ] [ RUN ] app\admin\controller\Index->index[ /Library/WebServer/Documents/lixuan/application/admin/controller/Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/index.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+  2 => 'menus',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.000839s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T21:51:18+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/product/index.html?spm=m-87-89
+[ info ] www.lixuan.dev/lixuan/product/index.html?spm=m-87-89 [运行时间：0.508425s][吞吐率：1.97req/s] [内存消耗：3,423.07kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'product',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-87-88=2; m-61-65=2; rows=20; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497880274; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.004452s ]
+[ info ] [ RUN ] app\lixuan\controller\Product->index[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Product.php ]
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/lixuan/view/product.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.231348s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:25:02+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/product/add.html?spm=m-87-89&open_type=modal
+[ info ] www.lixuan.dev/lixuan/product/add.html?spm=m-87-89&open_type=modal [运行时间：0.051608s][吞吐率：19.38req/s] [内存消耗：1,910.42kb] [文件加载：41]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'product',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-87-88=2; m-61-65=2; rows=20; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497880274; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+  'open_type' => 'modal',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:25:06+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ info ] www.lixuan.dev/admin.html [运行时间：0.242574s][吞吐率：4.12req/s] [内存消耗：3,662.81kb] [文件加载：62]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.lixuan.dev/admin/login.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-87-88=2; m-61-65=2; rows=20; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497880274; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.002319s ]
+[ info ] [ RUN ] app\admin\controller\Index->index[ /Library/WebServer/Documents/lixuan/application/admin/controller/Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/index.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+  2 => 'menus',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.001276s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:25:06+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/product/index.html?spm=m-87-89
+[ info ] www.lixuan.dev/lixuan/product/index.html?spm=m-87-89 [运行时间：0.077304s][吞吐率：12.94req/s] [内存消耗：1,910.16kb] [文件加载：41]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'product',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-87-88=2; m-61-65=2; rows=20; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497880274; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:25:13+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ info ] www.lixuan.dev/admin.html [运行时间：0.225040s][吞吐率：4.44req/s] [内存消耗：3,662.81kb] [文件加载：62]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.lixuan.dev/admin/login.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-87-88=2; m-61-65=2; rows=20; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882307',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.007764s ]
+[ info ] [ RUN ] app\admin\controller\Index->index[ /Library/WebServer/Documents/lixuan/application/admin/controller/Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/index.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+  2 => 'menus',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.017229s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:25:14+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/product/index.html?spm=m-87-89
+[ info ] www.lixuan.dev/lixuan/product/index.html?spm=m-87-89 [运行时间：0.108383s][吞吐率：9.23req/s] [内存消耗：1,910.16kb] [文件加载：41]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'product',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-87-88=2; m-61-65=2; rows=20; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882314; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:25:33+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ info ] www.lixuan.dev/admin.html [运行时间：0.156075s][吞吐率：6.41req/s] [内存消耗：3,662.81kb] [文件加载：62]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.lixuan.dev/admin/login.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882314; menu-style=full; m-87-88=2',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.001226s ]
+[ info ] [ RUN ] app\admin\controller\Index->index[ /Library/WebServer/Documents/lixuan/application/admin/controller/Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/index.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+  2 => 'menus',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.001128s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:25:34+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/product/index.html?spm=m-87-89
+[ info ] www.lixuan.dev/lixuan/product/index.html?spm=m-87-89 [运行时间：0.117358s][吞吐率：8.52req/s] [内存消耗：1,942.22kb] [文件加载：41]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'product',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882334; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:25:51+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ info ] www.lixuan.dev/admin.html [运行时间：0.152788s][吞吐率：6.55req/s] [内存消耗：3,662.90kb] [文件加载：62]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.lixuan.dev/admin/login.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882334; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.001994s ]
+[ info ] [ RUN ] app\admin\controller\Index->index[ /Library/WebServer/Documents/lixuan/application/admin/controller/Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/index.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+  2 => 'menus',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.003450s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:25:52+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/product/index.html?spm=m-87-89
+[ info ] www.lixuan.dev/lixuan/product/index.html?spm=m-87-89 [运行时间：0.100740s][吞吐率：9.93req/s] [内存消耗：1,910.14kb] [文件加载：41]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'product',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882352; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:27:43+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ info ] www.lixuan.dev/admin.html [运行时间：0.223153s][吞吐率：4.48req/s] [内存消耗：3,662.81kb] [文件加载：62]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.lixuan.dev/admin/login.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882352; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.009767s ]
+[ info ] [ RUN ] app\admin\controller\Index->index[ /Library/WebServer/Documents/lixuan/application/admin/controller/Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/index.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+  2 => 'menus',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.000589s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:27:44+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/product/index.html?spm=m-87-89
+[ info ] www.lixuan.dev/lixuan/product/index.html?spm=m-87-89 [运行时间：0.179402s][吞吐率：5.57req/s] [内存消耗：3,422.79kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'product',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882464; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.016733s ]
+[ info ] [ RUN ] app\lixuan\controller\Product->index[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Product.php ]
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/lixuan/view/product.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.040161s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:32:30+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ info ] www.lixuan.dev/admin.html [运行时间：0.229604s][吞吐率：4.36req/s] [内存消耗：3,662.81kb] [文件加载：62]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.lixuan.dev/admin/login.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882464; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.007517s ]
+[ info ] [ RUN ] app\admin\controller\Index->index[ /Library/WebServer/Documents/lixuan/application/admin/controller/Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/index.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+  2 => 'menus',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.006162s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:32:31+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/product/index.html?spm=m-87-89
+[ info ] www.lixuan.dev/lixuan/product/index.html?spm=m-87-89 [运行时间：0.104072s][吞吐率：9.61req/s] [内存消耗：2,034.30kb] [文件加载：44]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'product',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882751; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:33:11+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ info ] www.lixuan.dev/admin.html [运行时间：0.115885s][吞吐率：8.63req/s] [内存消耗：3,662.81kb] [文件加载：62]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.lixuan.dev/admin/login.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882751; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000995s ]
+[ info ] [ RUN ] app\admin\controller\Index->index[ /Library/WebServer/Documents/lixuan/application/admin/controller/Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/index.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+  2 => 'menus',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.006180s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:33:12+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/product/index.html?spm=m-87-89
+[ info ] www.lixuan.dev/lixuan/product/index.html?spm=m-87-89 [运行时间：0.083775s][吞吐率：11.94req/s] [内存消耗：2,034.30kb] [文件加载：44]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'product',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882792; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:33:20+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ info ] www.lixuan.dev/lixuan/products/index.html?spm=m-87-89 [运行时间：0.027636s][吞吐率：36.18req/s] [内存消耗：1,886.27kb] [文件加载：40]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882792; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:33:24+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/config/index.html?spm=m-61-63
+[ info ] www.lixuan.dev/wechat/config/index.html?spm=m-61-63 [运行时间：0.244168s][吞吐率：4.10req/s] [内存消耗：3,409.59kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'wechat',
+    1 => 'config',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882792; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-61-63',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.001253s ]
+[ info ] [ RUN ] app\wechat\controller\Config->index[ /Library/WebServer/Documents/lixuan/application/wechat/controller/Config.php ]
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/wechat/view/config.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.000479s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:33:25+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ info ] www.lixuan.dev/lixuan/products/index.html?spm=m-87-89 [运行时间：0.144060s][吞吐率：6.94req/s] [内存消耗：1,886.22kb] [文件加载：40]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882792; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:33:29+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] www.lixuan.dev/ [运行时间：0.037891s][吞吐率：26.39req/s] [内存消耗：2,297.75kb] [文件加载：48]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882792; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000202s ]
+[ info ] [ RUN ] app\index\controller\Index->index[ /Library/WebServer/Documents/lixuan/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:33:29+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ info ] www.lixuan.dev/admin.html [运行时间：0.095668s][吞吐率：10.45req/s] [内存消耗：3,662.41kb] [文件加载：62]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882792; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000960s ]
+[ info ] [ RUN ] app\admin\controller\Index->index[ /Library/WebServer/Documents/lixuan/application/admin/controller/Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/index.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+  2 => 'menus',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.000426s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:33:30+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/index/main.html?spm=m-2-3
+[ info ] www.lixuan.dev/admin/index/main.html?spm=m-2-3 [运行时间：0.195024s][吞吐率：5.13req/s] [内存消耗：3,415.75kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'main',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882792; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-2-3',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.002299s ]
+[ info ] [ RUN ] app\admin\controller\Index->main[ /Library/WebServer/Documents/lixuan/application/admin/controller/Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/index.main.html [ array (
+  0 => 'classuri',
+  1 => 'mysql_ver',
+  2 => 'alert',
+  3 => 'title',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.000428s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:33:31+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/config/index.html?spm=m-61-63
+[ info ] www.lixuan.dev/wechat/config/index.html?spm=m-61-63 [运行时间：0.184647s][吞吐率：5.42req/s] [内存消耗：3,409.59kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'wechat',
+    1 => 'config',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882810',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-61-63',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000829s ]
+[ info ] [ RUN ] app\wechat\controller\Config->index[ /Library/WebServer/Documents/lixuan/application/wechat/controller/Config.php ]
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/wechat/view/config.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.001301s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:33:32+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ info ] www.lixuan.dev/lixuan/products/index.html?spm=m-87-89 [运行时间：0.151011s][吞吐率：6.62req/s] [内存消耗：1,886.22kb] [文件加载：40]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882810',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:34:01+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ info ] www.lixuan.dev/admin.html [运行时间：0.147606s][吞吐率：6.77req/s] [内存消耗：3,662.72kb] [文件加载：62]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882810',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.002541s ]
+[ info ] [ RUN ] app\admin\controller\Index->index[ /Library/WebServer/Documents/lixuan/application/admin/controller/Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/index.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+  2 => 'menus',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.011062s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:34:01+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ info ] www.lixuan.dev/lixuan/products/index.html?spm=m-87-89 [运行时间：0.209554s][吞吐率：4.77req/s] [内存消耗：3,625.18kb] [文件加载：60]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882841; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.004086s ]
+[ info ] [ RUN ] app\lixuan\controller\Products->index[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php ]
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/lixuan/view/products.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.063650s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:34:06+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/add.html?spm=m-87-89&open_type=modal
+[ info ] www.lixuan.dev/lixuan/products/add.html?spm=m-87-89&open_type=modal [运行时间：0.110214s][吞吐率：9.07req/s] [内存消耗：3,616.22kb] [文件加载：60]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882841; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+  'open_type' => 'modal',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000882s ]
+[ info ] [ RUN ] app\lixuan\controller\Products->add[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/lixuan/view/products.form.html [ array (
+  0 => 'classuri',
+  1 => 'vo',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.005125s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:34:10+08:00 ] 127.0.0.1 127.0.0.1 GET /index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image
+[ info ] www.lixuan.dev/index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image [运行时间：0.142479s][吞吐率：7.02req/s] [内存消耗：3,465.05kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'plugs',
+    2 => 'upfile',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882841; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'uptype' => '',
+  'type' => 'ico,png',
+  'field' => 'image',
+  'mode' => 'one',
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000419s ]
+[ info ] [ RUN ] app\admin\controller\Plugs->upfile[ /Library/WebServer/Documents/lixuan/application/admin/controller/Plugs.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/plugs.upfile.html [ array (
+  0 => 'classuri',
+  1 => 'mode',
+  2 => 'types',
+  3 => 'uptype',
+  4 => 'mimes',
+  5 => 'field',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.000316s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:34:18+08:00 ] 127.0.0.1 127.0.0.1 POST /index.php/admin/plugs/upstate.html
+[ info ] www.lixuan.dev/index.php/admin/plugs/upstate.html [运行时间：0.066507s][吞吐率：15.04req/s] [内存消耗：3,435.15kb] [文件加载：57]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'plugs',
+    2 => 'upstate',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '116',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://www.lixuan.dev',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.lixuan.dev/index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882851',
+)
+[ info ] [ PARAM ] array (
+  'id' => 'WU_FILE_0',
+  'md5' => '802a130e15ed8af66f9b947a62fc358d',
+  'uptype' => 'local',
+  'filename' => '剧场版打boos.png',
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000270s ]
+[ info ] [ RUN ] app\admin\controller\Plugs->upstate[ /Library/WebServer/Documents/lixuan/application/admin/controller/Plugs.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:34:18+08:00 ] 127.0.0.1 127.0.0.1 POST /index.php/admin/plugs/upload.html
+[ info ] www.lixuan.dev/index.php/admin/plugs/upload.html [运行时间：0.030895s][吞吐率：32.37req/s] [内存消耗：2,509.13kb] [文件加载：50]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'plugs',
+    2 => 'upload',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '697653',
+  'origin' => 'http://www.lixuan.dev',
+  'x_requested_with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundaryBduweLITqUqOhjDk',
+  'accept' => '*/*',
+  'referer' => 'http://www.lixuan.dev/index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882851',
+)
+[ info ] [ PARAM ] array (
+  'OSSAccessKeyId' => '',
+  'success_action_status' => '200',
+  'id' => 'WU_FILE_0',
+  'name' => '剧场版打boos.png',
+  'type' => 'image/png',
+  'lastModifiedDate' => 'Tue Apr 12 2016 22:12:00 GMT+0800 (CST)',
+  'size' => '696252',
+  'allowed_types' => 'ico|png',
+  'md5' => '802a130e15ed8af66f9b947a62fc358d',
+  'key' => '802a130e15ed8af6/6f9b947a62fc358d.png',
+  'token' => '',
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000162s ]
+[ info ] [ RUN ] app\admin\controller\Plugs->upload[ /Library/WebServer/Documents/lixuan/application/admin/controller/Plugs.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:34:24+08:00 ] 127.0.0.1 127.0.0.1 POST /lixuan/products/add.html?spm=m-87-89&open_type=modal
+[ info ] www.lixuan.dev/lixuan/products/add.html?spm=m-87-89&open_type=modal [运行时间：0.089348s][吞吐率：11.19req/s] [内存消耗：3,635.53kb] [文件加载：55]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '114',
+  'accept' => '*/*',
+  'origin' => 'http://www.lixuan.dev',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882851',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+  'open_type' => 'modal',
+  'name' => '123',
+  'intro' => '34534',
+  'image' => 'http://www.lixuan.dev/static/upload/802a130e15ed8af6/6f9b947a62fc358d.png',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.002337s ]
+[ info ] [ RUN ] app\lixuan\controller\Products->add[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:35:12+08:00 ] 127.0.0.1 127.0.0.1 POST /lixuan/products/add.html?spm=m-87-89&open_type=modal
+[ info ] www.lixuan.dev/lixuan/products/add.html?spm=m-87-89&open_type=modal [运行时间：0.096360s][吞吐率：10.38req/s] [内存消耗：3,635.72kb] [文件加载：55]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '114',
+  'accept' => '*/*',
+  'origin' => 'http://www.lixuan.dev',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882851',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+  'open_type' => 'modal',
+  'name' => '123',
+  'intro' => '34534',
+  'image' => 'http://www.lixuan.dev/static/upload/802a130e15ed8af6/6f9b947a62fc358d.png',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.002925s ]
+[ info ] [ RUN ] app\lixuan\controller\Products->add[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:36:06+08:00 ] 127.0.0.1 127.0.0.1 POST /lixuan/products/add.html?spm=m-87-89&open_type=modal
+[ info ] www.lixuan.dev/lixuan/products/add.html?spm=m-87-89&open_type=modal [运行时间：0.089929s][吞吐率：11.12req/s] [内存消耗：3,635.72kb] [文件加载：55]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '114',
+  'accept' => '*/*',
+  'origin' => 'http://www.lixuan.dev',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882851',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+  'open_type' => 'modal',
+  'name' => '123',
+  'intro' => '34534',
+  'image' => 'http://www.lixuan.dev/static/upload/802a130e15ed8af6/6f9b947a62fc358d.png',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.001947s ]
+[ info ] [ RUN ] app\lixuan\controller\Products->add[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:36:31+08:00 ] 127.0.0.1 127.0.0.1 POST /lixuan/products/add.html?spm=m-87-89&open_type=modal
+[ info ] www.lixuan.dev/lixuan/products/add.html?spm=m-87-89&open_type=modal [运行时间：0.151806s][吞吐率：6.59req/s] [内存消耗：3,742.75kb] [文件加载：60]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '114',
+  'accept' => '*/*',
+  'origin' => 'http://www.lixuan.dev',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882851',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+  'open_type' => 'modal',
+  'name' => '123',
+  'intro' => '34534',
+  'image' => 'http://www.lixuan.dev/static/upload/802a130e15ed8af6/6f9b947a62fc358d.png',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.002136s ]
+[ info ] [ RUN ] app\lixuan\controller\Products->add[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:37:01+08:00 ] 127.0.0.1 127.0.0.1 POST /lixuan/products/add.html?spm=m-87-89&open_type=modal
+[ info ] www.lixuan.dev/lixuan/products/add.html?spm=m-87-89&open_type=modal [运行时间：0.052794s][吞吐率：18.94req/s] [内存消耗：2,401.08kb] [文件加载：50]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '114',
+  'accept' => '*/*',
+  'origin' => 'http://www.lixuan.dev',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882851',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+  'open_type' => 'modal',
+  'name' => '123',
+  'intro' => '34534',
+  'image' => 'http://www.lixuan.dev/static/upload/802a130e15ed8af6/6f9b947a62fc358d.png',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.001305s ]
+[ info ] [ RUN ] app\lixuan\controller\Products->add[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:39:48+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ info ] www.lixuan.dev/admin.html [运行时间：0.109666s][吞吐率：9.12req/s] [内存消耗：3,662.66kb] [文件加载：62]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497882851',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.007507s ]
+[ info ] [ RUN ] app\admin\controller\Index->index[ /Library/WebServer/Documents/lixuan/application/admin/controller/Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/index.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+  2 => 'menus',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.001732s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:39:49+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ info ] www.lixuan.dev/lixuan/products/index.html?spm=m-87-89 [运行时间：0.164872s][吞吐率：6.07req/s] [内存消耗：3,424.48kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883189; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.002556s ]
+[ info ] [ RUN ] app\lixuan\controller\Products->index[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php ]
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/lixuan/view/products.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.045555s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:40:01+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/add.html?spm=m-87-89&open_type=modal
+[ info ] www.lixuan.dev/lixuan/products/add.html?spm=m-87-89&open_type=modal [运行时间：0.078578s][吞吐率：12.73req/s] [内存消耗：3,420.21kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883189; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+  'open_type' => 'modal',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.002845s ]
+[ info ] [ RUN ] app\lixuan\controller\Products->add[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/lixuan/view/products.form.html [ array (
+  0 => 'classuri',
+  1 => 'vo',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.010887s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:40:11+08:00 ] 127.0.0.1 127.0.0.1 GET /index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image
+[ info ] www.lixuan.dev/index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image [运行时间：0.156961s][吞吐率：6.37req/s] [内存消耗：3,465.04kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'plugs',
+    2 => 'upfile',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883189; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'uptype' => '',
+  'type' => 'ico,png',
+  'field' => 'image',
+  'mode' => 'one',
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.002093s ]
+[ info ] [ RUN ] app\admin\controller\Plugs->upfile[ /Library/WebServer/Documents/lixuan/application/admin/controller/Plugs.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/plugs.upfile.html [ array (
+  0 => 'classuri',
+  1 => 'mode',
+  2 => 'types',
+  3 => 'uptype',
+  4 => 'mimes',
+  5 => 'field',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.001306s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:40:17+08:00 ] 127.0.0.1 127.0.0.1 POST /index.php/admin/plugs/upstate.html
+[ info ] www.lixuan.dev/index.php/admin/plugs/upstate.html [运行时间：0.091703s][吞吐率：10.90req/s] [内存消耗：3,435.24kb] [文件加载：57]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'plugs',
+    2 => 'upstate',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '116',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://www.lixuan.dev',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.lixuan.dev/index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883212',
+)
+[ info ] [ PARAM ] array (
+  'id' => 'WU_FILE_0',
+  'md5' => '802a130e15ed8af66f9b947a62fc358d',
+  'uptype' => 'local',
+  'filename' => '剧场版打boos.png',
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000276s ]
+[ info ] [ RUN ] app\admin\controller\Plugs->upstate[ /Library/WebServer/Documents/lixuan/application/admin/controller/Plugs.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:40:17+08:00 ] 127.0.0.1 127.0.0.1 POST /index.php/admin/plugs/upload.html
+[ info ] www.lixuan.dev/index.php/admin/plugs/upload.html [运行时间：0.025489s][吞吐率：39.23req/s] [内存消耗：2,509.13kb] [文件加载：50]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'plugs',
+    2 => 'upload',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '697653',
+  'origin' => 'http://www.lixuan.dev',
+  'x_requested_with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundaryARDKVuxuKBIlMQQJ',
+  'accept' => '*/*',
+  'referer' => 'http://www.lixuan.dev/index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883212',
+)
+[ info ] [ PARAM ] array (
+  'OSSAccessKeyId' => '',
+  'success_action_status' => '200',
+  'id' => 'WU_FILE_0',
+  'name' => '剧场版打boos.png',
+  'type' => 'image/png',
+  'lastModifiedDate' => 'Tue Apr 12 2016 22:12:00 GMT+0800 (CST)',
+  'size' => '696252',
+  'allowed_types' => 'ico|png',
+  'md5' => '802a130e15ed8af66f9b947a62fc358d',
+  'key' => '802a130e15ed8af6/6f9b947a62fc358d.png',
+  'token' => '',
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000185s ]
+[ info ] [ RUN ] app\admin\controller\Plugs->upload[ /Library/WebServer/Documents/lixuan/application/admin/controller/Plugs.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:40:24+08:00 ] 127.0.0.1 127.0.0.1 POST /lixuan/products/add.html?spm=m-87-89&open_type=modal
+[ info ] www.lixuan.dev/lixuan/products/add.html?spm=m-87-89&open_type=modal [运行时间：0.139326s][吞吐率：7.18req/s] [内存消耗：3,670.41kb] [文件加载：55]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '179',
+  'accept' => '*/*',
+  'origin' => 'http://www.lixuan.dev',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883212',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+  'open_type' => 'modal',
+  'name' => '测试产品1',
+  'intro' => '产品描述',
+  'image' => 'http://www.lixuan.dev/static/upload/802a130e15ed8af6/6f9b947a62fc358d.png',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.003410s ]
+[ info ] [ RUN ] app\lixuan\controller\Products->add[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:47:30+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ info ] www.lixuan.dev/admin.html [运行时间：0.167195s][吞吐率：5.98req/s] [内存消耗：3,662.66kb] [文件加载：62]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883212',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.002840s ]
+[ info ] [ RUN ] app\admin\controller\Index->index[ /Library/WebServer/Documents/lixuan/application/admin/controller/Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/index.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+  2 => 'menus',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.012421s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:47:31+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ info ] www.lixuan.dev/lixuan/products/index.html?spm=m-87-89 [运行时间：0.086406s][吞吐率：11.57req/s] [内存消耗：3,418.60kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883651; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.003082s ]
+[ info ] [ RUN ] app\lixuan\controller\Products->index[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php ]
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/lixuan/view/products.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.019886s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:47:36+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ info ] www.lixuan.dev/admin.html [运行时间：0.057294s][吞吐率：17.45req/s] [内存消耗：3,662.66kb] [文件加载：62]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883651; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.001253s ]
+[ info ] [ RUN ] app\admin\controller\Index->index[ /Library/WebServer/Documents/lixuan/application/admin/controller/Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/index.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+  2 => 'menus',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.000324s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:47:36+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ info ] www.lixuan.dev/lixuan/products/index.html?spm=m-87-89 [运行时间：0.051151s][吞吐率：19.55req/s] [内存消耗：3,418.60kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883657; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.008340s ]
+[ info ] [ RUN ] app\lixuan\controller\Products->index[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php ]
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/lixuan/view/products.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.012143s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:47:37+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/add.html?spm=m-87-89&open_type=modal
+[ info ] www.lixuan.dev/lixuan/products/add.html?spm=m-87-89&open_type=modal [运行时间：0.047080s][吞吐率：21.24req/s] [内存消耗：3,413.81kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883657; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+  'open_type' => 'modal',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000773s ]
+[ info ] [ RUN ] app\lixuan\controller\Products->add[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/lixuan/view/products.form.html [ array (
+  0 => 'classuri',
+  1 => 'vo',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.005569s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:47:57+08:00 ] 127.0.0.1 127.0.0.1 GET /index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image
+[ info ] www.lixuan.dev/index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image [运行时间：0.080709s][吞吐率：12.39req/s] [内存消耗：3,465.05kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'plugs',
+    2 => 'upfile',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883657; menu-style=full',
+)
+[ info ] [ PARAM ] array (
+  'uptype' => '',
+  'type' => 'ico,png',
+  'field' => 'image',
+  'mode' => 'one',
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000620s ]
+[ info ] [ RUN ] app\admin\controller\Plugs->upfile[ /Library/WebServer/Documents/lixuan/application/admin/controller/Plugs.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/plugs.upfile.html [ array (
+  0 => 'classuri',
+  1 => 'mode',
+  2 => 'types',
+  3 => 'uptype',
+  4 => 'mimes',
+  5 => 'field',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.000558s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:48:09+08:00 ] 127.0.0.1 127.0.0.1 POST /index.php/admin/plugs/upstate.html
+[ info ] www.lixuan.dev/index.php/admin/plugs/upstate.html [运行时间：0.066640s][吞吐率：15.01req/s] [内存消耗：3,434.79kb] [文件加载：57]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'plugs',
+    2 => 'upstate',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '108',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://www.lixuan.dev',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.lixuan.dev/index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883678',
+)
+[ info ] [ PARAM ] array (
+  'id' => 'WU_FILE_0',
+  'md5' => '5fc9a2a78274ef884f5f06bd751a63d9',
+  'uptype' => 'local',
+  'filename' => '3bf488de72e9471cc977f842bc551c98.png',
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000247s ]
+[ info ] [ RUN ] app\admin\controller\Plugs->upstate[ /Library/WebServer/Documents/lixuan/application/admin/controller/Plugs.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:48:09+08:00 ] 127.0.0.1 127.0.0.1 POST /index.php/admin/plugs/upload.html
+[ info ] www.lixuan.dev/index.php/admin/plugs/upload.html [运行时间：0.017377s][吞吐率：57.55req/s] [内存消耗：2,509.32kb] [文件加载：50]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'plugs',
+    2 => 'upload',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '206282',
+  'origin' => 'http://www.lixuan.dev',
+  'x_requested_with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundaryAKL1L3fnEEqhVYEC',
+  'accept' => '*/*',
+  'referer' => 'http://www.lixuan.dev/index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883678',
+)
+[ info ] [ PARAM ] array (
+  'OSSAccessKeyId' => '',
+  'success_action_status' => '200',
+  'id' => 'WU_FILE_0',
+  'name' => '3bf488de72e9471cc977f842bc551c98.png',
+  'type' => 'image/png',
+  'lastModifiedDate' => 'Mon Jun 19 2017 22:44:18 GMT+0800 (CST)',
+  'size' => '204849',
+  'allowed_types' => 'ico|png',
+  'md5' => '5fc9a2a78274ef884f5f06bd751a63d9',
+  'key' => '5fc9a2a78274ef88/4f5f06bd751a63d9.png',
+  'token' => '',
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000195s ]
+[ info ] [ RUN ] app\admin\controller\Plugs->upload[ /Library/WebServer/Documents/lixuan/application/admin/controller/Plugs.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:48:11+08:00 ] 127.0.0.1 127.0.0.1 POST /lixuan/products/add.html?spm=m-87-89&open_type=modal
+[ info ] www.lixuan.dev/lixuan/products/add.html?spm=m-87-89&open_type=modal [运行时间：0.072847s][吞吐率：13.73req/s] [内存消耗：3,724.22kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '322',
+  'accept' => '*/*',
+  'origin' => 'http://www.lixuan.dev',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883678',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+  'open_type' => 'modal',
+  'name' => '我是第二个',
+  'intro' => '直接诶时收到皮肤这。。。这是第二个描述',
+  'image' => 'http://www.lixuan.dev/static/upload/5fc9a2a78274ef88/4f5f06bd751a63d9.png',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000929s ]
+[ info ] [ RUN ] app\lixuan\controller\Products->add[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:48:13+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ info ] www.lixuan.dev/lixuan/products/index.html?spm=m-87-89 [运行时间：0.053795s][吞吐率：18.59req/s] [内存消耗：3,418.33kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883678',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.003124s ]
+[ info ] [ RUN ] app\lixuan\controller\Products->index[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php ]
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/lixuan/view/products.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.014383s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:48:50+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/add.html?spm=m-87-89&open_type=modal
+[ info ] www.lixuan.dev/lixuan/products/add.html?spm=m-87-89&open_type=modal [运行时间：0.096270s][吞吐率：10.39req/s] [内存消耗：3,413.85kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883678',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+  'open_type' => 'modal',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000857s ]
+[ info ] [ RUN ] app\lixuan\controller\Products->add[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/lixuan/view/products.form.html [ array (
+  0 => 'classuri',
+  1 => 'vo',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.017183s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:49:02+08:00 ] 127.0.0.1 127.0.0.1 GET /index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image
+[ info ] www.lixuan.dev/index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image [运行时间：0.070781s][吞吐率：14.13req/s] [内存消耗：3,465.05kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'plugs',
+    2 => 'upfile',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883678',
+)
+[ info ] [ PARAM ] array (
+  'uptype' => '',
+  'type' => 'ico,png',
+  'field' => 'image',
+  'mode' => 'one',
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000242s ]
+[ info ] [ RUN ] app\admin\controller\Plugs->upfile[ /Library/WebServer/Documents/lixuan/application/admin/controller/Plugs.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/admin/view/plugs.upfile.html [ array (
+  0 => 'classuri',
+  1 => 'mode',
+  2 => 'types',
+  3 => 'uptype',
+  4 => 'mimes',
+  5 => 'field',
+) ]
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.001483s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:49:07+08:00 ] 127.0.0.1 127.0.0.1 POST /index.php/admin/plugs/upstate.html
+[ info ] www.lixuan.dev/index.php/admin/plugs/upstate.html [运行时间：0.033773s][吞吐率：29.61req/s] [内存消耗：3,435.03kb] [文件加载：57]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'plugs',
+    2 => 'upstate',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '108',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://www.lixuan.dev',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.lixuan.dev/index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883743',
+)
+[ info ] [ PARAM ] array (
+  'id' => 'WU_FILE_0',
+  'md5' => '1777f4cc99f4b56a8b54bbb40f87153b',
+  'uptype' => 'local',
+  'filename' => 'ed77079ca970379dadfd77ea072dbf6b.png',
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000184s ]
+[ info ] [ RUN ] app\admin\controller\Plugs->upstate[ /Library/WebServer/Documents/lixuan/application/admin/controller/Plugs.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:49:07+08:00 ] 127.0.0.1 127.0.0.1 POST /index.php/admin/plugs/upload.html
+[ info ] www.lixuan.dev/index.php/admin/plugs/upload.html [运行时间：0.019889s][吞吐率：50.28req/s] [内存消耗：2,509.26kb] [文件加载：50]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'plugs',
+    2 => 'upload',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '121426',
+  'origin' => 'http://www.lixuan.dev',
+  'x_requested_with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundaryAZ2ocGbmZZFAQePd',
+  'accept' => '*/*',
+  'referer' => 'http://www.lixuan.dev/index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=image',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883743',
+)
+[ info ] [ PARAM ] array (
+  'OSSAccessKeyId' => '',
+  'success_action_status' => '200',
+  'id' => 'WU_FILE_0',
+  'name' => 'ed77079ca970379dadfd77ea072dbf6b.png',
+  'type' => 'image/png',
+  'lastModifiedDate' => 'Mon Jun 19 2017 22:43:40 GMT+0800 (CST)',
+  'size' => '119993',
+  'allowed_types' => 'ico|png',
+  'md5' => '1777f4cc99f4b56a8b54bbb40f87153b',
+  'key' => '1777f4cc99f4b56a/8b54bbb40f87153b.png',
+  'token' => '',
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000234s ]
+[ info ] [ RUN ] app\admin\controller\Plugs->upload[ /Library/WebServer/Documents/lixuan/application/admin/controller/Plugs.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:49:08+08:00 ] 127.0.0.1 127.0.0.1 POST /lixuan/products/add.html?spm=m-87-89&open_type=modal
+[ info ] www.lixuan.dev/lixuan/products/add.html?spm=m-87-89&open_type=modal [运行时间：0.044773s][吞吐率：22.33req/s] [内存消耗：3,725.22kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'content-length' => '332',
+  'accept' => '*/*',
+  'origin' => 'http://www.lixuan.dev',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883743',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+  'open_type' => 'modal',
+  'name' => '测试产品图片数据库屋恩替',
+  'intro' => '违法建设路口附近类似款大幅 ',
+  'image' => 'http://www.lixuan.dev/static/upload/1777f4cc99f4b56a/8b54bbb40f87153b.png',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000904s ]
+[ info ] [ RUN ] app\lixuan\controller\Products->add[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-19T22:49:10+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ info ] www.lixuan.dev/lixuan/products/index.html?spm=m-87-89 [运行时间：0.045630s][吞吐率：21.92req/s] [内存消耗：3,418.23kb] [文件加载：58]
+[ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'lixuan',
+    1 => 'products',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.lixuan.dev',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+  'referer' => 'http://www.lixuan.dev/admin.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 's6fbc6d1a=0c0c8873037624464846436536290287; m-61-62=2; m-61-65=2; rows=20; m-87-88=2; menu-style=full; Hm_lvt_aa2f9869e9b578122e4692de2bd9f80f=1497449671; Hm_lpvt_aa2f9869e9b578122e4692de2bd9f80f=1497883743',
+)
+[ info ] [ PARAM ] array (
+  'spm' => 'm-87-89',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.001057s ]
+[ info ] [ RUN ] app\lixuan\controller\Products->index[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php ]
+[ info ] [ VIEW ] /Library/WebServer/Documents/lixuan/application/lixuan/view/products.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.010607s ]
+[ info ] [ LOG ] INIT File

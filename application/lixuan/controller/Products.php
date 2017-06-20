@@ -55,7 +55,53 @@ class Products extends BasicAdmin {
         // $this->success('数据修改成功！', '');
     }
 
+
     /**
+    * 添加产品
+    */
+    public function add() {
+        if ($this->request->isGet()) {
+            return parent::_form($this->table, 'form', 'id');
+        }
+        //接收参数
+        $data = $this->request->post();
+
+        //获取图片信息  后缀名等
+        $phpinfo = pathinfo($data['image']);
+        // var_dump($this->request->host(),$root);
+
+        //去除域名图片域名，取得目录路径部分
+        $tempOldName = trim(strstr($data['image'], $this->request->host()), $this->request->host());
+        //拼成绝对路径
+        $oldname = $this->request->server('DOCUMENT_ROOT') . $tempOldName;
+        //组合新的绝对路径
+        $newNamePath = "/static/admin/image/product/". date('Y-m-d-H-i-s',time()).$this->randStr[mt_rand(0, 35)].'.'.$phpinfo['extension'];
+        $newname = $this->request->server('DOCUMENT_ROOT').$newNamePath;
+        //判断新路径是否不存在，判断旧路径是存在
+        if(file_exists($newname)||!file_exists($oldname)){
+            $this->error('目标文件已存在或原文件不存在！');
+        }
+        //移动文件 结果是bool
+        $mvFileRes = @rename($oldname,$newname);  
+        if(!$mvFileRes){
+            $this->error('网络出错，请重试~');
+        }
+
+        //重新组合要插入的数据
+        $data['image'] = $newNamePath;
+        $data['change_at'] = time();
+        $ProductModel = new product;
+        $ProductModel->data($data)->allowField(true)->save();
+
+        if($ProductModel->id) 
+            $this->success('添加成功！', '');
+
+        $this->error('添加失败，请重试~');
+
+    }
+
+
+        /**
      * 微信商户参数配置
      * @return View
      */
@@ -125,69 +171,5 @@ class Products extends BasicAdmin {
         $this->success('数据修改成功！', '');
     }
 
-
-    /**
-    * 添加产品
-    */
-    public function add() {
-        if ($this->request->isGet()) {
-            return parent::_form($this->table, 'form', 'id');
-        }
-        //接收参数
-        $imagePath = $this->request->post('image');// 接收页面图片
-
-        //获取图片信息  后缀名等
-        $phpinfo = pathinfo($imagePath);
-        // var_dump($this->request->host(),$root);
-
-        //去除域名图片域名，取得目录路径部分
-        $tempOldName = trim(strstr($imagePath, $this->request->host()), $this->request->host());
-        //拼成绝对路径
-        $oldname = $this->request->server('DOCUMENT_ROOT') . $tempOldName;
-        //组合新的绝对路径
-        $newname = $this->request->server('DOCUMENT_ROOT')."/static/admin/image/product/". date('Y-m-d-H-i-s',time()).$this->randStr[mt_rand(0, 35)].'.'.$phpinfo['extension'];
-        //判断新路径是否不存在，判断旧路径是存在
-        if(file_exists($newname)||!file_exists($oldname)){
-            $this->error('目标文件已存在或原文件不存在！');
-        }
-        //移动文件 结果是bool
-        $mvFileRes = @rename($oldname,$newname);  
-        if(!$mvFileRes){
-            $this->error('网络出错，请重试~');
-        }
-
-        $ProductModel = new product;
-        $res = $Products->select();
-        var_dump($res);die;
-
-
-
-
-
-
-
-
-
-
-
-
-
-        die;
-
-        // if(file_exists($new_name)||!file_exists($old_name)){
-        
-
-        var_dump($this->request->post());die;
-        $name = $this->request->post('name', '');
-        empty($name) && $this->error('粉丝标签名不能为空!');
-        (Db::name($this->table)->where('name', $name)->count() > 0) && $this->error('粉丝标签标签名已经存在, 请使用其它标签名!');
-        $wechat = & load_wechat('User');
-        if (false === ($result = $wechat->createTags($name)) && isset($result['tag'])) {
-            $this->error("添加粉丝标签失败. {$wechat->errMsg}[{$wechat->errCode}]");
-        }
-        $result['tag']['count'] = 0;
-        DataService::save($this->table, $result['tag'], 'id') && $this->success('添加粉丝标签成功!', '');
-        $this->error('粉丝标签添加失败, 请稍候再试!');
-    }
 
 }
