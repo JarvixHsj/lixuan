@@ -1,0 +1,12 @@
+---------------------------------------------------------------
+[ 2017-06-20T17:44:07+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ error ] [1]Call to a member function toArray() on array[/Library/WebServer/Documents/lixuan/application/html/controller/Index.php:37]
+---------------------------------------------------------------
+[ 2017-06-20T17:44:34+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ error ] [1]Call to a member function toArray() on array[/Library/WebServer/Documents/lixuan/application/html/controller/Index.php:37]
+---------------------------------------------------------------
+[ 2017-06-20T17:47:31+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ error ] [8]未定义数组索引: data[/Library/WebServer/Documents/lixuan/application/html/controller/Index.php:37]
+---------------------------------------------------------------
+[ 2017-06-20T17:49:33+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ error ] [1]Call to a member function toArray() on array[/Library/WebServer/Documents/lixuan/application/html/controller/Index.php:36]

@@ -1,0 +1,773 @@
+---------------------------------------------------------------
+[ 2017-06-21T00:48:20+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008705s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.010458s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.007011s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.003625s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.014811s ]
+---------------------------------------------------------------
+[ 2017-06-21T00:48:22+08:00 ] 127.0.0.1 127.0.0.1 GET /html/agent/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000857s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.007495s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000477s ]
+---------------------------------------------------------------
+[ 2017-06-21T00:57:04+08:00 ] 127.0.0.1 127.0.0.1 GET /html/agent/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001874s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.007254s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.007876s ]
+---------------------------------------------------------------
+[ 2017-06-21T00:57:21+08:00 ] 127.0.0.1 127.0.0.1 GET /html/agent/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001830s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.011434s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.006505s ]
+---------------------------------------------------------------
+[ 2017-06-21T00:57:54+08:00 ] 127.0.0.1 127.0.0.1 GET /html/agent/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001363s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.021995s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.001234s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001553s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.002257s ]
+---------------------------------------------------------------
+[ 2017-06-21T00:59:02+08:00 ] 127.0.0.1 127.0.0.1 GET /html/agent/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000807s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.003744s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000514s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.002704s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001103s ]
+---------------------------------------------------------------
+[ 2017-06-21T01:00:01+08:00 ] 127.0.0.1 127.0.0.1 GET /html/agent/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001867s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.014695s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.001175s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001627s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000540s ]
+---------------------------------------------------------------
+[ 2017-06-21T01:00:25+08:00 ] 127.0.0.1 127.0.0.1 GET /html/agent/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000594s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001642s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000591s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001523s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001040s ]
+---------------------------------------------------------------
+[ 2017-06-21T01:00:44+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000699s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.008256s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.002077s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001406s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001816s ]
+---------------------------------------------------------------
+[ 2017-06-21T01:01:31+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003437s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.024333s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.008255s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.016337s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001349s ]
+---------------------------------------------------------------
+[ 2017-06-21T01:01:52+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002794s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.003324s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000580s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.010821s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.007834s ]
+---------------------------------------------------------------
+[ 2017-06-21T01:01:53+08:00 ] 127.0.0.1 127.0.0.1 GET /html/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011318s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.012703s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.008243s ]
+---------------------------------------------------------------
+[ 2017-06-21T01:03:10+08:00 ] 127.0.0.1 127.0.0.1 GET /html/Agent/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001287s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.004738s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000617s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.006034s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.011619s ]
+---------------------------------------------------------------
+[ 2017-06-21T01:03:16+08:00 ] 127.0.0.1 127.0.0.1 GET /html/Agent/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001226s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.024848s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000571s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.002325s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.002745s ]
+---------------------------------------------------------------
+[ 2017-06-21T01:06:34+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000832s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.008453s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.012619s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.007761s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.002010s ]
+---------------------------------------------------------------
+[ 2017-06-21T01:14:38+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000501s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.008946s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.006668s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000710s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000480s ]
+---------------------------------------------------------------
+[ 2017-06-21T01:17:56+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001319s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.002038s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000557s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.006916s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000475s ]
+---------------------------------------------------------------
+[ 2017-06-21T01:18:32+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001433s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000770s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000466s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.007177s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.003492s ]
+---------------------------------------------------------------
+[ 2017-06-21T01:20:35+08:00 ] 127.0.0.1 127.0.0.1 GET /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000573s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.002084s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000515s ]
+---------------------------------------------------------------
+[ 2017-06-21T11:45:48+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002179s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.019635s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.002069s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.002677s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000357s ]
+---------------------------------------------------------------
+[ 2017-06-21T11:46:19+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000623s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000735s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000469s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001493s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000403s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:21:46+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002173s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.004053s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000511s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.002134s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001066s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:21:57+08:00 ] 127.0.0.1 127.0.0.1 GET /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000734s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000878s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001189s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:22:03+08:00 ] 127.0.0.1 127.0.0.1 GET /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000659s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000824s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000485s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:22:36+08:00 ] 127.0.0.1 127.0.0.1 GET /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000949s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001557s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000509s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:23:06+08:00 ] 127.0.0.1 127.0.0.1 GET /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000697s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000748s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000429s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:23:13+08:00 ] 127.0.0.1 127.0.0.1 GET /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000583s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000722s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000630s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:23:21+08:00 ] 127.0.0.1 127.0.0.1 GET /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000928s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000939s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000329s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:25:23+08:00 ] 127.0.0.1 127.0.0.1 GET /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000657s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000787s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000388s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:37:55+08:00 ] 127.0.0.1 127.0.0.1 POST /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000673s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000787s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000420s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:37:58+08:00 ] 127.0.0.1 127.0.0.1 GET /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000544s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000600s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000326s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:38:10+08:00 ] 127.0.0.1 127.0.0.1 POST /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000619s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_user` [ RunTime:0.000813s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_user` WHERE  `username` = '13692763394' LIMIT 1 [ RunTime:0.001999s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000705s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000386s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:38:13+08:00 ] 127.0.0.1 127.0.0.1 GET /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000537s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000738s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000419s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:40:13+08:00 ] 127.0.0.1 127.0.0.1 POST /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000709s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_user` [ RunTime:0.000880s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_user` WHERE  `username` = '13692763394' LIMIT 1 [ RunTime:0.000552s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000754s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000497s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:40:16+08:00 ] 127.0.0.1 127.0.0.1 GET /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000730s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000969s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000447s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:40:35+08:00 ] 127.0.0.1 127.0.0.1 GET /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000585s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000889s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000406s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:41:58+08:00 ] 127.0.0.1 127.0.0.1 GET /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000695s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000978s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000462s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:42:35+08:00 ] 127.0.0.1 127.0.0.1 POST /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000653s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_user` [ RunTime:0.001831s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_user` WHERE  `mobile` = '13692763394' LIMIT 1 [ RunTime:0.000959s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.002325s ]
+[ sql ] [ SQL ] UPDATE `system_user`  SET `login_at`=now(),`login_num`=login_num+1  WHERE  `id` = 1 [ RunTime:0.002986s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_log` [ RunTime:0.000816s ]
+[ sql ] [ SQL ] INSERT INTO `system_log` (`ip` , `node` , `username` , `action` , `content`) VALUES ('127.0.0.1' , 'html/login/index' , '' , '代理用户管理' , '用户13692763394登录系统成功') [ RunTime:0.000964s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001202s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000868s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:42:38+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000607s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000714s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000779s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:43:21+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000576s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001199s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000496s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:43:23+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002587s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001467s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000606s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:43:45+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000660s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001342s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000546s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:44:30+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000537s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000626s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000371s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:45:05+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000672s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001194s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000510s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000698s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000369s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:45:12+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000523s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000623s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000641s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000370s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:46:34+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000600s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001557s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000392s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000703s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000440s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:47:50+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000497s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000617s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000379s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:47:59+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000585s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001988s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000408s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000656s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000346s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:47:59+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000690s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000851s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000418s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:48:19+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000625s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000808s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000398s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:48:21+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000584s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000682s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000372s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000624s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000344s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:48:21+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000565s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000660s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000431s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:48:28+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000742s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001424s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000640s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.002028s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000901s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:48:30+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000578s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000621s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000369s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:49:17+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000564s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000771s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000398s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000665s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000373s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:49:17+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000505s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000606s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000353s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000974s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000554s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:49:17+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000456s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000740s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000428s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000646s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000350s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:49:19+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000581s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000683s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000475s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:50:30+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000635s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000787s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000501s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000702s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000398s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:50:30+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000544s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000710s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000431s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000647s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000346s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:50:30+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000548s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000732s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000396s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000663s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000411s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:50:30+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000768s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001651s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000649s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000670s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000342s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:50:30+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000616s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000788s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000572s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001531s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000459s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:50:30+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000639s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000810s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000982s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000766s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000403s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:50:32+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000461s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000562s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000318s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:51:08+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000524s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000719s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000760s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000672s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000295s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:51:09+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001025s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001082s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000612s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:51:22+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000574s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001320s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000676s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000633s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000357s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:51:23+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000551s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000872s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000557s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:51:31+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000515s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000625s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000418s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000547s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000361s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:52:20+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000497s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000601s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000355s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:53:16+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000671s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.005294s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000479s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000691s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000671s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:53:17+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000490s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000673s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000456s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:53:40+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000517s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000659s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000459s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:53:43+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000594s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000671s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000395s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000641s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000348s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:53:45+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000707s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001153s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000496s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:55:31+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000621s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000896s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000525s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000681s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000424s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:55:38+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000533s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000670s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000424s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:56:20+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000517s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000669s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000419s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000676s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000349s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:56:45+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000525s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000712s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000563s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:56:48+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000586s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000770s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000431s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000621s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000367s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:56:49+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000560s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000610s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000402s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:56:51+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000695s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001948s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000961s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001179s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000371s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:56:56+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000506s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000668s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000405s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:56:58+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000554s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000695s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000381s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000630s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000316s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:57:08+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000580s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000742s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000447s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000658s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000443s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:57:12+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000524s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000666s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000358s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000604s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000336s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:58:21+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000569s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000600s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000576s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000290s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:59:00+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000876s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001405s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000540s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001207s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000987s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:59:01+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001261s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000787s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000441s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000646s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000389s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:59:27+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001100s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001045s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000574s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000665s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000496s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:59:28+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000562s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000682s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000384s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000728s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000370s ]
+---------------------------------------------------------------
+[ 2017-06-21T22:59:46+08:00 ] 127.0.0.1 127.0.0.1 GET /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000600s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000702s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000428s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:00:13+08:00 ] 127.0.0.1 127.0.0.1 POST /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000533s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_user` [ RunTime:0.000843s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_user` WHERE  `mobile` = '13692763394' LIMIT 1 [ RunTime:0.000509s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000683s ]
+[ sql ] [ SQL ] UPDATE `system_user`  SET `login_at`=now(),`login_num`=login_num+1  WHERE  `id` = 1 [ RunTime:0.000483s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_log` [ RunTime:0.000980s ]
+[ sql ] [ SQL ] INSERT INTO `system_log` (`ip` , `node` , `username` , `action` , `content`) VALUES ('127.0.0.1' , 'html/login/index' , '' , '代理用户管理' , '用户13692763394登录系统成功') [ RunTime:0.000647s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001307s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000504s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:00:17+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000505s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000687s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000399s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:00:19+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000549s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001071s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000886s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:00:22+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001244s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001234s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000520s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000593s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000427s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:00:27+08:00 ] 127.0.0.1 127.0.0.1 GET /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000621s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000809s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000468s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:00:35+08:00 ] 127.0.0.1 127.0.0.1 POST /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000645s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_user` [ RunTime:0.000937s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_user` WHERE  `mobile` = '13692763394' LIMIT 1 [ RunTime:0.000826s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000977s ]
+[ sql ] [ SQL ] UPDATE `system_user`  SET `login_at`=now(),`login_num`=login_num+1  WHERE  `id` = 1 [ RunTime:0.000440s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_log` [ RunTime:0.000682s ]
+[ sql ] [ SQL ] INSERT INTO `system_log` (`ip` , `node` , `username` , `action` , `content`) VALUES ('127.0.0.1' , 'html/login/index' , '' , '代理用户管理' , '用户13692763394登录系统成功') [ RunTime:0.001645s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000698s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000418s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:00:38+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000634s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000919s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000460s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:01:08+08:00 ] 127.0.0.1 127.0.0.1 GET /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001385s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.007049s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000901s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:01:18+08:00 ] 127.0.0.1 127.0.0.1 POST /html/Login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000923s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_user` [ RunTime:0.001637s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_user` WHERE  `mobile` = '13692763394' LIMIT 1 [ RunTime:0.000847s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001224s ]
+[ sql ] [ SQL ] UPDATE `system_user`  SET `login_at`=now(),`login_num`=login_num+1  WHERE  `id` = 1 [ RunTime:0.000925s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_log` [ RunTime:0.001398s ]
+[ sql ] [ SQL ] INSERT INTO `system_log` (`ip` , `node` , `username` , `action` , `content`) VALUES ('127.0.0.1' , 'html/login/index' , '' , '代理用户管理' , '用户13692763394登录系统成功') [ RunTime:0.001194s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.002769s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000379s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:01:22+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001771s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001316s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000471s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:03:05+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000545s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000698s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000390s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:04:21+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000847s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000925s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.007423s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:05:34+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000685s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.009804s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000574s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:05:48+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001586s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.003940s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000481s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:11:50+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000769s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001179s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.002892s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:11:53+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000682s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000924s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000447s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001221s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000381s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:13:13+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000795s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000746s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000436s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:13:27+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000886s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000789s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000661s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:13:29+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000787s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001130s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000578s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:13:30+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001139s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001192s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000673s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:13:33+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000536s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000780s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000421s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:13:38+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001585s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001317s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000489s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001386s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000548s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:13:40+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000680s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001620s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000508s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:15:01+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000981s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000796s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.004019s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000797s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001201s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:15:09+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000759s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000695s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000765s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000946s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000382s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:17:33+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002069s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.011069s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000706s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001280s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000490s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:18:17+08:00 ] 127.0.0.1 127.0.0.1 GET /html/agent/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000738s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000982s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` ORDER BY `id`  desc [ RunTime:0.000709s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000680s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000441s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:43:04+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001644s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.004213s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000567s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:43:08+08:00 ] 127.0.0.1 127.0.0.1 POST /admin/login.html?spm=
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002397s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.003215s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `username` = 'admin' LIMIT 1 [ RunTime:0.001272s ]
+[ sql ] [ SQL ] UPDATE `system_user`  SET `login_at`=now(),`login_num`=login_num+1  WHERE  `id` = 10000 [ RunTime:0.002985s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000760s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.001595s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.002751s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_log` [ RunTime:0.005063s ]
+[ sql ] [ SQL ] INSERT INTO `system_log` (`ip` , `node` , `username` , `action` , `content`) VALUES ('127.0.0.1' , 'admin/login/index' , 'admin' , '系统管理' , '用户登录系统成功') [ RunTime:0.001189s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:43:09+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001634s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.002386s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000908s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.001526s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000693s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.001756s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000595s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000885s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000423s ]
+---------------------------------------------------------------
+[ 2017-06-21T23:43:10+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/index/main.html?spm=m-2-3
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011524s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] select version() as ver [ RunTime:0.021143s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000800s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000530s ]

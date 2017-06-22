@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"/Library/WebServer/Documents/lixuan/application/admin/view/auth.index.html";i:1497187871;s:77:"/Library/WebServer/Documents/lixuan/application/extra/view/admin.content.html";i:1497187871;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"/Library/WebServer/Documents/lixuan/application/admin/view/auth.index.html";i:1497950570;s:77:"/Library/WebServer/Documents/lixuan/application/extra/view/admin.content.html";i:1497187871;}*/ ?>
 <div class="ibox">
     
     <?php if(isset($title)): ?>

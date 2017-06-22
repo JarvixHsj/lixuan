@@ -43,14 +43,19 @@ class AccessAuth {
         list($module, $controller, $action) = [$this->request->module(), $this->request->controller(), $this->request->action()];
         $vars = get_class_vars(config('app_namespace') . "\\{$module}\\controller\\{$controller}");
         // 用户登录状态检查
-        if ((!empty($vars['checkAuth']) || !empty($vars['checkLogin'])) && !session('user')) {
+        // session('user', null);
+        // var_dump($module, $controller,$action);die;
+        if ((!empty($vars['checkAuth']) || !empty($vars['checkLogin'])) && !session('user') ) {
+            // var_dump($this->request);die;
             if ($this->request->isAjax()) {
                 $result = ['code' => 0, 'msg' => '抱歉, 您还没有登录获取访问权限!', 'data' => '', 'url' => '@admin/login', 'wait' => 3];
                 throw new HttpResponseException(json($result));
             }
+            // echo '2';die;
             throw new HttpResponseException(redirect('@admin/login'));
         }
         // 访问权限节点检查
+        // echo '3';die;
         if (!empty($vars['checkLogin']) && !auth("{$module}/{$controller}/{$action}")) {
             $result = ['code' => 0, 'msg' => '抱歉, 您没有访问该模块的权限!', 'data' => '', 'url' => '', 'wait' => 3];
             throw new HttpResponseException(json($result));

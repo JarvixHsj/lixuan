@@ -1,0 +1,45 @@
+---------------------------------------------------------------
+[ 2017-06-21T00:48:22+08:00 ] 127.0.0.1 127.0.0.1 GET /html/agent/index.html
+[ error ] [0]模板文件不存在:/Library/WebServer/Documents/lixuan/application/html/view/agent.index.html[/Library/WebServer/Documents/lixuan/thinkphp/library/think/view/driver/Think.php:80]
+---------------------------------------------------------------
+[ 2017-06-21T00:49:35+08:00 ] 127.0.0.1 127.0.0.1 GET /html/agent/index.html
+[ error ] [4]语法解析错误: expecting `"identifier (T_STRING)"'[/Library/WebServer/Documents/lixuan/application/html/controller/Agent.php:30]
+---------------------------------------------------------------
+[ 2017-06-21T00:57:04+08:00 ] 127.0.0.1 127.0.0.1 GET /html/agent/index.html
+[ error ] [0]模板文件不存在:/Library/WebServer/Documents/lixuan/application/html/view/agent.index.html[/Library/WebServer/Documents/lixuan/thinkphp/library/think/view/driver/Think.php:80]
+---------------------------------------------------------------
+[ 2017-06-21T00:57:21+08:00 ] 127.0.0.1 127.0.0.1 GET /html/agent/index.html
+[ error ] [0]模板文件不存在:/Library/WebServer/Documents/lixuan/application/html/view/agent.index.html[/Library/WebServer/Documents/lixuan/thinkphp/library/think/view/driver/Think.php:80]
+---------------------------------------------------------------
+[ 2017-06-21T01:02:05+08:00 ] 127.0.0.1 127.0.0.1 GET /html/login/index.html
+[ error ] [2]Missing argument 1 for session(), called in /Library/WebServer/Documents/lixuan/application/html/controller/Login.php on line 47 and defined[/Library/WebServer/Documents/lixuan/thinkphp/helper.php:294]
+---------------------------------------------------------------
+[ 2017-06-21T01:06:35+08:00 ] 127.0.0.1 127.0.0.1 GET /html/login/index.html
+[ error ] [1]Call to a member function action() on null[/Library/WebServer/Documents/lixuan/extend/controller/BasicAgent.php:55]
+---------------------------------------------------------------
+[ 2017-06-21T01:11:54+08:00 ] 127.0.0.1 127.0.0.1 GET /html/login/index.html
+[ error ] [1]Call to protected think\Request::__construct() from context 'controller\BasicAgent'[/Library/WebServer/Documents/lixuan/extend/controller/BasicAgent.php:55]
+---------------------------------------------------------------
+[ 2017-06-21T01:12:12+08:00 ] 127.0.0.1 127.0.0.1 GET /html/login/index.html
+[ error ] [1]Class 'controller\Request' not found[/Library/WebServer/Documents/lixuan/extend/controller/BasicAgent.php:55]
+---------------------------------------------------------------
+[ 2017-06-21T01:12:17+08:00 ] 127.0.0.1 127.0.0.1 GET /html/login/index.html
+[ error ] [1]Call to protected think\Request::__construct() from context 'controller\BasicAgent'[/Library/WebServer/Documents/lixuan/extend/controller/BasicAgent.php:55]
+---------------------------------------------------------------
+[ 2017-06-21T01:14:27+08:00 ] 127.0.0.1 127.0.0.1 GET /html/login/index.html
+[ error ] [1]Call to protected think\Request::__construct() from context 'controller\BasicAgent'[/Library/WebServer/Documents/lixuan/extend/controller/BasicAgent.php:55]
+---------------------------------------------------------------
+[ 2017-06-21T01:14:39+08:00 ] 127.0.0.1 127.0.0.1 GET /html/login/app123.html
+[ error ] [1]Call to protected think\Request::__construct() from context 'controller\BasicAgent'[/Library/WebServer/Documents/lixuan/extend/controller/BasicAgent.php:55]
+---------------------------------------------------------------
+[ 2017-06-21T22:42:12+08:00 ] 127.0.0.1 127.0.0.1 POST /html/Login/index.html
+[ error ] [8]未定义变量: username[/Library/WebServer/Documents/lixuan/application/html/controller/Login.php:66]
+---------------------------------------------------------------
+[ 2017-06-21T22:42:23+08:00 ] 127.0.0.1 127.0.0.1 POST /html/Login/index.html
+[ error ] [8]未定义变量: username[/Library/WebServer/Documents/lixuan/application/html/controller/Login.php:66]
+---------------------------------------------------------------
+[ 2017-06-21T22:45:56+08:00 ] 127.0.0.1 127.0.0.1 GET /html.html
+[ error ] [2]Missing argument 1 for session(), called in /Library/WebServer/Documents/lixuan/application/html/controller/Index.php on line 34 and defined[/Library/WebServer/Documents/lixuan/thinkphp/helper.php:294]
+---------------------------------------------------------------
+[ 2017-06-21T22:56:21+08:00 ] 127.0.0.1 127.0.0.1 GET /html/agent/index.html
+[ error ] [64]Can't use function return value in write context[/Library/WebServer/Documents/lixuan/application/html/controller/Agent.php:33]

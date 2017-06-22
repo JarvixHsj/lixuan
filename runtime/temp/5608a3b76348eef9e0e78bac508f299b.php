@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"/Library/WebServer/Documents/lixuan/application/lixuan/view/products.index.html";i:1497624585;s:77:"/Library/WebServer/Documents/lixuan/application/extra/view/admin.content.html";i:1497187871;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"/Library/WebServer/Documents/lixuan/application/lixuan/view/products.index.html";i:1498061046;s:77:"/Library/WebServer/Documents/lixuan/application/extra/view/admin.content.html";i:1497187871;}*/ ?>
 <div class="ibox">
     
     <?php if(isset($title)): ?>
@@ -9,7 +9,7 @@
     <button data-modal='<?php echo url("$classuri/add"); ?>' data-title="添加产品" class='layui-btn layui-btn-small'><i
             class='fa fa-plus'></i> 添加产品
     </button>
-    <button data-update data-field='delete' data-action='<?php echo url("$classuri/del"); ?>'
+    <button data-update data-field='delete' data-action='<?php echo url("classuri/del"); ?>'
             class='layui-btn layui-btn-small layui-btn-danger'><i class='fa fa-remove'></i> 删除产品
     </button>
 </div>

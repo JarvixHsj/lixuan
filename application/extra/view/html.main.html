@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+         <title>{block name="title"}{$title|default=''}&nbsp;{if !empty($title)}-{/if}&nbsp;{:sysconf('site_name')}{/block}</title>
+
+        <script type="text/javascript" src="__PUBLIC__/static/html/js/jquery_1.11.3.min.js" ></script>
+        <script src="__PUBLIC__/static/html/js/mui.min.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/static/html/js/app.js" ></script>
+
+        <link href="__PUBLIC__/static/html/css/mui.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="__PUBLIC__/static/html/css/app.css?ver={:date('ymd')}" />
+        {block name="style"}{/block}
+        <script type="text/javascript" charset="utf-8">
+            mui.init();
+        </script>
+    </head>
+    {block name="bodyTag"}
+        <body>
+            {block name="body"}{/block}
+            {block name="script"}{/block}
+        </body>
+    {/block}
+</html>
