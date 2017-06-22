@@ -1,12 +1,38 @@
+<<<<<<< HEAD
+---------------------------------------------------------------
+[ 2017-06-19T15:09:02+08:00 ] 127.0.0.1 127.0.0.1 GET /index.php/admin/login.html
+[ info ] www.lixuan.dev/index.php/admin/login.html [运行时间：0.151741s][吞吐率：6.59req/s] [内存消耗：1,964.88kb] [文件加载：56]
+[ info ] [ LANG ] D:\WWW\Jarvix\lixuan\thinkphp\lang\zh-cn.php
+=======
 ---------------------------------------------------------------
 [ 2017-06-19T21:47:05+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
 [ info ] www.lixuan.dev/admin.html [运行时间：0.428476s][吞吐率：2.33req/s] [内存消耗：3,662.80kb] [文件加载：62]
 [ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+>>>>>>> 273b4f5a79de52ecafd5ae7237ad73f73e896542
 [ info ] [ ROUTE ] array (
   'type' => 'module',
   'module' => 
   array (
     0 => 'admin',
+<<<<<<< HEAD
+    1 => 'login',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 's0c694c9a=ef92ipoaa9iq1v8h1fa1l6u4b1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'www.lixuan.dev',
+)
+[ info ] [ PARAM ] array (
+)
+=======
     1 => NULL,
     2 => NULL,
   ),
@@ -2714,12 +2740,24 @@
 [ info ] [ PARAM ] array (
   'spm' => 'm-87-89',
 )
+>>>>>>> 273b4f5a79de52ecafd5ae7237ad73f73e896542
 [ info ] [ SESSION ] INIT array (
   'id' => '',
   'var_session_id' => '',
   'prefix' => 'think',
   'type' => '',
   'auto_start' => true,
+<<<<<<< HEAD
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000966s ]
+[ info ] [ RUN ] app\admin\controller\Login->index[ D:\WWW\Jarvix\lixuan\application\admin\controller\Login.php ]
+[ info ] [ VIEW ] D:\WWW\Jarvix\lixuan/application/admin\view\login.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+=======
 )
 [ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.001057s ]
 [ info ] [ RUN ] app\lixuan\controller\Products->index[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php ]
@@ -2730,3 +2768,4 @@
 [ info ] [ DB ] INIT mysql
 [ info ] [ BEHAVIOR ] Run hook\FilterView @view_filter [ RunTime:0.010607s ]
 [ info ] [ LOG ] INIT File
+>>>>>>> 273b4f5a79de52ecafd5ae7237ad73f73e896542

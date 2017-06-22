@@ -1,11 +1,43 @@
+<<<<<<< HEAD
+---------------------------------------------------------------
+[ 2017-06-16T11:47:09+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] www.lixuan.dev/ [运行时间：0.045910s][吞吐率：21.78req/s] [内存消耗：1,383.30kb] [文件加载：48]
+[ info ] [ LANG ] D:\WWW\Jarvix\lixuan\thinkphp\lang\zh-cn.php
+=======
 ---------------------------------------------------------------
 [ 2017-06-16T22:44:23+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
 [ info ] www.lixuan.dev/admin.html [运行时间：0.197408s][吞吐率：5.07req/s] [内存消耗：3,662.80kb] [文件加载：62]
 [ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+>>>>>>> 273b4f5a79de52ecafd5ae7237ad73f73e896542
 [ info ] [ ROUTE ] array (
   'type' => 'module',
   'module' => 
   array (
+<<<<<<< HEAD
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'www.lixuan.dev',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.001208s ]
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\WWW\Jarvix\lixuan\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-16T11:48:11+08:00 ] 127.0.0.1 127.0.0.1 GET /index.php
+[ info ] www.lixuan.dev/index.php [运行时间：0.014493s][吞吐率：69.00req/s] [内存消耗：1,383.30kb] [文件加载：48]
+[ info ] [ LANG ] D:\WWW\Jarvix\lixuan\thinkphp\lang\zh-cn.php
+=======
     0 => 'admin',
     1 => NULL,
     2 => NULL,
@@ -6953,10 +6985,36 @@
 [ 2017-06-16T23:32:29+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
 [ info ] www.lixuan.dev/admin.html [运行时间：0.048713s][吞吐率：20.53req/s] [内存消耗：3,662.90kb] [文件加载：62]
 [ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+>>>>>>> 273b4f5a79de52ecafd5ae7237ad73f73e896542
 [ info ] [ ROUTE ] array (
   'type' => 'module',
   'module' => 
   array (
+<<<<<<< HEAD
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'www.lixuan.dev',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000191s ]
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\WWW\Jarvix\lixuan\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-16T11:48:11+08:00 ] 127.0.0.1 127.0.0.1 GET /index.php/admin.html
+[ info ] www.lixuan.dev/index.php/admin.html [运行时间：0.015813s][吞吐率：63.24req/s] [内存消耗：1,465.47kb] [文件加载：50]
+[ info ] [ LANG ] D:\WWW\Jarvix\lixuan\thinkphp\lang\zh-cn.php
+=======
     0 => 'admin',
     1 => NULL,
     2 => NULL,
@@ -7165,6 +7223,7 @@
 [ 2017-06-16T23:33:09+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
 [ info ] www.lixuan.dev/admin.html [运行时间：0.034656s][吞吐率：28.85req/s] [内存消耗：3,662.90kb] [文件加载：62]
 [ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+>>>>>>> 273b4f5a79de52ecafd5ae7237ad73f73e896542
 [ info ] [ ROUTE ] array (
   'type' => 'module',
   'module' => 
@@ -7173,6 +7232,20 @@
     1 => NULL,
     2 => NULL,
   ),
+<<<<<<< HEAD
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'www.lixuan.dev',
+)
+[ info ] [ PARAM ] array (
+)
+=======
 )
 [ info ] [ HEADER ] array (
   'host' => 'www.lixuan.dev',
@@ -7277,12 +7350,21 @@
   'spm' => 'm-87-89',
   'open_type' => 'modal',
 )
+>>>>>>> 273b4f5a79de52ecafd5ae7237ad73f73e896542
 [ info ] [ SESSION ] INIT array (
   'id' => '',
   'var_session_id' => '',
   'prefix' => 'think',
   'type' => '',
   'auto_start' => true,
+<<<<<<< HEAD
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-06-16T11:48:11+08:00 ] 127.0.0.1 127.0.0.1 GET /index.php/admin/login.html
+[ info ] www.lixuan.dev/index.php/admin/login.html [运行时间：0.094033s][吞吐率：10.63req/s] [内存消耗：2,097.09kb] [文件加载：58]
+[ info ] [ LANG ] D:\WWW\Jarvix\lixuan\thinkphp\lang\zh-cn.php
+=======
 )
 [ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000968s ]
 [ info ] [ RUN ] app\lixuan\controller\Product->add[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Product.php ]
@@ -7297,11 +7379,30 @@
 [ 2017-06-16T23:33:12+08:00 ] 127.0.0.1 127.0.0.1 GET /index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=browser_icon
 [ info ] www.lixuan.dev/index.php/admin/plugs/upfile/mode/one.html?uptype=&type=ico,png&field=browser_icon [运行时间：0.064350s][吞吐率：15.54req/s] [内存消耗：3,464.95kb] [文件加载：58]
 [ info ] [ LANG ] /Library/WebServer/Documents/lixuan/thinkphp/lang/zh-cn.php
+>>>>>>> 273b4f5a79de52ecafd5ae7237ad73f73e896542
 [ info ] [ ROUTE ] array (
   'type' => 'module',
   'module' => 
   array (
     0 => 'admin',
+<<<<<<< HEAD
+    1 => 'login',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 's0c694c9a=ef92ipoaa9iq1v8h1fa1l6u4b1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'www.lixuan.dev',
+)
+[ info ] [ PARAM ] array (
+)
+=======
     1 => 'plugs',
     2 => 'upfile',
   ),
@@ -7445,12 +7546,24 @@
 [ info ] [ PARAM ] array (
   'spm' => 'm-87-89',
 )
+>>>>>>> 273b4f5a79de52ecafd5ae7237ad73f73e896542
 [ info ] [ SESSION ] INIT array (
   'id' => '',
   'var_session_id' => '',
   'prefix' => 'think',
   'type' => '',
   'auto_start' => true,
+<<<<<<< HEAD
+)
+[ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.000195s ]
+[ info ] [ RUN ] app\admin\controller\Login->index[ D:\WWW\Jarvix\lixuan\application\admin\controller\Login.php ]
+[ info ] [ VIEW ] D:\WWW\Jarvix\lixuan/application/admin\view\login.index.html [ array (
+  0 => 'classuri',
+  1 => 'title',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+=======
 )
 [ info ] [ BEHAVIOR ] Run hook\AccessAuth @action_begin [ RunTime:0.001752s ]
 [ info ] [ RUN ] app\lixuan\controller\Product->index[ /Library/WebServer/Documents/lixuan/application/lixuan/controller/Product.php ]
@@ -7585,3 +7698,4 @@
 [ info ] [ RUN ] app\admin\controller\Plugs->upstate[ /Library/WebServer/Documents/lixuan/application/admin/controller/Plugs.php ]
 [ info ] [ DB ] INIT mysql
 [ info ] [ LOG ] INIT File
+>>>>>>> 273b4f5a79de52ecafd5ae7237ad73f73e896542
