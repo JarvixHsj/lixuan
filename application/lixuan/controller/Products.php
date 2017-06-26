@@ -21,6 +21,7 @@ use service\PayService;
 use service\FileService;
 use model\Product;
 use think\response\View;
+use think\Db;
 
 /**
  * 微信配置管理
@@ -44,15 +45,11 @@ class Products extends BasicAdmin {
      * @return View
      */
     public function index() {
-        // if ($this->request->isGet()) {
-            $this->assign('title', '产品列表信息');
-            return view();
-        // }
-        // foreach ($this->request->post() as $key => $vo) {
-            // sysconf($key, $vo);
-        // }
-        // LogService::write('微信管理', '修改微信接口参数成功');
-        // $this->success('数据修改成功！', '');
+        $res = Db::name($this->table)->select();
+        
+        $this->assign('title', '产品列表信息');
+        $this->assign('list', $res);
+        return view();
     }
 
 

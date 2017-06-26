@@ -14,8 +14,18 @@ p{margin-bottom: 0;}
 	padding-left: 15px;
 	padding-right: 15px;
 	background: none;
+	margin-left: auto;
+	margin-right: auto;
 }
 .mui-toast-container {width: 80%;}
+button:enabled:active,
+button.mui-active:enabled,
+.mui-btn:enabled:active,
+.mui-btn.mui-active:enabled
+{
+    color: inherit;
+    background-color: inherit;
+}
 
 @media (max-width:320px){
 	.mui-bar .mui-title {font-size: 18px;}
@@ -278,7 +288,14 @@ button.log_btn {
 .us_maxtext {color: #000000;}
 .us_infoson {color: #000000;}
 .us_infotext {color: #666666;width: 80%;}
-.c_feng{width: 100%;padding-top: 10px;background-color: #F2F2F2;}
+.c_feng{
+	width: auto;
+	padding-top: 10px;
+	background-color: #F2F2F2;
+	margin-left: -15px;
+	margin-right: -15px;
+}
+	
 .us_btnsbox {
 	padding-top: 7%;
 	padding-bottom: 7%;
@@ -347,26 +364,407 @@ a.us_password {color: #FF6666;}
 .usdl_sqtext:last-child{margin-bottom: 0;}
 .usdl_sqtext span{color: #333333;margin-right: 5%;}
 .usdl_sqtext span:last-child {margin-right: 0;}
+.c_cover{
+	position: fixed;
+	background-color: rgba(0,0,0,.8);
+	z-index: 11;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;	
+}
+.usdl_levelbox {
+	position: absolute;
+	left: 4%;
+	right: 4%;
+	height: auto;
+	background-color: #000;
+	border-radius: 5px;
+	padding: 15px;
+	top: 25%;
+}
+.usdl_lbtitle {
+	color: #FFF;
+	margin-bottom: 3%;
+}
+.usdl_select {color: #010101;}
+button.usdl_boxbtns {
+	margin-left: 4.6%;
+	background-color: #FFF !important;
+	border: none;
+	color: #000;
+}
+.usyq_box {padding-bottom: 65px;}
+.usyq_title {
+	padding-top: 4%;
+	padding-bottom: 4%;
+}
+input.usyq_cin {
+	background-color: #f2f2f2;
+	border: none;
+}
+.usyq_twoin {
+	width: 48% !important;
+}
+input.usyq_twoin:last-child {
+	margin-right: 0;
+}
+.usyq_textin {
+	background-color: #f2f2f2;
+	border: none;
+}
+.usyq_tjbtn {
+	position: fixed;
+	width: 100%;
+	padding: 3% 0;
+	background-color: #2c2c2c;
+	left: 0;
+	bottom: 0;
+	border: none;
+	border-radius: 0;
+	color: #FFF;
+}
+.usyq_fx_icon {
+	position: absolute;
+	right: 20px;
+	top: 15px;
+	color: #FFF;
+	padding-top: 60px;
+	padding-right: 45px;
+	background: url(../img/usyq_fenxicon.png) no-repeat right top;
+	background-size: auto 60px;
+}
+
+.usbyq_title {padding-bottom: 3%;}
+.usbyq_hzxybox {
+	padding-bottom: 65px;
+	color: #666;
+}
+.usbyq_xytext {
+	color: #000;
+	padding-top: 3%;
+	line-height: 24px;
+}
+.img-zsy {
+	width: 100%;
+	height: auto;
+}
+.ib_cont_pic {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+.ib_cont_text {
+	padding-top: 3%;
+	padding-bottom: 3%;
+	color: #333;
+	line-height: 24px;
+}
+
+/*
+ * 查看下级代理
+ */
+.usck_proselect .title{
+	color:#333333;
+	padding-bottom: 3%;
+}
+.usck_select {
+	box-shadow: 0 0 5px #DDD;
+	border-radius: 8px;
+	padding: 3% 15px;
+	color:#333333;
+	margin-bottom: 15px;
+}
+.usck_dllist {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+.usck_dll_ul li{
+	background-color: #2C2C2C;
+	color: #fff;
+	padding-top: 3.5%;
+	padding-bottom: 3.5%;
+}
+.usck_dll_ul li.mui-table-view-cell>a {
+	margin-top: -3.5%;
+	margin-bottom: -3.5%;
+}
+.usck_dll_ul li.mui-active{
+	background-color: #2C2C2C;
+	margin-top: 0 !important;
+}
+.usck_dll_ul li:nth-child(1).mui-active {margin-top: 1px !important;}
+.usck_dll_ul li.mui-table-view-cell>a.mui-active{
+	background-color: initial;
+}
+.usck_dll_ul li.mui-table-view-cell.mui-collapse .mui-collapse-content {
+	margin: 3.5% -15px -3.5%;
+}
+.usck_dll_ul li.mui-table-view-cell:after {
+	left: 0;
+	transform: none;
+	background-color: #4e4e4e;
+}
+.usck_dll_ul li.mui-active:after {
+	display: none !important;
+}
+.usck_dlson {
+	position: relative;
+	min-height: 65px;
+	padding-top: 3.5%;
+	padding-bottom: 3.5%;
+	border-bottom: 1px solid #f2f2f2;
+}
+.usck_dlson:last-child {border-bottom: none;}
+.usck_dls_pic {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	left: 0;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-size: cover;	
+}
+.usck_dls_info {
+	padding-left: 75px;
+	padding-top: 2%;
+}
+.usck_dls_info .name {
+	color: #000;
+	margin-bottom: 3%;
+}
+.usck_dls_info .call_info {margin-bottom: 3%;}
+.usck_dls_info .info_icon {
+	color: #000000;
+	line-height: 20px;
+	margin-right: 10px;
+}
+.usck_dls_info .info_icon i{
+	font-size: 20px;
+	margin-right: 1%;
+}
+.usck_databox {
+	border: 1px dashed #dddddd;
+	border-radius: 6px;
+	background-color: #f2f2f2;
+	padding: 3%;
+}
+.usck_databox p{color: #999;margin-bottom: 4px;}
+.usck_databox p:last-child{margin-bottom: 0;}
+.usck_spotsbox {
+	padding:3%;
+	position: absolute;
+	background-color: #FFF;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.usck_spotsbox ul li {
+	width: 20%;
+	height: auto;
+	float: left;
+	text-align: center;
+	padding-bottom: 3%;
+}
+.usck_sicon {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background-color: #2c2c2c;
+	background-repeat: no-repeat;
+	background-size: 30px auto;
+	background-position: center;
+	margin-bottom: 10px;
+}
+.usck_stitle {
+	color: #333333;
+}
+.usck_offbtn {
+	padding: 3% 15px 0;
+	border-top: 1px solid #dddddd;
+}
+
+
+/*
+ * 发货
+ */
+.usfh_addbtn {line-height: 44px;}
+.usfh_title {padding: 3% 0;}
+.usfh_list {
+	background-color: #FFF;
+	margin-left: -15px;
+	margin-right: -15px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.usfh_list_son {
+	padding-bottom: 3%;
+}
+.usfh_lisbox {position: relative;padding-bottom: 8%;margin-bottom: 2%;}
+.usfh_lisbox .usck_dls_info {padding-top: 0;}
+.usfh_lis_title {
+	padding-top: 3%;
+	padding-bottom: 3%;
+	color: #000;
+	margin-left: -15px;
+	margin-right: -15px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-bottom: 1px solid #dddddd;
+	margin-bottom: 3%;
+}
+.usfh_lis_fhr:before {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	top: 50%;
+	content: '';
+	background:url(../img/uscj-fhicon.png) no-repeat center center;
+	background-size: cover;
+	border: 5px solid #FFF;
+	z-index: 111;
+}
+.usfh_lis_fhr:after {
+	content: '';
+	position: absolute;
+	width: 2px;
+	background-color: #000;
+	bottom: 0;
+}
+.usfh_in p{margin-right: 2%;line-height: 30px;color: #666666;}
+input.usck_fhinput {
+	width: 73% !important;
+	padding: 5px 3%;
+	height: 30px;
+	margin-bottom: 10px;
+	border:1px solid #e5e5e5;
+	color: #000000;
+}
+.usck_fhtext {
+	width: 73%;
+	padding: 5px 3%;
+	border:1px solid #e5e5e5;
+	color: #000000;
+}
+select.usck_fhsel {
+	width: 73%;
+	padding: 5px 3%;
+	border:1px solid #e5e5e5 !important;	
+	margin-bottom: 10px;
+	color: #000000;
+}
+.c_contcover {
+	position: fixed;
+	top:0;
+	bottom:0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0,0,0,.5);
+}
+.usck_detailinfo {
+	position: absolute;
+	width: 90%;
+	height: auto;
+	top: 10%;
+	left: 50%;
+	margin-left: -45%;
+	background-color: #FFF;
+	border-radius: 8px;
+}
+.usck_ditext {
+	background-color: #F2F2F2;
+	border-radius: 0 0 8px 8px;
+	padding: 8% 15px 5%;
+}
+.usck_ditext .title{ color: #000;margin-bottom: 2%;} 
+.usck_ditext .proname{color: #000;margin-bottom: 1%;}
+.usck_close_st {
+	position: absolute;
+	bottom: -50px;
+	left: 50%;
+	margin-left: -18px;
+	color: #FFF;
+}
+.usck_close span {font-size: 36px;}
+.usck_sqsbox {
+	position: absolute;
+	width: 90%;
+	height: auto;
+	top: 10%;
+	left: 50%;
+	margin-left: -45%;
+}
+.usck_sqscont img {width: 100%;height: auto;}
 @media (max-width: 320px) {
-	.usdl_36 {font-size: 16px;}
+	.usck_sicon {width:45px;height: 45px;background-size: 25px auto;}
+	.usck_dls_pic{width:40px;height: 40px;}
+	.usck_dls_info {padding-left: 55px;}
+	.usfh_lis_fhr:after {left: 21px;top: 50px;}
+	.usfh_lis_fhr:before {left: 21px;margin-left: -20px;}
+}
+@media (min-width:321px) and (max-width: 360px) {
+	.usck_sicon {width:50px;height: 50px;background-size: 30px auto;}
+	.usck_dls_pic{width:50px;height: 50px;}
+	.usck_dls_info {padding-left: 65px;}
+	.usfh_lis_fhr:after {left: 24px;top: 55px;}
+	.usfh_lis_fhr:before {left: 25px;margin-left: -20px;}
+	
+	
+}
+@media (min-width:321px) and (max-width: 380px) {
+	.usck_sicon {width:50px;height: 50px;background-size: 30px auto;}
+	.usck_dls_pic{width:50px;height: 50px;}
+	.usck_dls_info {padding-left: 65px;}
+	.usfh_lis_fhr:after {left: 24px;top: 55px;}
+	.usfh_lis_fhr:before {left: 25px;margin-left: -20px;}
+	
+}
+@media (min-width:381px) {
+	.usck_sicon {width:55px;height: 55px;background-size: 35px auto;}
+	.usck_dls_pic{width:55px;height: 55px;}
+	.usck_dls_info {padding-left: 70px;}
+	.usfh_lis_fhr:after {left: 26px;top: 60px;}
+	.usfh_lis_fhr:before {left: 27px;margin-left: -20px;}
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+/*
+ * 共用自适应字体
+ */
+@media (max-width: 320px) {
+	.usdl_36 {font-size: 18px;}
+	.usdl_32 {font-size: 16px;}
 	.usdl_28 {font-size: 14px;}
 	.usdl_24 {font-size: 12px;}
 	.usdl_22 {font-size: 11px;}
 }
 @media (min-width:321px) and (max-width: 360px) {
-	.usdl_36 {font-size: 18px;}
+	.usdl_36 {font-size: 20px;}
+	.usdl_32 {font-size: 18px;}
 	.usdl_28 {font-size: 16px;}
 	.usdl_24 {font-size: 13px;}
 	.usdl_22 {font-size: 12px;}
 }
 @media (min-width:321px) and (max-width: 380px) {
-	.usdl_36 {font-size: 18px;}
+	.usdl_36 {font-size: 21px;}
+	.usdl_32 {font-size: 18px;}
 	.usdl_28 {font-size: 16px;}
 	.usdl_24 {font-size: 14px;}
 	.usdl_22 {font-size: 13px;}
 }
-@media (min-width:381px) and (max-width: 640px) {
-	.usdl_36 {font-size: 20px;}
+@media (min-width:381px) {
+	.usdl_36 {font-size: 23px;}
+	.usdl_32 {font-size: 20px;}
 	.usdl_28 {font-size: 18px;}
 	.usdl_24 {font-size: 15px;}
 	.usdl_22 {font-size: 14px;}

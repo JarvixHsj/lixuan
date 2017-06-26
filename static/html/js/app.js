@@ -7,4 +7,5 @@ $(function(){
 		pich = (picw*3)/4;
 		pic.height(pich);
 	});
+	
 });

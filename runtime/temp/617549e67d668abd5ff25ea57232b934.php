@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"/Library/WebServer/Documents/lixuan/application/html/view/index.index.html";i:1498056622;s:73:"/Library/WebServer/Documents/lixuan/application/extra/view/html.main.html";i:1497950307;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"/Library/WebServer/Documents/lixuan/application/html/view/index.index.html";i:1498271490;s:73:"/Library/WebServer/Documents/lixuan/application/extra/view/html.main.html";i:1497950307;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -64,7 +64,7 @@
 		<div class="i_iconbtn mui-clearfix">
 			<div class="son"><a href="#" class="soncont sqcx">授权查询</a></div>
 			<div class="son"><a href="#" class="soncont fwcx">防伪查询</a></div>
-			<div class="son"><a href="<?php echo Url('html/Agent/index'); ?>" class="soncont dlht">代理后台</a></div>
+			<div class="son"><a href="<?php echo Url('html/Agents/index'); ?>" class="soncont dlht">代理后台</a></div>
 			<div class="son"><a href="#" class="soncont jfcx">积分查询</a></div>
 			<div class="son"><a href="#" class="soncont gywm">关于我们</a></div>
 		</div>

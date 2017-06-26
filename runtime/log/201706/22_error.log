@@ -28,3 +28,27 @@
 ---------------------------------------------------------------
 [ 2017-06-22T09:57:39+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/menu/index.html?spm=m-2-21
 [ error ] [8]未定义变量: classuri[/Library/WebServer/Documents/lixuan/runtime/temp/ac2ad36498eb144fd28b24d943389db9.php:9]
+---------------------------------------------------------------
+[ 2017-06-22T13:49:51+08:00 ] 127.0.0.1 127.0.0.1 POST /wechat/tags/add.html?spm=m-61-66&open_type=modal
+[ error ] [10501]SQLSTATE[HY000]: General error: 1364 Field 'id' doesn't have a default value[/Library/WebServer/Documents/lixuan/thinkphp/library/think/db/Connection.php:451]
+---------------------------------------------------------------
+[ 2017-06-22T14:14:58+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ error ] [1]Class 'app\lixuan\controller\Db' not found[/Library/WebServer/Documents/lixuan/application/lixuan/controller/Products.php:47]
+---------------------------------------------------------------
+[ 2017-06-22T14:22:09+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ error ] [4]语法解析错误: expecting `','' or `';''[/Library/WebServer/Documents/lixuan/runtime/temp/5608a3b76348eef9e0e78bac508f299b.php:78]
+---------------------------------------------------------------
+[ 2017-06-22T14:22:23+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ error ] [4]语法解析错误: expecting `','' or `';''[/Library/WebServer/Documents/lixuan/runtime/temp/5608a3b76348eef9e0e78bac508f299b.php:78]
+---------------------------------------------------------------
+[ 2017-06-22T14:25:07+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ error ] [4]语法解析错误[/Library/WebServer/Documents/lixuan/runtime/temp/5608a3b76348eef9e0e78bac508f299b.php:82]
+---------------------------------------------------------------
+[ 2017-06-22T14:29:19+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ error ] [2]date() expects parameter 2 to be long, string given[/Library/WebServer/Documents/lixuan/runtime/temp/5608a3b76348eef9e0e78bac508f299b.php:82]
+---------------------------------------------------------------
+[ 2017-06-22T15:07:42+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ error ] [0]模板文件不存在:/Library/WebServer/Documents/lixuan/application/lixuan/view/agent.form.html[/Library/WebServer/Documents/lixuan/thinkphp/library/think/view/driver/Think.php:80]
+---------------------------------------------------------------
+[ 2017-06-22T16:19:32+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ error ] [8]未定义变量: menus[/Library/WebServer/Documents/lixuan/runtime/temp/05c328e921b6e3fde5f8f37225d808eb.php:7]

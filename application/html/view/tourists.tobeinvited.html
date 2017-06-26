@@ -1,0 +1,41 @@
+{extend name="extra@html/main"}
+
+{block name='body'}
+	<header class="mui-bar mui-bar-nav di_navbox">
+		<h1 class="mui-title">邀请代理</h1>
+	</header>
+	<div class="mui-content">
+		<div class="usyq_box">
+			<div class="usyq_title">
+				<p class="usdl_28 usdl_sqtext">
+					授权品牌：<span>{$info['product_name']|msubstr=###,0,6,'utf-8',true}</span>
+					授权人：<span>
+						{if condition="$info.username neq ''"}{$info.username}
+						{else /} {$info.mobile}
+						{/if}
+					</span></p>
+			</div>
+			<form action="{:Url('Tourists/checkinfo')}" method="post">
+				<input type="text" class="usyq_cin usyq_twoin usdl_28 mui-pull-left" name="wechat_no" value="" placeholder="微信号" />				
+				<input type="text" class="usyq_cin usyq_twoin usdl_28 mui-pull-right" name="mobile" value="" placeholder="手机号码" />				
+				<input type="text" class="usyq_cin usdl_28" name="idcard" value="" placeholder="身份证号" />				
+				<input type="password" class="usyq_cin usdl_28" name="password" value="" placeholder="登录密码" />				
+				<input type="password" class="usyq_cin usdl_28" name="afirmpassword" value="" placeholder="确认登录密码" />				
+				<textarea class="usyq_textin usdl_28" name="address" rows="3" placeholder="输入你的收货地址"></textarea>	
+				{if condition="$Think.session.agent.id gt 0"}	
+					<button type="button" class="usyq_tjbtn usdl_32 share">分享</button>
+				{else /}
+					<button type="submit" class="usyq_tjbtn usdl_32 submit">提交</button>
+				{/if}
+			</form>
+		</div>
+	</div>
+	<div class="c_cover usyq_fenx" style="display: none;">
+		<div class="usyq_fx_icon usdl_32">点击这里进行分享</div>
+	</div>
+	<script type="text/javascript">
+		$(".share").click(function(){
+			$(".usyq_fenx").show();
+		});
+	</script>
+{/block}

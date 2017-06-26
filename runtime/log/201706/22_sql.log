@@ -222,3 +222,1404 @@
 [ sql ] [ DB ] CONNECT:[ UseTime:0.001756s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
 [ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.003728s ]
 [ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001457s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:49:42+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/config/pay.html?spm=m-61-64
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001495s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001914s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000893s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:49:44+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/tags/index.html?spm=m-61-66
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000563s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.002267s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans_tags` LIMIT 1 [ RunTime:0.000680s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_fans_tags` ORDER BY id asc LIMIT 0,20 [ RunTime:0.000555s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001501s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001028s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:49:48+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/tags/add.html?spm=m-61-66&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001359s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.014065s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.011413s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:49:51+08:00 ] 127.0.0.1 127.0.0.1 POST /wechat/tags/add.html?spm=m-61-66&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000624s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.001410s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans_tags` WHERE  `name` = '123' LIMIT 1 [ RunTime:0.001625s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000802s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000474s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans_tags` WHERE  (  id IS NULL ) LIMIT 1 [ RunTime:0.000809s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:56:55+08:00 ] 127.0.0.1 127.0.0.1 POST /wechat/tags/add.html?spm=m-61-66&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000852s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.000894s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans_tags` WHERE  `name` = '123' LIMIT 1 [ RunTime:0.000532s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000987s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001178s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans_tags` WHERE  (  id IS NULL ) LIMIT 1 [ RunTime:0.000361s ]
+[ sql ] [ SQL ] INSERT INTO `wechat_fans_tags` (`count`) VALUES (0) [ RunTime:0.001484s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:56:57+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/tags/index.html?spm=m-61-66
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000778s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.001641s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans_tags` LIMIT 1 [ RunTime:0.000820s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_fans_tags` ORDER BY id asc LIMIT 0,20 [ RunTime:0.000450s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000866s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000447s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:57:04+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/tags/add.html?spm=m-61-66&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000652s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001031s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000461s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:57:09+08:00 ] 127.0.0.1 127.0.0.1 POST /wechat/tags/add.html?spm=m-61-66&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002524s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.003724s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans_tags` WHERE  `name` = '测试表情' LIMIT 1 [ RunTime:0.002068s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.002146s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000901s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans_tags` WHERE  (  id IS NULL ) LIMIT 1 [ RunTime:0.000463s ]
+[ sql ] [ SQL ] INSERT INTO `wechat_fans_tags` (`count`) VALUES (0) [ RunTime:0.000658s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:57:12+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/tags/index.html?spm=m-61-66
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000734s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.001486s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans_tags` LIMIT 1 [ RunTime:0.000642s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_fans_tags` ORDER BY id asc LIMIT 0,20 [ RunTime:0.001768s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001227s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000446s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:58:26+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000580s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001610s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000815s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.001091s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.001916s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000647s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000698s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000628s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000357s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:58:27+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/tags/index.html?spm=m-61-66
+[ sql ] [ DB ] CONNECT:[ UseTime:0.007079s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.007875s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans_tags` LIMIT 1 [ RunTime:0.001197s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_fans_tags` ORDER BY id asc LIMIT 0,20 [ RunTime:0.002146s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001288s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001010s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:58:30+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/fans/index.html?spm=m-61-67
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003043s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans` [ RunTime:0.002738s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans` WHERE  `is_back` = 0 LIMIT 1 [ RunTime:0.000683s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_fans` WHERE  `is_back` = 0 ORDER BY subscribe_time desc LIMIT 0,20 [ RunTime:0.000802s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.000833s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `wechat_fans_tags` [ RunTime:0.001244s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.003202s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000627s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:58:31+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/fans/back.html?spm=m-61-86
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000596s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans` [ RunTime:0.000976s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans` WHERE  `is_back` = 1 LIMIT 1 [ RunTime:0.000560s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_fans` WHERE  `is_back` = 1 ORDER BY subscribe_time desc LIMIT 0,20 [ RunTime:0.000894s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.000847s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `wechat_fans_tags` [ RunTime:0.000601s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001038s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000602s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:58:32+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/fans/index.html?spm=m-61-67
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001388s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans` [ RunTime:0.001870s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans` WHERE  `is_back` = 0 LIMIT 1 [ RunTime:0.002547s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_fans` WHERE  `is_back` = 0 ORDER BY subscribe_time desc LIMIT 0,20 [ RunTime:0.003165s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.001228s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `wechat_fans_tags` [ RunTime:0.001044s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000775s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000408s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:58:42+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/fans/back.html?spm=m-61-86
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000726s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans` [ RunTime:0.001019s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans` WHERE  `is_back` = 1 LIMIT 1 [ RunTime:0.000477s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_fans` WHERE  `is_back` = 1 ORDER BY subscribe_time desc LIMIT 0,20 [ RunTime:0.000629s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.000909s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `wechat_fans_tags` [ RunTime:0.000477s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001755s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000459s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:58:44+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/tags/index.html?spm=m-61-66
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002139s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.002373s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans_tags` LIMIT 1 [ RunTime:0.000317s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_fans_tags` ORDER BY id asc LIMIT 0,20 [ RunTime:0.000355s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000698s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000396s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:58:47+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/tags/sync.html?spm=m-61-66
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001003s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.001021s ]
+[ sql ] [ SQL ] DELETE FROM `wechat_fans_tags`    WHERE  (  1=1 ) [ RunTime:0.003290s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000987s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000661s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_log` [ RunTime:0.000929s ]
+[ sql ] [ SQL ] INSERT INTO `system_log` (`ip` , `node` , `username` , `action` , `content`) VALUES ('127.0.0.1' , 'wechat/tags/sync' , 'admin' , '微信管理' , '同步全部微信粉丝标签成功') [ RunTime:0.002856s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:58:50+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/tags/index.html?spm=m-61-66
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000531s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.001260s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans_tags` LIMIT 1 [ RunTime:0.001523s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_fans_tags` ORDER BY id asc LIMIT 0,20 [ RunTime:0.003266s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000673s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000421s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:58:53+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/fans/index.html?spm=m-61-67
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000592s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans` [ RunTime:0.000914s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans` WHERE  `is_back` = 0 LIMIT 1 [ RunTime:0.000577s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_fans` WHERE  `is_back` = 0 ORDER BY subscribe_time desc LIMIT 0,20 [ RunTime:0.000676s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.000790s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `wechat_fans_tags` [ RunTime:0.000279s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001918s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000422s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:58:54+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/tags/index.html?spm=m-61-66
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000711s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.000735s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans_tags` LIMIT 1 [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_fans_tags` ORDER BY id asc LIMIT 0,20 [ RunTime:0.000290s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000952s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000436s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:58:56+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/fans/back.html?spm=m-61-86
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000649s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans` [ RunTime:0.001243s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans` WHERE  `is_back` = 1 LIMIT 1 [ RunTime:0.000739s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_fans` WHERE  `is_back` = 1 ORDER BY subscribe_time desc LIMIT 0,20 [ RunTime:0.000909s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.001150s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `wechat_fans_tags` [ RunTime:0.000721s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000708s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000482s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:58:57+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/menu/index.html?spm=m-61-69
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000644s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_menu` [ RunTime:0.001445s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_menu` ORDER BY sort asc [ RunTime:0.001360s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000585s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000269s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:58:58+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/keys/index.html?spm=m-61-70
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001024s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_keys` [ RunTime:0.002016s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_keys` WHERE  `keys` NOT IN ('subscribe','default') LIMIT 1 [ RunTime:0.001712s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_keys` WHERE  `keys` NOT IN ('subscribe','default') ORDER BY sort asc LIMIT 0,20 [ RunTime:0.001146s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000973s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000937s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:58:58+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/news/add/id/1.html?spm=m-61-83
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000690s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001062s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000464s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:59:00+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/news/index.html?spm=m-61-85
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004673s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_news` [ RunTime:0.005198s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_news` WHERE  `is_deleted` = 0 LIMIT 1 [ RunTime:0.000890s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_news` WHERE  `is_deleted` = 0 ORDER BY id desc LIMIT 0,20 [ RunTime:0.002719s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_news` WHERE  `id` = 37 LIMIT 1 [ RunTime:0.000755s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_news_article` [ RunTime:0.004108s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_news_article` WHERE  `id` IN (96) [ RunTime:0.002395s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.004876s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000499s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:59:02+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000605s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001114s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.006442s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:59:07+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000664s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001390s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.001855s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000981s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000477s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.001155s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000643s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000834s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000486s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:59:08+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000684s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000819s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000407s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:59:49+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000916s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001441s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000737s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.001079s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000720s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.001337s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.001046s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001622s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000554s ]
+---------------------------------------------------------------
+[ 2017-06-22T13:59:50+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001433s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001325s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000620s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:03:25+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000569s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000881s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000556s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000787s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000470s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.001022s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000922s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000784s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000389s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:03:26+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000629s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000826s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000507s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:03:33+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001027s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.003172s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000967s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.001020s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000502s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.001230s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000725s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000686s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000443s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:03:34+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000781s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000916s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000615s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:04:28+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002998s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.009849s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000996s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.001996s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000722s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.002119s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000745s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000916s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000567s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:04:28+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000587s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000811s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000460s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:13:03+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004291s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001626s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.008597s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.001796s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000604s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.001158s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000705s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000819s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000462s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:13:04+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002508s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.003368s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000891s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000490s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:13:10+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000810s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001833s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000936s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.001279s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000950s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.002245s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.001349s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.002261s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001108s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:13:11+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000662s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000883s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001241s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000535s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:14:57+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000525s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001075s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.002066s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000998s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000573s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.001010s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000795s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001155s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000448s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:15:19+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001332s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001510s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.001379s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.003280s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000693s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.001175s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.001335s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001093s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000848s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:15:19+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000707s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001533s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.000909s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:17:43+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000576s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000796s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000564s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000605s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000670s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.001977s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000793s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000709s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001011s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:17:44+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001815s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001646s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.002525s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000889s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000594s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:18:15+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/config/index.html?spm=m-61-63
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001260s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.002142s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001242s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:18:17+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/tags/index.html?spm=m-61-66
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000745s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.000700s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans_tags` LIMIT 1 [ RunTime:0.000424s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_fans_tags` ORDER BY id asc LIMIT 0,20 [ RunTime:0.004217s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001055s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000511s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:18:19+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/fans/index.html?spm=m-61-67
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000581s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans` [ RunTime:0.002968s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans` WHERE  `is_back` = 0 LIMIT 1 [ RunTime:0.000439s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_fans` WHERE  `is_back` = 0 ORDER BY subscribe_time desc LIMIT 0,20 [ RunTime:0.000666s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.007916s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `wechat_fans_tags` [ RunTime:0.000417s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000808s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000409s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:18:20+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/fans/back.html?spm=m-61-86
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000629s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans` [ RunTime:0.001121s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_fans` WHERE  `is_back` = 1 LIMIT 1 [ RunTime:0.000420s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_fans` WHERE  `is_back` = 1 ORDER BY subscribe_time desc LIMIT 0,20 [ RunTime:0.000585s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_fans_tags` [ RunTime:0.000829s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `wechat_fans_tags` [ RunTime:0.000358s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001005s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000573s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:18:21+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/menu/index.html?spm=m-61-69
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001540s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_menu` [ RunTime:0.002519s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_menu` ORDER BY sort asc [ RunTime:0.000726s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000745s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000430s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:18:23+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/news/index.html?spm=m-61-85
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000637s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_news` [ RunTime:0.000756s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_news` WHERE  `is_deleted` = 0 LIMIT 1 [ RunTime:0.000443s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_news` WHERE  `is_deleted` = 0 ORDER BY id desc LIMIT 0,20 [ RunTime:0.000442s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_news` WHERE  `id` = 37 LIMIT 1 [ RunTime:0.000677s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_news_article` [ RunTime:0.002534s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_news_article` WHERE  `id` IN (96) [ RunTime:0.000789s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000821s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000406s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:18:24+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/news/add/id/1.html?spm=m-61-83
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001381s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001173s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000537s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:18:25+08:00 ] 127.0.0.1 127.0.0.1 GET /wechat/news/index.html?spm=m-61-85
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000583s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_news` [ RunTime:0.000899s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wechat_news` WHERE  `is_deleted` = 0 LIMIT 1 [ RunTime:0.000390s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_news` WHERE  `is_deleted` = 0 ORDER BY id desc LIMIT 0,20 [ RunTime:0.000461s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_news` WHERE  `id` = 37 LIMIT 1 [ RunTime:0.000524s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wechat_news_article` [ RunTime:0.001006s ]
+[ sql ] [ SQL ] SELECT * FROM `wechat_news_article` WHERE  `id` IN (96) [ RunTime:0.000522s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000589s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000563s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:18:33+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/index/main.html?spm=m-2-3
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005573s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] select version() as ver [ RunTime:0.000425s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001118s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000644s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:18:34+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/node/index.html?spm=m-2-22
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003513s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_node` [ RunTime:0.003909s ]
+[ sql ] [ SQL ] SELECT * FROM `system_node` [ RunTime:0.003513s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001631s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000382s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:18:35+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/auth/index.html?spm=m-2-19
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000566s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.001117s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `system_auth` LIMIT 1 [ RunTime:0.000498s ]
+[ sql ] [ SQL ] SELECT * FROM `system_auth` ORDER BY sort asc LIMIT 0,20 [ RunTime:0.000382s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000746s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000357s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:18:37+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/menu/index.html?spm=m-2-21
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000849s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.001077s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` ORDER BY sort asc,id asc [ RunTime:0.000993s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000542s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000298s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:18:39+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/user/index.html?spm=m-2-29
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000878s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.002925s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `system_user` WHERE  `is_deleted` = 0 LIMIT 1 [ RunTime:0.000877s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `is_deleted` = 0 LIMIT 0,20 [ RunTime:0.000629s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001129s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000605s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:19:49+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/log/index.html?spm=m-2-9
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000861s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_log` [ RunTime:0.001371s ]
+[ sql ] [ SQL ] SELECT `action` FROM `system_log` GROUP BY action [ RunTime:0.002150s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `system_log` LIMIT 1 [ RunTime:0.000478s ]
+[ sql ] [ SQL ] SELECT * FROM `system_log` ORDER BY id desc LIMIT 0,20 [ RunTime:0.000599s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000914s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000496s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:19:51+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/user/index.html?spm=m-2-29
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000882s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001514s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `system_user` WHERE  `is_deleted` = 0 LIMIT 1 [ RunTime:0.000549s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `is_deleted` = 0 LIMIT 0,20 [ RunTime:0.000669s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001032s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000379s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:19:54+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/menu/index.html?spm=m-2-21
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000621s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000709s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` ORDER BY sort asc,id asc [ RunTime:0.000590s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000914s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000526s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:20:01+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/auth/index.html?spm=m-2-19
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000763s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.001626s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `system_auth` LIMIT 1 [ RunTime:0.000799s ]
+[ sql ] [ SQL ] SELECT * FROM `system_auth` ORDER BY sort asc LIMIT 0,20 [ RunTime:0.000592s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001011s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000989s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:20:03+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/node/index.html?spm=m-2-22
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000743s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_node` [ RunTime:0.000940s ]
+[ sql ] [ SQL ] SELECT * FROM `system_node` [ RunTime:0.001072s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000822s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000596s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:20:04+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/auth/index.html?spm=m-2-19
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000789s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.001380s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `system_auth` LIMIT 1 [ RunTime:0.001613s ]
+[ sql ] [ SQL ] SELECT * FROM `system_auth` ORDER BY sort asc LIMIT 0,20 [ RunTime:0.000771s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001378s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000420s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:20:05+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/config/file.html?spm=m-2-6
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000924s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.004793s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.005251s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:20:06+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/config/index.html?spm=m-2-5
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000752s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001145s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001028s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:20:09+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/log/index.html?spm=m-2-9
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000746s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_log` [ RunTime:0.001327s ]
+[ sql ] [ SQL ] SELECT `action` FROM `system_log` GROUP BY action [ RunTime:0.003995s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `system_log` LIMIT 1 [ RunTime:0.000395s ]
+[ sql ] [ SQL ] SELECT * FROM `system_log` ORDER BY id desc LIMIT 0,20 [ RunTime:0.000515s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000908s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000771s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:22:09+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000712s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001417s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.000860s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:22:22+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000889s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001212s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000678s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000977s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000611s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.002702s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.001053s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000612s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000344s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:22:23+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000835s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001596s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.002910s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:22:50+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000570s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000676s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000607s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000701s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000581s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000988s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000751s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000914s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000408s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:22:51+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000781s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001449s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.001047s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001525s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000773s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:23:17+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000560s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000790s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000697s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000855s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000396s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000561s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000507s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000670s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000416s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:23:18+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000770s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.002048s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.001536s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.003954s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000514s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:23:26+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000584s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000778s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000588s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000591s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000420s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000644s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.001023s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001050s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000494s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:23:27+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001171s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001316s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.000613s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001356s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000546s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:23:43+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000563s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001164s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000604s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000844s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000485s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000929s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.001032s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000829s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000503s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:23:43+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001506s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001663s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.000868s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000701s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000318s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:24:04+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000567s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000730s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000656s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000741s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000469s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000901s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000788s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000641s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000327s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:24:04+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002981s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.003438s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.000627s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000640s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000317s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:24:11+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000711s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000947s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000533s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000585s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000346s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000688s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.001145s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001004s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000635s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:24:12+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000672s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000812s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.000312s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001139s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000830s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:24:38+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000856s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001968s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000756s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000870s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000621s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000778s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000928s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000856s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000395s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:24:38+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000831s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001196s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.001067s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000966s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000566s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:25:07+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001009s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001667s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000579s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000494s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000354s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000821s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000726s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000645s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000340s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:25:07+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000759s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.002872s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.000815s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:25:13+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000626s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000800s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000563s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000758s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000374s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000796s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000813s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000764s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000305s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:25:14+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003217s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.002703s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.002275s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000912s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000456s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:29:19+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000743s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001230s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000512s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000622s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000440s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000651s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000570s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000948s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000357s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:29:19+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001693s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.009137s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.001664s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:29:31+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000974s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001260s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000815s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000988s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000610s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000763s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000614s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000939s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000673s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:29:31+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000860s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001306s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.000701s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.002126s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001161s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:30:30+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000652s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000662s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000751s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000615s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.001145s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000650s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000949s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000487s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:30:30+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001829s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.004977s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.001449s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001133s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001597s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:30:42+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000716s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001169s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.001288s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000922s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000409s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000694s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000773s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000806s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000368s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:30:43+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000543s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.005469s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.000409s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000850s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000386s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:31:12+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000646s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000812s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000910s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.001098s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000449s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000799s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000693s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000702s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000359s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:31:13+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001331s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001683s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.001406s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001139s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001584s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:31:48+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001046s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001007s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000635s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000764s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000485s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000555s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000746s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000647s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000305s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:31:48+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000659s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000645s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.000387s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001612s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001149s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:32:21+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000662s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001027s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000818s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000732s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000494s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.001748s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.002527s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001174s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000461s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:32:22+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003412s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001198s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.000596s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000952s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000488s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:32:49+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000579s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000870s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000540s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000700s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000455s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000681s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000652s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000654s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000315s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:32:50+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001967s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001771s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.001567s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000946s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001083s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:38:11+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000541s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000617s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000487s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000648s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000400s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000859s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000515s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000929s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000325s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:38:12+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/products/index.html?spm=m-87-89
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002054s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.002318s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.001459s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.002155s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001226s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:38:30+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000552s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000691s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000460s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.001205s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000349s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000648s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000694s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000670s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000309s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:38:31+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/index.html?spm=m-87-90
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000724s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000737s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.000412s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.002421s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.005192s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:39:29+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000483s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000826s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000519s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000743s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000349s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000562s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000547s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000943s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000454s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:39:30+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/index.html?spm=m-87-91
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000689s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001309s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.000633s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000834s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000823s ]
+---------------------------------------------------------------
+[ 2017-06-22T14:39:34+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/index.html?spm=m-87-91
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000620s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001036s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.000794s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000861s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000467s ]
+---------------------------------------------------------------
+[ 2017-06-22T15:08:16+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001887s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001688s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000789s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000975s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000590s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000958s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000785s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001420s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001915s ]
+---------------------------------------------------------------
+[ 2017-06-22T15:08:16+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/index.html?spm=m-87-91
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000559s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000938s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.000498s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000661s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000371s ]
+---------------------------------------------------------------
+[ 2017-06-22T15:08:17+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000643s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000810s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000519s ]
+---------------------------------------------------------------
+[ 2017-06-22T15:11:12+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000708s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001602s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000820s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.001048s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.001074s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.001214s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.001058s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000759s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000447s ]
+---------------------------------------------------------------
+[ 2017-06-22T15:11:13+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/index.html?spm=m-87-91
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001103s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001595s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.000890s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000660s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000423s ]
+---------------------------------------------------------------
+[ 2017-06-22T15:11:14+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/index/main.html?spm=m-2-3
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000632s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] select version() as ver [ RunTime:0.000432s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000826s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000461s ]
+---------------------------------------------------------------
+[ 2017-06-22T15:11:15+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/node/index.html?spm=m-2-22
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000513s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_node` [ RunTime:0.000816s ]
+[ sql ] [ SQL ] SELECT * FROM `system_node` [ RunTime:0.000898s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001797s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000624s ]
+---------------------------------------------------------------
+[ 2017-06-22T15:11:16+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/auth/index.html?spm=m-2-19
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000560s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000961s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `system_auth` LIMIT 1 [ RunTime:0.000855s ]
+[ sql ] [ SQL ] SELECT * FROM `system_auth` ORDER BY sort asc LIMIT 0,20 [ RunTime:0.000677s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000850s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000547s ]
+---------------------------------------------------------------
+[ 2017-06-22T15:11:17+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/menu/index.html?spm=m-2-21
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000660s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.001215s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` ORDER BY sort asc,id asc [ RunTime:0.001026s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001827s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001496s ]
+---------------------------------------------------------------
+[ 2017-06-22T15:11:18+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/user/index.html?spm=m-2-29
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000685s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001170s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `system_user` WHERE  `is_deleted` = 0 LIMIT 1 [ RunTime:0.000613s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `is_deleted` = 0 LIMIT 0,20 [ RunTime:0.000637s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001348s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.002290s ]
+---------------------------------------------------------------
+[ 2017-06-22T15:52:50+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/user/add.html?spm=m-2-29&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000769s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.002970s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000714s ]
+[ sql ] [ SQL ] SELECT * FROM `system_auth` [ RunTime:0.000408s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000812s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000412s ]
+---------------------------------------------------------------
+[ 2017-06-22T15:52:59+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/log/index.html?spm=m-2-9
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000545s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_log` [ RunTime:0.004239s ]
+[ sql ] [ SQL ] SELECT `action` FROM `system_log` GROUP BY action [ RunTime:0.001808s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `system_log` LIMIT 1 [ RunTime:0.001155s ]
+[ sql ] [ SQL ] SELECT * FROM `system_log` ORDER BY id desc LIMIT 0,20 [ RunTime:0.000561s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001425s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000937s ]
+---------------------------------------------------------------
+[ 2017-06-22T15:53:00+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/user/index.html?spm=m-2-29
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000605s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001229s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `system_user` WHERE  `is_deleted` = 0 LIMIT 1 [ RunTime:0.005772s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `is_deleted` = 0 LIMIT 0,20 [ RunTime:0.001458s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000815s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001867s ]
+---------------------------------------------------------------
+[ 2017-06-22T15:53:01+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/menu/index.html?spm=m-2-21
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000589s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000842s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` ORDER BY sort asc,id asc [ RunTime:0.000941s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000651s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000346s ]
+---------------------------------------------------------------
+[ 2017-06-22T15:53:03+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/menu/add.html?spm=m-2-21&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001275s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000971s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort desc,id desc [ RunTime:0.001032s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_node` [ RunTime:0.000650s ]
+[ sql ] [ SQL ] SELECT * FROM `system_node` [ RunTime:0.000647s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000726s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000468s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:19:29+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000631s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000933s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000695s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000834s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000470s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000973s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000812s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000764s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000450s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:19:30+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/menu/index.html?spm=m-2-21
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002149s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.001650s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` ORDER BY sort asc,id asc [ RunTime:0.006394s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001330s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.002952s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:19:31+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000567s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000828s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000593s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.001565s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000566s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.001803s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.001085s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000684s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000908s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:19:32+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/index.html?spm=m-87-91
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000549s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001317s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.000753s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000920s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000537s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:19:43+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000721s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000908s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.002495s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000851s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000539s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000586s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000532s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001019s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000453s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:19:44+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/index.html?spm=m-87-91
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000474s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001581s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.000514s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000932s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.006647s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:19:44+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000686s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.003474s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001343s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:20:12+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000479s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000776s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000447s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000594s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000359s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000764s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000611s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000711s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000403s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:20:13+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/index.html?spm=m-87-91
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000745s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.002297s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.000674s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000809s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000478s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:20:14+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000683s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000859s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001396s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:21:23+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000603s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000789s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000568s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000766s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000550s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000614s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000592s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000766s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000370s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:21:24+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/index.html?spm=m-87-91
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001699s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.004137s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.004735s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001372s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000849s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:21:25+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001116s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000911s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000399s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:36:42+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000556s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000822s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000566s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.001111s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000476s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000700s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000640s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000918s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000472s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:36:43+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/index.html?spm=m-87-91
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003828s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.002213s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` [ RunTime:0.002159s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000847s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000493s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:36:43+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000727s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.007997s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001127s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:42:33+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000628s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000778s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000505s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000671s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000449s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000673s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000643s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000833s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000439s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:42:33+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/index.html?spm=m-87-91
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001164s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.003352s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` WHERE  (  status = 1 ) [ RunTime:0.000721s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001996s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000881s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:42:34+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001263s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.002475s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` WHERE  (  status = 1 ) [ RunTime:0.000544s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000738s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000415s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:43:04+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000670s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.001118s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000567s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000703s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000803s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.003027s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000689s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000727s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000370s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:43:05+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/index.html?spm=m-87-91
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000563s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000713s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` WHERE  (  status = 1 ) ORDER BY id desc [ RunTime:0.000650s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000732s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000516s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:43:06+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000636s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000788s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` WHERE  (  status = 1 ) ORDER BY id desc [ RunTime:0.000601s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000820s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000699s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:44:40+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000702s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000791s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.001619s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000857s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000408s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000855s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000701s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000646s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000388s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:44:41+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/index.html?spm=m-87-91
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000548s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001392s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` WHERE  (  status = 1 ) ORDER BY id desc [ RunTime:0.001698s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.002114s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000465s ]
+---------------------------------------------------------------
+[ 2017-06-22T16:44:43+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002425s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001412s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` WHERE  (  status = 1 ) ORDER BY id desc [ RunTime:0.000639s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000732s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000317s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:06:01+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000570s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000751s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.001008s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000838s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000473s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000682s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000598s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000695s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000440s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:06:02+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/index.html?spm=m-87-91
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000660s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001019s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` WHERE  (  status = 1 ) ORDER BY id desc [ RunTime:0.000796s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001009s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000830s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:06:02+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000614s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000838s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` WHERE  (  status = 1 ) ORDER BY id desc [ RunTime:0.000428s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000627s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000293s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:07:12+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000889s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000837s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000682s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000729s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000471s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000910s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000637s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000737s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000408s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:07:12+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/index.html?spm=m-87-91
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000726s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.002650s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` WHERE  (  status = 1 ) ORDER BY id desc [ RunTime:0.000822s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001190s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001401s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:07:17+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000579s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000747s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.000480s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000647s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000411s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000603s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000564s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001064s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000371s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:07:18+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/index.html?spm=m-87-91
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000712s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001390s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` WHERE  (  status = 1 ) ORDER BY id desc [ RunTime:0.000695s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001776s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001185s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:07:18+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000601s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000749s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` WHERE  (  status = 1 ) ORDER BY id desc [ RunTime:0.000480s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000742s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000431s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:07:29+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001306s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.000846s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.001390s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.000748s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000490s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.000645s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000712s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000676s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000443s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:07:29+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/index.html?spm=m-87-91
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000760s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001167s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` WHERE  (  status = 1 ) ORDER BY id desc [ RunTime:0.000556s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001092s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000739s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:07:30+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000704s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000649s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` WHERE  (  status = 1 ) ORDER BY id desc [ RunTime:0.000395s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001410s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000343s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:08:24+08:00 ] 127.0.0.1 127.0.0.1 GET /admin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000819s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_user` [ RunTime:0.002406s ]
+[ sql ] [ SQL ] SELECT * FROM `system_user` WHERE  `id` = 10000 LIMIT 1 [ RunTime:0.001433s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_auth` [ RunTime:0.001331s ]
+[ sql ] [ SQL ] SELECT `id` FROM `system_auth` WHERE  `id` IN (47,49)  AND `status` = 1 [ RunTime:0.000753s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.002052s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.000973s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.000705s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000423s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:08:25+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/index.html?spm=m-87-91
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000901s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.009127s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` WHERE  (  status = 1 ) ORDER BY id desc [ RunTime:0.000808s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.001186s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.000596s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:08:26+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002337s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001681s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` WHERE  (  status = 1 ) ORDER BY id desc [ RunTime:0.000663s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.006267s ]
+[ sql ] [ SQL ] SELECT * FROM `system_config` [ RunTime:0.001067s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:20:40+08:00 ] 127.0.0.1 127.0.0.1 POST /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001083s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001702s ]
+[ sql ] [ SQL ] DELETE FROM `lx_product`    WHERE  `id` = 1 [ RunTime:0.001370s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000466s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:22:15+08:00 ] 127.0.0.1 127.0.0.1 POST /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000624s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000833s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.004062s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:23:06+08:00 ] 127.0.0.1 127.0.0.1 POST /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001838s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+---------------------------------------------------------------
+[ 2017-06-22T17:23:29+08:00 ] 127.0.0.1 127.0.0.1 POST /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001229s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.000919s ]
+[ sql ] [ SQL ] DELETE FROM `lx_product`    WHERE  `id` = 1 [ RunTime:0.000462s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:24:00+08:00 ] 127.0.0.1 127.0.0.1 POST /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001375s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+---------------------------------------------------------------
+[ 2017-06-22T17:29:46+08:00 ] 127.0.0.1 127.0.0.1 POST /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001403s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_product` [ RunTime:0.001869s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000456s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:33:49+08:00 ] 127.0.0.1 127.0.0.1 POST /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001278s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_user` [ RunTime:0.003116s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_user` WHERE  `mobile` = '13692763394' LIMIT 1 [ RunTime:0.000604s ]
+---------------------------------------------------------------
+[ 2017-06-22T17:36:21+08:00 ] 127.0.0.1 127.0.0.1 POST /lixuan/agent/add.html?spm=m-87-91&open_type=modal
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001294s ] mysql:dbname=thinkadmin;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `lx_user` [ RunTime:0.001635s ]
+[ sql ] [ SQL ] SELECT * FROM `lx_user` WHERE  `mobile` = '13692763394' LIMIT 1 [ RunTime:0.001347s ]

@@ -1,0 +1,113 @@
+{extend name="extra@html/main"}
+
+{block name='bodyTag'}
+	<body class="bgf2f2f2">
+	{block name='body'}
+		<header class="mui-bar mui-bar-nav di_navbox">
+		    <h1 class="mui-title">新代理加盟</h1>
+		</header>
+		<div class="mui-content">
+			<div class="usdl_box">
+				<ul class="usdl_list">
+					{volist name="list" id="vo" empty="暂无产品代理"}
+					<li>
+						<div class="usdl_title usdl_36">
+							{$vo.name|msubstr=###,0,8,'utf-8',true}
+							<a href="user_yaoqingjilu.html" class="mui-pull-right usdl_24 usdl_sqlabel">邀请记录</a>
+							<span class="mui-pull-right usdl_24 usdl_sqlabel usdl_yqbtns" data-id="{$vo.product_id}">邀请新代理</span>
+						</div>
+						<div class="usdl_dlinfo">
+							<p class="usdl_24 usdl_sqtext">
+								授权号：<span>{$vo.empower_sn}</span>
+								状态：<span>{if condition="$vo['status'] eq 1"}
+												正常
+											{else /} 
+												冻结
+											{/if}
+									</span>
+							</p>
+							<p class="usdl_24 usdl_sqtext">代理级别：<span>{$agenttype[$vo.level]}</span></p>
+						</div>
+					</li>
+					{/volist}
+				</ul>
+			</div>
+		</div>
+		<!-- 选择分享下级级别 -->
+		<div class="c_cover" style="display: none;">
+			<div class="usdl_levelbox mui-clearfix">
+				<p class="usdl_lbtitle usdl_28">请选择分享下级级别</p>
+				<select class="usdl_select usdl_24" name="" id="usdl_levellist">
+					<!--<option value="0">请选择</option>-->
+					<!--{volist name="agenttype" id="vo" key="k" empty='暂时没有数据，请刷新'}
+						<option value="{$k}">{$vo}</option>
+					{/volist}-->
+				</select>
+				<button type="button" class="mui-pull-right usdl_boxbtns usdl_24 usdl_leveltj">确定</button>
+				<button type="button" class="mui-pull-right usdl_boxbtns usdl_24 cover_offbtn">取消</button>
+			</div>
+		</div>
+		<script type="text/javascript">
+			
+			var id;   //当前选择的代理品牌id
+			
+			//根据id获取数据显示select
+			$(".usdl_yqbtns").click(function(){
+				id = $(this).data("id"); //选择的产品id
+				if(!id){
+					alert('网络请求有误，请刷新页面后重试！');
+					return;
+				}
+				$.ajax({
+					type: "POST",
+					url: "{:Url('Agents/ajax_get_level')}",
+					data: "product_id="+id,
+					success: function(res){
+						var html = '<option value="0">---请选择---</option>';
+						$.each(res,function(key, val){
+							html += '<option value="'+key+'">'+val+'</option>';
+							$("#usdl_levellist").empty();
+							$("#usdl_levellist").append(html);
+						})
+					}
+				});
+				$(".c_cover").show();
+				// var html = '<option value="">一级代理</option><option value="">二级代理</option><option value="">三级代理</option>';
+				// $("#usdl_levellist").empty();
+				// $("#usdl_levellist").append(html);
+			});
+			
+			$(".usdl_leveltj").click(function(){
+				var level_id = $("#usdl_levellist").val();
+				if(!level_id || level_id == 0 || !id || id == 0){
+					alert('网络请求有误，请刷新页面后重试！');
+					return;					
+				}
+			
+				$.ajax({
+					type: "POST",
+					url: "{:Url('Agents/ajax_inviteshare')}",
+					data: { level_id: level_id, product_id: id },
+					success: function(res){
+						if(res.status == 0){
+							alert(res.message);
+							return;
+						}else if(res.status == 1){
+							if(res.url){
+								window.location.href = res.url;
+								
+							}else{
+								alert('网络请求失败！');
+							}
+						}
+					}
+				});
+			});
+			$(".cover_offbtn").click(function(){
+				$(".c_cover").hide();
+			});
+		</script>
+
+	{/block}
+	</body>
+{/block}

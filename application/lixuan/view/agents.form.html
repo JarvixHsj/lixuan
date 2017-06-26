@@ -1,0 +1,123 @@
+<form class="layui-form layui-box" style='padding:25px 30px 20px 0' action="__SELF__" data-auto="true" method="post">
+    <div class="layui-form-item">
+        <label class="layui-form-label">设置代理等级</label>
+        <div class="layui-input-block">
+            <select name='level' class='layui-select full-width' style='display:block' required="required" title="请选择代理等级">
+                <!--首席CEO，核心总监，总代，一级，特约，）-->
+                <option  value='0'>---请选择代理等级---</option>
+                <option  value='1'>核心总监</option>
+                <option  value='2'>总代</option>
+                <option  value='3'>一级</option>
+                <option  value='4'>特约</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">选择授权产品</label>
+        <div class="layui-input-block">
+            <select name='product_id' class='layui-select full-width' style='display:block' required="required" title="请选择授权产品">
+                <option  value='0'>---请选择授权产品---</option>
+                {volist name="pro_list" id='vo' empty('暂时没有数据')}
+                    <option value="{$vo.id}">{$vo.name}</option>
+                {/volist}
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">代理名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="username" value='{$vo.username|default=""}' required="required" title="请输入用户名" placeholder="请输入代理用户名" class="layui-input">
+        </div>
+    </div>
+     <div class="layui-form-item">
+        <label class="layui-form-label">代理手机号</label>
+        <div class="layui-input-block">
+            <input type="text" name="mobile" value='{$vo.mobile|default=""}' required="required" title="请输入代理手机号" placeholder="请输入代理手机号" class="layui-input">
+        </div>
+    </div>
+     <div class="layui-form-item">
+        <label class="layui-form-label">登录密码</label>
+        <div class="layui-input-block">
+            <input name="password" placeholder="请输入登录密码" required="required" title="请输入登录密码" class="layui-input"/>
+        </div>
+    </div>
+<!--
+     <div class="layui-form-item">
+        <label class="layui-form-label">代理图片</label>
+            <img data-tips-image style="height:auto;max-width:128px;max-height:128px;" src="__PUBLIC__/static/plugs/uploader/theme/image.png"/>
+            <input type="hidden" name="image" onchange="$(this).prev('img').attr('src', this.value)"
+                    value="" class="layui-input">
+            <a class="btn btn-link" data-file="one" data-type="ico,png" data-field="image">上传图片</a>
+            <span>建议上传图片的尺寸为128x128px，此图标用于代理展示使用。</span>
+    </div>-->
+
+    <!--<div class="layui-form-item">
+        <label class="layui-form-label">代理简介</label>
+        <div class="layui-input-block">
+            <div class="col-md-12" style="padding-left:0px;margin:0px;">
+                <div class="form-control" style="height:auto; width:95%">
+                    <label style="color:#ccc">图文封面大图片设置</label>
+                    <div class="row nowrap">
+                        <div class="col-xs-3" style="width:160px">
+                            <div class="upload-image-box transition" style="background-image: url("http://www.lixuan.dev/static/plugs/uploader/theme/image.png");">
+                                <input value="__PUBLIC__/static/plugs/uploader/theme/image.png" type="hidden" name="local_url">
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <br>
+                            <a data-file="one" data-type="jpg,png,jpeg" data-field="local_url" class="btn btn-sm">上传图片</a>
+                            <a data-iframe='{:url("image")}?field=local_url' class="btn btn-sm">选择图片</a>
+                            <br><br>
+                            <label style="margin-left:0;padding-left:10px">
+                                <input data-auto-none type="checkbox" value="1" name="show_cover_pic">
+                                在正文显示此图片
+                            </label>
+                        </div>
+                    </div>
+                    <p class="help-block" style="margin-top:10px;color:#ccc">封面大图片建议尺寸：900像素 * 500像素</p>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+
+
+        <!--<div class="col-md-12">
+            <div class="form-control" style="height:auto; width:95%">
+                <label style="color:#ccc">图文封面大图片设置</label>
+                <div class="row nowrap">
+                    <div class="col-xs-3" style="width:160px">
+                        <div class="upload-image-box transition">
+                            <input value="__PUBLIC__/static/plugs/uploader/theme/image.png" type="hidden" name="local_url">
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <br>
+                        <a data-file="one" data-type="jpg,png,jpeg" data-field="local_url" class="btn btn-sm">上传图片</a>
+                        <a data-iframe='{:url("image")}?field=local_url' class="btn btn-sm">选择图片</a>
+                        <br><br>
+                        <label style="margin-left:0;padding-left:10px">
+                            <input data-auto-none type="checkbox" value="1" name="show_cover_pic">
+                            在正文显示此图片
+                        </label>
+                    </div>
+                </div>
+                <p class="help-block" style="margin-top:10px;color:#ccc">封面大图片建议尺寸：900像素 * 500像素</p>
+            </div>
+        </div>-->
+      
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="layui-form-item text-center">
+
+        <!--{if isset($vo['id'])}<input type='hidden' value='{$vo.id}' name='id'/>{/if}-->
+
+        <button class="layui-btn" type='submit'>保存数据</button>
+
+        <button class="layui-btn layui-btn-danger" type='button' data-confirm="确定要取消编辑吗？" data-close>取消编辑</button>
+
+    </div>
+
+</form>

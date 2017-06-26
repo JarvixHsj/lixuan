@@ -221,4 +221,9 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
+
+    //其他配置
+    'admin' => [
+        'prefix_url' => 'admin.html#/',
+    ],
 ];

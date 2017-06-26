@@ -45,7 +45,7 @@ class Login extends Controller {
      */
     public function _initialize() {
         if (session('agent') && $this->request->action() !== 'out') {
-            $this->redirect('@html/Agent/index');
+            $this->redirect('@html/Agents/index');
         }
     }
 
@@ -72,7 +72,7 @@ class Login extends Controller {
             session('agent', $user);
             // !empty($user['authorize']) && NodeService::applyAuthNode();
             LogService::write('代理用户管理', '用户'.$mobile.'登录系统成功');
-            $this->success('登录成功，正在进入后台...', '@html/Agent/index');
+            $this->success('登录成功，正在进入后台...', '@html/Agents/index');
         }
     }
 
@@ -80,12 +80,17 @@ class Login extends Controller {
      * 退出登录
      */
     public function out() {
-        var_dump(123);die;
         LogService::write('代理用户管理', '用户退出系统成功');
         session('user', null);
         session('agent', null);
         session_destroy();
         $this->success('退出登录成功！', '@html/login');
+    }
+
+
+    public function tobeinvited()
+    {
+        var_dump($this->request);
     }
 
 }

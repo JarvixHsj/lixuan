@@ -2,11 +2,11 @@
 
 {block name="button"}
 <div class="nowrap pull-right" style="margin-top:10px">
-    <button data-modal='{:url("$classuri/add")}' data-title="添加产品" class='layui-btn layui-btn-small'><i
-            class='fa fa-plus'></i> 添加产品
+    <button data-modal='{:url("$classuri/add")}' data-title="添加代理" class='layui-btn layui-btn-small'><i
+            class='fa fa-plus'></i> 添加代理
     </button>
     <button data-update data-field='delete' data-action='{:url("classuri/del")}'
-            class='layui-btn layui-btn-small layui-btn-danger'><i class='fa fa-remove'></i> 删除产品
+            class='layui-btn layui-btn-small layui-btn-danger'><i class='fa fa-remove'></i> 删除代理
     </button>
 </div>
 {/block}
@@ -47,10 +47,9 @@
                     <input data-none-auto="" data-check-target='.list-check-box' type='checkbox'/>
                 </th>-->
                 <th class='text-center'>编号</th>
-                <th class='text-center'>产品图片</th>
-                <th class='text-center'>产品名称</th>
-                <th class='text-center'>产品简介</th>
-                <th class='text-center'>最后编辑时间</th>
+                <th class='text-center'>商品id</th>
+                <th class='text-center'>用户id</th>
+                <th class='text-center'>上级id</th>
                 <!--<th class='text-center'>锁定</th>-->
                 <th class='text-center'>操作</th>
             </tr>
@@ -61,12 +60,10 @@
                 <!--<td class='list-table-check-td'>
                     <input class="list-check-box" value='{$vo.id}' type='checkbox'/>
                 </td>-->
-                <td class='text-center'>{$vo.id}</td>
-                <td class='text-center'><img src="{$vo.image}" style="max-width:120px;max-height:120px;"/> </td>
-                <td class='text-center'>{$vo.name}</td>
-                <td class='text-center'>{$vo.intro|substr=0,39|default="<span style='color:#ccc'>还没有编写简介</span>"}</td>
-                <!--<td class='text-center'>{$vo.login_num|default="<span style='color:#ccc'>从未登录</span>"}</td>-->
-                <td class='text-center'>{$vo.change_at|date="Y-m-d H:i:s",###|default="<span style='color:#ccc'>从未登录</span>"}</td>
+                <td class='text-center'>{$vo.empower_sn}</td>
+                <td class='text-center'>{$vo.product_id}</td>
+                <td class='text-center'>{$vo.user_id}</td>
+                <td class='text-center'>{$vo.super_id}</td>
                 <!--<td class='text-center'>
                     {if $vo.status eq 0}
                     <span>已禁用</span>

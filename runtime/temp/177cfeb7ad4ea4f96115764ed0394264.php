@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"/Library/WebServer/Documents/lixuan/application/html/view/agent.index.html";i:1498057367;s:73:"/Library/WebServer/Documents/lixuan/application/extra/view/html.main.html";i:1497950307;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"/Library/WebServer/Documents/lixuan/application/html/view/agent.index.html";i:1498268831;s:73:"/Library/WebServer/Documents/lixuan/application/extra/view/html.main.html";i:1497950307;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,7 +37,8 @@
 			    	</a>
 			    </div>
 			    <div class="dl_menu_son mui-clearfix">
-			    	<a href="user_dailijiameng.html">
+			    	<!--<a href="user_dailijiameng.html">-->
+			    	<a href="<?php echo Url('agent/new_agent_index'); ?>">
 			    		<div class="dl_menu_icon dljm mui-pull-left"></div>
 			    		<div class="dl_menu_text mui-pull-left">
 			    			<p class="title">新代理加盟</p>

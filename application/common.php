@@ -28,6 +28,7 @@ function p($data, $replace = false, $pathname = NULL) {
     is_null($pathname) && $pathname = RUNTIME_PATH . date('Ymd') . '.txt';
     $str = (is_string($data) ? $data : (is_array($data) || is_object($data)) ? print_r($data, true) : var_export($data, true)) . "\n";
     $replace ? file_put_contents($pathname, $str) : file_put_contents($pathname, $str, FILE_APPEND);
+    die;
 }
 
 /**
@@ -105,6 +106,99 @@ function sysconf($name, $value = false) {
     }
     return isset($config[$name]) ? $config[$name] : '';
 }
+
+//字符串截图函数
+function msubstr($str, $start=0, $length, $charset="utf-8", $suffix = true){
+    if(function_exists('mb_substr')){
+        $slice = mb_substr($str, $start, $length, $charset);
+    }elseif (function_exists('iconv_substr')){
+        $slice = iconv_substr($str, $start, $length, $charset);
+        if(false === $slice){
+            $slice = '';
+        }
+    }else{
+        $re['utf-8'] = "/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xff][\x80-\xbf]{3}/";
+        $re['gb2312'] = "/[\x01-\x7f]|[\xb0-\xf7][\xa0-\xfe]/";
+        $re['gbk'] = "/[\x01-\x7f]|[\x81-\xfe][\x40-\xfe]/";
+        $re['big5'] = "/[\x01-\x7f]|[\x81-\xfe]([\x40-\x7e]|\xa1-\xfe])/";
+        preg_match_all($re[$charset], $str, $match);
+        $slice = join("", array_slice($match[0], $start, $length));
+    }
+    $fix = '';
+    if(strlen($slice) < strlen($str)){
+        $fix = "...";
+    }
+    return $suffix ? $slice.$fix : $slice;
+}
+
+//获取时间戳毫秒
+function getMillisecond() {
+    list($t1, $t2) = explode(' ', microtime());
+    return (float)sprintf('%.0f',(floatval($t1)+floatval($t2))*1000);
+}
+
+//检查数组值是否存在
+if (!function_exists("checkParam")) {
+
+    function checkParam($param) {
+        if(!is_array($param)) return false;
+        foreach($param as $key => $val){
+            if(empty($val)) return false;
+        }
+
+        return true;
+    }
+}
+
+/**
+*   判断手机号格式
+*/
+if (!function_exists("judgeMobile")) {
+
+    function judgeMobile($mobile) {
+        if(!preg_match("/^1[34578]{1}\d{9}$/",$mobile)){  
+            return false; 
+        }  
+        return true;
+    }
+}
+
+
+/**
+ * 判断是否为合法的身份证号码
+ * @param $mobile
+ * @return int
+ */
+function isCreditNo($vStr){
+    $vCity = array(
+        '11','12','13','14','15','21','22',
+        '23','31','32','33','34','35','36',
+        '37','41','42','43','44','45','46',
+        '50','51','52','53','54','61','62',
+        '63','64','65','71','81','82','91'
+    );
+    if (!preg_match('/^([\d]{17}[xX\d]|[\d]{15})$/', $vStr)) return false;
+    if (!in_array(substr($vStr, 0, 2), $vCity)) return false;
+    $vStr = preg_replace('/[xX]$/i', 'a', $vStr);
+    $vLength = strlen($vStr);
+    if ($vLength == 18) {
+        $vBirthday = substr($vStr, 6, 4) . '-' . substr($vStr, 10, 2) . '-' . substr($vStr, 12, 2);
+    } else {
+        $vBirthday = '19' . substr($vStr, 6, 2) . '-' . substr($vStr, 8, 2) . '-' . substr($vStr, 10, 2);
+    }
+    if (date('Y-m-d', strtotime($vBirthday)) != $vBirthday) return false;
+    if ($vLength == 18) {
+        $vSum = 0;
+        for ($i = 17 ; $i >= 0 ; $i--) {
+            $vSubStr = substr($vStr, 17 - $i, 1);
+            $vSum += (pow(2, $i) % 11) * (($vSubStr == 'a') ? 10 : intval($vSubStr , 11));
+        }
+        if($vSum % 11 != 1) return false;
+    }
+    return true;
+}
+
+
 
 /**
  * array_column 函数兼容

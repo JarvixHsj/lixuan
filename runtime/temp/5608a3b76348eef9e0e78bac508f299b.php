@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"/Library/WebServer/Documents/lixuan/application/lixuan/view/products.index.html";i:1498061046;s:77:"/Library/WebServer/Documents/lixuan/application/extra/view/admin.content.html";i:1497187871;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"/Library/WebServer/Documents/lixuan/application/lixuan/view/products.index.html";i:1498113169;s:77:"/Library/WebServer/Documents/lixuan/application/extra/view/admin.content.html";i:1497187871;}*/ ?>
 <div class="ibox">
     
     <?php if(isset($title)): ?>
@@ -57,19 +57,63 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th class='list-table-check-td'>
+                <!--<th class='list-table-check-td'>
                     <input data-none-auto="" data-check-target='.list-check-box' type='checkbox'/>
-                </th>
+                </th>-->
                 <th class='text-center'>编号</th>
                 <th class='text-center'>产品图片</th>
                 <th class='text-center'>产品名称</th>
+                <th class='text-center'>产品简介</th>
                 <th class='text-center'>最后编辑时间</th>
-                <th class='text-center'>锁定</th>
+                <!--<th class='text-center'>锁定</th>-->
                 <th class='text-center'>操作</th>
             </tr>
         </thead>
         <tbody>
-            
+            <?php foreach($list as $key=>$vo): ?>
+            <tr>
+                <!--<td class='list-table-check-td'>
+                    <input class="list-check-box" value='<?php echo $vo['id']; ?>' type='checkbox'/>
+                </td>-->
+                <td class='text-center'><?php echo $vo['id']; ?></td>
+                <td class='text-center'><img src="<?php echo $vo['image']; ?>" style="max-width:120px;max-height:120px;"/> </td>
+                <td class='text-center'><?php echo $vo['name']; ?></td>
+                <td class='text-center'><?php echo (substr($vo['intro'],0,39) ?: "<span style='color:#ccc'>还没有编写简介</span>"); ?></td>
+                <!--<td class='text-center'><?php echo (isset($vo['login_num']) && ($vo['login_num'] !== '')?$vo['login_num']:"<span style='color:#ccc'>从未登录</span>"); ?></td>-->
+                <td class='text-center'><?php echo (date("Y-m-d H:i:s",$vo['change_at']) ?: "<span style='color:#ccc'>从未登录</span>"); ?></td>
+                <!--<td class='text-center'>
+                    <?php if($vo['status'] == 0): ?>
+                    <span>已禁用</span>
+                    <?php elseif($vo['status'] == 1): ?>
+                    <span style="color:#090">使用中</span>
+                    <?php endif; ?>
+                </td>-->
+                <td class='text-center nowrap'>
+                    <?php if(auth("$classuri/edit")): ?>
+                    <span class="text-explode">|</span>
+                    <a data-modal='<?php echo url("$classuri/edit"); ?>?id=<?php echo $vo['id']; ?>' href="javascript:void(0)">编辑</a>
+                    <?php endif; if(auth("$classuri/auth")): ?>
+                    <span class="text-explode">|</span>
+                    <a data-modal='<?php echo url("$classuri/auth"); ?>?id=<?php echo $vo['id']; ?>' href="javascript:void(0)">授权</a>
+                    <?php endif; if(auth("$classuri/pass")): ?>
+                    <span class="text-explode">|</span>
+                    <a data-modal='<?php echo url("$classuri/pass"); ?>?id=<?php echo $vo['id']; ?>' href="javascript:void(0)">密码</a>
+                    <?php endif; if($vo['status'] == 1 and auth("$classuri/forbid")): ?>
+                    <span class="text-explode">|</span>
+                    <a data-update="<?php echo $vo['id']; ?>" data-field='status' data-value='0' data-action='<?php echo url("$classuri/forbid"); ?>'
+                       href="javascript:void(0)">禁用</a>
+                    <?php elseif(auth("$classuri/resume")): ?>
+                    <span class="text-explode">|</span>
+                    <a data-update="<?php echo $vo['id']; ?>" data-field='status' data-value='1' data-action='<?php echo url("$classuri/resume"); ?>'
+                       href="javascript:void(0)">启用</a>
+                    <?php endif; if(auth("$classuri/del")): ?>
+                    <span class="text-explode">|</span>
+                    <a data-update="<?php echo $vo['id']; ?>" data-field='delete' data-action='<?php echo url("$classuri/del"); ?>'
+                       href="javascript:void(0)">删除</a>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
     <?php if(isset($page)): ?><p><?php echo $page; ?></p><?php endif; ?>
