@@ -29,7 +29,11 @@ class Index extends Controller {
      * 网站入口
      */
     public function index() {
-        $this->redirect('@html');
+//        var_dump($this->request);
+//        header('http://www.baidu.com');
+        $this->redirect('@html/Index/index');
+//                var_dump(123,$this->request);die;
+
     }
 
 }

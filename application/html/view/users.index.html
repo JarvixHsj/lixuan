@@ -1,0 +1,30 @@
+{extend name="extra@html/main"}
+    {block name='bodyTag'}
+    <body class="bgf2f2f2">
+    {block name='body'}
+		<header class="mui-bar mui-bar-nav di_navbox">
+		    <h1 class="mui-title">我的代理信息</h1>
+		</header>
+		<div class="mui-content">
+			<div class="usdl_box">
+				<ul class="usdl_list">
+                    {volist name="list" id="vo"}
+                        <li>
+                            <a href="#">
+                                <div class="usdl_title usdl_36">
+                                    {$vo.name}
+                                    <span class="mui-pull-right usdl_24 usdl_sqlabel">查看授权</span>
+                                </div>
+                                <div class="usdl_dlinfo">
+                                    <p class="usdl_24 usdl_sqtext">授权号：<span>{$vo.empower_sn}</span>状态：<span>正常</span></p>
+                                    <p class="usdl_24 usdl_sqtext">代理级别：<span>{$agenttype[$vo['level']]}</span></p>
+                                </div>
+                            </a>
+                        </li>
+                    {/volist}
+				</ul>
+			</div>
+		</div>
+    {/block}
+    </body>
+{/block}

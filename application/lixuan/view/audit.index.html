@@ -10,9 +10,7 @@
     </button>
 </div>
 {/block}
-
 {block name="content"}
-
 <!-- 表单搜索 开始 -->
 <form class="animated form-search" action="__SELF__" onsubmit="return false" method="get">
 
@@ -22,13 +20,11 @@
                 <input type="text" name="username" value="{$Think.get.username|default=''}" placeholder="用户名" class="input-sm form-control">
             </div>
         </div>
-
         <div class="col-xs-3">
             <div class="form-group">
                 <input type="text" name="phone" value="{$Think.get.phone|default=''}" placeholder="手机号" class="input-sm form-control">
             </div>
         </div>
-
         <div class="col-xs-1">
             <div class="form-group">
                 <button type="submit" class="btn btn-sm btn-white"><i class="fa fa-search"></i> 搜索</button>
@@ -47,11 +43,17 @@
                     <input data-none-auto="" data-check-target='.list-check-box' type='checkbox'/>
                 </th>-->
                 <th class='text-center'>编号</th>
-                <th class='text-center'>用户名称</th>
-                <th class='text-center'>用户手机号</th>
-                <th class='text-center'>代理产品</th>
-                <th class='text-center'>代理等级</th>
-                <th class='text-center'>操作</th>
+                <th class='text-center'>邀请人用户名</th>
+                <th class='text-center'>邀请人手机号</th>
+                <!--<th class='text-center'>邀请人代理等级</th>-->
+                <th class='text-center'>代理的产品</th>
+                <th class='text-center'>授权代理等级</th>
+                <th class='text-center'>微信号</th>
+                <th class='text-center'>手机号</th>
+                <th class='text-center'>身份证号</th>
+                <th class='text-center'>收货地址</th>
+                <!--<th class='text-center'>锁定</th>-->
+                <th class='text-center'>授权</th>
             </tr>
         </thead>
         <tbody>
@@ -60,11 +62,15 @@
                 <!--<td class='list-table-check-td'>
                     <input class="list-check-box" value='{$vo.id}' type='checkbox'/>
                 </td>-->
-                <td class='text-center'>{$vo.empower_sn}</td>
-                <td class='text-center'>{if $vo['username'] eq ''}{$vo.mobile} {else /} {$vo.username}{/if}</td>
+                <td class='text-center'>{$vo.id}</td>
+                <td class='text-center'>{$vo.super_name}</td>
+                <td class='text-center'>{$vo.super_mobile}</td>
+                <td class='text-center'>{$vo.pro_name}</td>
+                <td class='text-center'>{$agenttype[$vo['invite_level']]}</td>
+                <td class='text-center'>{$vo.wechat_no}</td>
                 <td class='text-center'>{$vo.mobile}</td>
-                <td class='text-center'>{$vo.name}</td>
-                <td class='text-center'>{$agenttype[$vo['level']]}</td>
+                <td class='text-center'>{$vo.idcard}</td>
+                <td class='text-center'>{$vo.address}</td>
                 <!--<td class='text-center'>
                     {if $vo.status eq 0}
                     <span>已禁用</span>
@@ -73,33 +79,22 @@
                     {/if}
                 </td>-->
                 <td class='text-center nowrap'>
-                    未开通
-                    <!--{if auth("$classuri/edit")}-->
-                    <!--<span class="text-explode">|</span>-->
-                    <!--<a data-modal='{:url("$classuri/edit")}?id={$vo.id}' href="javascript:void(0)">编辑</a>-->
-                    <!--{/if}-->
-                    <!--{if auth("$classuri/auth")}-->
-                    <!--<span class="text-explode">|</span>-->
-                    <!--<a data-modal='{:url("$classuri/auth")}?id={$vo.id}' href="javascript:void(0)">授权</a>-->
-                    <!--{/if}-->
-                    <!--{if auth("$classuri/pass")}-->
-                    <!--<span class="text-explode">|</span>-->
-                    <!--<a data-modal='{:url("$classuri/pass")}?id={$vo.id}' href="javascript:void(0)">密码</a>-->
-                    <!--{/if}-->
-                    <!--{if $vo.status eq 1 and auth("$classuri/forbid")}-->
-                    <!--<span class="text-explode">|</span>-->
-                    <!--<a data-update="{$vo.id}" data-field='status' data-value='0' data-action='{:url("$classuri/forbid")}'-->
-                       <!--href="javascript:void(0)">禁用</a>-->
-                    <!--{elseif auth("$classuri/resume")}-->
-                    <!--<span class="text-explode">|</span>-->
-                    <!--<a data-update="{$vo.id}" data-field='status' data-value='1' data-action='{:url("$classuri/resume")}'-->
-                       <!--href="javascript:void(0)">启用</a>-->
-                    <!--{/if}-->
-                    <!--{if auth("$classuri/del")}-->
-                    <!--<span class="text-explode">|</span>-->
-                    <!--<a data-update="{$vo.id}" data-field='delete' data-action='{:url("$classuri/del")}'-->
-                       <!--href="javascript:void(0)">删除</a>-->
-                    <!--{/if}-->
+                    {if $vo.is_through eq 0}
+                        {if auth("$classuri/del")}
+                        <span class="text-explode">|</span>
+                        <a data-update="{$vo.id}" data-field='pass' data-action='{:url("$classuri/pass")}'
+                           href="javascript:void(0)">通过</a>
+                        {/if}
+                        {if auth("$classuri/del")}
+                        <span class="text-explode">|</span>
+                        <a data-update="{$vo.id}" data-field='nopass' data-action='{:url("$classuri/nopass")}'
+                           href="javascript:void(0)">不通过</a>
+                        {/if}
+                    {elseif $vo.is_through eq 1}
+                        已通过
+                    {elseif $vo.is_through eq 2}
+                        未通过
+                    {/if}
                 </td>
             </tr>
             {/foreach}

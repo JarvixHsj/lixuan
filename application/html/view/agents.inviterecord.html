@@ -1,0 +1,59 @@
+{extend name="extra@html/main"}
+
+{block name='bodyTag'}
+<script>
+		function showTime(tuanid, time_distance) {
+			this.tuanid = tuanid;
+			//PHP时间是秒，JS时间是微秒
+			this.time_distance = time_distance * 1000;
+		}
+		showTime.prototype.setTimeShow = function () {
+			var timer = $("#yq_time" + this.tuanid);
+			var str_time;
+			var int_second;
+			time_distance = this.time_distance;
+			this.time_distance = this.time_distance - 1000;
+			if (time_distance > 0) {
+				int_second = Math.floor(time_distance / 1000);
+				
+				if (int_second < 10)
+					int_second = "0" + int_second;
+				str_time = int_second + "s";
+				timer.text(str_time);
+				var self = this;
+				setTimeout(function () { self.setTimeShow(); }, 1000); //D:正确
+			} else {
+				timer.text("已结束");
+				return;
+			}
+		}
+	</script>
+	<body class="bgf2f2f2">
+	{block name='body'}
+		<header class="mui-bar mui-bar-nav di_navbox">
+		    <h1 class="mui-title">邀请记录</h1>
+		</header>
+		<div class="mui-content">
+			<div class="usdl_box">
+				<ul class="usdl_list">
+					{volist name="list" id="vo" key="k"}
+					<li>
+						<div class="usdl_title usdl_36">
+							{$vo.product_name}
+						</div>
+						<div class="usdl_dlinfo">
+							<p class="usdl_24 usdl_sqtext">倒计时：<span id="yq_time{$vo.id}">3600s</span></p>
+							<p class="usdl_24 usdl_sqtext">分享打开次数：<span>{$vo.click_num}</span></p>
+						</div>
+					</li>
+					<script type="text/javascript">
+					    var st = new showTime({$vo['id']}, {$vo['countdown']});
+					    st.setTimeShow();
+					</script>
+					{/volist}
+				</ul>
+			</div>
+	{/block}
+	
+	</body>
+{/block}

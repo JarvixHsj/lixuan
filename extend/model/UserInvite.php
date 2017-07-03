@@ -1,14 +1,18 @@
 <?php
 
-	namespace model;
+namespace model;
+use think\Model;
 
-	use think\Model;
+class UserInvite extends Model
+{
 
-	class UserInvite extends Model
+	protected $table = 'lx_user_invite';
+	
+	public function getInviteList( $where)
 	{
-
-
-	  	protected $table = 'lx_user_invite';
-	  	
-
+		if(!is_array($where)) return false;
+		$res = $this->where($where)->select()->toArray();
+		if($res) return $res;
+		return false;
 	}
+}

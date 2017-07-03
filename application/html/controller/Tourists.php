@@ -87,7 +87,6 @@ class Tourists extends Controller {
         $UserInviteModel = new UserInvite;
         $info = $UserInviteModel
         ->alias('ui')
-        // ->join('lx_product p', 'ui.product_id = p.id')
         ->join('lx_user u', 'ui.user_id = u.id')
         ->where('ui.share_no', $share_no)
         ->field('ui.*,u.username,u.mobile')
@@ -127,13 +126,28 @@ class Tourists extends Controller {
         //判断邀请时间是否过期
         if(time() >= $inviteInfo['end_in']) $this->error('受邀时间已过期~');
         
-        //判断是否有这个代理信息
+        // //判断是否有这个代理信息代理过改产品
+        // $UserModel = new User;
+        // $judgeUserInfo = $UserModel
+        // ->where('mobile', $param['mobile'])
+        // ->whereOr('idcard', $param['idcard'])
+        // ->find()->toArray();        
+        // if($judgeUserInfo) $this->error('该手机号或身份证已被使用');
+
+        //判断是否有这个代理信息代理过改产品
         $UserModel = new User;
-        $judgeUserInfo = $UserModel
-        ->where('mobile', $param['mobile'])
-        ->whereOr('idcard', $param['idcard'])
-        ->find()->toArray();        
-        if($judgeUserInfo) $this->error('该手机号或身份证已被使用');
+        // $judgeUserInfo = $UserModel->alias('u')
+        // ->field('u.*')
+        // ->join('lx_agent a', 'a.user_id = u.id')
+        // // ->where('u.mobile',$param['mobile'], 'u.idcard',$param['idcard'] , 'or')
+        // ->where(['u.mobile','=',$param['mobile']], ['u.idcard','=',$param['idcard']] , 'or')
+        // ->where('a.product_id' , $inviteInfo['product_id'])
+        // // ->where('u.mobile', $param['mobile'])
+        // // ->where('a.product_id', $inviteInfo['product_id'])
+        // ->find()->toArray();        
+        $sql = "SELECT u.* FROM lx_user u JOIN lx_agent a ON a.user_id = u.id WHERE (u.mobile = '{$param['mobile']}' OR u.idcard = '{$param['idcard']}') AND a.product_id = '{$inviteInfo['product_id']}'";
+        $judgeUserInfo = Db::query($sql);
+        if($judgeUserInfo) $this->error('该手机号已经代理了该产品！不可重复代理！');
         
         //判断信息是否已经填写过了
         session('temp_invite_id', $inviteInfo['id']);

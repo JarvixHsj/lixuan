@@ -1,6 +1,0 @@
----------------------------------------------------------------
-[ 2017-06-11T21:47:47+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
-[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'think.admin'@'localhost' (using password: NO)[/Library/WebServer/Documents/testGit/Think5Admin/thinkphp/library/think/db/Connection.php:293]
----------------------------------------------------------------
-[ 2017-06-11T21:48:58+08:00 ] 127.0.0.1 127.0.0.1 GET /admin/login.html
-[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)[/Library/WebServer/Documents/testGit/Think5Admin/thinkphp/library/think/db/Connection.php:293]

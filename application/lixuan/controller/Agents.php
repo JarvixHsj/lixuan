@@ -27,7 +27,6 @@ use think\Db;
 
 /**
  * 微信配置管理
- * Class Config
  * @package app\wechat\controller
  * @author Anyon <zoujingli@qq.com>
  * @date 2017/03/27 14:43
@@ -42,17 +41,20 @@ class Agents extends BasicAdmin {
 
     private $randStr = 'abcdefghijklmnopqrstuvwxyz1234567890';
 
-    // private $level = array('2','3','4','5','6');
-
     /**
      * 产品列表
      * @return View
      */
     public function index() {
-        $res = Db::name($this->table)->order('id desc')->select();
+        $res = Db::name($this->table)->alias('a')
+            ->field('a.*,u.username,u.mobile,p.name')
+            ->join('lx_user u', 'u.id = a.user_id')
+            ->join('lx_product p', 'p.id = a.product_id')
+            ->order('a.id desc')->select();
         
         $this->assign('title', '代理产品列表');
         $this->assign('list', $res);
+        $this->assign('agenttype', $this->_agentType);
         return view();
     }
 

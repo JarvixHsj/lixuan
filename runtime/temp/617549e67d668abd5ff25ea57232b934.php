@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"/Library/WebServer/Documents/lixuan/application/html/view/index.index.html";i:1498271490;s:73:"/Library/WebServer/Documents/lixuan/application/extra/view/html.main.html";i:1497950307;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"/Library/WebServer/Documents/lixuan/application/html/view/index.index.html";i:1498530688;s:73:"/Library/WebServer/Documents/lixuan/application/extra/view/html.main.html";i:1497950307;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>

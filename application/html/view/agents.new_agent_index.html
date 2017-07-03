@@ -13,8 +13,8 @@
 					<li>
 						<div class="usdl_title usdl_36">
 							{$vo.name|msubstr=###,0,8,'utf-8',true}
-							<a href="user_yaoqingjilu.html" class="mui-pull-right usdl_24 usdl_sqlabel">邀请记录</a>
-							<span class="mui-pull-right usdl_24 usdl_sqlabel usdl_yqbtns" data-id="{$vo.product_id}">邀请新代理</span>
+							<a href="{:Url('Agents/inviterecord', ['id' => $vo['id']])}" class="mui-pull-right usdl_24 usdl_sqlabel">邀请记录</a>
+							<span class="mui-pull-right usdl_24 usdl_sqlabel usdl_yqbtns" data-agentid="{$vo.id}" data-id="{$vo.product_id}">邀请新代理</span>
 						</div>
 						<div class="usdl_dlinfo">
 							<p class="usdl_24 usdl_sqtext">
@@ -45,6 +45,7 @@
 				</select>
 				<button type="button" class="mui-pull-right usdl_boxbtns usdl_24 usdl_leveltj">确定</button>
 				<button type="button" class="mui-pull-right usdl_boxbtns usdl_24 cover_offbtn">取消</button>
+				<input type="hidden" name="agentid" value="" id="agentid">
 			</div>
 		</div>
 		<script type="text/javascript">
@@ -54,14 +55,16 @@
 			//根据id获取数据显示select
 			$(".usdl_yqbtns").click(function(){
 				id = $(this).data("id"); //选择的产品id
-				if(!id){
+				agent_id = $(this).data("agentid"); //选择的agent_id
+				if(!id || !agent_id){
 					alert('网络请求有误，请刷新页面后重试！');
 					return;
 				}
+				$('#agentid').val(agent_id);
 				$.ajax({
 					type: "POST",
 					url: "{:Url('Agents/ajax_get_level')}",
-					data: "product_id="+id,
+					data: "product_id="+id+"&agent_id="+agent_id,
 					success: function(res){
 						var html = '<option value="0">---请选择---</option>';
 						$.each(res,function(key, val){
@@ -72,22 +75,24 @@
 					}
 				});
 				$(".c_cover").show();
-				// var html = '<option value="">一级代理</option><option value="">二级代理</option><option value="">三级代理</option>';
-				// $("#usdl_levellist").empty();
-				// $("#usdl_levellist").append(html);
 			});
 			
 			$(".usdl_leveltj").click(function(){
 				var level_id = $("#usdl_levellist").val();
+				var agent_id = $("#agentid").val();
 				if(!level_id || level_id == 0 || !id || id == 0){
 					alert('网络请求有误，请刷新页面后重试！');
 					return;					
+				}
+				if(!agent_id){
+					alert('网络请求有误，请刷新页面后重试！');
+					return;
 				}
 			
 				$.ajax({
 					type: "POST",
 					url: "{:Url('Agents/ajax_inviteshare')}",
-					data: { level_id: level_id, product_id: id },
+					data: { level_id: level_id, product_id: id, agent_id:agent_id },
 					success: function(res){
 						if(res.status == 0){
 							alert(res.message);

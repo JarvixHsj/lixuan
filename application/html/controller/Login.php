@@ -80,8 +80,8 @@ class Login extends Controller {
      * 退出登录
      */
     public function out() {
-        LogService::write('代理用户管理', '用户退出系统成功');
-        session('user', null);
+//        LogService::write('代理用户管理', '用户退出系统成功');
+//        session('user', null);
         session('agent', null);
         session_destroy();
         $this->success('退出登录成功！', '@html/login');

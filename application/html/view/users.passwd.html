@@ -1,0 +1,63 @@
+{extend name="extra@html/main"}
+{block name='body'}
+    <header class="mui-bar mui-bar-nav di_navbox">
+        <h1 class="mui-title">修改密码</h1>
+    </header>
+    <div class="mui-content">
+        <div class="psd_box">
+            <form action="#">
+                <input class="log_input" type="text" maxlength="11" name="" id="mobile" placeholder="请输入手机号码" value="" />
+                <input class="log_input" type="password" maxlength="18" name="" id="password" placeholder="请输入密码" value="" />
+                <input class="log_input" type="password" maxlength="18" name="" id="afirmpassword" placeholder="请确认密码" value="" />
+                <button class="log_btn" type="button">确定</button>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        //自动消失提示框
+//        mui.toast('密码修改失败，请核对手机号码！');
+
+        $('.log_btn').click(function () {
+            var mobile = $('#mobile').val();
+            var password = $('#password').val();
+            var afirmpassword = $('#afirmpassword').val();
+
+            if(!mobile || mobile == '' || mobile == 0 || mobile.length > 11) {
+                mui.toast('手机号格式错误！');
+                return;
+            }
+            if(!password || password == '' || password == 0 || password.length > 18) {
+                mui.toast('密码格式错误！');
+                return;
+            }
+            if(!afirmpassword || afirmpassword == '' || afirmpassword == 0 || afirmpassword.length > 18) {
+                mui.toast('确密码格式错误！');
+                return;
+            }
+            if(password != afirmpassword){
+                mui.toast('两次密码不正确！');
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "{:Url('User/ajax_modifypasswd')}",
+                data: { mobile: mobile, password: password, afirmpassword:afirmpassword },
+                success: function(res){
+                    if(res.status == 0){
+                        alert(res.message);
+                        return;
+                    }else if(res.status == 1){
+                        if(res.url){
+                            window.location.href = res.url;
+
+                        }else{
+                            alert('网络请求失败！');
+                        }
+                    }
+                }
+            });
+        })
+    </script>
+{/block}

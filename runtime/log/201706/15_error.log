@@ -1,6 +1,0 @@
----------------------------------------------------------------
-[ 2017-06-15T00:51:28+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/product/index.html?spm=m-87-89
-[ error ] [8]未定义变量: list[/Library/WebServer/Documents/lixuan/runtime/temp/70b26a729000ff840ec633538d5f8433.php:73]
----------------------------------------------------------------
-[ 2017-06-15T00:51:45+08:00 ] 127.0.0.1 127.0.0.1 GET /lixuan/product/index.html?spm=m-87-89
-[ error ] [8]未定义变量: list[/Library/WebServer/Documents/lixuan/runtime/temp/70b26a729000ff840ec633538d5f8433.php:73]

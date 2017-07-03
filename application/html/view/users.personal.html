@@ -1,0 +1,63 @@
+{extend name="extra@html/main"}
+    {block name='bodyTag'}
+    <body class="bgf2f2f2">
+    {block name='body'}
+		<header class="mui-bar mui-bar-nav di_navbox">
+		    <h1 class="mui-title">我的资料</h1>
+		</header>
+		<div class="mui-content">
+		    <div class="us_box">
+		    	<!-- 用户信息 -->
+		    	<div class="user_infobox">
+			    	<div class="us_boxson us_pic_name">
+			    		<div class="us_pictx" style="background-image: url(__PUBLIC__/static/html/img/logo.png);"></div>
+			    		<div class="us_nametext us_maxtext">
+                            {empty name="$data['userinfo']['username']"}
+                                {$data['userinfo']['mobile']}
+                            {else /}
+                                {$data['userinfo']['username']}
+                            {/empty}
+                        </div>
+			    	</div>
+			    	<div class="us_boxson us_infoson mui-clearfix">
+			    		微信
+			    		<span class="us_infotext mui-pull-right mui-text-right">
+                            {empty name="$data['userinfo']['wechat_no']"}
+                                暂无
+                            {else /}
+                                {$data['userinfo']['wechat_no']}
+                            {/empty}
+                        </span>
+			    	</div>
+			    	<div class="us_boxson us_infoson mui-clearfix">
+			    		手机
+			    		<span class="us_infotext mui-pull-right mui-text-right">{$data['userinfo']['mobile']}</span>
+			    	</div>
+			    	<div class="us_boxson us_infoson mui-clearfix">
+			    		地址
+			    		<span class="us_infotext mui-pull-right mui-text-right">{$data['userinfo']['detail_address']}</span>
+			    	</div>
+		    	</div>
+		    	<div class="c_feng"></div>
+		    	<!-- 授权品牌 -->
+		    	<div class="us_prolist">
+			    	<div class="us_boxson us_maxtext">授权品牌</div>
+                    {volist name="$data['agentinfo']" id="vo" key="k"}
+                        <div class="us_boxson">
+                            <p class="us_infoson">{$vo.name}（{$agenttype[$vo['level']]}：{$vo.empower_sn}）</p>
+                            <p class="us_infotext">上家：{$vo.super_name}</p>
+                        </div>
+			    	{/volist}
+		    	</div>
+		    </div>
+		    <div class="us_btnsbox mui-text-center ">
+		    	<a href="#" class="us_thgz_btn us_maxtext">提货规则</a>
+		    	<a href="{:Url('Users/passwd')}" class="us_infotext us_password">修改密码</a>
+		    </div>
+		    <div class="us_outlogin mui-text-center us_maxtext">
+		    	<a href="{:Url('Login/out')}" class="mui-block">退出登录</a>
+		    </div>
+		</div>
+    {/block}
+    </body>
+{/block}

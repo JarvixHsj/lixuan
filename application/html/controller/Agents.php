@@ -20,6 +20,7 @@ use think\response\View;
 use model\Product;
 use model\Agent;
 use model\UserInvite;
+use model\User;
 
 /**
  * 代理基础控制器
@@ -63,6 +64,7 @@ class Agents extends BasicAgent {
     public function ajax_get_level()
     {
         $pro_id = $this->request->post('product_id') ? trim($this->request->post('product_id')) : '';
+        // $agent_id = $this->request->post('agent_id') ? trim($this->request->post('agent_id')) : '';
         if(empty($pro_id) || empty(session('agent'))){
             return false;
         }
@@ -91,21 +93,29 @@ class Agents extends BasicAgent {
         //接收需要分享的产品id和等级id
         $pro_id = $this->request->post('product_id') ? trim($this->request->post('product_id')) : '';
         $level = $this->request->post('level_id') ? trim($this->request->post('level_id')) : '';
-        if(empty($pro_id) || empty(session('agent'))){
+        $agent_id = $this->request->post('agent_id') ? trim($this->request->post('agent_id')) : '';
+        if(empty($pro_id) || empty(session('agent')) || empty($agent_id)){
             return $result;
         }
+        //判断代理的产品代理记录是否存在
+        $AgentModel = new agent;
+        $AgentData = $AgentModel->find($agent_id);
+        if(!$AgentData) return $result;
+        //判断产品是否存在
         $ProModel = new product;
         $proData = $ProModel->find($pro_id);
         if(!$proData){
             $result['message'] = '该产品不存在！';
             return $result;
-        }
+        }    
         if(!array_key_exists($level, $this->_agentType)) return $resule;
+          //获取分享唯一号
+        $newTime = time();
+        $saveData['share_no'] = AgentService::createAgentInvite();
+        //组合连接
         $share_url = $this->request->header()['origin'].'/'.$this->request->module().'/Tourists/tobeinvited?share_no='.$saveData['share_no'];
         $UserInviteModel = new UserInvite;
-        //获取分享唯一号
-        $newTime = time();
-        $saveData['share_no'] = AgentService::createAgentInvite();        
+        //组合数据
         $saveData['user_id'] = session('agent.id');      
         $saveData['product_id'] = $proData['id'];        
         $saveData['product_name'] = $proData['name'];        
@@ -113,6 +123,7 @@ class Agents extends BasicAgent {
         $saveData['start_at'] = $newTime;
         $saveData['end_in'] = $newTime + 3600;        
         $saveData['share_url'] = $share_url;
+        $saveData['agent_id'] = $agent_id;
         $UserInviteModel->allowField(true)->save($saveData);
         if($UserInviteModel->id){
             $result['status'] = 1;
@@ -122,6 +133,125 @@ class Agents extends BasicAgent {
         return $result;
     }
 
+    //邀请记录
+    public function inviterecord()
+    {
+        $agent_id = $this->request->param('id') ? trim($this->request->param('id')) : '';
+        if(empty($agent_id)) $this->error('请求有误，请重试！');
+        
+        $AgentModel = new Agent;
+        $AgentData = $AgentModel->getOneInfo(array('id' => $agent_id));
+        
+        $UserInviteModel = new UserInvite;
+        $inviteData = $UserInviteModel->getInviteList(array('agent_id' => $agent_id));
+        if($inviteData) {
+            $newTime = time();
+            foreach($inviteData as $key => $val) {
+                $inviteData[$key]['countdown'] = 0;
+                if($val['end_in'] >= $newTime){
+                    $inviteData[$key]['countdown'] = $val['end_in'] - $newTime;
+                }
+            }
+        }else{
+            $inviteData = array();
+        } 
+        
+        $this->assign('list', $inviteData);
+        return view();
+
+    }
+
+
+    //查看下级代理
+    public function looksublist()
+    {
+        $pro_id = $this->request->param('pro_id') ? trim($this->request->param('pro_id')) : '';
+        //用户信息
+        $UserModel = new User;
+        $AgentModel = new Agent;
+        $userData = $UserModel->find(session('agent.id'))->toArray();
+
+        //用户代理的产品
+        $AgentData = $AgentModel->alias('a')
+            ->field('a.*,p.name')
+            ->join('lx_product p', 'p.id = a.product_id')
+            ->where('a.user_id', session('agent.id'))
+            ->order('a.id desc')->select()->toArray();
+
+        $data = array();
+
+
+        if($pro_id) {
+            //等级统计
+            $TempCountAgnetData = $AgentModel->alias('a')
+                ->field('a.level,count(a.level) as countlevel')
+                ->where('a.super_id', session('agent.id'))
+                ->where('a.product_id', $pro_id)
+                ->group('a.level')
+                ->select()->toArray();
+            $data['countagent'] = $TempCountAgnetData;
+            //查询用户代理等级
+            $levelInfo = $AgentModel->field("level")
+                ->where(array('user_id' => session('agent.id'), 'product_id'=>$pro_id))
+                ->find();
+
+            if($levelInfo){
+                $data['user_level'] = $levelInfo->toArray()['level'];
+            }
+
+
+            //统计下级信息
+            $subData = $AgentModel->alias('a')
+                ->field('u.wechat_no,u.mobile,u.username,a.*')
+                ->join('lx_user u', "u.id = a.user_id")
+                ->where('a.super_id', session('agent.id'))
+                ->where('a.product_id', $pro_id)
+                ->order('a.id desc')
+                ->select()->toArray();
+            if($subData){
+                $data['subinfo'] = $subData;
+            }
+        }
+
+
+        $data['userinfo'] = $userData;
+        $data['agentinfo'] = $AgentData;
+        $data['agenttype'] = $this->_agentType;
+
+//        var_dump($data);die;
+        $this->assign('data', $data);
+        $this->assign('pro_id', $data);
+        return view();
+    }
+
+    /**
+     * 查看下级代理--选择产品
+     */
+    public function sublistpro()
+    {
+        //判断参数
+        $pro_id = $this->request->param('pro_id') ? trim($this->request->param('pro_id')) : '';
+        if(empty($pro_id)) $this->error('选择产品参数错误！');
+
+        //查询用户信息
+        $UserModel = new User;
+        $userData = $UserModel->find(session('agent.id'))->toArray();
+
+        //查询下级统计数据
+        $AgentModel = new Agent();
+        $AgentData = $AgentModel->alias('a')->field('a.*,p.name')->join('lx_product p', 'p.id = a.product_id')->where('a.user_id', session('agent.id'))->order('a.id desc')->select()->toArray();
+
+
+
+
+        $data = array();
+        $data['userinfo'] = $userData;
+        $data['agentinfo'] = $AgentData;
+        $data['countagent'] = $countagent;
+        $data['agenttype'] = $this->_agentType;
+//        var_dump($data,$AgentModel->getLastSql());die;
+        return view('looksublist');
+    }
 
 
 

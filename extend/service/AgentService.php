@@ -27,7 +27,7 @@ class AgentService {
     //生成授权号
     public static function createAgentSn($level = 0)
     {
-        $type = array('1' => 'A', '2' => 'B', '3' => 'C', '4' => 'D');
+        $type = array('0'=> '0','1' => 'A', '2' => 'B', '3' => 'C', '4' => 'D', '5' => 'E','6' => 'F');
 
         $prefix = 'lixuan_level_';  //数据库name前缀
         if(array_key_exists($level, $type)){

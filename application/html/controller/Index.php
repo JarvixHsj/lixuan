@@ -33,7 +33,7 @@ class Index extends Controller {
     public function index() {
     	$Model = new Product;
     	$list = $Model->order('id', 'desc')->select()->toArray();
-
+//        var_dump($list,$this->request);die;
     	$this->assign('list', $list);
     	return view();
     }

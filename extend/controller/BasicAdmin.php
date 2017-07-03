@@ -26,6 +26,8 @@ use think\Db;
  */
 class BasicAdmin extends Controller {
 
+    public $_agentType = array('1'=>'首席CEO', '2' => '核心总监', '3' => '总代', '4'=>'一级', '5'=>'特约');
+
     /**
      * 页面标题
      * @var string

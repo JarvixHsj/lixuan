@@ -1,0 +1,388 @@
+{extend name="extra@html/main"}
+{block name='body'}
+		<header class="mui-bar mui-bar-nav di_navbox">
+		    <h1 class="mui-title">代理列表</h1>
+		</header>
+		<div class="mui-content">
+		    <div class="us_box">
+		    	<div class="user_infobox">
+			    	<div class="us_boxson us_pic_name">
+			    		<div class="us_pictx" style="background-image: url(__PUBLIC__/static/html/img/logo.png);"></div>
+			    		<div class="us_nametext us_maxtext">
+							{empty name="$data['userinfo']['username']"}
+								{$data['userinfo']['mobile']}
+							{else /}
+								{$data['userinfo']['username']}
+							{/empty}
+							{notempty name="$data['user_level']"}
+                                {$data['agenttype'][$data['user_level']]}
+                            {/notempty}
+                        </div>
+			    	</div>
+			    </div>
+			</div>
+			<div class="usck_proselect">
+				<p class="usdl_28 title">请选择代理产品</p>
+				<select class="usck_select usdl_28" name="" id="select_pro">
+					<option value="0">---请选择产品---</option>
+					{volist name="data.agentinfo" id="vo" key="k"}
+						<option value="{$vo.id}" {if $vo.id eq $Think.get.pro_id}selected{/if}>{$vo.name}</option>
+					{/volist}
+				</select>
+			</div>
+			<div class="c_feng"></div>
+			<div class="usck_dllist">
+				<ul class="mui-table-view usck_dll_ul">
+                    {volist name="data.agenttype" id="vo" key="k"}
+                        <li class="mui-table-view-cell mui-collapse">
+                            <a class="mui-navigate-right usdl_32">{$vo}
+                                <span class="mui-badge mui-badge-inverted usdl_28">
+                                    {empty name="$data['countagent']"}
+                                    <!--name为空-->
+                                        0
+                                    {else /}
+                                        {volist name="data.countagent" id="voo"}
+                                            {if $voo['level'] eq $k}
+                                                {$voo.countlevel}
+                                            {/if}
+                                        {/volist}
+                                    <!--name不为空-->
+                                    {/empty}
+
+                                </span>
+                            </a>
+
+
+                            {notempty name="$data['countagent']"}
+                                {volist name="data.countagent" id="voo" empty=' '}
+                                    {if $voo['level'] eq $k}
+                                        {volist name="$data['subinfo']" id="voSub"}
+                                            {if $voSub['level'] eq $k}
+                                                <div class="mui-collapse-content">
+                                                    <div class="usck_dlson">
+                                                        <a class="usck_rqbtn" data-id="">
+                                                            <div class="usck_dls_pic"  style="background-image: url(__PUBLIC__/static/html/img/pro-pci.png);"></div>
+                                                            <div class="usck_dls_info">
+                                                                <p class="name usdl_28">{$voSub.username}</p>
+                                                                <p class="call_info">
+                                                                    <span class="info_icon">
+                                                                        <i class="mui-icon mui-icon-weixin"></i>
+                                                                        <span class="usdl_24">{empty name="$voSub['wechat_no']"}暂无{else /}{$voSub['wechat_no']}{/empty}</span></span>
+                                                                        <span class="info_icon"><i class="mui-icon mui-icon-phone-filled"></i>
+                                                                        <span class="usdl_24">{$voSub['mobile']}</span>
+                                                                    </span>
+                                                                </p>
+                                                                <div class="usck_databox">
+                                                                    <p class="usdl_24">直属人数：未开通</p>
+                                                                    <p class="usdl_24">团队人数：未开通</p>
+                                                                    <p class="usdl_24">特约代理：{$voSub['empower_sn']}</p>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            {/if}
+                                        {/volist}
+
+                                    {/if}
+                                {/volist}
+                            {/notempty}
+                            <!--<div class="mui-collapse-content">-->
+                                <!--<div class="usck_dlson">-->
+                                    <!--<a class="usck_rqbtn" data-id="">-->
+                                        <!--<div class="usck_dls_pic"  style="background-image: url(img/pro-pci.png);"></div>-->
+                                        <!--<div class="usck_dls_info">-->
+                                            <!--<p class="name usdl_28">郑美玲</p>-->
+                                            <!--<p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">meiulin2546</span></span><span class="info_icon"><i class="mui-icon mui-icon-phone-filled"></i><span class="usdl_24">13800138000</span></span></p>-->
+                                            <!--<div class="usck_databox">-->
+                                                <!--<p class="usdl_24">直属人数：12</p>-->
+                                                <!--<p class="usdl_24">团队人数：40</p>-->
+                                                <!--<p class="usdl_24">特约代理：C193</p>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</a>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                        </li>
+                    {/volist}
+
+				    <!--<li class="mui-table-view-cell mui-collapse">-->
+				        <!--<a class="mui-navigate-right usdl_32">一级代理<span class="mui-badge mui-badge-inverted usdl_28">0</span></a>-->
+				        <!--<div class="mui-collapse-content">-->
+				            <!--<div class="usck_dlson">-->
+				            	<!--<a class="usck_rqbtn" data-id="1">-->
+				            		<!--<div class="usck_dls_pic"  style="background-image: url(img/pro-pci.png);"></div>-->
+				            		<!--<div class="usck_dls_info">-->
+										<!--<p class="name usdl_28">郑美玲</p>-->
+										<!--<p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">meiulin2546</span></span><span class="info_icon"><i class="mui-icon mui-icon-phone-filled"></i><span class="usdl_24">13800138000</span></span></p>-->
+										<!--<div class="usck_databox">-->
+											<!--<p class="usdl_24">直属人数：12</p>-->
+											<!--<p class="usdl_24">团队人数：40</p>-->
+											<!--<p class="usdl_24">特约代理：C193</p>-->
+										<!--</div>-->
+				            		<!--</div>-->
+				            	<!--</a>-->
+				            <!--</div>-->
+				            <!--<div class="usck_dlson">-->
+				            	<!--<a class="usck_rqbtn" data-id="">-->
+				            		<!--<div class="usck_dls_pic"  style="background-image: url(img/pro-pci.png);"></div>-->
+				            		<!--<div class="usck_dls_info">-->
+										<!--<p class="name usdl_28">郑美玲</p>-->
+										<!--<p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">meiulin2546</span></span><span class="info_icon"><i class="mui-icon mui-icon-phone-filled"></i><span class="usdl_24">13800138000</span></span></p>-->
+										<!--<div class="usck_databox">-->
+											<!--<p class="usdl_24">直属人数：12</p>-->
+											<!--<p class="usdl_24">团队人数：40</p>-->
+											<!--<p class="usdl_24">特约代理：C193</p>-->
+										<!--</div>-->
+				            		<!--</div>-->
+				            	<!--</a>-->
+				            <!--</div>-->
+				        <!--</div>-->
+				    <!--</li>-->
+				    <!--<li class="mui-table-view-cell mui-collapse">-->
+				        <!--<a class="mui-navigate-right usdl_32">二级代理<span class="mui-badge mui-badge-inverted usdl_28">0</span></a>-->
+				        <!--<div class="mui-collapse-content">-->
+				            <!--<div class="usck_dlson">-->
+				            	<!--<a class="usck_rqbtn" data-id="">-->
+				            		<!--<div class="usck_dls_pic"  style="background-image: url(img/pro-pci.png);"></div>-->
+				            		<!--<div class="usck_dls_info">-->
+										<!--<p class="name usdl_28">郑美玲</p>-->
+										<!--<p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">meiulin2546</span></span><span class="info_icon"><i class="mui-icon mui-icon-phone-filled"></i><span class="usdl_24">13800138000</span></span></p>-->
+										<!--<div class="usck_databox">-->
+											<!--<p class="usdl_24">直属人数：12</p>-->
+											<!--<p class="usdl_24">团队人数：40</p>-->
+											<!--<p class="usdl_24">特约代理：C193</p>-->
+										<!--</div>-->
+				            		<!--</div>-->
+				            	<!--</a>-->
+				            <!--</div>-->
+				        <!--</div>-->
+				    <!--</li>-->
+				    <!--<li class="mui-table-view-cell mui-collapse">-->
+				        <!--<a class="mui-navigate-right usdl_32">三级代理<span class="mui-badge mui-badge-inverted usdl_28">0</span></a>-->
+				        <!--<div class="mui-collapse-content">-->
+				            <!--<div class="usck_dlson">-->
+				            	<!--<a class="usck_rqbtn" data-id="">-->
+				            		<!--<div class="usck_dls_pic"  style="background-image: url(img/pro-pci.png);"></div>-->
+				            		<!--<div class="usck_dls_info">-->
+										<!--<p class="name usdl_28">郑美玲</p>-->
+										<!--<p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">meiulin2546</span></span><span class="info_icon"><i class="mui-icon mui-icon-phone-filled"></i><span class="usdl_24">13800138000</span></span></p>-->
+										<!--<div class="usck_databox">-->
+											<!--<p class="usdl_24">直属人数：12</p>-->
+											<!--<p class="usdl_24">团队人数：40</p>-->
+											<!--<p class="usdl_24">特约代理：C193</p>-->
+										<!--</div>-->
+				            		<!--</div>-->
+				            	<!--</a>-->
+				            <!--</div>-->
+				        <!--</div>-->
+				    <!--</li>-->
+				    <!--<li class="mui-table-view-cell mui-collapse">-->
+				        <!--<a class="mui-navigate-right usdl_32">特约代理<span class="mui-badge mui-badge-inverted usdl_28">0</span></a>-->
+				        <!--<div class="mui-collapse-content">-->
+				            <!--<div class="usck_dlson">-->
+				            	<!--<a class="usck_rqbtn" data-id="">-->
+				            		<!--<div class="usck_dls_pic"  style="background-image: url(img/pro-pci.png);"></div>-->
+				            		<!--<div class="usck_dls_info">-->
+										<!--<p class="name usdl_28">郑美玲</p>-->
+										<!--<p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">meiulin2546</span></span><span class="info_icon"><i class="mui-icon mui-icon-phone-filled"></i><span class="usdl_24">13800138000</span></span></p>-->
+										<!--<div class="usck_databox">-->
+											<!--<p class="usdl_24">直属人数：12</p>-->
+											<!--<p class="usdl_24">团队人数：40</p>-->
+											<!--<p class="usdl_24">特约代理：C193</p>-->
+										<!--</div>-->
+				            		<!--</div>-->
+				            	<!--</a>-->
+				            <!--</div>-->
+				        <!--</div>-->
+				    <!--</li>-->
+				    <!--<li class="mui-table-view-cell mui-collapse">-->
+				        <!--<a class="mui-navigate-right usdl_32">全国总代<span class="mui-badge mui-badge-inverted usdl_28">0</span></a>-->
+				        <!--<div class="mui-collapse-content">-->
+				            <!--<div class="usck_dlson">-->
+				            	<!--<a class="usck_rqbtn" data-id="">-->
+				            		<!--<div class="usck_dls_pic"  style="background-image: url(img/pro-pci.png);"></div>-->
+				            		<!--<div class="usck_dls_info">-->
+										<!--<p class="name usdl_28">郑美玲</p>-->
+										<!--<p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">meiulin2546</span></span><span class="info_icon"><i class="mui-icon mui-icon-phone-filled"></i><span class="usdl_24">13800138000</span></span></p>-->
+										<!--<div class="usck_databox">-->
+											<!--<p class="usdl_24">直属人数：12</p>-->
+											<!--<p class="usdl_24">团队人数：40</p>-->
+											<!--<p class="usdl_24">特约代理：C193</p>-->
+										<!--</div>-->
+				            		<!--</div>-->
+				            	<!--</a>-->
+				            <!--</div>-->
+				        <!--</div>-->
+				    <!--</li>-->
+				</ul>
+			</div>
+		</div>
+		<div class="c_cover" style="display: none;">
+			<div class="usck_spotsbox">
+				<ul class="mui-clearfix">
+					<li>
+						<a href="user_fahuo.html">
+							<div class="usck_sicon center_block" style="background-image: url(__PUBLIC__/static/html/img/usck-fahuo.png);"></div>
+							<p class="usck_stitle usdl_24">发货</p>
+						</a>
+					</li>
+					<li>
+						<a href="tel:13800138000">
+						<div class="usck_sicon center_block" style="background-image: url(__PUBLIC__/static/html/img/usck-dadh.png);"></div>
+						<p class="usck_stitle usdl_24">打电话</p>
+						</a>
+					</li>
+					<li>
+						<a id="usck_dinfo">
+							<div class="usck_sicon center_block" style="background-image: url(__PUBLIC__/static/html/img/usck-xxxx.png);"></div>
+							<p class="usck_stitle usdl_24">详细信息</p>
+						</a>
+					</li>
+					<li>
+						<a id="usck_sqs">
+						<div class="usck_sicon center_block" style="background-image: url(__PUBLIC__/static/html/img/usck-sqs.png);"></div>
+						<p class="usck_stitle usdl_24">授权书</p>
+						</a>
+					</li>
+					<li>
+						<a id="usck_djbtn">
+							<div class="usck_sicon center_block" style="background-image: url(__PUBLIC__/static/html/img/usck-xgdj.png);"></div>
+							<p class="usck_stitle usdl_24">修改等级</p>
+						</a>
+					</li>
+				</ul>
+				<div class="usck_offbtn mui-text-center usdl_28">
+					取消
+				</div>
+			</div>
+			<div class="c_contcover" id="usck_cover" style="display: none;">
+				<!-- 详细信息 -->
+				<div class="usck_detailinfo usck_coffbox" style="display: none;">
+					<div class="us_boxson us_pic_name">
+			    		<div class="us_pictx" style="background-image: url(__PUBLIC__/static/html/img/logo.png);"></div>
+			    		<div class="us_nametext us_maxtext">黄小雨</div>
+			    	</div>
+			    	<div class="us_boxson us_infoson mui-clearfix">
+			    		微信
+			    		<span class="us_infotext mui-pull-right mui-text-right">xiaoyu3690</span>
+			    	</div>
+			    	<div class="us_boxson us_infoson mui-clearfix">
+			    		手机
+			    		<span class="us_infotext mui-pull-right mui-text-right">13724932412</span>
+			    	</div>
+			    	<div class="us_boxson us_infoson mui-clearfix">
+			    		地址
+			    		<span class="us_infotext mui-pull-right mui-text-right">广东省广州市白云区城西花园</span>
+			    	</div>
+			    	<div class="us_boxson us_infoson mui-clearfix">
+			    		身份证号
+			    		<span class="us_infotext mui-pull-right mui-text-right" style="width: 76%;">440923199109023568</span>
+			    	</div>
+			    	<div class="usck_ditext">
+			    		<p class="usdl_32 title">授权品牌</p>
+			    		<p class="usdl_28 proname">柏诗雅（全国总代：C189）</p>
+			    		<p class="usdl_28">上家：励轩总公司</p>
+			    	</div>
+			    	<div class="usck_close_st usck_close">
+			    		<span class="mui-icon mui-icon-close"></span>
+			    	</div>
+				</div>
+				<!-- 授权书 -->
+				<div class="usck_sqsbox usck_coffbox" style="display: none;">
+					<div class="usck_sqscont">
+						<img src="__PUBLIC__/static/html/img/banner.png"/>
+					</div>
+					<div class="usck_close_st usck_close">
+			    		<span class="mui-icon mui-icon-close"></span>
+			    	</div>
+				</div>
+				<!-- 选择下级级别 -->
+				<div class="usck_dldjbox usck_coffbox" style="display: none;">
+					<div class="usdl_levelbox mui-clearfix">
+						<p class="usdl_lbtitle usdl_28">请选择下级级别</p>
+						<select class="usdl_select usdl_24" name="" id="usdl_levellist">
+							<option value="">一级代理</option>
+							<option value="">二级代理</option>
+							<option value="">三级代理</option>
+							<option value="">特级代理</option>
+						</select>
+						<button type="button" class="mui-pull-right usdl_boxbtns usdl_24 usdl_leveltj">确定</button>
+						<button type="button" class="mui-pull-right usdl_boxbtns usdl_24 usck_close">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(function(){
+                $('#select_pro').change(function(){
+                    var pro_id = $(this).val();
+                    if(!pro_id || pro_id == 0 || pro_id == null || pro_id == undefined){
+//                        alert('页面信息有误，请刷新后重试！');
+                        return ;
+                    }
+                    window.location.href = "{:Url('html/Agents/looksublist')}?pro_id="+pro_id;
+//                    $.ajax({
+//                        type: "POST",
+//                        url: "{:Url('Agents/ajax_sublistpro')}",
+//                        data: { pro_id: pro_id},
+//                        success: function(res){
+//                            if(res.status == 0){
+//                                alert(res.message);
+//                                return;
+//                            }else if(res.status == 1){
+//                                if(res.url){
+//                                    window.location.href = res.url;
+//
+//                                }else{
+//                                    alert('网络请求失败！');
+//                                }
+//                            }
+//                        }
+//                    });
+
+                })
+
+
+				var cover = $("#usck_cover");
+				var offbtn = $(".usck_close");
+				var cbox = $(".usck_coffbox");
+				
+				$(".usck_rqbtn").click(function(){
+					var id = $(this).data("id");
+					$(".c_cover").show();
+				});
+				
+				$(".usck_offbtn").click(function(){
+					$(".c_cover").hide();
+				});
+				
+				
+				//热区详情信息事件
+				$("#usck_dinfo").click(function(){
+					cover.show();
+					$(".usck_detailinfo").show();
+				});
+				
+				//热区授权书事件
+				$("#usck_sqs").click(function(){
+					cover.show();
+					$(".usck_sqsbox").show();
+				});
+				
+				//热区修改等级事件
+				$("#usck_djbtn").click(function(){
+					cover.show();
+					$(".usck_dldjbox").show();
+				});
+				
+				//统一关闭所有窗口
+				offbtn.click(function(){
+					cbox.hide();
+					cover.hide();
+				});
+				
+			});
+		</script>
+{/block}

@@ -1,17 +1,16 @@
 {extend name="extra@html/main"}
-
 {block name='bodyTag'}
 	<body class="bgf2f2f2">
 	{block name='body'}
 		<header class="mui-bar mui-bar-nav di_navbox">
 		    <a href="#" class="dl_nav_btn dl_nav_info"></a>
 		    <h1 class="mui-title">经销商后台</h1>
-		    <a href="user_content.html" class="dl_nav_btn dl_nav_user"></a>
+		    <a href="{:Url('Users/personal')}" class="dl_nav_btn dl_nav_user"></a>
 		</header>
 		<div class="mui-content">
 			<div class="dl_cont">				
 			    <div class="dl_menu_son mui-clearfix">
-			    	<a href="user_dailixinxi.html">
+			    	<a href="{:Url('Users/index')}">
 			    		<div class="dl_menu_icon dlxx mui-pull-left"></div>
 			    		<div class="dl_menu_text mui-pull-left">
 			    			<p class="title">我的代理信息</p>
@@ -21,7 +20,7 @@
 			    </div>
 			    <div class="dl_menu_son mui-clearfix">
 			    	<!--<a href="user_dailijiameng.html">-->
-			    	<a href="{:Url('agents/new_agent_index')}">
+			    	<a href="{:Url('Agents/new_agent_index')}">
 			    		<div class="dl_menu_icon dljm mui-pull-left"></div>
 			    		<div class="dl_menu_text mui-pull-left">
 			    			<p class="title">新代理加盟</p>
@@ -30,7 +29,7 @@
 			    	</a>
 			    </div>
 			    <div class="dl_menu_son mui-clearfix">
-			    	<a href="#">
+			    	<a href="{:Url('Agents/looksublist')}">
 			    		<div class="dl_menu_icon xjdl mui-pull-left"></div>
 			    		<div class="dl_menu_text mui-pull-left">
 			    			<p class="title">查看下级代理</p>
