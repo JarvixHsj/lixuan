@@ -24,20 +24,19 @@ use think\Db;
  */
 class AgentService {
 
-    //生成授权号
-    public static function createAgentSn($level = 0)
-    {
-        $type = array('0'=> '0','1' => 'A', '2' => 'B', '3' => 'C', '4' => 'D', '5' => 'E','6' => 'F');
+    const CONFEMPOWER = 'empower';
 
-        $prefix = 'lixuan_level_';  //数据库name前缀
-        if(array_key_exists($level, $type)){
-            $configName = strtolower($prefix.$type[$level]);
-            $res = Db::name('SystemConfig')->where(array('name'=> $configName))->find();
-            if(!$res) return false;
-            if(Db::name('SystemConfig')->where('name', $configName)->setInc('value') === false) return false;
-            return $type[$level].str_pad($res['value'], 4, '0', STR_PAD_LEFT);
+    //生成授权号
+    public static function createAgentSn($zimu = 'LX')
+    {
+        $res = Db::name('SystemConfig')->where(array('name'=> self::CONFEMPOWER))->find();
+        if(!$res) return false;
+        $valNum = strlen($res['value']);
+        if(Db::name('SystemConfig')->where('name', self::CONFEMPOWER)->setInc('value') === false) return false;
+        if($valNum >= 3) {
+            return $zimu.$res['value'];
         }
-        return false;
+        return $zimu.str_pad($res['value'], 3, '0', STR_PAD_LEFT);
     }
 
     //生成分享邀请记号
@@ -46,5 +45,18 @@ class AgentService {
         $nanosecond = getMillisecond();
         return md5($nanosecond.uniqid());
     }
+
+
+    /**
+     * 生成用户消息记录
+     * @param int $user_id
+     * @param string $content
+     * @param string $type
+     */
+    public static function createMessage($data)
+    {
+        Db::table('lx_message')->insert($data);
+    }
+
 
 }

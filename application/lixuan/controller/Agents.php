@@ -26,7 +26,7 @@ use think\Db;
 // use think\Config;
 
 /**
- * 微信配置管理
+ *
  * @package app\wechat\controller
  * @author Anyon <zoujingli@qq.com>
  * @date 2017/03/27 14:43
@@ -63,7 +63,6 @@ class Agents extends BasicAdmin {
     * 添加产品
     */
     public function add() {
-                        
         if ($this->request->isGet()) {
             $ProModel = new product;
             $proList = $ProModel->where('status = 1')->order('id desc')->select();
@@ -99,7 +98,7 @@ class Agents extends BasicAdmin {
         //添加代理和代理关系
         try{
              //生成授权号
-            $empower_sn = AgentService::createAgentSn($level);
+            $empower_sn = AgentService::createAgentSn($tempPro['abbr']);
             if($empower_sn === false){
                 $this->error("授权号生成失败！请刷新后重试！");
             }
@@ -125,9 +124,6 @@ class Agents extends BasicAdmin {
             $this->error('参数错误，请重试添加！');
         }
         $this->success('添加成功！', $_SERVER["HTTP_REFERER"].'#'.'/lixuan/agents/index');        
-        
-        // $this->redirect('/lixuan/agents/index');     
-        
     }
 
 

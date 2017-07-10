@@ -10,16 +10,16 @@
 				<ul class="usdl_list">
                     {volist name="list" id="vo"}
                         <li>
-                            <a href="#">
+                            <a href="{:Url('Users/auth',['id' => $vo.id])}">
                                 <div class="usdl_title usdl_36">
                                     {$vo.name}
                                     <span class="mui-pull-right usdl_24 usdl_sqlabel">查看授权</span>
                                 </div>
-                                <div class="usdl_dlinfo">
-                                    <p class="usdl_24 usdl_sqtext">授权号：<span>{$vo.empower_sn}</span>状态：<span>正常</span></p>
-                                    <p class="usdl_24 usdl_sqtext">代理级别：<span>{$agenttype[$vo['level']]}</span></p>
-                                </div>
                             </a>
+                            <div class="usdl_dlinfo">
+                                <p class="usdl_24 usdl_sqtext">授权号：<span>{$vo.empower_sn}</span>状态：<span>正常</span></p>
+                                <p class="usdl_24 usdl_sqtext">代理级别：<span>{$agenttype[$vo['level']]}</span></p>
+                            </div>
                         </li>
                     {/volist}
 				</ul>

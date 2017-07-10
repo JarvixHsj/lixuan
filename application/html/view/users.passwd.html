@@ -42,19 +42,20 @@
 
             $.ajax({
                 type: "POST",
-                url: "{:Url('User/ajax_modifypasswd')}",
+                url: "{:Url('Users/ajax_modifypasswd')}",
                 data: { mobile: mobile, password: password, afirmpassword:afirmpassword },
                 success: function(res){
-                    if(res.status == 0){
+                    if(res.status == 0){    //参数错误
                         alert(res.message);
                         return;
-                    }else if(res.status == 1){
-                        if(res.url){
+                    }else if(res.status == 1){  //正确
+//                        if(res.url){    //带url跳转
+//                            window.location.href = res.url;
+//                        }else{          //不带url跳转
+//                            alert('网络请求失败！');
+//                        }
+                            alert(res.message);
                             window.location.href = res.url;
-
-                        }else{
-                            alert('网络请求失败！');
-                        }
                     }
                 }
             });

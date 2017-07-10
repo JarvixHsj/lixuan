@@ -14,8 +14,7 @@
 // | github开源项目：https://github.com/zoujingli/Think.Admin
 // +----------------------------------------------------------------------
 /* SESSION会话名称 */
-//session_name('s' . substr(md5(__FILE__), 0, 8));
-//var_dump($_SERVER);die;
+session_name('s' . substr(md5(__FILE__), 0, 8));
 /* 定义应用目录 */
 define('APP_PATH', __DIR__ . '/application/');
 

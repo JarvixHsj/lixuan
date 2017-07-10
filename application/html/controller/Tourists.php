@@ -19,6 +19,7 @@ use think\Db;
 use model\UserInvite;
 use model\UserAudit;
 use model\User;
+use think\Url;
 
 /**
  * 系统登录控制器
@@ -108,46 +109,37 @@ class Tourists extends Controller {
     {   
         //接收用户参数
         $param = $this->request->param();
+        $this->assign('param', $param);
+
         $sourceUrl = $this->request->header()['referer'];
-        $share_no = ltrim(strstr($sourceUrl, 'share_no='), 'share_no=');
+        $share_no_temp = strstr($sourceUrl, 'share_no=');
+        $share_no1 = ltrim($share_no_temp, 'share_no');
+        $share_no = ltrim($share_no1, '=');
+//        var_dump($share_no_temp,$share_no);die;
+
         if(!$share_no) {
-            $this->error('链接参数有误！');
+            $this->result('',0, '链接参数有误~','json');
         }
+//        var_dump($param);die;
         //判断参数
-        if(checkParam($param) === false) $this->error('请填写完成！');
-        if(judgeMobile($param['mobile']) == false) $this->error('手机号码格式错误！');
-        if(isCreditNo($param['idcard']) === false) $this->error('身份证格式错误！'); 
-        if(strlen($param['address']) > 100) $this->error('收货地址过长！');
-        if($param['password'] != $param['afirmpassword']) $this->error("两次密码不一样！");
+        if(checkParam($param) === false) $this->result('',0, '请填写完成~','json');
+        if(judgeMobile($param['mobile']) == false) $this->result('',0, '手机号码格式错误~','json');
+        if(isCreditNo($param['idcard']) === false) $this->result('',0, '身份证格式错误~','json');
+        if(strlen($param['address']) > 100) $this->result('',0, '收货地址过长~','json');
+        if($param['password'] != $param['afirmpassword']) $this->result('',0, '两次密码不一样~','json');
         //判断是否有该邀请
         $UserInviteModel = new UserInvite;
-        $inviteInfo = $UserInviteModel->where('share_no', $share_no)->find()->toArray();
-        if(!$inviteInfo) $this->error('地址参数不正确，请确认受邀链接是否正确！');
+        $inviteInfo = $UserInviteModel->where('share_no', $share_no)->find();
+        if(!$inviteInfo) $this->result('',0,'地址参数不正确，请确认受邀链接是否正确！', 'json');
+
+        $inviteInfo = $inviteInfo->toArray();
         //判断邀请时间是否过期
-        if(time() >= $inviteInfo['end_in']) $this->error('受邀时间已过期~');
-        
-        // //判断是否有这个代理信息代理过改产品
-        // $UserModel = new User;
-        // $judgeUserInfo = $UserModel
-        // ->where('mobile', $param['mobile'])
-        // ->whereOr('idcard', $param['idcard'])
-        // ->find()->toArray();        
-        // if($judgeUserInfo) $this->error('该手机号或身份证已被使用');
+        if(time() >= $inviteInfo['end_in']) $this->result('',0, '受邀时间已过期~','json');
 
         //判断是否有这个代理信息代理过改产品
-        $UserModel = new User;
-        // $judgeUserInfo = $UserModel->alias('u')
-        // ->field('u.*')
-        // ->join('lx_agent a', 'a.user_id = u.id')
-        // // ->where('u.mobile',$param['mobile'], 'u.idcard',$param['idcard'] , 'or')
-        // ->where(['u.mobile','=',$param['mobile']], ['u.idcard','=',$param['idcard']] , 'or')
-        // ->where('a.product_id' , $inviteInfo['product_id'])
-        // // ->where('u.mobile', $param['mobile'])
-        // // ->where('a.product_id', $inviteInfo['product_id'])
-        // ->find()->toArray();        
         $sql = "SELECT u.* FROM lx_user u JOIN lx_agent a ON a.user_id = u.id WHERE (u.mobile = '{$param['mobile']}' OR u.idcard = '{$param['idcard']}') AND a.product_id = '{$inviteInfo['product_id']}'";
         $judgeUserInfo = Db::query($sql);
-        if($judgeUserInfo) $this->error('该手机号已经代理了该产品！不可重复代理！');
+        if($judgeUserInfo) $this->result('',0, '该手机号或身份证已经代理了该产品！不可重复代理！','json');
         
         //判断信息是否已经填写过了
         session('temp_invite_id', $inviteInfo['id']);
@@ -158,7 +150,7 @@ class Tourists extends Controller {
         })->where(function ($query) {
             $query->where('user_invite_id', session('temp_invite_id'));
         })->select();
-        if($result) $this->error('已经提交过信息了，请耐心等候审核~');
+        if($result) $this->result('',0, '已经提交过信息了，请耐心等候审核~','json');
         session('temp_invite_id', null);
         session('temp_mobile', null);
         session('temp_idcard', null);
@@ -180,9 +172,9 @@ class Tourists extends Controller {
         $saveData['invite_level'] = $inviteInfo['level'];
         $UserAuditModel->allowField(true)->save($saveData);
         if($UserAuditModel->id){
-            $this->success('提交成功，请耐心等待后台审核~', 'Index/index');
+            $this->result(Url::build('Index/index'),1, '提交成功，请耐心等待后台审核~','json');
         }
-        $this->error('提交失败，填写信息格式不正确！');
+        if($result) $this->result('',0, '提交失败，填写信息格式不正确！','json');
     }
 
 }

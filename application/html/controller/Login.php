@@ -16,8 +16,8 @@ namespace app\html\controller;
 
 use think\Controller;
 use service\LogService;
-use service\NodeService;
 use think\Db;
+use think\Url;
 
 /**
  * 系统登录控制器
@@ -55,36 +55,60 @@ class Login extends Controller {
      */
     public function index() {
         // var_dump(session('agent'));die;
-
-        if ($this->request->isGet()) {
+//        if ($this->request->isGet()) {
             $this->assign('title', '用户登录');
             return $this->fetch();
-        } else {
-            // var_dump(md5($this->request->post('password')));die;
-            $mobile = $this->request->post('mobile', '', 'trim');
-            $password = $this->request->post('password', '', 'trim');
-            (empty($mobile) || strlen($mobile) != 11) && $this->error('手机号长度不正确长度不正确!');
-            (empty($password) || strlen($password) < 6) && $this->error('登录密码长度不能少于6位有效字符!');
-            $user = Db::name('LxUser')->where('mobile', $mobile)->find();
-            empty($user) && $this->error('登录账号不存在，请重新输入!');
-            ($user['password'] !== md5($password)) && $this->error('登录密码与账号不匹配，请重新输入!');
-            Db::name('SystemUser')->where('id', $user['id'])->update(['login_at' => ['exp', 'now()'], 'login_num' => ['exp', 'login_num+1']]);
-            session('agent', $user);
-            // !empty($user['authorize']) && NodeService::applyAuthNode();
-            LogService::write('代理用户管理', '用户'.$mobile.'登录系统成功');
-            $this->success('登录成功，正在进入后台...', '@html/Agents/index');
+//        } else {
+//
+//        }
+    }
+
+
+    public  function ajaxLogin()
+    {
+        $result  = array('url' => Url::build('html/Agents/index'), 'msg' => '参数错误！', 'status' => 0);
+        $mobile = $this->request->post('mobile', '', 'trim');
+        $password = $this->request->post('password', '', 'trim');
+        if(empty($mobile) || strlen($mobile) != 11){
+            $result['msg'] = '手机号长度不正确长度不正确！';
+            return $result;
         }
+//        var_dump($password);die;
+        if(empty($password) || strlen($password) < 6){
+            $result['msg'] = '登录密码长度不能少于6位有效字符！';
+            return $result;
+        }
+        $user = Db::name('LxUser')->where('mobile', $mobile)->find();
+        if(empty($user)){
+            $result['msg'] = '登录账号不存在，请重新输入!';
+            return $result;
+        }
+        if($user['password'] !== md5($password)){
+            $result['msg'] = '登录密码与账号不匹配，请重新输入!';
+            return $result;
+        }
+
+        Db::name('SystemUser')->where('id', $user['id'])->update(['login_at' => ['exp', 'now()'], 'login_num' => ['exp', 'login_num+1']]);
+        session('agent', $user);
+        LogService::write('代理用户管理', '用户'.$mobile.'登录系统成功');
+        $result['msg'] = '登录成功!';
+        $result['status'] = 1;
+        return $result;
+//        $this->success('登录成功，正在进入后台...', '@html/Agents/index');
     }
 
     /**
      * 退出登录
      */
     public function out() {
+        $result  = array('url' => Url::build('html/login/index'), 'msg' => '退出成功！', 'status' => 1);
+
 //        LogService::write('代理用户管理', '用户退出系统成功');
 //        session('user', null);
         session('agent', null);
         session_destroy();
-        $this->success('退出登录成功！', '@html/login');
+        return $result;
+//        $this->success('退出登录成功！', '@html/login');
     }
 
 

@@ -17,10 +17,12 @@ namespace app\html\controller;
 use controller\BasicAgent;
 use service\AgentService;
 use think\response\View;
+use think\Url;
 use model\Product;
 use model\Agent;
 use model\UserInvite;
 use model\User;
+use think\Db;
 
 /**
  * 代理信息控制器
@@ -81,6 +83,7 @@ class Users extends BasicAgent {
         return view();
     }
 
+
     //ajax请求获取当前出产品可邀请的等级
     public function ajax_get_level()
     {
@@ -107,29 +110,76 @@ class Users extends BasicAgent {
         return $tempLevel;
     }
 
+    /**
+     * 查看授权
+     * @return View
+     */
+    public function auth()
+    {
+        $agent_id = $this->request->param('id');
+        $UserData = Db::table('lx_user')->find(session('agent.id'));
+        $AgentData = Db::table('lx_agent')->alias('a')
+            ->join('lx_product p', 'p.id = a.product_id')
+            ->where('a.id = '.$agent_id)
+            ->field("a.*,p.name")
+            ->find();
+        $this->assign('user_info', $UserData);
+        $this->assign('agent_info', $AgentData);
+        $this->assign('agentType', $this->_agentType);
+        return view();
+    }
 
+    public function message()
+    {
+
+        return view();
+    }
+
+
+
+    /**
+     * 修改密码页面
+     * @return View
+     */
     public function passwd()
     {
         return view();
     }
 
+    /**
+     * 修改密码
+     * @return array
+     */
     public function ajax_modifypasswd()
     {
         $result = array('status' => 0, 'message' => '参数有误！', 'url' => '');
         $mobile = $this->request->param('mobile') ? trim($this->request->param('mobile')) : '';
         $password = $this->request->param('password') ? trim($this->request->param('password')) : '';
         $afirmpassword = $this->request->param('afirmpassword') ? trim($this->request->param('afirmpassword')) : '';
-
-        if (empty($model) || empty($password) || empty($afirmpassword)) {
+        //判断参数
+        if (empty($mobile) || empty($password) || empty($afirmpassword)) {
             return $result;
         }
-
+        if ($mobile != session('agent.mobile')) {
+            $result['message'] = '手机号不是当前登录账号~';
+           return $result;
+        }
         if($password !== $afirmpassword){
             $result['message'] = '两次密码不一致！';
             return $result;
         }
 
+        $UserModel = new User();
+        $savadata = array('password' => md5($password));
+        if($UserModel->updatePassword(array('id' => session('agent.id')), $savadata) !== false) {
+            $result['message'] = '修改成功';
+            $result['status'] = 1;
+            $result['url'] = Url::build('html/Users/personal');
+            return $result;
+        }
 
+        $result['message'] = '网络出错，修改失败~';
+        return $result;
     }
 
 

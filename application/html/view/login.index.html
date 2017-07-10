@@ -9,13 +9,33 @@
 	    <form action="__SELF__" method="post">
     		<input class="log_input" type="text" maxlength="11" name="mobile" placeholder="请输入手机号码" value="" />
     		<input class="log_input" type="password" maxlength="16" name="password" placeholder="请输入密码" value="" />
-    		<button class="log_btn" type="submit">登录</button>
+    		<button class="log_btn" type="button">登录</button>
 	    </form>
 	</div>
 	<script type="text/javascript">
-		
-		//自动消失提示框
+        $('.log_btn').click(function(){
+            var loginUrl = "{:Url('Login/ajaxLogin')}";
+            var mobile = $("input:text[name='mobile']").val();
+            var password = $("input:password[name='password']").val();
+            judgeEmpty(mobile,'手机号不能为空');
+            judgeEmpty(password,'密码不能为空');
+            $.ajax({
+                type: "POST",
+                url: loginUrl,
+                data: {'mobile': mobile,'password': password},
+                success: function(res){
+                    if(res.status == 0){
+                        mui.alert(res.msg,'提示');
+                    }else if(res.status == 1){
+                        mui.toast(res.msg);
+                        window.location.href = res.url;
+                    }
+                }
+            });
+        })
+
+        //自动消失提示框
 		// mui.toast('密码修改成功，请重新登录');
-		
+
 	</script>
 {/block}

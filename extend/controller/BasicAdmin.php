@@ -142,4 +142,14 @@ class BasicAdmin extends Controller {
         return true;
     }
 
+    /**
+     * 生成后台回调地址
+     * @param string $url
+     * @return string
+     */
+    protected function _createAdminUrl( $url = '/index/Index/index')
+    {
+        return $_SERVER['HTTP_REFERER'].'#'.$url;
+    }
+
 }

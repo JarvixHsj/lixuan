@@ -30,14 +30,13 @@
 <div class="panel panel-default news-right"  style="left: 35px;" >
     <div class="panel-heading">产品添加</div>
     <div class="panel-body">
-        <!--onsubmit="return false;"-->
-        <form class="form-horizontal" action="__SELF__" role="form" name="news" data-auto="true" method="post">
+        <form class="form-horizontal" role="form" name="news" onsubmit="return false;">
 
             <div class="form-group">
                 <div class="col-md-12">
                     <div class="input-group">
                         <span class="input-group-addon">产品名称</span>
-                        <input maxlength="30" required="required" title="名称不能为空哦" placeholder="请在这里输入名称" name='name' class="layui-input">
+                        <input maxlength="30" required="required" title="名称不能为空哦" placeholder="请在这里输入名称" name='name' value="{$vo['name']}" class="layui-input">
                         <input type="hidden" name="id">
                     </div>
                 </div>
@@ -47,7 +46,7 @@
                 <div class="col-md-12">
                     <div class="input-group">
                         <span class="input-group-addon">产品缩写</span>
-                        <input maxlength="8" required="required" title="首字母缩写不能为空" placeholder="用于代理该产品的授权号" name='abbr' class="layui-input">
+                        <input maxlength="8" required="required" title="首字母缩写不能为空" placeholder="用于代理该产品的授权号" name='title' class="layui-input">
                         <input type="hidden" name="id">
                     </div>
                 </div>
@@ -56,14 +55,14 @@
             <div class="form-group">
                 <div class="col-md-12">
                     <label style="color:#aaa">产品简介(用于首页产品列表展示)</label>
-                    <textarea name="intro" class="layui-input" style="height:80px;resize:none;line-height:20px"></textarea>
+                    <textarea name="digest" class="layui-input" style="height:80px;resize:none;line-height:20px"></textarea>
                 </div>
             </div>
 
             <!--<div class="form-group">-->
                 <!--<div class="col-md-12">-->
                     <!--<div class="input-group">-->
-                        <!--<span∂∂ class="input-group-addon">产品简介</span>-->
+                        <!--<span class="input-group-addon">产品简介</span>-->
                         <!--<input maxlength="100" required="required" title="产品简介不能为空哦" placeholder="请输入简介" name='author' class="layui-input">-->
                     <!--</div>-->
                 <!--</div>-->
@@ -120,7 +119,7 @@
             <div class="form-actions">
                 <div class="row">
                     <div class="col-md-offset-4 col-md-9">
-                        <button type="submit" class="layui-btn">保存图文</button>
+                        <button data-submit type="button" class="layui-btn">保存图文</button>
                     </div>
                 </div>
             </div>
@@ -167,7 +166,7 @@
                 var data = [];
                 $form.submit();
                 if (!syncEditor($('.news-item.active'))) {
-                    editor.setContent('产品内容不能留空，请输入内容！');
+                    editor.setContent('文章内容不能留空，请输入内容！');
                     return false;
                 }
                 $('.news-item').map(function () {
@@ -175,8 +174,6 @@
                     item.content = item.content || '文章内容不能留空，请输入内容！';
                     data.push(item);
                 });
-                console.log(data);
-                return false;
                 $.form.load('__SELF__', {data: data}, "post");
             });
 

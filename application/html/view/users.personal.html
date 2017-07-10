@@ -51,13 +51,61 @@
 		    	</div>
 		    </div>
 		    <div class="us_btnsbox mui-text-center ">
-		    	<a href="#" class="us_thgz_btn us_maxtext">提货规则</a>
+                <a id="uc_thgz" class="us_thgz_btn us_maxtext">提货规则</a>
+                <!--<a id="uc_rjzd" class="us_thgz_btn us_maxtext">升级制度</a>-->
 		    	<a href="{:Url('Users/passwd')}" class="us_infotext us_password">修改密码</a>
 		    </div>
 		    <div class="us_outlogin mui-text-center us_maxtext">
-		    	<a href="{:Url('Login/out')}" class="mui-block">退出登录</a>
+		    	<a href="javascript:void(0);" class="mui-block">退出登录</a>
 		    </div>
 		</div>
+        <div id="usck_cover" class="c_cover" style="display: none;">
+            <div class="uc_picbox uc_thgz" style="display: none;">
+                <img src="__PUBLIC__/static/html/img/0705_1.jpg" class="img-zsy"/>
+            </div>
+            <div class="uc_picbox uc_rjzd" style="display: none;">
+                <img src="__PUBLIC__/static/html/img/0705_2.jpg" class="img-zsy"/>
+            </div>
+            <div class="usck_close_st uc_close">
+                <span class="mui-icon mui-icon-close"></span>
+            </div>
+        </div>
     {/block}
+    <script type="text/javascript">
+        $('.mui-block').click(function(){
+            var loginUrl = "{:Url('Login/out')}";
+            $.ajax({
+                type: "POST",
+                url: loginUrl,
+//                data: {'mobile': mobile,'password': password},
+                success: function(res){
+                    if(res.status == 0){
+                        mui.alert(res.msg,'提示');
+                    }else if(res.status == 1){
+                        mui.toast(res.msg);
+                        window.location.href = res.url;
+                    }
+                }
+            });
+        })
+
+        var cover = $("#usck_cover");
+        var offbtn = $(".uc_close");
+        var cbox = $(".uc_picbox");
+
+        $("#uc_thgz").click(function(){
+            cover.show();
+            $(".uc_thgz").show();
+        });
+        $("#uc_rjzd").click(function(){
+            cover.show();
+            $(".uc_rjzd").show();
+        });
+        //统一关闭所有窗口
+        offbtn.click(function(){
+            cbox.hide();
+            cover.hide();
+        });
+    </script>
     </body>
 {/block}

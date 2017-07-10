@@ -39,6 +39,12 @@ class Index extends Controller {
     }
 
 
+    public function about(){
+
+        return view();
+    }
+
+
     
 
 

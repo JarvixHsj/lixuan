@@ -198,6 +198,29 @@ function isCreditNo($vStr){
     return true;
 }
 
+/**
+ * [eraser 消除数组中空的元素]
+ * @param  [type] $array [description]
+ * @return [type]        [description]
+ */
+if (!function_exists("eraser")) {
+    function eraser($array){
+        if(is_string($array)){
+            if(empty($array)){
+                unset($array);
+            }
+        }else if(is_array($array)){
+            if(count($array)>0){
+                foreach ($array as $key => $value) {
+                    if(empty($value)){
+                        unset($array[$key]);
+                    }
+                }
+                return $array;
+            }
+        }
+    }
+}
 
 
 /**

@@ -1,0 +1,29 @@
+{extend name="extra@html/main"}
+{block name='body'}
+		<div class="sqs_bg" style="background-image: url(__PUBLIC__/static/html/img/shouquanshu_bg.png);">
+			<div class="sqs_pro_logo" style="background-image: url(__PUBLIC__/static/html/img/prologo.png);"></div>
+			<div class="sqs_topicon"><img src="__PUBLIC__/static/html/img/sqs_pic1.png"/></div>
+			<div class="sqs_zhiwei mui-text-center sqs_textcolor">首席CEO</div>
+			<div class="sqs_info sqs_textcolor">
+				<div >兹授权：<span class="sqs_info_hrb">{$user_info['username']}</span><span class="mui-pull-right">女士/男士</span></div>
+				<div class="sqs_posi_re">身份证号：<span class="sqs_info_hra">{$user_info['idcard']}</span></div>
+				<div class="sqs_posi_re">代理编号：<span class="sqs_info_hra">{$agent_info['empower_sn']}</span></div>
+				<div class="sqs_posi_re">微信号码：<span class="sqs_info_hra">{$user_info['wechat_no']}</span></div>
+			</div>
+			<div class="sqs_content sqs_textcolor">
+				授权为<span class="sqs_info_hr">{$agent_info['name']}</span>品牌的<span class="sqs_info_hr">{$agentType[$agent_info['level']]}</span>代理商,特许其对Savril励轩国际
+公司旗下品牌皙薇雅的产品销售以及招募代理等业务,并保证所出售
+的商品均为Savril励轩国际公司的正品。
+			</div>
+			<div class="sqs_date sqs_textcolor">
+				<div class="sqs_posi_re">授权期限：<span class="sqs_info_hra">{$agent_info['created_at']|date="Y年m月d日",###}至{$agent_info['created_at']+31536000|date="Y年m月d日",###}</span></div>
+				<div class="sqs_posi_re">授权方：<span class="sqs_info_hra">香港勵軒國際貿易有限公司</span></div>
+				<div class="sqs_posi_re">授权日期：<span class="sqs_info_hra">{$agent_info['created_at']|date="Y年m月d日",###}</span></div>
+				<div class="sqs_gaizhang" style="background-image: url(__PUBLIC__/static/html/img/sqs_gaizhang.png);"></div>
+			</div>
+			<div class="sqs_copytext sqs_textcolor mui-text-center">
+				<div>本授权书以正本为有效文本，不得影印，涂改，转让。</div>
+				<div>香港励轩国际贸易有限公司拥有此授权证书的最终解释权。</div>
+			</div>
+		</div>
+{/block}

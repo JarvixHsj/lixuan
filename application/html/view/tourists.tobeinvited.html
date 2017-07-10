@@ -17,7 +17,7 @@
 			</div>
 			<form action="{:Url('Tourists/checkinfo')}" method="post">
 				<input type="text" class="usyq_cin usyq_twoin usdl_28 mui-pull-left" name="wechat_no" value="" placeholder="微信号" />				
-				<input type="text" class="usyq_cin usyq_twoin usdl_28 mui-pull-right" name="mobile" value="" placeholder="手机号码" />				
+				<input type="text" class="usyq_cin usyq_twoin usdl_28 mui-pull-right" name="mobile" value="" placeholder="手机号码" />
 				<input type="text" class="usyq_cin usdl_28" name="idcard" value="" placeholder="身份证号" />				
 				<input type="password" class="usyq_cin usdl_28" name="password" value="" placeholder="登录密码" />				
 				<input type="password" class="usyq_cin usdl_28" name="afirmpassword" value="" placeholder="确认登录密码" />				
@@ -25,7 +25,7 @@
 				{if condition="$Think.session.agent.id gt 0"}	
 					<button type="button" class="usyq_tjbtn usdl_32 share">分享</button>
 				{else /}
-					<button type="submit" class="usyq_tjbtn usdl_32 submit">提交</button>
+					<button type="button" class="usyq_tjbtn usdl_32 submit">提交</button>
 				{/if}
 			</form>
 		</div>
@@ -37,5 +37,38 @@
 		$(".share").click(function(){
 			$(".usyq_fenx").show();
 		});
+
+        $(".submit").click(function(){
+            var checkUrl = "{:Url('Tourists/checkinfo')}";
+            var mobile = $("input:text[name='mobile']").val();
+            var idcard = $("input:text[name='idcard']").val();
+            var password = $("input:password[name='password']").val();
+            var afirmpassword = $("input:password[name='afirmpassword']").val();
+            var wechat_no = $("input:text[name='wechat_no']").val();
+            var address = $(".usyq_textin").val();
+//            alert(address);return;
+            judgeEmpty(mobile,'手机号不能为空');
+            judgeEmpty(password,'密码不能为空');
+            judgeEmpty(wechat_no,'微信号不能为空');
+            judgeEmpty(address,'收货地址不能为空');
+            if(password != afirmpassword){
+                mui.alert('两次密码不一致');
+                throw SyntaxError();
+            }
+            $.ajax({
+                type: "POST",
+                url: checkUrl,
+                data: {'mobile': mobile,'idcard': idcard,'password': password,'afirmpassword': afirmpassword,'wechat_no': wechat_no,'address': address},
+                success: function(res){
+
+                    if(res.code == 0){
+                        mui.alert(res.msg,'提示');
+                    }else if(res.code == 1){
+                        mui.toast(res.msg,{ duration:'short', type:'div' });
+                        window.location.href = res.data;
+                    }
+                }
+            });
+        })
 	</script>
 {/block}

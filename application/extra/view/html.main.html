@@ -7,10 +7,10 @@
 
         <script type="text/javascript" src="__PUBLIC__/static/html/js/jquery_1.11.3.min.js" ></script>
         <script src="__PUBLIC__/static/html/js/mui.min.js"></script>
-        <script type="text/javascript" src="__PUBLIC__/static/html/js/app.js" ></script>
+        <script type="text/javascript" src="__PUBLIC__/static/html/js/app.js?ver={:date('ymdHis')}" ></script>
 
         <link href="__PUBLIC__/static/html/css/mui.min.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="__PUBLIC__/static/html/css/app.css?ver={:date('ymd')}" />
+        <link rel="stylesheet" href="__PUBLIC__/static/html/css/app.css?ver={:date('ymdHis')}" />
         {block name="style"}{/block}
         <script type="text/javascript" charset="utf-8">
             mui.init();

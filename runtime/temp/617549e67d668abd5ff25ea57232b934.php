@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"/Library/WebServer/Documents/lixuan/application/html/view/index.index.html";i:1498530688;s:73:"/Library/WebServer/Documents/lixuan/application/extra/view/html.main.html";i:1497950307;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"/Library/WebServer/Documents/lixuan/application/html/view/index.index.html";i:1499609070;s:73:"/Library/WebServer/Documents/lixuan/application/extra/view/html.main.html";i:1499352597;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,10 +8,10 @@
 
         <script type="text/javascript" src="__PUBLIC__/static/html/js/jquery_1.11.3.min.js" ></script>
         <script src="__PUBLIC__/static/html/js/mui.min.js"></script>
-        <script type="text/javascript" src="__PUBLIC__/static/html/js/app.js" ></script>
+        <script type="text/javascript" src="__PUBLIC__/static/html/js/app.js?ver=<?php echo date('ymdHis'); ?>" ></script>
 
         <link href="__PUBLIC__/static/html/css/mui.min.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="__PUBLIC__/static/html/css/app.css?ver=<?php echo date('ymd'); ?>" />
+        <link rel="stylesheet" href="__PUBLIC__/static/html/css/app.css?ver=<?php echo date('ymdHis'); ?>" />
         
         <script type="text/javascript" charset="utf-8">
             mui.init();
@@ -66,7 +66,7 @@
 			<div class="son"><a href="#" class="soncont fwcx">防伪查询</a></div>
 			<div class="son"><a href="<?php echo Url('html/Agents/index'); ?>" class="soncont dlht">代理后台</a></div>
 			<div class="son"><a href="#" class="soncont jfcx">积分查询</a></div>
-			<div class="son"><a href="#" class="soncont gywm">关于我们</a></div>
+			<div class="son"><a href="<?php echo Url('html/Index/about'); ?>" class="soncont gywm">关于我们</a></div>
 		</div>
 		<div class="i_title mui-text-center">
 			-&nbsp;产品展示&nbsp;-

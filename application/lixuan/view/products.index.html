@@ -2,9 +2,10 @@
 
 {block name="button"}
 <div class="nowrap pull-right" style="margin-top:10px">
-    <button data-modal='{:url("$classuri/add")}' data-title="添加产品" class='layui-btn layui-btn-small'><i
-            class='fa fa-plus'></i> 添加产品
-    </button>
+    <!--<button data-modal='{:url("$classuri/add")}' data-title="添加产品" class='layui-btn layui-btn-small'><i-->
+            <!--class='fa fa-plus'></i> 添加产品-->
+    <!--</button>-->
+    <button data-open='{:url("$classuri/add")}'  class='layui-btn layui-btn-small'>添加产品</button>
     <button data-update data-field='delete' data-action='{:url("classuri/del")}'
             class='layui-btn layui-btn-small layui-btn-danger'><i class='fa fa-remove'></i> 删除产品
     </button>
@@ -49,6 +50,7 @@
                 <th class='text-center'>编号</th>
                 <th class='text-center'>产品图片</th>
                 <th class='text-center'>产品名称</th>
+                <th class='text-center'>产品简写</th>
                 <th class='text-center'>产品简介</th>
                 <th class='text-center'>最后编辑时间</th>
                 <!--<th class='text-center'>锁定</th>-->
@@ -64,6 +66,7 @@
                 <td class='text-center'>{$vo.id}</td>
                 <td class='text-center'><img src="{$vo.image}" style="max-width:120px;max-height:120px;"/> </td>
                 <td class='text-center'>{$vo.name}</td>
+                <td class='text-center'>{$vo.abbr}</td>
                 <td class='text-center'>{$vo.intro|substr=0,39|default="<span style='color:#ccc'>还没有编写简介</span>"}</td>
                 <!--<td class='text-center'>{$vo.login_num|default="<span style='color:#ccc'>从未登录</span>"}</td>-->
                 <td class='text-center'>{$vo.change_at|date="Y-m-d H:i:s",###|default="<span style='color:#ccc'>从未登录</span>"}</td>
@@ -77,28 +80,20 @@
                 <td class='text-center nowrap'>
                     {if auth("$classuri/edit")}
                     <span class="text-explode">|</span>
-                    <a data-modal='{:url("$classuri/edit")}?id={$vo.id}' href="javascript:void(0)">编辑</a>
-                    {/if}
-                    {if auth("$classuri/auth")}
-                    <span class="text-explode">|</span>
-                    <a data-modal='{:url("$classuri/auth")}?id={$vo.id}' href="javascript:void(0)">授权</a>
-                    {/if}
-                    {if auth("$classuri/pass")}
-                    <span class="text-explode">|</span>
-                    <a data-modal='{:url("$classuri/pass")}?id={$vo.id}' href="javascript:void(0)">密码</a>
+                    <a data-open='{:url("$classuri/edit")}?id={$vo.id}' href="javascript:void(0)">编辑</a>
                     {/if}
                     {if $vo.status eq 1 and auth("$classuri/forbid")}
                     <span class="text-explode">|</span>
                     <a data-update="{$vo.id}" data-field='status' data-value='0' data-action='{:url("$classuri/forbid")}'
                        href="javascript:void(0)">禁用</a>
-                    {elseif auth("$classuri/resume")}
+                    {elseif auth("$classuri/forbid")}
                     <span class="text-explode">|</span>
-                    <a data-update="{$vo.id}" data-field='status' data-value='1' data-action='{:url("$classuri/resume")}'
+                    <a data-update="{$vo.id}" data-field='status' data-value='1' data-action='{:url("$classuri/forbid")}'
                        href="javascript:void(0)">启用</a>
                     {/if}
                     {if auth("$classuri/del")}
                     <span class="text-explode">|</span>
-                    <a data-update="{$vo.id}" data-field='delete' data-action='{:url("$classuri/del")}'
+                    <a data-update="{$vo.id}" data-field='is_delete' data-value='0'  data-action='{:url("$classuri/del")}'
                        href="javascript:void(0)">删除</a>
                     {/if}
                 </td>

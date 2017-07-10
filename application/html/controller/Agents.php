@@ -108,12 +108,12 @@ class Agents extends BasicAgent {
             $result['message'] = '该产品不存在！';
             return $result;
         }    
-        if(!array_key_exists($level, $this->_agentType)) return $resule;
+        if(!array_key_exists($level, $this->_agentType)) return $result;
           //获取分享唯一号
         $newTime = time();
         $saveData['share_no'] = AgentService::createAgentInvite();
         //组合连接
-        $share_url = $this->request->header()['origin'].'/'.$this->request->module().'/Tourists/tobeinvited?share_no='.$saveData['share_no'];
+        $share_url = $this->request->header()['origin'].$this->request->baseFile().'/'.$this->request->module().'/Tourists/tobeinvited?share_no='.$saveData['share_no'];
         $UserInviteModel = new UserInvite;
         //组合数据
         $saveData['user_id'] = session('agent.id');      
@@ -137,10 +137,10 @@ class Agents extends BasicAgent {
     public function inviterecord()
     {
         $agent_id = $this->request->param('id') ? trim($this->request->param('id')) : '';
-        if(empty($agent_id)) $this->error('请求有误，请重试！');
+//        if(empty($agent_id)) $this->error('请求有误，请重试！');
         
-        $AgentModel = new Agent;
-        $AgentData = $AgentModel->getOneInfo(array('id' => $agent_id));
+//        $AgentModel = new Agent;
+//        $AgentData = $AgentModel->getOneInfo(array('id' => $agent_id));
         
         $UserInviteModel = new UserInvite;
         $inviteData = $UserInviteModel->getInviteList(array('agent_id' => $agent_id));
@@ -218,7 +218,6 @@ class Agents extends BasicAgent {
         $data['agentinfo'] = $AgentData;
         $data['agenttype'] = $this->_agentType;
 
-//        var_dump($data);die;
         $this->assign('data', $data);
         $this->assign('pro_id', $data);
         return view();
@@ -247,9 +246,8 @@ class Agents extends BasicAgent {
         $data = array();
         $data['userinfo'] = $userData;
         $data['agentinfo'] = $AgentData;
-        $data['countagent'] = $countagent;
+//        $data['countagent'] = $countagent;
         $data['agenttype'] = $this->_agentType;
-//        var_dump($data,$AgentModel->getLastSql());die;
         return view('looksublist');
     }
 

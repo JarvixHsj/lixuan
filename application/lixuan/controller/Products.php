@@ -22,6 +22,7 @@ use service\FileService;
 use model\Product;
 use think\response\View;
 use think\Db;
+use think\Url;
 
 /**
  * 微信配置管理
@@ -58,10 +59,12 @@ class Products extends BasicAdmin {
     */
     public function add() {
         if ($this->request->isGet()) {
+            return view('form');
             return parent::_form($this->table, 'form', 'id');
         }
         //接收参数
         $data = $this->request->post();
+//        var_dump($data);die;
 
         //获取图片信息  后缀名等
         $phpinfo = pathinfo($data['image']);
@@ -85,6 +88,7 @@ class Products extends BasicAdmin {
         }
 
         //重新组合要插入的数据
+        $data['abbr'] = strtoupper($data['abbr']);
         $data['image'] = $newNamePath;
         $data['change_at'] = time();
         $ProductModel = new product;
@@ -98,75 +102,63 @@ class Products extends BasicAdmin {
     }
 
 
-        /**
-     * 微信商户参数配置
+
+    /**
+     * 编辑
      * @return View
      */
-    public function pay() {
+    public function edit() {
+        $id = $this->request->get('id', '');
         if ($this->request->isGet()) {
-            switch ($this->request->get('action')) {
-                // 生成测试支付二维码
-                case 'payqrc':
-                    $pay = &load_wechat('pay');
-                    // 生成订单号
-                    $order_no = session('pay-test-order-no');
-                    if (empty($order_no)) {
-                        $order_no = DataService::createSequence(10, 'wechat-pay-test');
-                        session('pay-test-order-no', $order_no);
-                    }
-                    // 该订单号已经支付
-                    if (PayService::isPay($order_no)) {
-                        return json(['code' => 2, 'order_no' => $order_no]);
-                    }
-                    // 订单号未支付，生成支付二维码URL
-                    $url = PayService::createWechatPayQrc($pay, $order_no, 1, '微信扫码支付测试！');
-                    if ($url !== false) {
-                        return json(['code' => 1, 'url' => $url, 'order_no' => $order_no]);
-                    }
-                    // 生成支付二维码URL失败
-                    $this->error("生成支付二维码失败，{$pay->errMsg}[{$pay->errCode}]");
-                    break;
-                // 微信支付退款操作
-                case 'refund':
-                    $order_no = session('pay-test-order-no');
-                    if (empty($order_no)) {
-                        $this->error('测试订单号不存在，请重新开始支付测试！');
-                    }
-                    if (!PayService::isPay($order_no)) {
-                        $this->error('测试订单未支付或未收到微信支付通过！');
-                    }
-                    $pay = &load_wechat('pay');
-                    if (!file_exists($pay->ssl_cer) || !file_exists($pay->ssl_key)) {
-                        $this->error('微信支付双向证书异常，无法完成退款操作！');
-                    }
-                    $refund_no = DataService::createSequence(10, 'wechat-pay-test');
-                    if (false !== PayService::putWechatRefund($pay, $order_no, 1, $refund_no)) {
-                        session('pay-test-order-no', null);
-                        $this->success('测试退款操作成功，请查看微信通知！', '');
-                    }
-                    $this->error("操作退款失败，{$pay->errMsg}[{$pay->errCode}]");
-                    break;
-                // 显示支付配置界面
-                default:
-                    $this->assign('title', '微信支付配置');
-                    return view();
-            }
+            empty($id) && $this->error('参数错误，请稍候再试！');
+
+            $result['title'] = '编辑图文';
+            $result['vo'] = Db::table('lx_product')->find($id);
+
+//            return view('form', ['title' => '编辑图文', 'vo' => WechatService::getNewsById($id)]);
+//            $this->assign('vo', $result);
+            return view('edit', $result);
         }
         $data = $this->request->post();
-        foreach ($data as $key => $vo) {
-            if (in_array($key, ['wechat_cert_key_md5', 'wechat_cert_cert_md5']) && !empty($vo)) {
-                $filename = ROOT_PATH . 'static/upload/' . join('/', str_split($vo, 16)) . '.pem';
-                !file_exists($filename) && $this->error('支付双向证书上传失败，请重新上传！');
-                $data[str_replace('_md5', '', $key)] = $filename;
+        $ids = $this->_apply_news_article($data['data']);
+        if (!empty($ids)) {
+            $post = ['id' => $id, 'article_id' => $ids, 'create_by' => session('user.id')];
+            if (false !== DataService::save('wechat_news', $post, 'id')) {
+                $this->success('图文更新成功!', '');
             }
         }
-        unset($data['wechat_cert_key_md5'], $data['wechat_cert_cert_md5']);
-        foreach ($data as $key => $vo) {
-            DataService::save($this->table, ['name' => $key, 'value' => $vo], 'name');
-        }
-        LogService::write('微信管理', '修改微信支付参数成功');
-        $this->success('数据修改成功！', '');
+        $this->error('图文更新失败，请稍候再试！');
     }
 
+
+    /**
+     * 禁止
+     */
+    public function forbid()
+    {
+        var_dump(Url::build('Product/index','spa='.date('')));die;
+//        $_SERVER['HTTP_REFERER'].'#'.Url::build('Product/index')
+//        var_dump($_SERVER);die;
+        //array(4) { ["spm"]=> string(7) "m-87-89" ["field"]=> string(6) "status" ["value"]=> string(1) "0" ["id"]=> string(1) "2" }
+        $field = $this->request->param();
+        $res = Db::table('lx_product')->where('id', $field['id'])->update([$field['field'] => $field['value']]);
+        if($res === false) {
+            $this->error('操作失败，请重试！');
+        }
+
+//        $successUrl = $_SERVER['HTTP_REFERER'].'#'.Url::build('Products/index');
+        $this->success('操作成功~', $this->_createAdminUrl(Url::build('Products/index','spm='.date('is'))));
+    }
+    
+
+    /**
+     * 删除用户
+     */
+    public function del() {
+        if (DataService::update($this->table)) {
+            $this->success("图文删除成功!", '');
+        }
+        $this->error("图文删除失败, 请稍候再试!");
+    }
 
 }

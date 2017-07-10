@@ -11,8 +11,10 @@ class UserInvite extends Model
 	public function getInviteList( $where)
 	{
 		if(!is_array($where)) return false;
-		$res = $this->where($where)->select()->toArray();
+		$res = $this->where($where)->order('id desc')->select()->toArray();
 		if($res) return $res;
 		return false;
 	}
+
+
 }

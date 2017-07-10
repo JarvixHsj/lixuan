@@ -18,7 +18,6 @@ use controller\BasicAdmin;
 use service\DataService;
 use service\LogService;
 use service\AgentService;
-use model\Product;
 use model\User;
 use model\Agent;
 use model\UserAudit;
@@ -128,6 +127,11 @@ class Audit extends BasicAdmin {
             Db::rollback();
             $this->error('数据异常！！!');
         }
+
+        $messData['user_id'] = $insert_user_id;
+        $messData['content'] = '恭喜您，后台已审核通过~~';
+        $messData['created_at'] = date('Y/m/d H:i:s');
+        AgentService::createMessage($messData);
 
         $this->success('审核成功！',  $_SERVER["HTTP_REFERER"].'#'.'/lixuan/Audit/index');
     }
