@@ -99,7 +99,10 @@ class Tourists extends Controller {
         if(!session('agent')){
             $UserInviteModel->where('id',$info['id'])->setInc('click_num');
         }
-        
+        if($info['end_in'] < time()){
+            $this->error('邀请时间已过期，请联系代理重新生成分享链接~', Url::build('Index/index'));
+        }
+
         $this->assign('info', $info);
         return view();
     }
@@ -110,33 +113,33 @@ class Tourists extends Controller {
         //接收用户参数
         $param = $this->request->param();
         $this->assign('param', $param);
-
         $sourceUrl = $this->request->header()['referer'];
-        $share_no_temp = strstr($sourceUrl, 'share_no=');
-        $share_no1 = ltrim($share_no_temp, 'share_no');
-        $share_no = ltrim($share_no1, '=');
-//        var_dump($share_no_temp,$share_no);die;
-
+        $share_no = substr(ltrim(strstr($sourceUrl, 'share_no='),'share_no='),0,32);  //截取
         if(!$share_no) {
             $this->result('',0, '链接参数有误~','json');
         }
-//        var_dump($param);die;
+
+        //判断是否有该邀请
+        $UserInviteModel = new UserInvite;
+        $inviteInfo = $UserInviteModel->where('share_no', $share_no)->find();
+        if(!$inviteInfo) $this->result('',0,'地址参数不正确，请确认受邀链接是否正确！', 'json');
+        $inviteInfo = $inviteInfo->toArray();
+        //判断邀请时间是否过期
+        if(time() >= $inviteInfo['end_in']) $this->result('',0, '受邀时间已过期~','json');
+
         //判断参数
         if(checkParam($param) === false) $this->result('',0, '请填写完成~','json');
         if(judgeMobile($param['mobile']) == false) $this->result('',0, '手机号码格式错误~','json');
         if(isCreditNo($param['idcard']) === false) $this->result('',0, '身份证格式错误~','json');
         if(strlen($param['address']) > 100) $this->result('',0, '收货地址过长~','json');
         if($param['password'] != $param['afirmpassword']) $this->result('',0, '两次密码不一样~','json');
-        //判断是否有该邀请
-        $UserInviteModel = new UserInvite;
-        $inviteInfo = $UserInviteModel->where('share_no', $share_no)->find();
-        if(!$inviteInfo) $this->result('',0,'地址参数不正确，请确认受邀链接是否正确！', 'json');
+        //校验图片是否存在
+        $reversePath = session('user.reverse');
+        $positivePath = session('user.positive');
+        if(!empty($positivePath) && !file_exists(UPLOAD_PATH.$positivePath)) $this->result('', 0, '请上传身份证正面照片！','json');
+        if(!empty($reversePath) && !file_exists(UPLOAD_PATH.$reversePath)) $this->result('', 0, '请上传身份证反面照片！','json');
 
-        $inviteInfo = $inviteInfo->toArray();
-        //判断邀请时间是否过期
-        if(time() >= $inviteInfo['end_in']) $this->result('',0, '受邀时间已过期~','json');
-
-        //判断是否有这个代理信息代理过改产品
+        //判断是否有这个代理信息代理过该产品
         $sql = "SELECT u.* FROM lx_user u JOIN lx_agent a ON a.user_id = u.id WHERE (u.mobile = '{$param['mobile']}' OR u.idcard = '{$param['idcard']}') AND a.product_id = '{$inviteInfo['product_id']}'";
         $judgeUserInfo = Db::query($sql);
         if($judgeUserInfo) $this->result('',0, '该手机号或身份证已经代理了该产品！不可重复代理！','json');
@@ -170,6 +173,8 @@ class Tourists extends Controller {
         $saveData['is_through'] = 0;
         $saveData['share_no'] = $share_no;
         $saveData['invite_level'] = $inviteInfo['level'];
+        $saveData['positive'] = $reversePath;
+        $saveData['reverse'] = $positivePath;
         $UserAuditModel->allowField(true)->save($saveData);
         if($UserAuditModel->id){
             $this->result(Url::build('Index/index'),1, '提交成功，请耐心等待后台审核~','json');

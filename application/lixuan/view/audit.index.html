@@ -51,6 +51,8 @@
                 <th class='text-center'>微信号</th>
                 <th class='text-center'>手机号</th>
                 <th class='text-center'>身份证号</th>
+                <th class='text-center'>身份证正面图片</th>
+                <th class='text-center'>身份证反面图片</th>
                 <th class='text-center'>收货地址</th>
                 <!--<th class='text-center'>锁定</th>-->
                 <th class='text-center'>授权</th>
@@ -70,7 +72,18 @@
                 <td class='text-center'>{$vo.wechat_no}</td>
                 <td class='text-center'>{$vo.mobile}</td>
                 <td class='text-center'>{$vo.idcard}</td>
+                <td class='text-center'>{empty name="vo.positive"}
+                    无
+                    {else /}
+                    <img data-tips-image='public/uploads/{$vo.positive}' class="tips_audit" src="public/uploads/{$vo.positive}" style="width:126px;height:77px;border-radius: 8px;"/>
+                    {/empty}</td>
+                <td class='text-center'>{empty name="vo.reverse"}
+                    无
+                    {else /}
+                    <img data-tips-image='public/uploads/{$vo.positive}' class="tips_audit"  src="public/uploads/{$vo.reverse}" style="width:126px;height:77px;border-radius: 8px;"/>
+                    {/empty}</td>
                 <td class='text-center'>{$vo.address}</td>
+
                 <!--<td class='text-center'>
                     {if $vo.status eq 0}
                     <span>已禁用</span>
@@ -102,4 +115,21 @@
     </table>
     {if isset($page)}<p>{$page}</p>{/if}
 </form>
+{/block}
+{block name="style"}
+<style>
+
+    /*#news_box {position:relative;}*/
+    /*#news_box .news_item {position:relative;left:0;top:0;padding:5px;border:1px solid #ccc;box-sizing:content-box;margin:10px;width:300px}*/
+    .tips_audit{background-position:center center;background-size:100%;position:relative;height:150px;width:100%;overflow:hidden;}
+    .tips_audit p {padding:5px;max-height:5em;font-size:12px;color:#fff;overflow:hidden;text-overflow:ellipsis;background:rgba(0,0,0,0.7);position:absolute;width:100%;bottom:0}
+    .tips_audit.other{height:50px;padding:5px 0;}
+    .tips_audit .left-image{width:50px;height:50px;position:relative;float:left;background-position:center center;background-size:100%;overflow:hidden;}
+    .tips_audit .right-text{float:left;width:250px;padding-right:10px;overflow:hidden;text-overflow:ellipsis;}
+    /*#news_box .news_item .hr-line-dashed:last-child{display:none}*/
+    /*#news_box .hr-line-dashed{margin:6px 0 1px 0}*/
+    /*#news_box .news_tools{top:0;z-index:80;color:#fff;width:312px;margin-left:-6px;position:absolute;background:rgba(0,0,0,0.7);text-align:right;padding:0 5px;line-height:38px;}*/
+    /*#news_box .news_tools a{color:#fff;margin-left:10px}*/
+
+</style>
 {/block}

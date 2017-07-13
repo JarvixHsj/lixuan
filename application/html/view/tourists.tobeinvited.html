@@ -1,5 +1,30 @@
 {extend name="extra@html/main"}
+{block name="style"}
+<style>
+    #uploadPreview{
+        width: 168px;
+        height: 168px;
+    }
+    .usbyq_sfz {
+        margin-top: 3%;
+        margin-bottom: 5%;
 
+    }
+    .usbyq_sfz_pic {
+        width: 80%;
+        border-radius: 8px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+    .usbyq_sfz_pic input{
+        opacity: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+{/block}
 {block name='body'}
 	<header class="mui-bar mui-bar-nav di_navbox">
 		<h1 class="mui-title">邀请代理</h1>
@@ -28,15 +53,140 @@
 					<button type="button" class="usyq_tjbtn usdl_32 submit">提交</button>
 				{/if}
 			</form>
+            <div class="usbyq_title">
+                <p class="usdl_28 usdl_sqtext">上传身份证：</p>
+                <p class="usdl_24">请上传身份证正反面照片，且保证清晰能够看清身份证信息：</p>
+            </div>
+            <div class="usbyq_sfz mui-clearfix">
+                <div class="usbyq_sfz_pic mui-pull-left" style="background-image: url(__PUBLIC__/static/html/img/sfz_zm.png);">
+                    <input id="usbyq_sfz_zm" type="file" name="positive" data-url="{:Url('Tools/ajaxUploads','type=1')}" multiple accept="image/*" capture="camera">
+                </div>
+                <span class="mui-pull-right usdl_28" style="margin-right: 5%;">正面</span>
+            </div>
+            <div class="usbyq_sfz mui-clearfix">
+                <div class="usbyq_sfz_pic mui-pull-left" style="background-image: url(__PUBLIC__/static/html/img/sfz_fm.png);">
+                    <input id="usbyq_sfz_fm" type="file" name="reverse" data-url="{:Url('Tools/ajaxUploads', 'type=2')}" multiple accept="image/*" capture="camera">
+                </div>
+                <span class="mui-pull-right usdl_28" style="margin-right: 5%;">反面</span>
+            </div>
+            <div class="usbyq_hzxybox mui-text-center" style="padding-bottom:15px;">
+                <a href="user_hezuoxieyi.html" class="usdl_28">合作协议</a>
+            </div>
+
 		</div>
 	</div>
 	<div class="c_cover usyq_fenx" style="display: none;">
 		<div class="usyq_fx_icon usdl_32">点击这里进行分享</div>
 	</div>
-	<script type="text/javascript">
+    <script src="__PUBLIC__/static/html/js/vendor/jquery.ui.widget.js"></script>
+    <script src="__PUBLIC__/static/html/js/jquery.iframe-transport.js"></script>
+    <script src="__PUBLIC__/static/html/js/jquery.fileupload.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".usbyq_sfz_pic").each(function(){
+                var w = $(this).outerWidth(true);
+                $(this).height((w*3)/4);
+                $(this).parent('.usbyq_sfz').css({"line-height":(w*3)/4+'px'});
+
+            });
+            $("#usbyq_sfz_zm").on("change", function(){
+                // Get a reference to the fileList
+                var files = !!this.files ? this.files : [];
+
+                // If no files were selected, or no FileReader support, return
+                if (!files.length || !window.FileReader) return;
+
+                // Only proceed if the selected file is an image
+                if (/^image/.test( files[0].type)){
+
+                    // Create a new instance of the FileReader
+                    var reader = new FileReader();
+
+                    // Read the local file as a DataURL
+                    reader.readAsDataURL(files[0]);
+
+                    // When loaded, set image data as background of div
+                    reader.onloadend = function(){
+
+                        $("#usbyq_sfz_zm").parent(".usbyq_sfz_pic").css("background-image", "url("+this.result+")");
+
+                    }
+
+                }
+
+            });
+            $('#usbyq_sfz_zm').fileupload({
+                dataType: 'json',
+                done: function (e, data) {
+                    $.each(data.result.files, function (index, file) {
+                        $('<p/>').text(file.name).appendTo(document.body);
+                    });
+                },
+                add: function (e, data) {
+//                    data.context = $('<p/>').text('Uploading...').appendTo(document.body);
+                    data.submit();
+                },
+                progressall: function (e, data) {
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    $('#progress .bar').css(
+                            'width',
+                            progress + '%'
+                    );
+                }
+            });
+            $("#usbyq_sfz_fm").on("change", function(){
+                // Get a reference to the fileList
+                var files = !!this.files ? this.files : [];
+
+                // If no files were selected, or no FileReader support, return
+                if (!files.length || !window.FileReader) return;
+
+                // Only proceed if the selected file is an image
+                if (/^image/.test( files[0].type)){
+
+                    // Create a new instance of the FileReader
+                    var reader = new FileReader();
+
+                    // Read the local file as a DataURL
+                    reader.readAsDataURL(files[0]);
+
+                    // When loaded, set image data as background of div
+                    reader.onloadend = function(){
+
+                        $("#usbyq_sfz_fm").parent(".usbyq_sfz_pic").css("background-image", "url("+this.result+")");
+
+                    }
+
+                }
+
+            });
+            $('#usbyq_sfz_fm').fileupload({
+                dataType: 'json',
+                done: function (e, data) {
+                    $.each(data.result.files, function (index, file) {
+                        $('<p/>').text(file.name).appendTo(document.body);
+                    });
+                },
+                add: function (e, data) {
+//                    data.context = $('<p/>').text('Uploading...').appendTo(document.body);
+                    data.submit();
+                },
+                progressall: function (e, data) {
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    $('#progress .bar').css(
+                            'width',
+                            progress + '%'
+                    );
+                }
+            });
+        });
+//        ===========
 		$(".share").click(function(){
 			$(".usyq_fenx").show();
 		});
+        $(".usyq_fenx").click(function(){
+            $(".usyq_fenx").hide();
+        });
 
         $(".submit").click(function(){
             var checkUrl = "{:Url('Tourists/checkinfo')}";
@@ -60,11 +210,10 @@
                 url: checkUrl,
                 data: {'mobile': mobile,'idcard': idcard,'password': password,'afirmpassword': afirmpassword,'wechat_no': wechat_no,'address': address},
                 success: function(res){
-
                     if(res.code == 0){
                         mui.alert(res.msg,'提示');
                     }else if(res.code == 1){
-                        mui.toast(res.msg,{ duration:'short', type:'div' });
+                        mui.toast(res.msg,{ duration:'long', type:'div' });
                         window.location.href = res.data;
                     }
                 }
