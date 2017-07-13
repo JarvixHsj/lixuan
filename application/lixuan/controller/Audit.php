@@ -48,6 +48,7 @@ class Audit extends BasicAdmin {
      * @return View
      */
     public function index() {
+//        var_dump($_SERVER);die;
         $res = Db::name($this->table)->alias('ua')
         ->field('ua.*,u.username as super_name,u.mobile as super_mobile, p.name as pro_name')
         ->join('lx_user u', 'u.id = ua.user_id')

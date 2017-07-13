@@ -82,7 +82,7 @@
                     if(res.status == 0){
                         mui.alert(res.msg,'提示');
                     }else if(res.status == 1){
-                        mui.toast(res.msg);
+                        mui.toast(res.msg,{ duration:'long', type:'div' });
                         window.location.href = res.url;
                     }
                 }

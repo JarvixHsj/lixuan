@@ -97,6 +97,7 @@ class Tools extends Controller {
             $res = $this->upload($paramSelect[$type], $fileCatelog);
             if($res) {
                 session('user.'.$paramSelect[$type],$uploadCatelogName.DS.$res); //存储
+                var_dump($res);
             }
             //string(50) "/Library/WebServer/Documents/lixuan/public/uploads"
 //            jpg20170712/8feaeebe7e987d759e5146cbbb419004.jpg8feaeebe7e987d759e5146cbbb419004.jpg
