@@ -46,7 +46,7 @@ class Products extends BasicAdmin {
      * @return View
      */
     public function index() {
-        $res = Db::name($this->table)->select();
+        $res = Db::name($this->table)->where('is_delete', 1)->select();
         
         $this->assign('title', '产品列表信息');
         $this->assign('list', $res);
@@ -135,18 +135,13 @@ class Products extends BasicAdmin {
      */
     public function forbid()
     {
-        var_dump(Url::build('Product/index','spa='.date('')));die;
-//        $_SERVER['HTTP_REFERER'].'#'.Url::build('Product/index')
-//        var_dump($_SERVER);die;
-        //array(4) { ["spm"]=> string(7) "m-87-89" ["field"]=> string(6) "status" ["value"]=> string(1) "0" ["id"]=> string(1) "2" }
         $field = $this->request->param();
         $res = Db::table('lx_product')->where('id', $field['id'])->update([$field['field'] => $field['value']]);
         if($res === false) {
             $this->error('操作失败，请重试！');
         }
-
-//        $successUrl = $_SERVER['HTTP_REFERER'].'#'.Url::build('Products/index');
-        $this->success('操作成功~', $this->_createAdminUrl(Url::build('Products/index','spm='.date('is'))));
+        $successUrl = $_SERVER['HTTP_REFERER'].'#/lixuan/products/index.html?spm=m-87-'.rand(0,9).rand(0,9);
+        $this->success('操作成功~', $successUrl);
     }
     
 

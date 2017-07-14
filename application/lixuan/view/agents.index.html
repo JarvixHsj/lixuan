@@ -5,9 +5,12 @@
     <button data-modal='{:url("$classuri/add")}' data-title="添加代理" class='layui-btn layui-btn-small'><i
             class='fa fa-plus'></i> 添加代理
     </button>
-    <button data-update data-field='delete' data-action='{:url("classuri/del")}'
-            class='layui-btn layui-btn-small layui-btn-danger'><i class='fa fa-remove'></i> 删除代理
-    </button>
+    <!--<button data-modal='{:url("$classuri/addxists")}' data-title="添加代理" class='layui-btn layui-btn-small'><i-->
+            <!--class='fa fa-plus'></i> 授权已有代理产品-->
+    <!--</button>-->
+    <!--<button data-update data-field='delete' data-action='{:url("classuri/del")}'-->
+            <!--class='layui-btn layui-btn-small layui-btn-danger'><i class='fa fa-remove'></i> 删除代理-->
+    <!--</button>-->
 </div>
 {/block}
 
@@ -25,7 +28,7 @@
 
         <div class="col-xs-3">
             <div class="form-group">
-                <input type="text" name="phone" value="{$Think.get.phone|default=''}" placeholder="手机号" class="input-sm form-control">
+                <input type="text" name="mobile" value="{$Think.get.phone|default=''}" placeholder="手机号" class="input-sm form-control">
             </div>
         </div>
 
@@ -74,32 +77,6 @@
                 </td>-->
                 <td class='text-center nowrap'>
                     未开通
-                    <!--{if auth("$classuri/edit")}-->
-                    <!--<span class="text-explode">|</span>-->
-                    <!--<a data-modal='{:url("$classuri/edit")}?id={$vo.id}' href="javascript:void(0)">编辑</a>-->
-                    <!--{/if}-->
-                    <!--{if auth("$classuri/auth")}-->
-                    <!--<span class="text-explode">|</span>-->
-                    <!--<a data-modal='{:url("$classuri/auth")}?id={$vo.id}' href="javascript:void(0)">授权</a>-->
-                    <!--{/if}-->
-                    <!--{if auth("$classuri/pass")}-->
-                    <!--<span class="text-explode">|</span>-->
-                    <!--<a data-modal='{:url("$classuri/pass")}?id={$vo.id}' href="javascript:void(0)">密码</a>-->
-                    <!--{/if}-->
-                    <!--{if $vo.status eq 1 and auth("$classuri/forbid")}-->
-                    <!--<span class="text-explode">|</span>-->
-                    <!--<a data-update="{$vo.id}" data-field='status' data-value='0' data-action='{:url("$classuri/forbid")}'-->
-                       <!--href="javascript:void(0)">禁用</a>-->
-                    <!--{elseif auth("$classuri/resume")}-->
-                    <!--<span class="text-explode">|</span>-->
-                    <!--<a data-update="{$vo.id}" data-field='status' data-value='1' data-action='{:url("$classuri/resume")}'-->
-                       <!--href="javascript:void(0)">启用</a>-->
-                    <!--{/if}-->
-                    <!--{if auth("$classuri/del")}-->
-                    <!--<span class="text-explode">|</span>-->
-                    <!--<a data-update="{$vo.id}" data-field='delete' data-action='{:url("$classuri/del")}'-->
-                       <!--href="javascript:void(0)">删除</a>-->
-                    <!--{/if}-->
                 </td>
             </tr>
             {/foreach}

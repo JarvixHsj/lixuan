@@ -26,7 +26,7 @@ use think\Db;
  */
 class BasicAdmin extends Controller {
 
-    public $_agentType = array('1'=>'首席CEO', '2' => '核心总监', '3' => '总代', '4'=>'一级', '5'=>'特约');
+    public $_agentType = array('0' => '创始人','1'=>'首席CEO', '2' => '核心总监', '3' => '总代', '4'=>'一级', '5'=>'特约');
 
     /**
      * 页面标题
@@ -147,9 +147,16 @@ class BasicAdmin extends Controller {
      * @param string $url
      * @return string
      */
-    protected function _createAdminUrl( $url = '/index/Index/index')
+    protected function _createAdminUrl( $url = 'products')
     {
-        return $_SERVER['HTTP_REFERER'].'#'.$url;
+//        var_dump($_SERVER['HTTP_HOST']);
+        if($_SERVER['HTTP_HOST'] == 'www.lixuan.dev'){
+            return $_SERVER['HTTP_REFERER'].'#/lixuan/'.$url.'/index.html?spm=m-87-'.rand(0,9).rand(0,9);
+        }else{
+//            var_dump($_SERVER['HTTP_REFERER'].'#/index.php/lixuan/'.$url.'/index.html?spm=m-87-'.rand(0,9).rand(0,9));
+//            die;
+            return $_SERVER['HTTP_REFERER'].'#/index.php/lixuan/'.$url.'/index.html?spm=m-87-'.rand(0,9).rand(0,9);
+        }
     }
 
 }

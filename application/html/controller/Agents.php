@@ -31,7 +31,8 @@ use model\User;
  */
 class Agents extends BasicAgent {
 
-    private $_agentType = array('1'=>'首席CEO', '2' => '核心总监', '3' => '总代', '4'=>'一级', '5'=>'特约');
+    private $_selectType = array( '2' => '核心总监', '3' => '总代', '4'=>'一级', '5'=>'特约');
+    private $_agentType = array('0' => '创始人','1'=>'首席CEO', '2' => '核心总监', '3' => '总代', '4'=>'一级', '5'=>'特约');
 
     /**
      * 代理入口
@@ -76,7 +77,7 @@ class Agents extends BasicAgent {
         if(!array_key_exists($res['level'], $this->_agentType)){
             return false;
         }
-        $tempLevel = $this->_agentType;
+        $tempLevel = $this->_selectType;
         foreach($tempLevel as $key => $val) {
             if($key < $res['level']){
                 unset($tempLevel[$key]);

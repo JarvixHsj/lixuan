@@ -5,10 +5,9 @@
             <select name='level' class='layui-select full-width' style='display:block' required="required" title="请选择代理等级">
                 <!--首席CEO，核心总监，总代，一级，特约，）-->
                 <option  value='0'>---请选择代理等级---</option>
-                <option  value='1'>核心总监</option>
-                <option  value='2'>总代</option>
-                <option  value='3'>一级</option>
-                <option  value='4'>特约</option>
+                {volist name="agenttype" id='vo' key='k'}
+                <option value="{$k-1}">{$vo}</option>
+                {/volist}
             </select>
         </div>
     </div>
