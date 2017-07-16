@@ -153,59 +153,70 @@ class Agents extends BasicAdmin {
 
             $this->assign('pro_list', $proList);
             $this->assign('user_list', $userList);
-            return parent::_form($this->table, 'form', 'id');
+            $this->assign('agenttype', $this->_agentType);
+            return parent::_form($this->table, 'existsform', 'id');
         }
         //接收参数 用户参数
-        $data['username'] = $this->request->post('username');
-        $data['password'] = $this->request->post('password');
-        $data['mobile'] = $this->request->post('mobile');
+//        $data['username'] = $this->request->post('username');
+//        $data['password'] = $this->request->post('password');
+//        $data['mobile'] = $this->request->post('mobile');
         $level = $this->request->post('level');
         $product_id = $this->request->post('product_id') ? trim($this->request->post('product_id')) : '';
+        $user_id = $this->request->post('user_id') ? trim($this->request->post('user_id')) : '';
         //判断密码是否空
-        if(!$data['password']) return $this->error('密码不能为空！');
-        //判断手机号格式
-        if(!preg_match("/^1[34578]{1}\d{9}$/",$data['mobile'])){
-            $this->error('手机号格式不正确！');
-        }
+//        if(!$data['password']) return $this->error('密码不能为空！');
+//        //判断手机号格式
+//        if(!preg_match("/^1[34578]{1}\d{9}$/",$data['mobile'])){
+//            $this->error('手机号格式不正确！');
+//        }
         //判断产品
         if(!$product_id) $this->error('请选择要代理的产品！');
+        if(!$user_id) $this->error('请选择代理！');
         $ProModel = new Product;
         $tempPro = $ProModel->find($product_id)->toArray();
         if (!$tempPro) {
             $this->error('选择的代理产品有误，请重新选择！');
         }
-        //判断手机号是否已使用
         $UserModel = new User;
-        $tempUser = $UserModel->where(array('mobile'=>$data['mobile']))->find();
-        if ($tempUser) $this->error('手机号已使用！');
+        $comboUser = $UserModel->find($user_id);
+        if (!$comboUser) $this->error('代理信息有误，请刷新后重试~');
+
+        //判断该代理是否已经有该产品的代理
+        $AgentModel = new Agent;
+        $comboAgent = $AgentModel->where(array('user_id' => $user_id, 'product_id' => $product_id))->find();
+        if($comboAgent) $this->error('该代理已经有该产品的授权了，不可重复授权!');
+
+//        //判断手机号是否已使用
+//        $tempUser = $UserModel->where(array('mobile'=>$data['mobile']))->find();
+//        if ($tempUser) $this->error('手机号已使用！');
         //添加代理和代理关系
-        try{
+//        try{
             //生成授权号
             $empower_sn = AgentService::createAgentSn($tempPro['abbr']);
             if($empower_sn === false){
                 $this->error("授权号生成失败！请刷新后重试！");
             }
-            $data['reg_at'] = time();
-            $data['reg_ip'] = $this->request->ip(0,true);
-            $data['password'] = md5($data['password']);
-            $UserModel->data($data)->allowField(true)->save();
-            $agentData['user_id'] = $UserModel->id;
-            $agentData['product_id'] = $this->request->post('product_id');
-            $agentData['level'] = $level;
-            $agentData['created_at'] = time();
-            $agentData['invitation'] = 2;
+//            $data['reg_at'] = time();
+//            $data['reg_ip'] = $this->request->ip(0,true);
+//            $data['password'] = md5($data['password']);
+//            $UserModel->data($data)->allowField(true)->save();
+            $agentData['user_id'] = $user_id;
+            $agentData['product_id'] = $product_id;
+            $agentData['level'] = $level;   //授权等级
+            $agentData['created_at'] = time();  //生成时间
+            $agentData['invitation'] = 2;      //生成方式【1邀请 2后台授权】
             $agentData['empower_sn'] = $empower_sn;
-            $agentData['super_id'] = 0;
-            $agentData['super_level'] = 0;
-            $AgentModel = new Agent;
+            $agentData['super_id'] = 1;        //上级id
+            $agentData['super_level'] = 0;      //上级等级
+
             $AgentModel->data($agentData)->allowField(true)->save();
             // 提交事务
-            Db::commit();
-        } catch (\Exception $e) {
-            // 回滚事务
-            Db::rollback();
-            $this->error('参数错误，请重试添加！');
-        }
+//            Db::commit();
+//        } catch (\Exception $e) {
+//            // 回滚事务
+//            Db::rollback();
+//            $this->error('参数错误，请重试添加！');
+//        }
 //        $this->success('添加成功！', $_SERVER["HTTP_REFERER"].'#'.'/lixuan/agents/index');
         $this->success('添加成功！',$this->_createAdminUrl('agents'));
     }

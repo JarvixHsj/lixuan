@@ -178,9 +178,7 @@ class Agents extends BasicAgent {
             ->join('lx_product p', 'p.id = a.product_id')
             ->where('a.user_id', session('agent.id'))
             ->order('a.id desc')->select()->toArray();
-
         $data = array();
-
 
         if($pro_id) {
             //等级统计
@@ -203,17 +201,20 @@ class Agents extends BasicAgent {
 
             //统计下级信息
             $subData = $AgentModel->alias('a')
-                ->field('u.wechat_no,u.mobile,u.username,a.*')
+                ->field('u.wechat_no,u.mobile,u.username,a.empower_sn,a.level')
                 ->join('lx_user u', "u.id = a.user_id")
                 ->where('a.super_id', session('agent.id'))
                 ->where('a.product_id', $pro_id)
                 ->order('a.id desc')
                 ->select()->toArray();
+            var_dump($subData);die;
             if($subData){
+                foreach($subData as $key=>$val){
+
+                }
                 $data['subinfo'] = $subData;
             }
         }
-
 
         $data['userinfo'] = $userData;
         $data['agentinfo'] = $AgentData;

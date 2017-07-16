@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:75:"/Library/WebServer/Documents/lixuan/application/admin/view/login.index.html";i:1497187871;s:74:"/Library/WebServer/Documents/lixuan/application/extra/view/admin.main.html";i:1497187871;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:75:"/Library/WebServer/Documents/lixuan/application/admin/view/login.index.html";i:1499996367;s:74:"/Library/WebServer/Documents/lixuan/application/extra/view/admin.main.html";i:1497187871;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
     <head>
@@ -41,7 +41,7 @@
                     <b style="color:#fff">推荐谷歌浏览器</b>
                 </a>
             </li>
-            <li><a target="_blank" href="http://www.cuci.cc">楚才官网</a></li>
+            <li><a target="_blank" href="#">励轩官网</a></li>
         </ul>
     </div>
     <!-- 顶部导航条 结束 -->
@@ -63,7 +63,7 @@
                            title="请输入4位及以上的字符"
                            type="text"
                            name="username"
-                           value="admin"
+                           value=""
                            autocomplete="off"
                            autofocus="autofocus"
                            class="login-input username"
@@ -76,7 +76,7 @@
                            title="请输入4位及以上的字符"
                            type="password"
                            name="password"
-                           value="admin"
+                           value=""
                            autocomplete="off"
                            class="login-input password"
                            placeholder="请输入密码"/>

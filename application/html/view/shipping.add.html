@@ -1,0 +1,169 @@
+{extend name="extra@html/main"}
+{block name='style'}
+<link rel="stylesheet" href="__PUBLIC__/static/html/css/mui.picker.min.css" />
+{/block}
+{block name='bodyTag'}
+<body class="bgf2f2f2">
+{block name='body'}
+    <header class="mui-bar mui-bar-nav di_navbox">
+        <h1 class="mui-title">发货</h1>
+        <a href="user_fahuo.html" class="mui-pull-right usfh_addbtn usdl_28">保存</a>
+    </header>
+    <div class="mui-content">
+        <div class="usfh_title usdl_28">
+            <b>货单一</b>
+        </div>
+        <div class="usfh_list">
+            <div class="usfh_list_son">
+                <div class="usfh_lis_title usdl_24">订单号：5456465455</div>
+                <div class="usfh_lisbox usfh_lis_fhr">
+                    <div class="usck_dls_pic"  style="background-image: url(__PUBLIC__/static/html/img/pro-pci.png);"></div>
+                    <div class="usck_dls_info">
+                        <div class="usck_databox">
+                            <p class="name usdl_28">郑美玲</p>
+                            <p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">meiulin2546</span></span></p>
+                            <form action="">
+                                <div class="usfh_in mui-clearfix">
+                                    <p class="mui-pull-left usdl_24">快递单号</p>
+                                    <select class="usdl_24 usck_fhsel mui-pull-right" name="">
+                                        <option value="">自提</option>
+                                        <!--<option value="">扫描</option> TODO-->
+                                    </select>
+                                </div>
+                                <div class="usfh_in mui-clearfix">
+                                    <p class="mui-pull-left usdl_24">发货时间</p>
+                                    <input id="" class="usck_fhinput mui-pull-right usdl_24 mui-text-left usfh-datebtn" type="button" value="" name=""  />
+                                </div>
+                                <div class="usfh_in mui-clearfix">
+                                    <p class="mui-pull-left usdl_24">发货数量</p>
+                                    <input id=""  class="usck_fhinput mui-pull-right usdl_24" type="text" value="" name=""  />
+                                </div>
+                                <div class="usfh_in mui-clearfix">
+                                    <p class="mui-pull-left usdl_24">产品名称</p>
+                                    <input id=""  class="usck_fhinput mui-pull-right usdl_24" type="text" value="" name=""  />
+                                </div>
+                                <div class="usfh_in mui-clearfix">
+                                    <p class="mui-pull-left usdl_24">备注</p>
+                                    <textarea class="usck_fhtext mui-pull-right usdl_24"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="usfh_lisbox" style="height: 60px;">
+                    <a href="fahuo_consignee.html">
+                        <div class="usck_dls_pic"  style="background-image: url(__PUBLIC__/static/html/img/fahuo_addicon.png);"></div>
+                    </a>
+                </div>
+                <!--<div class="usfh_lisbox">
+                    <div class="usck_dls_pic"  style="background-image: url(img/pro-pci.png);"></div>
+                    <div class="usck_dls_info">
+                        <div class="usck_databox">
+                        <p class="name usdl_28">林静</p>
+                        <p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">meiulin2546</span></span></p>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+        <!--<div class="usfh_title usdl_28">-->
+            <!--<b>货单二</b>-->
+        <!--</div>-->
+        <!--<div class="usfh_list">-->
+            <!--<div class="usfh_list_son">-->
+                <!--<div class="usfh_lis_title usdl_24">订单号：5456465455</div>-->
+                <!--<div class="usfh_lisbox usfh_lis_fhr">-->
+                    <!--<div class="usck_dls_pic"  style="background-image: url(__PUBLIC__/static/html/img/pro-pci.png);"></div>-->
+                    <!--<div class="usck_dls_info">-->
+                        <!--<div class="usck_databox">-->
+                            <!--<p class="name usdl_28">郑美玲</p>-->
+                            <!--<p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">meiulin2546</span></span></p>-->
+                            <!--<form action="">-->
+                                <!--<div class="usfh_in mui-clearfix">-->
+                                    <!--<p class="mui-pull-left usdl_24">快递单号</p>-->
+                                    <!--<select class="usdl_24 usck_fhsel mui-pull-right" name="">-->
+                                        <!--<option value="">自提</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                                <!--<div class="usfh_in mui-clearfix">-->
+                                    <!--<p class="mui-pull-left usdl_24">发货时间</p>-->
+                                    <!--<input id="" class="usck_fhinput mui-pull-right usdl_24 mui-text-left usfh-datebtn" type="button" value="" name=""  />-->
+                                <!--</div>-->
+                                <!--<div class="usfh_in mui-clearfix">-->
+                                    <!--<p class="mui-pull-left usdl_24">发货数量</p>-->
+                                    <!--<input id=""  class="usck_fhinput mui-pull-right usdl_24" type="text" value="" name=""  />-->
+                                <!--</div>-->
+                                <!--<div class="usfh_in mui-clearfix">-->
+                                    <!--<p class="mui-pull-left usdl_24">产品名称</p>-->
+                                    <!--<input id=""  class="usck_fhinput mui-pull-right usdl_24" type="text" value="" name=""  />-->
+                                <!--</div>-->
+                                <!--<div class="usfh_in mui-clearfix">-->
+                                    <!--<p class="mui-pull-left usdl_24">备注</p>-->
+                                    <!--<textarea class="usck_fhtext mui-pull-right usdl_24"></textarea>-->
+                                <!--</div>-->
+                            <!--</form>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="usfh_lisbox" style="height: 60px;">-->
+                    <!--<a href="fahuo_consignee.html">-->
+                        <!--<div class="usck_dls_pic"  style="background-image: url(__PUBLIC__/static/html/img/fahuo_addicon.png);"></div>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;<div class="usfh_lisbox">-->
+                    <!--<div class="usck_dls_pic"  style="background-image: url(img/pro-pci.png);"></div>-->
+                    <!--<div class="usck_dls_info">-->
+                        <!--<div class="usck_databox">-->
+                        <!--<p class="name usdl_28">林静</p>-->
+                        <!--<p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">meiulin2546</span></span></p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>&ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+    <script type="text/javascript" src="__PUBLIC__/static/html/js/mui.picker.min.js" ></script>
+    <script type="text/javascript">
+        (function($) {
+            var btns = $('.usfh-datebtn');
+            btns.each(function(i, btn) {
+                btn.addEventListener('tap', function() {
+                    var optionsJson = this.getAttribute('data-options') || '{}';
+                    var options = JSON.parse(optionsJson);
+                    var id = this.getAttribute('id');
+                    /*
+                     * 首次显示时实例化组件
+                     * 示例为了简洁，将 options 放在了按钮的 dom 上
+                     * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+                     */
+                    var picker = new $.DtPicker(options);
+                    picker.show(function(rs) {
+                        /*
+                         * rs.value 拼合后的 value
+                         * rs.text 拼合后的 text
+                         * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+                         * rs.m 月，用法同年
+                         * rs.d 日，用法同年
+                         * rs.h 时，用法同年
+                         * rs.i 分（minutes 的第二个字母），用法同年
+                         */
+                        btn.value = rs.text;
+                        /*
+                         * 返回 false 可以阻止选择框的关闭
+                         * return false;
+                         */
+                        /*
+                         * 释放组件资源，释放后将将不能再操作组件
+                         * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+                         * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+                         * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+                         */
+                        picker.dispose();
+                    });
+                }, false);
+            });
+        })(mui);
+    </script>
+{/block}
+</body>
+{/block}
