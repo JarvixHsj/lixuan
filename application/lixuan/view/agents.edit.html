@@ -1,0 +1,58 @@
+<form class="layui-form layui-box" style='padding:25px 30px 20px 0' action="__SELF__" data-auto="true" method="post">
+    <div class="layui-form-item">
+        <label class="layui-form-label">设置代理等级</label>
+        <div class="layui-input-block">
+            <select name='level' class='layui-select full-width' style='display:block' required="required" title="请选择代理等级">
+                <!--首席CEO，核心总监，总代，一级，特约，）-->
+                <!--<option  value='0'>---请选择代理等级---</option>-->
+                {foreach $agenttype as $key => $vo}
+                <option {if $agent_info.level eq $key}selected{/if} value="{$key}">{$vo}</option>
+                {/foreach}
+
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">选择授权产品</label>
+        <div class="layui-input-block">
+            <select name='product_id' class='layui-select full-width' style='display:block' required="required" title="请选择授权产品">
+                {volist name="pro_list" id='vo' empty('暂时没有数据')}
+                    <option {if $agent_info.product_id eq $vo.id}selected{/if} value="{$vo.id}">{$vo.name}</option>
+                {/volist}
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">授权编号</label>
+        <div class="layui-input-block">
+            <input type="text" name="empower_sn" disabled value='{$agent_info.empower_sn|default=""}' required="required" title="请输入用户名" placeholder="请输入代理用户名" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">代理名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="username" disabled value='{$agent_info.username|default=""}' required="required" title="请输入用户名" placeholder="请输入代理用户名" class="layui-input">
+        </div>
+    </div>
+     <div class="layui-form-item">
+        <label class="layui-form-label">代理手机号</label>
+        <div class="layui-input-block">
+            <input type="text" disabled name="mobile" value='{$agent_info.mobile|default=""}' required="required" title="请输入代理手机号" placeholder="请输入代理手机号" class="layui-input">
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="layui-form-item text-center">
+
+        {if isset($agent_info['id'])}<input type='hidden' value='{$agent_info.id}' name='id'/>{/if}
+        {if isset($agent_info['user_id'])}<input type='hidden' value='{$agent_info.user_id}' name='user_id'/>{/if}
+
+        <button class="layui-btn" type='submit'>保存数据</button>
+
+        <button class="layui-btn layui-btn-danger" type='button' data-confirm="确定要取消编辑吗？" data-close>取消编辑</button>
+
+    </div>
+
+</form>

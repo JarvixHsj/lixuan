@@ -76,7 +76,10 @@
                     {/if}
                 </td>-->
                 <td class='text-center nowrap'>
-                    未开通
+                    {if auth("$classuri/edit")}
+                    <a data-modal='{:url("$classuri/edit")}?agent_id={$vo.id}' href="javascript:void(0)">编辑</a>
+                    <!--<span class="text-explode">|</span>-->
+                    {/if}
                 </td>
             </tr>
             {/foreach}

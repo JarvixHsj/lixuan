@@ -22,7 +22,7 @@ use model\User;
 use think\Url;
 
 /**
- * 系统登录控制器
+ * 游客控制器
  * class Login
  * @package app\admin\controller
  * @author Anyon <zoujingli@qq.com>
@@ -56,26 +56,6 @@ class Tourists extends Controller {
      * @return string
      */
     public function index() {
-        // var_dump(session('agent'));die;
-
-        // if ($this->request->isGet()) {
-        //     $this->assign('title', '用户登录');
-        //     return $this->fetch();
-        // } else {
-        //     // var_dump(md5($this->request->post('password')));die;
-        //     $mobile = $this->request->post('mobile', '', 'trim');
-        //     $password = $this->request->post('password', '', 'trim');
-        //     (empty($mobile) || strlen($mobile) != 11) && $this->error('手机号长度不正确长度不正确!');
-        //     (empty($password) || strlen($password) < 6) && $this->error('登录密码长度不能少于6位有效字符!');
-        //     $user = Db::name('LxUser')->where('mobile', $mobile)->find();
-        //     empty($user) && $this->error('登录账号不存在，请重新输入!');
-        //     ($user['password'] !== md5($password)) && $this->error('登录密码与账号不匹配，请重新输入!');
-        //     Db::name('SystemUser')->where('id', $user['id'])->update(['login_at' => ['exp', 'now()'], 'login_num' => ['exp', 'login_num+1']]);
-        //     session('agent', $user);
-        //     // !empty($user['authorize']) && NodeService::applyAuthNode();
-        //     LogService::write('代理用户管理', '用户'.$mobile.'登录系统成功');
-        //     $this->success('登录成功，正在进入后台...', '@html/Agents/index');
-        // }
     }
 
     //受邀请页面
@@ -184,4 +164,19 @@ class Tourists extends Controller {
         if($result) $this->result('',0, '提交失败，填写信息格式不正确！','json');
     }
 
+
+    /**
+     * 合作协议
+     */
+    public function agree()
+    {
+
+        return view();
+    }
+
+
+
+
 }
+
+
