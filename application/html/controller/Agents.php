@@ -82,7 +82,7 @@ class Agents extends BasicAgent {
             if($key < $res['level']){
                 unset($tempLevel[$key]);
             }
-            if($res['level'] = 1){
+            if($res['level'] == 1){
                 if($key == 1){
                     unset($tempLevel[$key]);
                 }
