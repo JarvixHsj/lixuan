@@ -235,7 +235,7 @@ class Agents extends BasicAdmin {
         $sourceInfo = $AgentModel->find($id);
         if(!$sourceInfo) $this->error('信息不存在！请刷新后重试~');
         $sourceInfo = $sourceInfo->toArray();
-        if($sourceInfo['level'] == $selectLevel && $sourceInfo['product_id'] = $selectProId) $this->success('修改成功~', '');
+//        if($sourceInfo['level'] == $selectLevel && $sourceInfo['product_id'] = $selectProId) $this->success('修改成功~', '');
 
         //判断是否更换了产品
         if($selectProId != $sourceInfo['product_id']){
@@ -245,13 +245,12 @@ class Agents extends BasicAdmin {
         }
 
         //判断是否更改了代理等级
-        if($selectLevel != $sourceInfo['level']){
-        $comboUpdate = $AgentModel->save(array('level' => $selectLevel), array('id' => $id));
+//        if($selectLevel != $sourceInfo['level']){
+        $comboUpdate = $AgentModel->save(array('level' => $selectLevel, 'product_id' => $selectProId), array('id' => $id));
         if($comboUpdate !== false) $this->success('恭喜, 数据保存成功!', '');
         $this->error('修改失败，请关闭后重试~');
 
-        }
-
+//        }
     }
 
 }

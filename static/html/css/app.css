@@ -1030,3 +1030,17 @@ select.usck_fhsel {
     .usdl_24 {font-size: 15px;}
     .usdl_22 {font-size: 14px;}
 }
+
+/* 7-17 insert*/
+@media (max-width:320px) {
+    .sqs_info_hra.brand {left:30px}
+}
+@media (min-width:321px) and (max-width: 360px) {
+    .sqs_info_hra.brand {left:36px}
+}
+@media (min-width:361px) and (max-width: 380px) {
+    .sqs_info_hra.brand {left:36px}
+}
+@media (min-width:381px) {
+    .sqs_info_hra.brand {left:39px}
+}
