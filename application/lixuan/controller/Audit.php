@@ -20,6 +20,7 @@ use service\LogService;
 use service\AgentService;
 use model\User;
 use model\Agent;
+use model\Product;
 use model\UserAudit;
 use model\UserInvite;
 use think\response\View;
@@ -81,21 +82,30 @@ class Audit extends BasicAdmin {
             ->field('a.*')
             ->join('lx_agent a', 'a.id = ui.agent_id')
             ->where('ui.id', $AuditData['user_invite_id'])
-            ->find()->toArray();
+            ->find();
         if(!$AgentData) $this->error('数据异常！');
+        $AgentData = $AgentData->toArray();
+
+        $ProModel = new Product;
+        $tempPro = $ProModel->find($AgentData['product_id'])->toArray();
+        if (!$tempPro) {
+            $this->error('选择的代理产品有误，请重新选择！');
+        }
 
         // 启动事务
         Db::startTrans();
         try{
-            $empower_sn = AgentService::createAgentSn($AuditData['invite_level']);
+            $empower_sn = AgentService::createAgentSn($tempPro['abbr']);
 
             //代理表
             $insertUserData = array();
-            $insertUserData['username'] = $AuditData['mobile'];
+            $insertUserData['username'] = $AuditData['username'];
             $insertUserData['idcard'] = $AuditData['idcard'];
             $insertUserData['mobile'] = $AuditData['mobile'];
             $insertUserData['password'] = $AuditData['password'];
             $insertUserData['wechat_no'] = $AuditData['wechat_no'];
+            $insertUserData['positive'] = $AuditData['positive'];
+            $insertUserData['reverse'] = $AuditData['reverse'];
             $insertUserData['reg_at'] = time();
             $insertUserData['detail_address'] = $AuditData['address'];
             $UserModel = new User();

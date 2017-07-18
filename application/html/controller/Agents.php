@@ -54,6 +54,7 @@ class Agents extends BasicAgent {
         ->field('a.*,p.name')
         ->join('lx_product p', 'a.product_id = p.id')
         ->where('a.user_id', session('agent.id'))
+        ->where('p.is_delete' , 1)
         ->select()->toArray();
 
         $this->assign('agenttype', $this->_agentType);
@@ -182,6 +183,7 @@ class Agents extends BasicAgent {
             ->field('a.*,p.name')
             ->join('lx_product p', 'p.id = a.product_id')
             ->where('a.user_id', session('agent.id'))
+            ->where('p.is_delete' , 1)
             ->order('a.id desc')->select()->toArray();
         $data = array();
 
@@ -220,7 +222,7 @@ class Agents extends BasicAgent {
                 $data['subinfo'] = $subData;
             }
         }
-
+//        var_dump($AgentData);die;
         $data['userinfo'] = $userData;
         $data['agentinfo'] = $AgentData;
         $data['agenttype'] = $this->_agentType;

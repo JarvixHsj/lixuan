@@ -41,10 +41,11 @@
 					</span></p>
 			</div>
 			<form action="{:Url('Tourists/checkinfo')}" method="post">
-				<input type="text" class="usyq_cin usyq_twoin usdl_28 mui-pull-left" name="wechat_no" value="" placeholder="微信号" />				
-				<input type="text" class="usyq_cin usyq_twoin usdl_28 mui-pull-right" name="mobile" value="" placeholder="手机号码" />
-				<input type="text" class="usyq_cin usdl_28" name="idcard" value="" placeholder="身份证号" />				
-				<input type="password" class="usyq_cin usdl_28" name="password" value="" placeholder="登录密码" />				
+				<input type="text" class="usyq_cin usyq_twoin usdl_28 mui-pull-left" name="username" value="" placeholder="姓名" />
+				<input type="text" class="usyq_cin usyq_twoin usdl_28 mui-pull-right" name="wechat_no" value="" placeholder="微信号" />
+                <input type="text" class="usyq_cin usdl_28" name="mobile" value="" placeholder="手机号" />
+                <input type="text" class="usyq_cin usdl_28" name="idcard" value="" placeholder="身份证号" />
+                <input type="password" class="usyq_cin usdl_28" name="password" value="" placeholder="登录密码" />
 				<input type="password" class="usyq_cin usdl_28" name="afirmpassword" value="" placeholder="确认登录密码" />				
 				<textarea class="usyq_textin usdl_28" name="address" rows="3" placeholder="输入你的收货地址"></textarea>	
 				{if condition="$Think.session.agent.id gt 0"}	
@@ -190,6 +191,7 @@
 
         $(".submit").click(function(){
             var checkUrl = "{:Url('Tourists/checkinfo')}";
+            var username = $("input:text[name='username']").val();
             var mobile = $("input:text[name='mobile']").val();
             var idcard = $("input:text[name='idcard']").val();
             var password = $("input:password[name='password']").val();
@@ -197,6 +199,7 @@
             var wechat_no = $("input:text[name='wechat_no']").val();
             var address = $(".usyq_textin").val();
 //            alert(address);return;
+            judgeEmpty(username,'姓名不能为空');
             judgeEmpty(mobile,'手机号不能为空');
             judgeEmpty(password,'密码不能为空');
             judgeEmpty(wechat_no,'微信号不能为空');
@@ -208,7 +211,7 @@
             $.ajax({
                 type: "POST",
                 url: checkUrl,
-                data: {'mobile': mobile,'idcard': idcard,'password': password,'afirmpassword': afirmpassword,'wechat_no': wechat_no,'address': address},
+                data: {'username': username,'mobile': mobile,'idcard': idcard,'password': password,'afirmpassword': afirmpassword,'wechat_no': wechat_no,'address': address},
                 success: function(res){
                     if(res.code == 0){
                         mui.alert(res.msg,'提示');

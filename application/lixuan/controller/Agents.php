@@ -146,7 +146,7 @@ class Agents extends BasicAdmin {
                 $this->error('暂无代理，请先添加代理再来授权！');
             }
             $ProModel = new product;
-            $proList = $ProModel->where('status = 1')->order('id desc')->select();
+            $proList = $ProModel->where('is_delete = 1')->order('id desc')->select();
             if(!$proList){
                 $this->error('暂无产品，请先添加产品再来授权！');
             }

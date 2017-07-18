@@ -2,12 +2,12 @@
 
 {block name="button"}
 <div class="nowrap pull-right" style="margin-top:10px">
-    <button data-modal='{:url("$classuri/add")}' data-title="添加代理" class='layui-btn layui-btn-small'><i
-            class='fa fa-plus'></i> 添加代理
-    </button>
-    <button data-update data-field='delete' data-action='{:url("classuri/del")}'
-            class='layui-btn layui-btn-small layui-btn-danger'><i class='fa fa-remove'></i> 删除代理
-    </button>
+    <!--<button data-modal='{:url("$classuri/add")}' data-title="添加代理" class='layui-btn layui-btn-small'><i-->
+            <!--class='fa fa-plus'></i> 添加代理-->
+    <!--</button>-->
+    <!--<button data-update data-field='delete' data-action='{:url("classuri/del")}'-->
+            <!--class='layui-btn layui-btn-small layui-btn-danger'><i class='fa fa-remove'></i> 删除代理-->
+    <!--</button>-->
 </div>
 {/block}
 {block name="content"}
@@ -48,6 +48,7 @@
                 <!--<th class='text-center'>邀请人代理等级</th>-->
                 <th class='text-center'>代理的产品</th>
                 <th class='text-center'>授权代理等级</th>
+                <th class='text-center'>姓名</th>
                 <th class='text-center'>微信号</th>
                 <th class='text-center'>手机号</th>
                 <th class='text-center'>身份证号</th>
@@ -69,6 +70,7 @@
                 <td class='text-center'>{$vo.super_mobile}</td>
                 <td class='text-center'>{$vo.pro_name}</td>
                 <td class='text-center'>{$agenttype[$vo['invite_level']]}</td>
+                <td class='text-center'>{$vo.username|default="无"}</td>
                 <td class='text-center'>{$vo.wechat_no}</td>
                 <td class='text-center'>{$vo.mobile}</td>
                 <td class='text-center'>{$vo.idcard}</td>
@@ -80,7 +82,7 @@
                 <td class='text-center'>{empty name="vo.reverse"}
                     无
                     {else /}
-                    <img data-tips-image='http://{$Think.server.http_host}/public/uploads/{$vo.positive}' class="tips_audit"  src="http://{$Think.server.http_host}/public/uploads/{$vo.reverse}" style="width:126px;height:77px;border-radius: 8px;"/>
+                    <img data-tips-image='http://{$Think.server.http_host}/public/uploads/{$vo.reverse}' class="tips_audit"  src="http://{$Think.server.http_host}/public/uploads/{$vo.reverse}" style="width:126px;height:77px;border-radius: 8px;"/>
                     {/empty}</td>
                 <td class='text-center'>{$vo.address}</td>
 

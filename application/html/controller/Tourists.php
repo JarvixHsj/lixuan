@@ -114,12 +114,13 @@ class Tourists extends Controller {
         if(judgeMobile($param['mobile']) == false) $this->result('',0, '手机号码格式错误~','json');
         if(isCreditNo($param['idcard']) === false) $this->result('',0, '身份证格式错误~','json');
         if(strlen($param['address']) > 100) $this->result('',0, '收货地址过长~','json');
+        if(strlen($param['username']) > 25) $this->result('',0, '姓名长度过长~','json');
         if($param['password'] != $param['afirmpassword']) $this->result('',0, '两次密码不一样~','json');
         //校验图片是否存在
         $reversePath = session('user.reverse');
         $positivePath = session('user.positive');
-        if(!empty($positivePath) && !file_exists(UPLOAD_PATH.$positivePath)) $this->result('', 0, '请上传身份证正面照片！','json');
-        if(!empty($reversePath) && !file_exists(UPLOAD_PATH.$reversePath)) $this->result('', 0, '请上传身份证反面照片！','json');
+        if(!empty($positivePath) && !file_exists(UPLOAD_PATH.$positivePath)) $this->result('', 0, '请重新上传正面照片！','json');
+        if(!empty($reversePath) && !file_exists(UPLOAD_PATH.$reversePath)) $this->result('', 0, '请重新上传反面照片！','json');
 
         //判断是否有这个代理信息代理过该产品
         $sql = "SELECT u.* FROM lx_user u JOIN lx_agent a ON a.user_id = u.id WHERE (u.mobile = '{$param['mobile']}' OR u.idcard = '{$param['idcard']}') AND a.product_id = '{$inviteInfo['product_id']}'";
@@ -147,6 +148,7 @@ class Tourists extends Controller {
         $saveData['user_id'] = $inviteInfo['user_id'];
         $saveData['product_id'] = $inviteInfo['product_id'];
         $saveData['wechat_no'] = $param['wechat_no'];
+        $saveData['username'] = $param['username'];
         $saveData['mobile'] = $param['mobile'];
         $saveData['idcard'] = $param['idcard'];
         $saveData['password'] = md5($param['password']);

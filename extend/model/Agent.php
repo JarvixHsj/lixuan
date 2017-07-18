@@ -25,7 +25,8 @@
             $res = $this->alias('a')
                 ->field('a.*,p.name')
                 ->join('lx_product p', 'p.id = a.product_id')
-                ->where('a.user_id', $user_id)
+//                ->where('a.user_id', $user_id)
+                ->where(array('a.user_id' => $user_id, 'p.is_delete' => 1))
                 ->select()->toArray();
             if($res) return $res;
             return false;
