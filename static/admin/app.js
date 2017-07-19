@@ -76,3 +76,13 @@ require(['pace', 'jquery', 'layui', 'bootstrap', 'jquery.cookies'], function () 
         require(['admin.listen']);
     });
 });
+
+
+function judgeEmpty(content, msg)
+{
+    if (content == null || content == undefined || content == '') {
+        alert(msg);
+        //return;
+        throw SyntaxError();
+    }
+}

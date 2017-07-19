@@ -77,16 +77,7 @@ class Tools extends Controller {
      */
     public  function ajaxUploads()
     {
-        //校验图片是否存在
-//        $url = session('user.reverse');
-//        if(file_exists(UPLOAD_PATH.$url)){
-//            echo '1';
-//        }else{
-//            echo '2';
-//        }
-////        var_dump($headerPath.$url);
-//
-//        die;
+
         $uploadCatelogName = 'user';//存储在uploads目录下的路径名
         $paramSelect = array(1 => 'positive', 2 => 'reverse');
 //        positive正面    reverse反面
@@ -99,8 +90,6 @@ class Tools extends Controller {
                 session('user.'.$paramSelect[$type],$uploadCatelogName.DS.$res); //存储
                 var_dump($res);
             }
-            //string(50) "/Library/WebServer/Documents/lixuan/public/uploads"
-//            jpg20170712/8feaeebe7e987d759e5146cbbb419004.jpg8feaeebe7e987d759e5146cbbb419004.jpg
         }
     }
 

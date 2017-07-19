@@ -95,12 +95,10 @@ class Tourists extends Controller {
         $this->assign('param', $param);
         $sourceUrl = $this->request->header()['referer'];
         $strstrStr = strstr($sourceUrl, 'share_no=');
-//        $ltrimStr = ltrim($strstrStr,'share_no=');
         $share_no = substr($strstrStr,9,32);  //截取
         if(!$share_no) {
             $this->result('',0, '链接参数有误~','json');
         }
-//        $this->result('',0, $share_no.'-'.$strstrStr,'json');
         //判断是否有该邀请
         $UserInviteModel = new UserInvite;
         $inviteInfo = $UserInviteModel->where('share_no', $share_no)->find();

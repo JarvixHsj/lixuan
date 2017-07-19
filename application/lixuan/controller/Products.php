@@ -113,22 +113,55 @@ class Products extends BasicAdmin {
 
             $result['title'] = '编辑图文';
             $result['vo'] = Db::table('lx_product')->find($id);
-
 //            return view('form', ['title' => '编辑图文', 'vo' => WechatService::getNewsById($id)]);
 //            $this->assign('vo', $result);
             return view('edit', $result);
         }
-        $data = $this->request->post();
-        $ids = $this->_apply_news_article($data['data']);
-        if (!empty($ids)) {
-            $post = ['id' => $id, 'article_id' => $ids, 'create_by' => session('user.id')];
-            if (false !== DataService::save('wechat_news', $post, 'id')) {
-                $this->success('图文更新成功!', '');
+        $data = $this->request->param();
+        if (!empty($data['id'])) {
+            unset($data['spm']);
+            //查询出原来的产品信息
+            $ProductModel = new product;
+            $oldInfo = $ProductModel->find($data['id']);
+            if(!$oldInfo) $this->error('参数有误，请稍后重试！');
+            $oldInfo = $oldInfo->toArray();
+//            var_dump($data,$oldInfo);die;
+            //判断是否有重新上传图片
+            if($oldInfo['image'] != $data['image']){
+                 //获取图片信息  后缀名等
+                $phpinfo = pathinfo($data['image']);
+                //去除域名图片域名，取得目录路径部分
+                $tempOldName = trim(strstr($data['image'], $this->request->host()), $this->request->host());
+                //拼成绝对路径
+                $oldname = $this->request->server('DOCUMENT_ROOT') . $tempOldName;
+                //组合新的绝对路径
+                $newNamePath = "/static/admin/image/product/". date('Y-m-d-H-i-s',time()).$this->randStr[mt_rand(0, 35)].'.'.$phpinfo['extension'];
+                $newname = $this->request->server('DOCUMENT_ROOT').$newNamePath;
+                //判断新路径是否不存在，判断旧路径是存在
+                if(file_exists($newname)||!file_exists($oldname)){
+                    $this->error('目标文件已存在或原文件不存在！');
+                }
+                //移动文件 结果是bool
+                $mvFileRes = @rename($oldname,$newname);
+                if(!$mvFileRes){
+                    $this->error('网络出错，请重试~');
+                }
+                @unlink($this->request->server('DOCUMENT_ROOT').$data['image']);
+                $data['image'] = $newNamePath;
             }
-        }
-        $this->error('图文更新失败，请稍候再试！');
-    }
 
+            //重新组合要插入的数据
+            $data['abbr'] = strtoupper($data['abbr']);
+            $data['change_at'] = time();
+//            unset($data['id']);
+            $comboRes = $ProductModel->update($data);
+            if($comboRes !== false) $this->success('保存成功!', '');
+            $this->error('保存失败，请稍候再试！');
+
+        }
+        $this->error('参数有误，请稍后重试！');
+
+    }
 
     /**
      * 禁止

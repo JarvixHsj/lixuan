@@ -1,43 +1,17 @@
 {extend name='extra@admin/content'}
 
 {block name='content'}
-
-<!--左侧图文列表 开始-->
-<!--<div class="panel panel-default news-left">-->
-    <!--<div class="panel-heading">图文列表</div>-->
-    <!--<div class="panel-body news-box">-->
-        <!--{if empty($vo['articles']) eq false}-->
-        <!--{foreach $vo.articles as $key=>$value}-->
-        <!--<div class="news-item transition" data-id="{$value.id}" style="background-image:url('{$value.local_url}?imageView2/1/w/338/h/190/interlace/1')">-->
-            <!--<a class="upload-multiple-close fa fa-close hide"></a>-->
-            <!--<span class="news-title">{$value.title}</span>-->
-        <!--</div>-->
-        <!--<hr/>-->
-        <!--{/foreach}-->
-        <!--{else}-->
-        <!--<div class="news-item transition active news-image" style="background-image:url('__PUBLIC__/static/plugs/uploader/theme/image.png')">-->
-            <!--<a class="upload-multiple-close fa fa-close hide"></a>-->
-            <!--<span class="news-title"></span>-->
-        <!--</div>-->
-        <!--<hr/>-->
-        <!--{/if}-->
-        <!--<a href="javascript:void(0)" class='article-add transition' data-text-tip="添加图文"><i class="fa fa-plus"></i></a>-->
-    <!--</div>-->
-<!--</div>-->
-<!--左侧图文列表 结束-->
-
 <!--右侧编辑区 开始-->
 <div class="panel panel-default news-right"  style="left: 35px;" >
     <div class="panel-heading">产品添加</div>
     <div class="panel-body">
-        <form class="form-horizontal" role="form" name="news" onsubmit="return false;">
+        <form class="form-horizontal" role="form" method="post" name="news" onsubmit="return false;">
 
             <div class="form-group">
                 <div class="col-md-12">
                     <div class="input-group">
                         <span class="input-group-addon">产品名称</span>
                         <input maxlength="30" required="required" title="名称不能为空哦" placeholder="请在这里输入名称" name='name' value="{$vo['name']}" class="layui-input">
-                        <input type="hidden" name="id">
                     </div>
                 </div>
             </div>
@@ -46,8 +20,8 @@
                 <div class="col-md-12">
                     <div class="input-group">
                         <span class="input-group-addon">产品缩写</span>
-                        <input maxlength="8" required="required" title="首字母缩写不能为空" placeholder="用于代理该产品的授权号" name='title' class="layui-input">
-                        <input type="hidden" name="id">
+                        <input maxlength="8" required="required" title="首字母缩写不能为空" placeholder="用于代理该产品的授权号" name='abbr' value="{$vo['abbr']|default=' '}" class="layui-input">
+                        <input type="hidden" name="id" value="{$vo.id}">
                     </div>
                 </div>
             </div>
@@ -55,67 +29,24 @@
             <div class="form-group">
                 <div class="col-md-12">
                     <label style="color:#aaa">产品简介(用于首页产品列表展示)</label>
-                    <textarea name="digest" class="layui-input" style="height:80px;resize:none;line-height:20px"></textarea>
+                    <textarea name="intro" class="layui-input" style="height:80px;resize:none;line-height:20px">{$vo.intro|default=" "}</textarea>
                 </div>
             </div>
 
-            <!--<div class="form-group">-->
-                <!--<div class="col-md-12">-->
-                    <!--<div class="input-group">-->
-                        <!--<span class="input-group-addon">产品简介</span>-->
-                        <!--<input maxlength="100" required="required" title="产品简介不能为空哦" placeholder="请输入简介" name='author' class="layui-input">-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="form-group">-->
-                <!--<div class="col-md-12">-->
-                    <!--<div class="form-control" style="height:auto">-->
-                        <!--<label style="color:#ccc">图文封面大图片设置</label>-->
-                        <!--<div class="row nowrap">-->
-                            <!--<div class="col-xs-3" style="width:160px">-->
-                                <!--<div class="upload-image-box transition">-->
-                                    <!--<input value="__PUBLIC__/static/plugs/uploader/theme/image.png" type="hidden" name="local_url">-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="col-xs-6">-->
-                                <!--<br>-->
-                                <!--<a data-file="one" data-type="jpg,png,jpeg" data-field="local_url" class="btn btn-sm">上传图片</a>-->
-                                <!--<a data-iframe='{:url("image")}?field=local_url' class="btn btn-sm">选择图片</a>-->
-                                <!--<br><br>-->
-                                <!--<label style="margin-left:0;padding-left:10px">-->
-                                    <!--<input data-auto-none type="checkbox" value="1" name="show_cover_pic">-->
-                                    <!--在正文显示此图片-->
-                                <!--</label>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<p class="help-block" style="margin-top:10px;color:#ccc">封面大图片建议尺寸：900像素 * 500像素</p>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-
             <div class="layui-form-item">
                 <label class="layui-form-label">产品图片</label>
-                <img data-tips-image style="height:auto;max-width:128px;max-height:128px;" src="__PUBLIC__/static/plugs/uploader/theme/image.png"/>
-                <input type="hidden" name="image" onchange="$(this).prev('img').attr('src', this.value)" value="" class="layui-input">
-                <a class="btn btn-link" data-file="one" data-type="ico,png" data-field="image">上传图片</a>
+                <img data-tips-image style="height:auto;max-width:128px;max-height:128px;" src="__PUBLIC__{$vo.image|default='/static/plugs/uploader/theme/image.png'}"/>
+                <input type="hidden" name="image" onchange="$(this).prev('img').attr('src', this.value)" value="{$vo.image}" class="layui-input">
+                <a class="btn btn-link" data-file="one" data-type="ico,png,jpg" data-field="image">上传图片</a>
                 <span>建议上传图片的尺寸为128x128px，此图标用于产品展示使用。</span>
             </div>
 
             <div class="form-group">
                 <div class="col-md-12">
-                    <textarea name='content'></textarea>
+                    <textarea name='content' class="content">{$vo.content|default=" "}</textarea>
                 </div>
             </div>
 
-        <!---->
-            <!--<div class="form-group">-->
-                <!--<div class="col-md-12">-->
-                    <!--<label style="display:block"><span style="color:#aaa;">原文链接<b>选填</b>，填写之后在图文左下方会出现此链接</span>-->
-                        <!--<input maxlength="200" name='content_source_url' class="layui-input">-->
-                    <!--</label>-->
-                <!--</div>-->
-            <!--</div>-->
             <div class="form-actions">
                 <div class="row">
                     <div class="col-md-offset-4 col-md-9">
@@ -156,25 +87,63 @@
 
         /*! 编辑器初始化成功 */
         editor.ready(function () {
-
             var $form = $('form[name="news"]'), $body = $('body');
-
             $form.validate();
 
             /*! 数据提交 */
             $form.find('button[data-submit]').on('click', function () {
                 var data = [];
-                $form.submit();
-                if (!syncEditor($('.news-item.active'))) {
-                    editor.setContent('文章内容不能留空，请输入内容！');
-                    return false;
+//                $form.submit();
+//                if (!syncEditor($('.news-item.active'))) {
+//                    editor.setContent('文章内容不能留空，请输入内容！');
+//                    return false;
+//                }
+//                $('.news-item').map(function () {
+//                    var item = $(this).data('item');
+//                    item.content = item.content || '文章内容不能留空，请输入内容！';
+//                    data.push(item);
+//                });
+
+                var saveUrl = "__SELF__";
+                var name = $("input:text[name='name']").val();
+                var intro = $("textarea[name='intro']").val();
+                var abbr = $("input:text[name='abbr']").val();
+                var image = $("input:hidden[name='image']").val();
+                var pro_id = $("input:hidden[name='id']").val();
+                var content = $("textarea[name='content']").val();
+
+                if(!pro_id) {
+                    alert('参数有误');return;
                 }
-                $('.news-item').map(function () {
-                    var item = $(this).data('item');
-                    item.content = item.content || '文章内容不能留空，请输入内容！';
-                    data.push(item);
-                });
-                $.form.load('__SELF__', {data: data}, "post");
+                if(!name) {
+                    alert('产品名称不能为空');return;
+                }
+                if(!abbr){
+                    alert('产品缩写不能为空');return;
+                }
+                if(!intro){
+                    alert('产品简介不能为空');return;
+                }
+                if(!content){
+                    alert('产品内容不能为空');return;
+                }
+                $.ajax({
+                    async: false,
+                    type: "POST",
+                    url: saveUrl,
+                    data: { id: pro_id, image: image, name: name, intro: intro, abbr: abbr, content: content },
+                    success: function(res){
+                        if(res.code == 1){
+                            alert(res.msg);
+                            history.go(-1);
+//                            window.location.reload()
+                        }
+                        console.log(msg);
+                    },error:function(){
+                        alert('系统繁忙！');
+                    }
+                })
+//                $.form.load(saveUrl, {data: data}, "post");
             });
 
             /*! 输入标题显示 */

@@ -74,25 +74,17 @@
                 <td class='text-center'>{$vo.wechat_no}</td>
                 <td class='text-center'>{$vo.mobile}</td>
                 <td class='text-center'>{$vo.idcard}</td>
-                <td class='text-center'>{empty name="vo.positive"}
-                    无
-                    {else /}
-                    <img data-tips-image='http://{$Think.server.http_host}/public/uploads/{$vo.positive}' class="tips_audit" src="http://{$Think.server.http_host}/public/uploads/{$vo.positive}" style="width:126px;height:77px;border-radius: 8px;"/>
-                    {/empty}</td>
                 <td class='text-center'>{empty name="vo.reverse"}
                     无
                     {else /}
                     <img data-tips-image='http://{$Think.server.http_host}/public/uploads/{$vo.reverse}' class="tips_audit"  src="http://{$Think.server.http_host}/public/uploads/{$vo.reverse}" style="width:126px;height:77px;border-radius: 8px;"/>
                     {/empty}</td>
+                <td class='text-center'>{empty name="vo.positive"}
+                    无
+                    {else /}
+                    <img data-tips-image='http://{$Think.server.http_host}/public/uploads/{$vo.positive}' class="tips_audit" src="http://{$Think.server.http_host}/public/uploads/{$vo.positive}" style="width:126px;height:77px;border-radius: 8px;"/>
+                    {/empty}</td>
                 <td class='text-center'>{$vo.address}</td>
-
-                <!--<td class='text-center'>
-                    {if $vo.status eq 0}
-                    <span>已禁用</span>
-                    {elseif $vo.status eq 1}
-                    <span style="color:#090">使用中</span>
-                    {/if}
-                </td>-->
                 <td class='text-center nowrap'>
                     {if $vo.is_through eq 0}
                         {if auth("$classuri/del")}

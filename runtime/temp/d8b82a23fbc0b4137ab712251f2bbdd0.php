@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:75:"/Library/WebServer/Documents/lixuan/application/admin/view/login.index.html";i:1499996367;s:74:"/Library/WebServer/Documents/lixuan/application/extra/view/admin.main.html";i:1497187871;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:75:"/Library/WebServer/Documents/lixuan/application/admin/view/login.index.html";i:1499996367;s:74:"/Library/WebServer/Documents/lixuan/application/extra/view/admin.main.html";i:1500388790;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
     <head>
@@ -15,7 +15,7 @@
 
         <script>window.ROOT_URL = '__PUBLIC__';</script>
         <script src="__PUBLIC__/static/plugs/require/require.js?ver=<?php echo date('ymd'); ?>"></script>
-        <script src="__PUBLIC__/static/admin/app.js?ver=<?php echo date('ymd'); ?>"></script>
+        <script src="__PUBLIC__/static/admin/app.js?ver=<?php echo date('ymdhis'); ?>"></script>
     </head>
     
     <body>

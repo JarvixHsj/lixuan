@@ -222,7 +222,7 @@ class Agents extends BasicAgent {
                 $data['subinfo'] = $subData;
             }
         }
-//        var_dump($AgentData);die;
+//        var_dump($userData,$AgentData);die;
         $data['userinfo'] = $userData;
         $data['agentinfo'] = $AgentData;
         $data['agenttype'] = $this->_agentType;
