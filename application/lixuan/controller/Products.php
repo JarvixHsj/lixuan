@@ -154,7 +154,7 @@ class Products extends BasicAdmin {
             $data['abbr'] = strtoupper($data['abbr']);
             $data['change_at'] = time();
 //            unset($data['id']);
-            $comboRes = $ProductModel->update($data);
+            $comboRes = $ProductModel->update(2);
             if($comboRes !== false) $this->success('保存成功!', '');
             $this->error('保存失败，请稍候再试！');
 

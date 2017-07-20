@@ -120,7 +120,9 @@ class Agents extends BasicAgent {
         $newTime = time();
         $saveData['share_no'] = AgentService::createAgentInvite();
         //组合连接
-        $share_url = $this->request->header()['origin'].$this->request->baseFile().'/'.$this->request->module().'/Tourists/tobeinvited?share_no='.$saveData['share_no'];
+        $share_url = 'http://'.$this->request->header()['host'].$this->request->baseFile().'/'.$this->request->module().'/Tourists/tobeinvited?share_no='.$saveData['share_no'];
+//        var_dump($share_url);die;
+
         $UserInviteModel = new UserInvite;
         //组合数据
         $saveData['user_id'] = session('agent.id');      
@@ -222,7 +224,7 @@ class Agents extends BasicAgent {
                 $data['subinfo'] = $subData;
             }
         }
-//        var_dump($userData,$AgentData);die;
+        var_dump($userData,$AgentData);die;
         $data['userinfo'] = $userData;
         $data['agentinfo'] = $AgentData;
         $data['agenttype'] = $this->_agentType;

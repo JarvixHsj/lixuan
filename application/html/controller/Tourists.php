@@ -89,7 +89,7 @@ class Tourists extends Controller {
 
     //核对填写信息
     public function checkinfo()
-    {   
+    {
         //接收用户参数
         $param = $this->request->param();
         $this->assign('param', $param);
@@ -155,11 +155,29 @@ class Tourists extends Controller {
         $saveData['is_through'] = 0;
         $saveData['share_no'] = $share_no;
         $saveData['invite_level'] = $inviteInfo['level'];
-        $saveData['positive'] = $reversePath;
-        $saveData['reverse'] = $positivePath;
+        $saveData['positive'] = $positivePath;
+        $saveData['reverse'] = $reversePath;
+
         $UserAuditModel->allowField(true)->save($saveData);
+//        var_dump($UserAuditModel->id);
         if($UserAuditModel->id){
+            $findRes = $UserAuditModel->find($UserAuditModel->id);
+            if(!$findRes) $this->request('', 0, '提交失败，填写信息格式不正确!','json');
+            $findRes = $findRes->toArray();
+//            var_dump($findRes);die;
+
+            if(empty($findRes['positive'])){
+                $UserAuditModel->delete($UserAuditModel->id);
+                $this->result('',0, '请重新上传正面照片！','json');
+            }
+            if(empty($findRes['reverse'])){
+                $UserAuditModel->delete($UserAuditModel->id);
+                $this->result('',0, '请重新上传反面照片！','json');
+            }
+            session('user.reverse',null);
+            session('user.positive',null);
             $this->result(Url::build('Index/index'),1, '提交成功，请耐心等待后台审核~','json');
+
         }
         if($result) $this->result('',0, '提交失败，填写信息格式不正确！','json');
     }

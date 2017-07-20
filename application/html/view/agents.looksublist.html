@@ -26,7 +26,7 @@
 				<select class="usck_select usdl_28" name="" id="select_pro">
 					<option value="0">---请选择产品---</option>
 					{volist name="data.agentinfo" id="vo" key="k"}
-						<option value="{$vo.id}" {if $vo.id eq $Think.get.pro_id}selected{/if}>{$vo.name}</option>
+						<option value="{$vo.product_id}" {if $vo.product_id eq $Think.get.pro_id}selected{/if}>{$vo.name}</option>
 					{/volist}
 				</select>
 			</div>
@@ -76,7 +76,7 @@
                                                                     <p class="usdl_24">团队人数：未开通</p>
                                                                     <p class="usdl_24">授权编号：{$voSub['empower_sn']}</p>
                                                                     <p class="usdl_24">上级名称：{$data['userinfo']['username']}</p>
-                                                                    <span style="position:absolute;color: black;font-size: 35px;top: 40px;left: 210px;"> > </span>
+                                                                    <a href="javascript:void(0);"><span style="margin:20px;width:50px;height:50px;position:absolute;color: black;font-size: 35px;top: 20px;left: 190px;"> > </span></a>
                                                                 </div>
                                                             </div>
                                                         </a>
