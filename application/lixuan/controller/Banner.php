@@ -19,51 +19,55 @@ use service\DataService;
 use service\LogService;
 use service\PayService;
 use service\FileService;
-use model\Product;
+use model\Banner as banners;
 use think\response\View;
 use think\Db;
 use think\Url;
 
 /**
- * 微信配置管理
- * Class Config
- * @package app\wechat\controller
+ * 轮播管理
+ * @package app\lixuan\controller
  * @author Anyon <zoujingli@qq.com>
  * @date 2017/03/27 14:43
  */
-class Products extends BasicAdmin {
+class Banner extends BasicAdmin {
 
     /**
      * 定义当前操作表名
      * @var string
      */
-    public $table = 'LxProduct';
+    public $table = 'lx_banner';
 
     public $randStr = 'abcdefghijklmnopqrstuvwxyz1234567890';
 
+
     /**
-     * 产品列表
+     * 列表
      * @return View
      */
     public function index() {
         $res = Db::name($this->table)->where('is_delete', 1)->select();
-        
-        $this->assign('title', '产品列表信息');
+        $this->assign('title', '轮播列表信息');
+        $this->assign('add', '添加轮播');
         $this->assign('list', $res);
         return view();
     }
 
 
     /**
-    * 添加产品
+    * 添加
     */
     public function add() {
         if ($this->request->isGet()) {
+
+            $returnUrl = $_SERVER['HTTP_REFERER'].'#/lixuan/banner/index.html?spm=m-87-'.rand(0,9).rand(0,9);
+            $this->assign('returnUrl', $returnUrl);
             return view('form');
             return parent::_form($this->table, 'form', 'id');
         }
         //接收参数
         $data = $this->request->post();
+        $data = $data['data'];
 
         //获取图片信息  后缀名等
         $phpinfo = pathinfo($data['image']);
@@ -74,26 +78,28 @@ class Products extends BasicAdmin {
         //拼成绝对路径
         $oldname = $this->request->server('DOCUMENT_ROOT') . $tempOldName;
         //组合新的绝对路径
-        $newNamePath = "/static/admin/image/product/". date('Y-m-d-H-i-s',time()).$this->randStr[mt_rand(0, 35)].'.'.$phpinfo['extension'];
+        $newNamePath = "/static/admin/image/banner/". date('Y-m-d-H-i-s',time()).$this->randStr[mt_rand(0, 35)].'.'.$phpinfo['extension'];
         $newname = $this->request->server('DOCUMENT_ROOT').$newNamePath;
         //判断新路径是否不存在，判断旧路径是存在
-        if(file_exists($newname)||!file_exists($oldname)){
-            $this->error('目标文件已存在或原文件不存在！');
+        if(file_exists($newname) || !file_exists($oldname)){
+            $this->error('目标文件已存在或原文件不存在，请重新上传图片');
         }
         //移动文件 结果是bool
+//        var_dump($oldname,$newname);die;
         $mvFileRes = @rename($oldname,$newname);  
         if(!$mvFileRes){
-            $this->error('网络出错，请重试~');
+            $this->error('网络出错，请稍后再重试~');
         }
 
         //重新组合要插入的数据
-        $data['abbr'] = strtoupper($data['abbr']);
+        $newTime = date('Y-m-d H:i:s',time());
         $data['image'] = $newNamePath;
-        $data['change_at'] = time();
-        $ProductModel = new product;
-        $ProductModel->data($data)->allowField(true)->save();
+        $data['created_at'] = $newTime;
+        $data['change_at'] = $newTime;
+//        var_dump($data);die;
+        $bannerId = Db::table('lx_banner')->insertGetId($data);
 
-        if($ProductModel->id) 
+        if($bannerId)
             $this->success('添加成功！', '');
 
         $this->error('添加失败，请重试~');
@@ -110,8 +116,10 @@ class Products extends BasicAdmin {
         if ($this->request->isGet()) {
             empty($id) && $this->error('参数错误，请稍候再试！');
 
-            $result['title'] = '编辑图文';
-            $result['vo'] = Db::table('lx_product')->find($id);
+            $returnUrl = $_SERVER['HTTP_REFERER'].'#/lixuan/banner/index.html?spm=m-87-'.rand(0,9).rand(0,9);
+            $this->assign('returnUrl', $returnUrl);
+            $result['title'] = '编辑轮播';
+            $result['vo'] = Db::table($this->table)->find($id);
 //            return view('form', ['title' => '编辑图文', 'vo' => WechatService::getNewsById($id)]);
 //            $this->assign('vo', $result);
             return view('edit', $result);
@@ -120,8 +128,8 @@ class Products extends BasicAdmin {
         if (!empty($data['id'])) {
             unset($data['spm']);
             //查询出原来的产品信息
-            $ProductModel = new product;
-            $oldInfo = $ProductModel->find($data['id']);
+            $BannerModel = new banners();
+            $oldInfo = $BannerModel->find($data['id']);
             if(!$oldInfo) $this->error('参数有误，请稍后重试！');
             $oldInfo = $oldInfo->toArray();
 //            var_dump($data,$oldInfo);die;
@@ -134,7 +142,7 @@ class Products extends BasicAdmin {
                 //拼成绝对路径
                 $oldname = $this->request->server('DOCUMENT_ROOT') . $tempOldName;
                 //组合新的绝对路径
-                $newNamePath = "/static/admin/image/product/". date('Y-m-d-H-i-s',time()).$this->randStr[mt_rand(0, 35)].'.'.$phpinfo['extension'];
+                $newNamePath = "/static/admin/image/banner/". date('Y-m-d-H-i-s',time()).$this->randStr[mt_rand(0, 35)].'.'.$phpinfo['extension'];
                 $newname = $this->request->server('DOCUMENT_ROOT').$newNamePath;
                 //判断新路径是否不存在，判断旧路径是存在
                 if(file_exists($newname)||!file_exists($oldname)){
@@ -150,13 +158,10 @@ class Products extends BasicAdmin {
             }
 
             //重新组合要插入的数据
-            $data['abbr'] = strtoupper($data['abbr']);
-            $data['change_at'] = time();
-//            unset($data['id']);
-            $comboRes = $ProductModel->update(2);
+            $data['change_at'] = date('Y-m-d H:i:s', time());
+            $comboRes = $BannerModel->update($data );
             if($comboRes !== false) $this->success('保存成功!', '');
             $this->error('保存失败，请稍候再试！');
-
         }
         $this->error('参数有误，请稍后重试！');
 
@@ -168,23 +173,23 @@ class Products extends BasicAdmin {
     public function forbid()
     {
         $field = $this->request->param();
-        $res = Db::table('lx_product')->where('id', $field['id'])->update([$field['field'] => $field['value']]);
+        $res = Db::table($this->table)->where('id', $field['id'])->update([$field['field'] => $field['value']]);
         if($res === false) {
             $this->error('操作失败，请重试！');
         }
-        $successUrl = $_SERVER['HTTP_REFERER'].'#/lixuan/products/index.html?spm=m-87-'.rand(0,9).rand(0,9);
+        $successUrl = $_SERVER['HTTP_REFERER'].'#/lixuan/banner/index.html?spm=m-87-'.rand(0,9).rand(0,9);
         $this->success('操作成功~', $successUrl);
     }
     
 
     /**
-     * 删除用户
+     * 删除
      */
     public function del() {
         if (DataService::update($this->table)) {
-            $this->success("图文删除成功!", '');
+            $this->success("删除成功!", '');
         }
-        $this->error("图文删除失败, 请稍候再试!");
+        $this->error("删除失败, 请稍候再试!");
     }
 
 }

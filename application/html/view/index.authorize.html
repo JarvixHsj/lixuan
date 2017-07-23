@@ -1,0 +1,42 @@
+{extend name="extra@html/main"}
+
+{block name='body'}
+    <header class="mui-bar mui-bar-nav di_navbox">
+        <h1 class="mui-title">授权查询</h1>
+    </header>
+    <div class="mui-content">
+        <div class="log_head mui-text-center">
+            <div class="log_logo center_block" style="background-image: url(__PUBLIC__/static/html/img/logo.png);"></div>
+            <p class="log_title usdl_36">加盟热线：400-931-8258</p>
+        </div>
+        <form action="shouquanshu.html">
+            <div class="sqcx_input">
+                <input class="usyq_cin usdl_28" type="text" name="" id="" value="" placeholder="输入代理商姓名或微信号查询" />
+                <button class="log_btn" style="margin-top: 0;" type="button">查询</button>
+            </div>
+        </form>
+    </div>
+
+{/block}
+{block name="script"}
+    <script>
+        $('.log_btn').click(function(){
+            var search = $('.usyq_cin').val();
+//            judgeEmpty(search,'请输入代理商姓名或微信号查询');
+            var searchUrl = "{:Url('Tourists/ajaxSearchAuth')}";
+            $.ajax({
+                type: "POST",
+                url: searchUrl,
+                data: {'search': search},
+                success: function(res){
+                    if(res.code == 0){
+                        mui.alert(res.msg,'提示');
+                    }else if(res.code == 1){
+//                        mui.toast(res.msg);
+                        window.location.href = res.data.url;
+                    }
+                }
+            });
+        })
+    </script>
+{/block}

@@ -2,48 +2,46 @@
 
 {block name='content'}
 <!--右侧编辑区 开始-->
-<div class="panel panel-default news-right"  style="left: 35px;" >
-    <div class="panel-heading">产品编辑</div>
+<div class="panel panel-default " style="overflow:hidden;position: absolute;">
+    <div class="panel-heading">轮播内容编辑 <a href="{$returnUrl}"><span style="float: right;margin-right: 20px;">返回轮播列表</span></a></div>
     <div class="panel-body">
-        <form class="form-horizontal" role="form" method="post" name="news" onsubmit="return false;">
+        <form class="form-horizontal" role="form" name="banner" onsubmit="return false;">
 
             <div class="form-group">
                 <div class="col-md-12">
                     <div class="input-group">
-                        <span class="input-group-addon">产品名称</span>
-                        <input maxlength="30" required="required" title="名称不能为空哦" placeholder="请在这里输入名称" name='name' value="{$vo['name']}" class="layui-input">
+                        <span class="input-group-addon">标题</span>
+                        <input maxlength="64" required="required" title="标题不能为空哦" placeholder="请在这里输入标题" name='title' class="layui-input">
+                        <input type="hidden" name="id">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <div class="form-control" style="height:auto">
+                        <label style="color:#ccc">轮播封面大图片设置</label>
+                        <div class="row nowrap">
+                            <div class="col-xs-3" style="width:160px">
+                                <div class="upload-image-box transition">
+                                    <img src="__PUBLIC__/static/plugs/uploader/theme/image.png" alt="" class="testimg" />
+                                    <input value="__PUBLIC__/static/plugs/uploader/theme/image.png" type="hidden" name="image">
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <br>
+                                <a data-file="one" data-type="jpg,png,jpeg" data-field="image" class="btn btn-sm">上传图片</a>
+                                <!--<a data-iframe='{:url("image")}?field=image' class="btn btn-sm">选择图片</a>-->
+                                <br><br>
+                            </div>
+                        </div>
+                        <p class="help-block" style="margin-top:10px;color:#ccc">封面大图片建议长方形图</p>
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-12">
-                    <div class="input-group">
-                        <span class="input-group-addon">产品缩写</span>
-                        <input maxlength="8" required="required" title="首字母缩写不能为空" placeholder="用于代理该产品的授权号" name='abbr' value="{$vo['abbr']|default=' '}" class="layui-input">
-                        <input type="hidden" name="id" value="{$vo.id}">
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-12">
-                    <label style="color:#aaa">产品简介(用于首页产品列表展示)</label>
-                    <textarea name="intro" class="layui-input" style="height:80px;resize:none;line-height:20px">{$vo.intro|default=" "}</textarea>
-                </div>
-            </div>
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">产品图片</label>
-                <img data-tips-image style="height:auto;max-width:128px;max-height:128px;" src="__PUBLIC__{$vo.image|default='/static/plugs/uploader/theme/image.png'}"/>
-                <input type="hidden" name="image" onchange="$(this).prev('img').attr('src', this.value)" value="{$vo.image}" class="layui-input">
-                <a class="btn btn-link" data-file="one" data-type="ico,png,jpg" data-field="image">上传图片</a>
-                <span>建议上传图片的尺寸为128x128px，此图标用于产品展示使用。</span>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-12">
-                    <textarea name='content' class="content">{$vo.content|default=" "}</textarea>
+                    <textarea name='content'></textarea>
                 </div>
             </div>
 
@@ -74,7 +72,8 @@
 
     $('body').on('change', '.upload-image-box input', function () {
         $('.news-item.active').css('background-image', 'url(' + this.value + ')');
-        $(this).parent('.upload-image-box').css('background-image', 'url(' + this.value + ')');
+//        $(this).parent('.upload-image-box').css('background-image', 'url(' + this.value + ')');
+        $('.testimg').attr('src',this.value);
     });
 
     require(['ueditor'], function () {
@@ -87,63 +86,55 @@
 
         /*! 编辑器初始化成功 */
         editor.ready(function () {
-            var $form = $('form[name="news"]'), $body = $('body');
+
+            var $form = $('form[name="banner"]'), $body = $('body');
+
             $form.validate();
 
             /*! 数据提交 */
             $form.find('button[data-submit]').on('click', function () {
                 var data = [];
-//                $form.submit();
+                $form.submit();
+//                console.log($('.news-item.active'));return;
 //                if (!syncEditor($('.news-item.active'))) {
 //                    editor.setContent('文章内容不能留空，请输入内容！');
 //                    return false;
 //                }
+                if ($form) {
+
+                    var data = {};
+                    data.id = $form.find('[name=id]').val();
+                    data.title = $form.find('[name=title]').val();
+                    data.image = $form.find('[name=image]').val();
+                    data.content = editor.getContent() || '';
+
+                    if(data.content == ''){
+                        editor.setContent('文章内容不能留空，请输入内容！');
+                        return false;
+                    }
+//                    data.author = $form.find('[name=author]').val();
+//                    data.digest = $form.find('[name=digest]').val();
+//                    data.show_cover_pic = $form.find('[name="show_cover_pic"]').get(0).checked ? 1 : 0;
+//                    $form.find('[name=local_url]').trigger('change');
+//                    console.log(data);return;
+//                    $pItem.data('item', data),
+//                            $form.submit();
+//                    if ($form.find('input.validate-error').size() > 0 || data.content.length < 1) {
+//
+//                        alert('3');
+//                        ((data.content || '').length < 1) && editor.setContent('文章内容不能留空，请输入内容！');
+////                        $pItem.addClass('active').siblings().removeClass('active');
+//                        return false;
+//                    }
+                }
 //                $('.news-item').map(function () {
 //                    var item = $(this).data('item');
 //                    item.content = item.content || '文章内容不能留空，请输入内容！';
 //                    data.push(item);
 //                });
-
-                var saveUrl = "__SELF__";
-                var name = $("input:text[name='name']").val();
-                var intro = $("textarea[name='intro']").val();
-                var abbr = $("input:text[name='abbr']").val();
-                var image = $("input:hidden[name='image']").val();
-                var pro_id = $("input:hidden[name='id']").val();
-                var content = $("textarea[name='content']").val();
-
-                if(!pro_id) {
-                    alert('参数有误');return;
-                }
-                if(!name) {
-                    alert('产品名称不能为空');return;
-                }
-                if(!abbr){
-                    alert('产品缩写不能为空');return;
-                }
-                if(!intro){
-                    alert('产品简介不能为空');return;
-                }
-                if(!content){
-                    alert('产品内容不能为空');return;
-                }
-                $.ajax({
-                    async: false,
-                    type: "POST",
-                    url: saveUrl,
-                    data: { id: pro_id, image: image, name: name, intro: intro, abbr: abbr, content: content },
-                    success: function(res){
-                        if(res.code == 1){
-                            alert(res.msg);
-                            history.go(-1);
-//                            window.location.reload()
-                        }
-                        console.log(msg);
-                    },error:function(){
-                        alert('系统繁忙！');
-                    }
-                })
-//                $.form.load(saveUrl, {data: data}, "post");
+//                data = data.);
+//                console.log(data);return;
+                $.form.load('__SELF__', {data: data}, "post");
             });
 
             /*! 输入标题显示 */
@@ -156,23 +147,33 @@
             /*! 同步编辑器 */
             function syncEditor($pItem) {
                 // 处理上一个编辑器
-                if ($form && $pItem && $pItem.size() > 0) {
+//                alert('1');
+// console.log($form,$pItem);
+//                if ($form && $pItem && $pItem.size() > 0) {
+                if ($form) {
+//                    alert('2');
+
                     var data = {};
                     data.id = $form.find('[name=id]').val();
                     data.title = $form.find('[name=title]').val();
-                    data.local_url = $form.find('[name=local_url]').val();
+                    data.image = $form.find('[name=image]').val();
                     data.content = editor.getContent() || '';
-                    data.author = $form.find('[name=author]').val();
-                    data.digest = $form.find('[name=digest]').val();
-                    data.show_cover_pic = $form.find('[name="show_cover_pic"]').get(0).checked ? 1 : 0;
-                    $form.find('[name=local_url]').trigger('change');
-                    $pItem.data('item', data), $form.submit();
-                    if ($form.find('input.validate-error').size() > 0 || data.content.length < 1) {
-                        ((data.content || '').length < 1) && editor.setContent('文章内容不能留空，请输入内容！');
-                        $pItem.addClass('active').siblings().removeClass('active');
-                        return false;
-                    }
+//                    data.author = $form.find('[name=author]').val();
+//                    data.digest = $form.find('[name=digest]').val();
+//                    data.show_cover_pic = $form.find('[name="show_cover_pic"]').get(0).checked ? 1 : 0;
+//                    $form.find('[name=local_url]').trigger('change');
+                    console.log(data);return;
+//                    $pItem.data('item', data),
+//                            $form.submit();
+//                    if ($form.find('input.validate-error').size() > 0 || data.content.length < 1) {
+//
+//                        alert('3');
+//                        ((data.content || '').length < 1) && editor.setContent('文章内容不能留空，请输入内容！');
+////                        $pItem.addClass('active').siblings().removeClass('active');
+//                        return false;
+//                    }
                 }
+//                alert('4');
                 return true;
             }
 
@@ -184,11 +185,11 @@
                     var data = $item.data('item') || {};
                     data.id = data.id || 0;
                     data.title = data.title || '';
-                    data.local_url = data.local_url || '__PUBLIC__/static/plugs/uploader/theme/image.png';
+                    data.image = data.image || '__PUBLIC__/static/plugs/uploader/theme/image.png';
                     data.content = data.content || '';
-                    data.author = data.author || '';
-                    data.digest = data.digest || '';
-                    data.show_cover_pic = data.show_cover_pic || 0;
+//                    data.author = data.author || '';
+//                    data.digest = data.digest || '';
+//                    data.show_cover_pic = data.show_cover_pic || 0;
                     return data;
                 };
                 // 重置表单
@@ -264,5 +265,6 @@
     .news-item .upload-multiple-close{width:30px;height:30px;line-height:30px;text-align:center;background-color:rgba(0,0,0,.5);color:#fff;float:right;}
     .news-item .upload-multiple-close:hover{text-decoration:none}
     .edui-default .edui-editor{border-radius:0!important}
+    .testimg{max-width: 130px;max-height: 75px;}
 </style>
 {/block}

@@ -1,0 +1,22 @@
+{extend name="extra@html/main"}
+
+{block name='body'}
+		<header class="mui-bar mui-bar-nav di_navbox">
+		    <h1 class="mui-title">防伪查询</h1>
+		</header>
+		<div class="mui-content">
+			<div class="log_head mui-text-center">
+		    	<div class="log_logo center_block" style="background-image: url(img/logo.png);"></div>
+		    	<p class="log_title usdl_36">加盟热线：0582-5645612</p>
+		    	<div class="fw_box center_block">
+		    		<img src="__PUBLIC__/static/html/img/fangweima.png" class="img-zsy"/>
+		    	</div>
+		    </div>	
+		    <form action="shouquanshu.html">
+			    <div class="sqcx_input">
+			    	<input class="usyq_cin usdl_28" type="text" name="" id="" value="" placeholder="请输入防伪码" />
+			    	<button class="log_btn" style="margin-top: 0;" type="button" onclick="alert('暂未开放！');" onsubmit="return false;">查询</button>
+			    </div>
+		    </form>
+		</div>
+{/block}

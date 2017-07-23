@@ -154,6 +154,8 @@
                         item.content = item.content || '文章内容不能留空，请输入内容！';
                         data.push(item);
                     });
+                    console.log(data);return;
+
                     $.form.load('__SELF__', {data: data}, "post");
                 });
 

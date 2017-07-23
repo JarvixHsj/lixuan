@@ -5,46 +5,83 @@
 	<div id="slider" class="mui-slider i_banner" >
 	  <div class="mui-slider-group mui-slider-loop">
 	    <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-	    <div class="mui-slider-item mui-slider-item-duplicate">
-	      <a href="#">
-	        <img src="__PUBLIC__/static/html/img/banner.png">
-	      </a>
-	    </div>
+          {empty name="banner_res"}
+          <div class="mui-slider-item mui-slider-item-duplicate">
+              <a href="#">
+                  <img src="__PUBLIC__/static/html/img/banner.png">
+              </a>
+          </div>
+          {else /}
+          <div class="mui-slider-item">
+              <a href="{:Url('Index/bannerDetails',['id' => $banner_res[$banner_res_count]['id']])}">
+                  <img src="__PUBLIC__/{$banner_res[$banner_res_count]['image']}">
+              </a>
+          </div>
+          {/empty}
+
 	    <!-- 第一张 -->
-	    <div class="mui-slider-item">
-	      <a href="#">
-	        <img src="__PUBLIC__/static/html/img/banner.png">
-	      </a>
-	    </div>
+          {empty name="banner_res"}
+              <div class="mui-slider-item">
+                  <a href="#">
+                      <img src="__PUBLIC__/static/html/img/banner.png">
+                  </a>
+              </div>
+          {else /}
+            {volist name="banner_res" id="vo" key='k'}
+              <div class="mui-slider-item">
+                  <a href="{:Url('Index/bannerDetails',['id' => $vo.id])}">
+                      <img src="__PUBLIC__/{$vo.image}" data-test="{$k}" data-test1="{$banner_res_count}">
+                  </a>
+              </div>
+            {/volist}
+          {/empty}
+
 	    <!-- 第二张 -->
-	    <div class="mui-slider-item">
-	      <a href="#">
-	        <img src="__PUBLIC__/static/html/img/banner.png">
-	      </a>
-	    </div>
-	    <!-- 第三张 -->
-	    <div class="mui-slider-item">
-	      <a href="#">
-	        <img src="__PUBLIC__/static/html/img/banner.png">
-	      </a>
-	    </div>
+	    <!--<div class="mui-slider-item">-->
+	      <!--<a href="#">-->
+	        <!--<img src="__PUBLIC__/static/html/img/banner.png">-->
+	      <!--</a>-->
+	    <!--</div>-->
+	    <!--&lt;!&ndash; 第三张 &ndash;&gt;-->
+	    <!--<div class="mui-slider-item">-->
+	      <!--<a href="#">-->
+	        <!--<img src="__PUBLIC__/static/html/img/banner.png">-->
+	      <!--</a>-->
+	    <!--</div>-->
 	    <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-	    <div class="mui-slider-item mui-slider-item-duplicate">
-	      <a href="#">
-	        <img src="__PUBLIC__/static/html/img/banner.png">
-	      </a>
-	    </div>
+          {empty name="banner_res"}
+          <div class="mui-slider-item mui-slider-item-duplicate">
+              <a href="#">
+                  <img src="__PUBLIC__/static/html/img/banner.png">
+              </a>
+          </div>
+          {else /}
+              <div class="mui-slider-item">
+                  <a href="{:Url('Index/bannerDetails',['id' => $banner_res.0.id])}">
+                      <img src="__PUBLIC__/{$banner_res.0.image}">
+                  </a>
+              </div>
+          {/empty}
+
 	  </div>
 	  <div class="mui-slider-indicator">
-	    <div class="mui-indicator mui-active"></div>
-	    <div class="mui-indicator"></div>
-	    <div class="mui-indicator"></div>
-	  </div>
+          {empty name="banner_res"}
+              <div class="mui-indicator mui-active"></div>
+              <div class="mui-indicator"></div>
+              <div class="mui-indicator"></div>
+          {else /}
+            {volist name="banner_res" id="vo" key='k'}
+                <div class="mui-indicator {eq name='k' value='1'}mui-active{/eq}"></div>
+
+            {/volist}
+          {/empty}
+
+    </div>
 	</div>
 	<div class="mui-content">
 		<div class="i_iconbtn mui-clearfix">
-			<div class="son"><a href="#" class="soncont sqcx">授权查询</a></div>
-			<div class="son"><a href="#" class="soncont fwcx">防伪查询</a></div>
+			<div class="son"><a href="{:Url('html/Index/authorize')}" class="soncont sqcx">授权查询</a></div>
+			<div class="son"><a href="{:Url('html/Tourists/anti')}" class="soncont fwcx">防伪查询</a></div>
 			<div class="son"><a href="{:Url('html/Agents/index')}" class="soncont dlht">代理后台</a></div>
 			<div class="son"><a href="#" class="soncont jfcx">积分查询</a></div>
 			<div class="son"><a href="{:Url('html/Index/about')}" class="soncont gywm">关于我们</a></div>

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"/Library/WebServer/Documents/lixuan/application/html/view/index.index.html";i:1499609070;s:73:"/Library/WebServer/Documents/lixuan/application/extra/view/html.main.html";i:1500302650;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"/Library/WebServer/Documents/lixuan/application/html/view/index.index.html";i:1500820534;s:73:"/Library/WebServer/Documents/lixuan/application/extra/view/html.main.html";i:1500302650;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,46 +24,79 @@
 	<div id="slider" class="mui-slider i_banner" >
 	  <div class="mui-slider-group mui-slider-loop">
 	    <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-	    <div class="mui-slider-item mui-slider-item-duplicate">
-	      <a href="#">
-	        <img src="__PUBLIC__/static/html/img/banner.png">
-	      </a>
-	    </div>
+          <?php if(empty($banner_res) || (($banner_res instanceof \think\Collection || $banner_res instanceof \think\Paginator ) && $banner_res->isEmpty())): ?>
+          <div class="mui-slider-item mui-slider-item-duplicate">
+              <a href="#">
+                  <img src="__PUBLIC__/static/html/img/banner.png">
+              </a>
+          </div>
+          <?php else: ?>
+          <div class="mui-slider-item">
+              <a href="<?php echo Url('Index/bannerDetails',['id' => $banner_res[$banner_res_count]['id']]); ?>">
+                  <img src="__PUBLIC__/<?php echo $banner_res[$banner_res_count]['image']; ?>">
+              </a>
+          </div>
+          <?php endif; ?>
+
 	    <!-- 第一张 -->
-	    <div class="mui-slider-item">
-	      <a href="#">
-	        <img src="__PUBLIC__/static/html/img/banner.png">
-	      </a>
-	    </div>
+          <?php if(empty($banner_res) || (($banner_res instanceof \think\Collection || $banner_res instanceof \think\Paginator ) && $banner_res->isEmpty())): ?>
+              <div class="mui-slider-item">
+                  <a href="#">
+                      <img src="__PUBLIC__/static/html/img/banner.png">
+                  </a>
+              </div>
+          <?php else: if(is_array($banner_res) || $banner_res instanceof \think\Collection || $banner_res instanceof \think\Paginator): $k = 0; $__LIST__ = $banner_res;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($k % 2 );++$k;?>
+              <div class="mui-slider-item">
+                  <a href="<?php echo Url('Index/bannerDetails',['id' => $vo['id']]); ?>">
+                      <img src="__PUBLIC__/<?php echo $vo['image']; ?>" data-test="<?php echo $k; ?>" data-test1="<?php echo $banner_res_count; ?>">
+                  </a>
+              </div>
+            <?php endforeach; endif; else: echo "" ;endif; endif; ?>
+
 	    <!-- 第二张 -->
-	    <div class="mui-slider-item">
-	      <a href="#">
-	        <img src="__PUBLIC__/static/html/img/banner.png">
-	      </a>
-	    </div>
-	    <!-- 第三张 -->
-	    <div class="mui-slider-item">
-	      <a href="#">
-	        <img src="__PUBLIC__/static/html/img/banner.png">
-	      </a>
-	    </div>
+	    <!--<div class="mui-slider-item">-->
+	      <!--<a href="#">-->
+	        <!--<img src="__PUBLIC__/static/html/img/banner.png">-->
+	      <!--</a>-->
+	    <!--</div>-->
+	    <!--&lt;!&ndash; 第三张 &ndash;&gt;-->
+	    <!--<div class="mui-slider-item">-->
+	      <!--<a href="#">-->
+	        <!--<img src="__PUBLIC__/static/html/img/banner.png">-->
+	      <!--</a>-->
+	    <!--</div>-->
 	    <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-	    <div class="mui-slider-item mui-slider-item-duplicate">
-	      <a href="#">
-	        <img src="__PUBLIC__/static/html/img/banner.png">
-	      </a>
-	    </div>
+          <?php if(empty($banner_res) || (($banner_res instanceof \think\Collection || $banner_res instanceof \think\Paginator ) && $banner_res->isEmpty())): ?>
+          <div class="mui-slider-item mui-slider-item-duplicate">
+              <a href="#">
+                  <img src="__PUBLIC__/static/html/img/banner.png">
+              </a>
+          </div>
+          <?php else: ?>
+              <div class="mui-slider-item">
+                  <a href="<?php echo Url('Index/bannerDetails',['id' => $banner_res['0']['id']]); ?>">
+                      <img src="__PUBLIC__/<?php echo $banner_res['0']['image']; ?>">
+                  </a>
+              </div>
+          <?php endif; ?>
+
 	  </div>
 	  <div class="mui-slider-indicator">
-	    <div class="mui-indicator mui-active"></div>
-	    <div class="mui-indicator"></div>
-	    <div class="mui-indicator"></div>
-	  </div>
+          <?php if(empty($banner_res) || (($banner_res instanceof \think\Collection || $banner_res instanceof \think\Paginator ) && $banner_res->isEmpty())): ?>
+              <div class="mui-indicator mui-active"></div>
+              <div class="mui-indicator"></div>
+              <div class="mui-indicator"></div>
+          <?php else: if(is_array($banner_res) || $banner_res instanceof \think\Collection || $banner_res instanceof \think\Paginator): $k = 0; $__LIST__ = $banner_res;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($k % 2 );++$k;?>
+                <div class="mui-indicator <?php if($k == '1'): ?>mui-active<?php endif; ?>"></div>
+
+            <?php endforeach; endif; else: echo "" ;endif; endif; ?>
+
+    </div>
 	</div>
 	<div class="mui-content">
 		<div class="i_iconbtn mui-clearfix">
-			<div class="son"><a href="#" class="soncont sqcx">授权查询</a></div>
-			<div class="son"><a href="#" class="soncont fwcx">防伪查询</a></div>
+			<div class="son"><a href="<?php echo Url('html/Index/authorize'); ?>" class="soncont sqcx">授权查询</a></div>
+			<div class="son"><a href="<?php echo Url('html/Tourists/anti'); ?>" class="soncont fwcx">防伪查询</a></div>
 			<div class="son"><a href="<?php echo Url('html/Agents/index'); ?>" class="soncont dlht">代理后台</a></div>
 			<div class="son"><a href="#" class="soncont jfcx">积分查询</a></div>
 			<div class="son"><a href="<?php echo Url('html/Index/about'); ?>" class="soncont gywm">关于我们</a></div>

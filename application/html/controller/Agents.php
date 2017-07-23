@@ -178,7 +178,7 @@ class Agents extends BasicAgent {
         //用户信息
         $UserModel = new User;
         $AgentModel = new Agent;
-        $userData = $UserModel->find(session('agent.id'))->toArray();
+        $userData = $UserModel->field('id,username,wechat_no,mobile')->find(session('agent.id'))->toArray();
 
         //用户代理的产品
         $AgentData = $AgentModel->alias('a')
@@ -210,7 +210,7 @@ class Agents extends BasicAgent {
 
             //统计下级信息
             $subData = $AgentModel->alias('a')
-                ->field('u.wechat_no,u.mobile,u.username,a.empower_sn,a.level')
+                ->field('u.id as user_id,u.wechat_no,u.mobile,u.username,a.empower_sn,a.level')
                 ->join('lx_user u', "u.id = a.user_id")
                 ->where('a.super_id', session('agent.id'))
                 ->where('a.product_id', $pro_id)
@@ -218,13 +218,14 @@ class Agents extends BasicAgent {
                 ->select()->toArray();
 //            var_dump($subData);die;
             if($subData){
-//                foreach($subData as $key=>$val){
-//          todo
-//                }
+                //统计代理的直属人数和团队人数
+                foreach($subData as $key=>$val){
+                    $subData[$key]['totaldirectly'] = AgentService::totalDirectlyNum($val['user_id'],$pro_id);
+                    $subData[$key]['totalteam'] = AgentService::totalAgentTeam($val['user_id'], $pro_id) + 1;
+                }
                 $data['subinfo'] = $subData;
             }
         }
-        var_dump($userData,$AgentData);die;
         $data['userinfo'] = $userData;
         $data['agentinfo'] = $AgentData;
         $data['agenttype'] = $this->_agentType;
@@ -234,33 +235,38 @@ class Agents extends BasicAgent {
         return view();
     }
 
-    /**
-     * 查看下级代理--选择产品
-     */
-    public function sublistpro()
+
+    public function see()
     {
-        //判断参数
-        $pro_id = $this->request->param('pro_id') ? trim($this->request->param('pro_id')) : '';
-        if(empty($pro_id)) $this->error('选择产品参数错误！');
-
-        //查询用户信息
-        $UserModel = new User;
-        $userData = $UserModel->find(session('agent.id'))->toArray();
-
-        //查询下级统计数据
-        $AgentModel = new Agent();
-        $AgentData = $AgentModel->alias('a')->field('a.*,p.name')->join('lx_product p', 'p.id = a.product_id')->where('a.user_id', session('agent.id'))->order('a.id desc')->select()->toArray();
-
-
-
-
-        $data = array();
-        $data['userinfo'] = $userData;
-        $data['agentinfo'] = $AgentData;
-//        $data['countagent'] = $countagent;
-        $data['agenttype'] = $this->_agentType;
-        return view('looksublist');
+        
     }
+
+//    /**
+//     * 查看下级代理--选择产品
+//     */
+//    public function sublistpro()
+//    {
+//        //判断参数
+//        $pro_id = $this->request->param('pro_id') ? trim($this->request->param('pro_id')) : '';
+//        if(empty($pro_id)) $this->error('选择产品参数错误！');
+//
+//        //查询用户信息
+//        $UserModel = new User;
+//        $userData = $UserModel->find(session('agent.id'))->toArray();
+//
+//        //查询下级统计数据
+//        $AgentModel = new Agent();
+//        $AgentData = $AgentModel->alias('a')->field('a.*,p.name')
+//            ->join('lx_product p', 'p.id = a.product_id')
+//            ->where('a.user_id', session('agent.id'))
+//            ->order('a.id desc')->select()->toArray();
+//
+//        $data = array();
+//        $data['userinfo'] = $userData;
+//        $data['agentinfo'] = $AgentData;
+//        $data['agenttype'] = $this->_agentType;
+//        return view('looksublist');
+//    }
 
 
 

@@ -46,7 +46,6 @@ class AgentService {
         return md5($nanosecond.uniqid());
     }
 
-
     /**
      * 生成用户消息记录
      * @param int $user_id
@@ -59,4 +58,75 @@ class AgentService {
     }
 
 
+    /**
+     * 统计代理直属人数
+     * @param $userId  代理用户id
+     * @param $proId  产品id
+     * @return int|string
+     */
+    public static function totalDirectlyNum($userId, $proId)
+    {
+        if(!is_numeric($userId)) return 0;
+        $num = Db::table('lx_agent')
+            ->where('super_id',$userId)
+            ->count();
+        if(is_numeric($num)) return $num;
+        return 0;
+    }
+
+
+    /**
+     * 统计代理团队人数（不包括自己）
+     * @param $userId
+     * @param $proId
+     * @return int
+     */
+    public static function totalAgentTeam($userId, $proId)
+    {
+        if(!is_numeric($userId)) return 0;
+
+        $total = 0;
+        $num = self::recursionTotal($userId, $total, $proId);
+        if(is_numeric($num)) return $num;
+        return 0;
+    }
+
+    /**
+     * 递归统计
+     * @param $userId
+     * @param $total
+     * @param $proId
+     * @return int
+     */
+    public static function recursionTotal($userId, &$total, $proId)
+    {
+        $res = Db::table('lx_agent')
+            ->where('super_id', $userId)
+            ->where('product_id', $proId)
+            ->select();
+        if($res){
+            $total += count($res);
+            foreach($res as $key => $val){
+                self::recursionTotal($val['user_id'], $total, $proId);
+            }
+        }
+        return $total;
+    }
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+

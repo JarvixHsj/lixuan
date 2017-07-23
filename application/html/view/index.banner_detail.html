@@ -1,0 +1,17 @@
+{extend name="extra@html/main"}
+
+{block name='body'}
+
+<body class="bgf2f2f2">
+		<header class="mui-bar mui-bar-nav di_navbox">
+		    <h1 class="mui-title">{$res.title}</h1>
+		</header>
+		<div class="mui-content">
+			<div class="ib_cont_pic">
+				<img src="__PUBLIC__/{$res.image}" class="img-zsy" alt="" />
+			</div>
+			<div class="ib_cont_text usdl_28">				
+				{$res.content}
+			</div>
+		</div>
+{/block}

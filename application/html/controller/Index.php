@@ -17,6 +17,7 @@ namespace app\html\controller;
 use think\Controller;
 use think\response\View;
 use model\Product;
+use model\Banner;
 
 /**
  * 网站入口控制器
@@ -32,15 +33,52 @@ class Index extends Controller {
      */
     public function index() {
     	$Model = new Product;
+    	$BannerModel = new Banner();
     	$list = $Model->where('status = 1 AND is_delete = 1')->order('id', 'desc')->select()->toArray();
-//        var_dump($list,$this->request);die;
+    	$bannerRes = $BannerModel->where('status = 1 AND is_delete = 1')->order('id', 'desc')->select();
+        if(!$bannerRes) $bannerRes = array();
+        $bannerRes = $bannerRes->toArray();
+//        var_dump($bannerRes);die;
     	$this->assign('list', $list);
+    	$this->assign('banner_res', $bannerRes);
+    	$this->assign('banner_res_count', count($bannerRes) -1);
     	return view();
     }
 
 
-    public function about(){
+    /**
+     * 轮播详情
+     * @return View
+     */
+    public function bannerDetails()
+    {
+        $id = $this->request->param('id') ? $this->request->param('id') : 0;
+        if(empty($id)) $this->error('服务器系统繁忙，请稍后重试~');
 
+        $BannerModel = new Banner();
+        $res = $BannerModel->find($id);
+
+        $this->assign('res', $res);
+        return view('banner_detail');
+    }
+
+    /**
+     * 关于我们
+     * @return View
+     */
+    public function about()
+    {
+
+        return view();
+    }
+
+
+    /**
+     * 授权查询首页
+     * @return View
+     */
+    public function authorize()
+    {
         return view();
     }
 

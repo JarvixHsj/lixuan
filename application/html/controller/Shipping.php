@@ -33,7 +33,7 @@ use think\Db;
  */
 class Shipping extends BasicAgent {
 
-    private $_agentType = array('1'=>'首席CEO', '2' => '核心总监', '3' => '总代', '4'=>'一级', '5'=>'特约');
+//    private $_agentType = array('1'=>'首席CEO', '2' => '核心总监', '3' => '总代', '4'=>'一级', '5'=>'特约');
 
     /**
      * 发货内页--首页

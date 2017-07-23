@@ -19,6 +19,7 @@ use think\Db;
 use model\UserInvite;
 use model\UserAudit;
 use model\User;
+use model\Agent;
 use think\Url;
 
 /**
@@ -50,6 +51,10 @@ class Tourists extends Controller {
         //     $this->redirect('@html/Agents/index');
         // }
     }
+
+    protected $_agentType = array('0' => '公司总部','1'=>'首席CEO', '2' => '核心总监', '3' => '总代', '4'=>'一级', '5'=>'特约');
+    protected $_selectAgent = array('1' => '首席CEO' , '2' => '核心总监', '3' => '总代', '4'=>'一级', '5'=>'特约');
+
 
     /**
      * 
@@ -159,12 +164,10 @@ class Tourists extends Controller {
         $saveData['reverse'] = $reversePath;
 
         $UserAuditModel->allowField(true)->save($saveData);
-//        var_dump($UserAuditModel->id);
         if($UserAuditModel->id){
             $findRes = $UserAuditModel->find($UserAuditModel->id);
             if(!$findRes) $this->request('', 0, '提交失败，填写信息格式不正确!','json');
             $findRes = $findRes->toArray();
-//            var_dump($findRes);die;
 
             if(empty($findRes['positive'])){
                 $UserAuditModel->delete($UserAuditModel->id);
@@ -182,7 +185,58 @@ class Tourists extends Controller {
         if($result) $this->result('',0, '提交失败，填写信息格式不正确！','json');
     }
 
+    /**
+     * 授权查询
+     */
+    public function ajaxSearchAuth()
+    {
+        $search = $this->request->param('search') ? $this->request->param('search') : '';
+        if(!$search) $this->result('',0, '请输入代理商姓名或微信号查询','json');
+        $res = Db::table('lx_user')
+            ->where('username',$search)
+            ->whereOr('wechat_no', $search)
+            ->count();
+        if($res && $res > 0){
+            $data['url'] = Url::build('Tourists/authAgentInfo',['search' => $search]);
+            $this->result($data,1, '查询成功','json');
+        }
+        $this->result('', 0, '查询代理信息不存在，确认信息无误后重试~','json');
 
+    }
+
+    /**
+     * 授权查询结果展示
+     */
+    public function authAgentInfo()
+    {
+        $search = $this->request->param('search');
+        $UserData = Db::table('lx_user')
+            ->where('username',$search)
+            ->whereOr('wechat_no', $search)
+            ->find();
+        $AgentData = Db::table('lx_agent')->alias('a')
+            ->join('lx_product p', 'p.id = a.product_id')
+            ->where('a.id = '.$UserData['id'])
+            ->field("a.*,p.name")
+            ->find();
+        $this->assign('user_info', $UserData);
+        $this->assign('agent_info', $AgentData);
+        $this->assign('agentType', $this->_agentType);
+        return view('users/auth');
+    }
+
+
+    /**
+     * 防伪首页
+     * @return \think\response\View
+     */
+    public function anti()
+    {
+
+        return view();
+    }
+    
+    
     /**
      * 合作协议
      */
