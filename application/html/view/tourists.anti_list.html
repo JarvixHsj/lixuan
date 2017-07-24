@@ -1,0 +1,90 @@
+{extend name="extra@html/main"}
+
+{block name='body'}
+	<header class="mui-bar mui-bar-nav di_navbox">
+		<h1 class="mui-title">查询列表</h1>
+		<!--<a href="customer_search.html" class="mui-pull-right mui-icon mui-icon-search"></a>-->
+	</header>
+	<div class="mui-content">
+		<ul class="cul_list">
+            {volist name="agent_info" id="vo" key="k"}
+                <li>
+                    <div class="usck_dlson" style="border-bottom: 1px solid #f2f2f2;">
+                        <a class="usck_rqbtn mui-navigate-right" data-id="1" href="{:Url('Tourists/authAgentDetail',['agent_id' => $vo.id,'user_id' => $user_info['id']])}">
+                            <div class="usck_dls_pic"  style="background-image: url(__PUBLIC__/static/html/img/logo.png);"></div>
+                            <div class="usck_dls_info">
+                                <p class="name usdl_28">
+                                    {empty name="user_info.username"}
+                                        {empty name="user_info.wechat_no"}
+                                            {$user_info['mobile']}
+                                        {else /}
+                                            {$user_info['wechat_no']}
+                                        {/empty}
+                                    {else /}
+                                        {$user_info.username}
+                                    {/empty}
+                                    ({$agentType[$vo['level']]})
+                                </p>
+                                <p class="call_info">
+                                    <span class="info_icon">
+                                        <i class="mui-icon mui-icon-weixin"></i>
+                                        <span class="usdl_24">
+                                            {empty name="user_info.wechat_no"}
+                                                暂无
+                                            {else /}
+                                                {$user_info['wechat_no']}
+                                            {/empty}
+                                        </span>
+                                    </span>
+                                    <span class="info_icon">
+                                        <i class="mui-icon mui-icon-phone-filled"></i>
+                                        <span class="usdl_24">
+                                            {empty name="user_info.mobile"}
+                                                暂无
+                                            {else /}
+                                                {$user_info['mobile']}
+                                            {/empty}
+                                        </span>
+                                    </span>
+                                </p>
+                                <!--<p class="call_info">-->
+                                    <!--<span class="info_icon">-->
+                                        <!--<i class="mui-icon mui-icon-weixin"></i>-->
+                                        <!--<span class="usdl_24">meiulin2546</span>-->
+                                    <!--</span>-->
+                                    <!--<span class="info_icon">-->
+                                        <!--<i class="mui-icon mui-icon-phone-filled"></i>-->
+                                        <!--<span class="usdl_24">13800138000</span>-->
+                                    <!--</span>-->
+                                <!--</p>-->
+                            </div>
+                        </a>
+                    </div>
+                </li>
+            {/volist}
+			<!--<li>-->
+				<!--<div class="usck_dlson">-->
+					<!--<a class="usck_rqbtn mui-navigate-right" data-id="1">-->
+						<!--<div class="usck_dls_pic"  style="background-image: url(img/pro-pci.png);"></div>-->
+						<!--<div class="usck_dls_info">-->
+							<!--<p class="name usdl_28">郑美玲</p>-->
+							<!--<p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">meiulin2546</span></span><span class="info_icon"><i class="mui-icon mui-icon-phone-filled"></i><span class="usdl_24">13800138000</span></span></p>-->
+						<!--</div>-->
+					<!--</a>-->
+				<!--</div>-->
+			<!--</li>-->
+			<!--<li>-->
+				<!--<div class="usck_dlson">-->
+					<!--<a class="usck_rqbtn mui-navigate-right" data-id="1">-->
+						<!--<div class="usck_dls_pic"  style="background-image: url(img/pro-pci.png);"></div>-->
+						<!--<div class="usck_dls_info">-->
+							<!--<p class="name usdl_28">郑美玲</p>-->
+							<!--<p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">meiulin2546</span></span><span class="info_icon"><i class="mui-icon mui-icon-phone-filled"></i><span class="usdl_24">13800138000</span></span></p>-->
+						<!--</div>-->
+					<!--</a>-->
+				<!--</div>-->
+			<!--</li>-->
+		</ul>
+
+	</div>
+{/block}

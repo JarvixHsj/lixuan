@@ -197,7 +197,7 @@ class Tourists extends Controller {
             ->whereOr('wechat_no', $search)
             ->count();
         if($res && $res > 0){
-            $data['url'] = Url::build('Tourists/authAgentInfo',['search' => $search]);
+            $data['url'] = Url::build('Tourists/authAgentList',['search' => $search]);
             $this->result($data,1, '查询成功','json');
         }
         $this->result('', 0, '查询代理信息不存在，确认信息无误后重试~','json');
@@ -207,22 +207,59 @@ class Tourists extends Controller {
     /**
      * 授权查询结果展示
      */
-    public function authAgentInfo()
+    public function authAgentList()
     {
         $search = $this->request->param('search');
         $UserData = Db::table('lx_user')
             ->where('username',$search)
             ->whereOr('wechat_no', $search)
             ->find();
+//        var_dump($UserData);die;
         $AgentData = Db::table('lx_agent')->alias('a')
             ->join('lx_product p', 'p.id = a.product_id')
-            ->where('a.id = '.$UserData['id'])
+            ->where('a.user_id = '.$UserData['id'])
+            ->where(array('p.status' => 1, 'p.is_delete' => 1))
             ->field("a.*,p.name")
-            ->find();
+            ->order('a.level desc')
+            ->select();
+//        var_dump($AgentData);die;
         $this->assign('user_info', $UserData);
         $this->assign('agent_info', $AgentData);
         $this->assign('agentType', $this->_agentType);
-        return view('users/auth');
+        return view('anti_list');
+    }
+
+    /**
+     * 授权查询结果展示
+     */
+    public function authAgentDetail()
+    {
+        $agent_id = $this->request->param('agent_id');
+        $user_id = $this->request->param('user_id');
+        $UserData = Db::table('lx_user')
+            ->find($user_id);
+        $AgentData = Db::table('lx_agent')->alias('a')
+            ->join('lx_product p', 'p.id = a.product_id')
+            ->where('a.user_id = '.$UserData['id'])
+            ->field("a.*,p.name")
+            ->find($agent_id);
+
+        $this->assign('user_info', $UserData);
+        $this->assign('agent_info', $AgentData);
+        $this->assign('agentType', $this->_agentType);
+
+//
+//            $agent_id = $this->request->param('id');
+//            $UserData = Db::table('lx_user')->find(session('agent.id'));
+//            $AgentData = Db::table('lx_agent')->alias('a')
+//                ->join('lx_product p', 'p.id = a.product_id')
+//                ->where('a.id = '.$agent_id)
+//                ->field("a.*,p.name")
+//                ->find();
+//            $this->assign('user_info', $UserData);
+//            $this->assign('agent_info', $AgentData);
+//            $this->assign('agentType', $this->_agentType);
+            return view('users/auth');
     }
 
 
@@ -232,7 +269,6 @@ class Tourists extends Controller {
      */
     public function anti()
     {
-
         return view();
     }
     
