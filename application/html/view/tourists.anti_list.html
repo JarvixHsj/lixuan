@@ -7,7 +7,7 @@
 	</header>
 	<div class="mui-content">
 		<ul class="cul_list">
-            {volist name="agent_info" id="vo" key="k"}
+            {volist name="agent_info" id="vo" key="k" empty="暂无代理信息"}
                 <li>
                     <div class="usck_dlson" style="border-bottom: 1px solid #f2f2f2;">
                         <a class="usck_rqbtn mui-navigate-right" data-id="1" href="{:Url('Tourists/authAgentDetail',['agent_id' => $vo.id,'user_id' => $user_info['id']])}">
