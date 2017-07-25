@@ -2,12 +2,9 @@
 
 {block name="button"}
 <div class="nowrap pull-right" style="margin-top:10px">
-    <button data-modal='{:url("$classuri/add")}' data-title="添加代理" class='layui-btn layui-btn-small'><i
-            class='fa fa-plus'></i> 添加代理并授权
-    </button>
-    <button data-modal='{:url("$classuri/addExists")}' data-title="添加代理" class='layui-btn layui-btn-small'><i
-            class='fa fa-plus'></i> 授权已有代理
-    </button>
+    <!--<button data-modal='{:url("$classuri/add")}' data-title="添加代理" class='layui-btn layui-btn-small'><i-->
+            <!--class='fa fa-plus'></i> 添加代理-->
+    <!--</button>-->
     <!--<button data-update data-field='delete' data-action='{:url("classuri/del")}'-->
             <!--class='layui-btn layui-btn-small layui-btn-danger'><i class='fa fa-remove'></i> 删除代理-->
     <!--</button>-->
@@ -37,9 +34,6 @@
                 <button type="submit" class="btn btn-sm btn-white"><i class="fa fa-search"></i> 搜索</button>
             </div>
         </div>
-        <div class="col-xs-2" style="margin-left:3%;margin-top: 0.1%;font-size: 14px;color: black;font-weight: bold;">
-            共计：{$list|count}
-        </div>
     </div>
 </form>
 <!-- 表单搜索 结束 -->
@@ -55,8 +49,13 @@
                 <th class='text-center'>编号</th>
                 <th class='text-center'>姓名</th>
                 <th class='text-center'>手机号</th>
-                <th class='text-center'>代理产品</th>
-                <th class='text-center'>代理等级</th>
+                <th class='text-center'>证件号</th>
+                <th class='text-center'>微信号</th>
+                <th class='text-center'>注册时间</th>
+                <th class='text-center'>收货地址</th>
+                <th class='text-center'>最近一次登录时间</th>
+                <th class='text-center'>登录次数</th>
+                <th class='text-center'>状态</th>
                 <th class='text-center'>操作</th>
             </tr>
         </thead>
@@ -66,23 +65,38 @@
                 <!--<td class='list-table-check-td'>
                     <input class="list-check-box" value='{$vo.id}' type='checkbox'/>
                 </td>-->
-                <td class='text-center'>{$vo.empower_sn}</td>
-                <td class='text-center'>{if $vo['username'] eq ''}{$vo.mobile} {else /} {$vo.username}{/if}</td>
+                <td class='text-center'>{$key+1}</td>
+                <td class='text-center'>{if $vo['username'] eq ''}无 {else /} {$vo.username}{/if}</td>
                 <td class='text-center'>{$vo.mobile}</td>
-                <td class='text-center'>{$vo.name}</td>
-                <td class='text-center'>{$agenttype[$vo['level']]}</td>
-                <!--<td class='text-center'>
+                <td class='text-center'>{empty name="vo.idcard"}无{else /}{$vo.idcard}{/empty}</td>
+                <td class='text-center'>{empty name="vo.wechat_no"}无{else /}{$vo.wechat_no}{/empty}</td>
+                <td class='text-center'>{$vo.reg_at|date='Y-m-d H:i:s',###}</td>
+                <td class='text-center'>{$vo.detail_address|msubstr=###,0,8,'utf-8',true}</td>
+                <td class='text-center'>{empty name="vo.login_at"}无{else /}{$vo.login_at|date='Y-m-d H:i:s',###}{/empty}</td>
+                <td class='text-center'>{$vo.login_num}</td>
+                <!--<td class='text-center'>{eq name="vo.status" value="1"}启用{else/}禁用{/eq}</td>-->
+                <td class='text-center'>
                     {if $vo.status eq 0}
                     <span>已禁用</span>
                     {elseif $vo.status eq 1}
                     <span style="color:#090">使用中</span>
                     {/if}
-                </td>-->
+                </td>
                 <td class='text-center nowrap'>
                     {if auth("$classuri/edit")}
-                    <a data-modal='{:url("$classuri/edit")}?agent_id={$vo.id}' href="javascript:void(0)">编辑</a>
+                    <!--<a data-modal='{:url("$classuri/edit")}?agent_id={$vo.id}' href="javascript:void(0)">编辑</a>-->
                     <!--<span class="text-explode">|</span>-->
                     {/if}
+                    {if $vo.status eq 1 and auth("$classuri/forbid")}
+                    <!--<span class="text-explode">|</span>-->
+                    <a data-update="{$vo.id}" data-field='status' data-value='0' data-action='{:url("$classuri/forbid")}'
+                       href="javascript:void(0)">禁用</a>
+                    {elseif auth("$classuri/forbid")}
+                    <span class="text-explode">|</span>
+                    <a data-update="{$vo.id}" data-field='status' data-value='1' data-action='{:url("$classuri/forbid")}'
+                       href="javascript:void(0)">启用</a>
+                    {/if}
+
                 </td>
             </tr>
             {/foreach}

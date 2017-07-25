@@ -87,8 +87,12 @@ class Login extends Controller {
             $result['msg'] = '登录密码与账号不匹配，请重新输入!';
             return $result;
         }
+        if($user['status'] == 0){
+            $result['msg'] = '该用户已被禁用，如有疑问请联系平台热线!';
+            return $result;
+        }
 
-        Db::name('SystemUser')->where('id', $user['id'])->update(['login_at' => ['exp', 'now()'], 'login_num' => ['exp', 'login_num+1']]);
+        Db::table('lx_user')->where('id', $user['id'])->update(['login_at' => time(), 'login_num' => ['exp', 'login_num+1']]);
         session('agent', $user);
         LogService::write('代理用户管理', '用户'.$mobile.'登录系统成功');
         $result['msg'] = '登录成功!';
