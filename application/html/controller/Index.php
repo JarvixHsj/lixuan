@@ -18,6 +18,7 @@ use think\Controller;
 use think\response\View;
 use model\Product;
 use model\Banner;
+use think\Db;
 
 /**
  * 网站入口控制器
@@ -38,7 +39,6 @@ class Index extends Controller {
     	$bannerRes = $BannerModel->where('status = 1 AND is_delete = 1')->order('id', 'desc')->select();
         if(!$bannerRes) $bannerRes = array();
         $bannerRes = $bannerRes->toArray();
-//        var_dump($bannerRes);die;
     	$this->assign('list', $list);
     	$this->assign('banner_res', $bannerRes);
     	$this->assign('banner_res_count', count($bannerRes) -1);
@@ -68,7 +68,9 @@ class Index extends Controller {
      */
     public function about()
     {
-
+        $res = Db::table('lx_word')->where('key', 'about')->find();
+        if(empty($res)) $this->error('整改中~~');
+        $this->assign('res', $res);
         return view();
     }
 

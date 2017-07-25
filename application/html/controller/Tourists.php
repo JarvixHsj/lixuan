@@ -278,7 +278,9 @@ class Tourists extends Controller {
      */
     public function agree()
     {
-
+        $res = Db::table('lx_word')->where('key', 'protocols')->find();
+        if(empty($res)) $this->error('整改中~~');
+        $this->assign('res', $res);
         return view();
     }
 
