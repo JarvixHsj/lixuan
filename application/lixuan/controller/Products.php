@@ -148,12 +148,10 @@ class Products extends BasicAdmin {
                 @unlink($this->request->server('DOCUMENT_ROOT').$data['image']);
                 $data['image'] = $newNamePath;
             }
-
             //重新组合要插入的数据
             $data['abbr'] = strtoupper($data['abbr']);
             $data['change_at'] = time();
-//            unset($data['id']);
-            $comboRes = $ProductModel->update(2);
+            $comboRes = $ProductModel->update($data);
             if($comboRes !== false) $this->success('保存成功!', '');
             $this->error('保存失败，请稍候再试！');
 

@@ -1,0 +1,103 @@
+{extend name="extra@html/main"}
+{block name='bodyTag'}
+<body class="bgf2f2f2">
+{block name='body'}
+	<div id="slider" class="mui-slider i_banner pro_banner">
+	  <div class="mui-slider-group mui-slider-loop">
+          <div class="mui-slider-item">
+              <a href="index_banner.html">
+              <img src="__PUBLIC__/{$res.image}">
+              </a>
+          </div>
+              <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+	    <!--<div class="mui-slider-item mui-slider-item-duplicate">-->
+	      <!--<a href="index_banner.html">-->
+	        <!--<img src="__PUBLIC__/static/html/img/banner.png">-->
+	      <!--</a>-->
+	    <!--</div>-->
+	    <!--&lt;!&ndash; 第一张 &ndash;&gt;-->
+	    <!--<div class="mui-slider-item">-->
+	      <!--<a href="index_banner.html">-->
+	        <!--<img src="__PUBLIC__/static/html/img/banner.png">-->
+	      <!--</a>-->
+	    <!--</div>-->
+	    <!--&lt;!&ndash; 第二张 &ndash;&gt;-->
+	    <!--<div class="mui-slider-item">-->
+	      <!--<a href="index_banner.html">-->
+	        <!--<img src="__PUBLIC__/static/html/img/banner.png">-->
+	      <!--</a>-->
+	    <!--</div>-->
+	    <!--&lt;!&ndash; 第三张 &ndash;&gt;-->
+	    <!--<div class="mui-slider-item">-->
+	      <!--<a href="index_banner.html">-->
+	        <!--<img src="__PUBLIC__/static/html/img/banner.png">-->
+	      <!--</a>-->
+	    <!--</div>-->
+	    <!--&lt;!&ndash; 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) &ndash;&gt;-->
+	    <!--<div class="mui-slider-item mui-slider-item-duplicate">-->
+	      <!--<a href="index_banner.html">-->
+	        <!--<img src="__PUBLIC__/static/html/img/banner.png">-->
+	      <!--</a>-->
+	    <!--</div>-->
+	  </div>
+	  <div class="mui-slider-indicator">
+	    <!--<div class="mui-indicator mui-active"></div>-->
+	    <!--<div class="mui-indicator"></div>-->
+	    <!--<div class="mui-indicator"></div>-->
+	  </div>
+	</div>
+	<div class="mui-content">
+	    <div class="pro_tabbox mui-row mui-text-center usdl_28">
+	    	<!--<div class="mui-col-xs-4 active" data-id="0">产品规格</div>-->
+	    	<div class="mui-col-xs-12" data-id="1">产品详情</div>
+	    	<!--<div class="mui-col-xs-4" data-id="2">买家照片</div>-->
+	    </div>
+	    <div class="pro_detailbox c_padding_margin pro_data usdl_24" style="display: block;">
+	    	<!--<p>安踏男鞋跑步鞋2017夏季新款弹力胶缓震网面轻便男-->
+<!--运动鞋11715501</p>-->
+			<!--<p>价格：<span style="color: red;">￥269</span></p>-->
+			<!--<p>产品成分：橡胶+EVA+DPU</p>-->
+			<!--<p>适用人群：所有人</p>-->
+            {$res.content}
+	    </div>
+	    <div class="pro_detailbox c_padding_margin pro_detailtext" style="display: none;">
+	    	<img src="__PUBLIC__/static/html/img/banner.png"/>
+	    	<img src="__PUBLIC__/static/html/img/banner.png"/>
+	    </div>
+	    <div class="pro_detailbox c_padding_margin pro_mjpic mui-clearfix" style="display: none;">
+	    	<ul class="pro_mjpic_list">
+	    		<li>
+	    			<img src="__PUBLIC__/static/html/img/di_dlchax.png" alt="" />
+	    		</li>
+	    		<li>
+	    			<img src="__PUBLIC__/static/html/img/caigou-fhicon.png" alt="" />
+	    		</li>
+	    		<li>
+	    			<img src="__PUBLIC__/static/html/img/0705_2.jpg" alt="" />
+	    		</li>
+	    	</ul>
+	    </div>
+	</div>
+	<script type="text/javascript">
+		var gallery = mui('.mui-slider');
+		gallery.slider({
+		  interval:3500//自动轮播周期，若为0则不自动播放，默认为0；
+		});
+		
+		$(".pro_tabbox div").click(function(){
+			var id = $(this).data("id");
+			$(".pro_tabbox div").removeClass("active");
+			$(this).addClass('active');
+			$(".pro_detailbox").hide();
+			if(id == 0) {
+				$(".pro_data").show();
+			}else if (id == 1) {
+				$(".pro_detailtext").show();
+			}else {
+				$(".pro_mjpic").show();
+			}
+		});
+	</script>
+    {/block}
+</body>
+{/block}

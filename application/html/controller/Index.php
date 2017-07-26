@@ -63,6 +63,22 @@ class Index extends Controller {
     }
 
     /**
+     * 产品详情
+     * @return View
+     */
+    public function productDetails()
+    {
+        $id = $this->request->param('id') ? $this->request->param('id') : 0;
+        if(empty($id)) $this->error('服务器系统繁忙，请稍后重试~');
+
+        $ProductModel = new Product();
+        $res = $ProductModel->find($id);
+
+        $this->assign('res', $res);
+        return view('product/detail');
+    }
+
+    /**
      * 关于我们
      * @return View
      */
