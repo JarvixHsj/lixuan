@@ -143,8 +143,9 @@ class Audit extends BasicAdmin {
         $messData['content'] = '恭喜您，后台已审核通过~~';
         $messData['created_at'] = date('Y/m/d H:i:s');
         AgentService::createMessage($messData);
+        $successUrl = $_SERVER['HTTP_REFERER'].'#/lixuan/audit/index.html?spm=m-87-'.rand(0,9).rand(0,9);
 
-        $this->success('审核成功！',  $_SERVER["HTTP_REFERER"].'#'.'/lixuan/Audit/index');
+        $this->success('审核成功！',  $successUrl);
     }
 
 
@@ -163,7 +164,8 @@ class Audit extends BasicAdmin {
             $updateData['is_through'] = 2;
             $updateData['status'] = 1;
             $res = $UserAuditModel->where('id',$id)->update($updateData);
-            if($res !== false) $this->success('审核成功！', $_SERVER["HTTP_REFERER"].'#'.'/lixuan/Audit/index');
+            $successUrl = $_SERVER['HTTP_REFERER'].'#/lixuan/audit/index.html?spm=m-87-'.rand(0,9).rand(0,9);
+            if($res !== false) $this->success('审核成功！',  $successUrl);
             $this->error('审核失败！');
         }
         $this->error('审核失败！');

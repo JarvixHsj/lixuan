@@ -241,3 +241,26 @@ if (!function_exists("array_column")) {
     }
 
 }
+
+
+/**
+ * 数组去维数
+ */
+if (!function_exists("agent_array_to_ring")) {
+
+    function agent_array_to_ring(array $arr) {
+        $data = [];
+        foreach ($arr as $key => $val) {
+            $tempcountval = count($val);
+            if ($tempcountval > 0 && $tempcountval == 1) {
+                $data[] = $val['0'];
+            } elseif($tempcountval > 0 && $tempcountval != 1) {
+                foreach($val as $ktow=>$vtow){
+                    $data[] = $vtow;
+                }
+            }
+        }
+        return $data;
+    }
+
+}

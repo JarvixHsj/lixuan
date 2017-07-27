@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"/Library/WebServer/Documents/lixuan/application/html/view/index.index.html";i:1501076359;s:73:"/Library/WebServer/Documents/lixuan/application/extra/view/html.main.html";i:1500302650;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"/Library/WebServer/Documents/lixuan/application/html/view/index.index.html";i:1501161581;s:73:"/Library/WebServer/Documents/lixuan/application/extra/view/html.main.html";i:1501076808;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -112,7 +112,7 @@
                         <div class="i_pro_pic mui-pull-left" style="background-image: url(__PUBLIC__<?php echo $vo['image']; ?>);"></div>
                         <div class="i_pro_info mui-pull-left">
                             <p class="title"><?php echo $vo['name']; ?></p>
-                            <p class="text"><?php echo $vo['intro']; ?></p>
+                            <p class="text"><?php echo msubstr($vo['intro'],0,40,'utf-8',true); ?></p>
                         </div>
                     </a>
 				</li>

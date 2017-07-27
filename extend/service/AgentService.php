@@ -114,6 +114,35 @@ class AgentService {
     }
 
 
+    public static function agentTeamList($userId, $proId)
+    {
+        if(!is_numeric($userId)) return array();
+
+        $list = array();
+        $totalList = self::recuesionTeamList($userId, $list, $proId);
+        if(is_array($totalList)) return $totalList;
+        return array();
+    }
+
+
+    public static function recuesionTeamList($userId, &$list, $proId)
+    {
+        $res = Db::table('lx_agent')
+            ->where('super_id', $userId)
+            ->where('product_id', $proId)
+            ->select();
+        if($res){
+            $list[] = $res;
+            foreach($res as $key => $val){
+                self::recuesionTeamList($val['user_id'], $list, $proId);
+            }
+        }
+        return $list;
+    }
+
+
+
+
 
 
 

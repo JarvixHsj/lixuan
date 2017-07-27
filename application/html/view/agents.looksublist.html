@@ -76,7 +76,7 @@
                                                                     <p class="usdl_24">团队人数：{$voSub['totalteam']}</p>
                                                                     <p class="usdl_24">授权编号：{$voSub['empower_sn']}</p>
                                                                     <p class="usdl_24">上级名称：{$data['userinfo']['username']}</p>
-                                                                    <a href="{:Url('Agent/see',[''])}">
+                                                                    <a href="{:Url('Agents/seeSubList',['pro_id' => $Think.get.pro_id, 'user_id' => $voSub.user_id])}">
                                                                         <span style="margin:20px;width:50px;height:50px;position:absolute;color: black;font-size: 35px;top: 20px;left: 190px;"> > </span>
                                                                     </a>
                                                                 </div>

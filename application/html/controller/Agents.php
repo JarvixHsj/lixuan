@@ -56,7 +56,6 @@ class Agents extends BasicAgent {
         ->where('a.user_id', session('agent.id'))
         ->where('p.is_delete' , 1)
         ->select()->toArray();
-
         $this->assign('agenttype', $this->_agentType);
         $this->assign('list', $list);
         return view();
@@ -210,13 +209,12 @@ class Agents extends BasicAgent {
 
             //统计下级信息
             $subData = $AgentModel->alias('a')
-                ->field('u.id as user_id,u.wechat_no,u.mobile,u.username,a.empower_sn,a.level')
+                ->field('a.id as agent_id,u.id as user_id,u.wechat_no,u.mobile,u.username,a.empower_sn,a.level')
                 ->join('lx_user u', "u.id = a.user_id")
                 ->where('a.super_id', session('agent.id'))
                 ->where('a.product_id', $pro_id)
                 ->order('a.id desc')
                 ->select()->toArray();
-//            var_dump($subData);die;
             if($subData){
                 //统计代理的直属人数和团队人数
                 foreach($subData as $key=>$val){
@@ -235,41 +233,34 @@ class Agents extends BasicAgent {
         return view();
     }
 
-
-    public function see()
+    /**
+     * 查看代理所有下级（无限极）
+     */
+    public function seeSubList()
     {
-        
+        $user_id = $this->request->param('user_id') ? trim($this->request->param('user_id')) : 0;
+        $pro_id = $this->request->param('pro_id') ? trim($this->request->param('pro_id')) : 0;
+
+        $resList = AgentService::agentTeamList($user_id,$pro_id);
+        $UserModel = new User;
+        if ($resList) {
+            $resList = agent_array_to_ring($resList);
+            if(is_array($resList)){
+                foreach($resList as $key=>$val){
+                    $tempUserInfo = $UserModel->field('username,mobile,wechat_no')->find($val['user_id']);
+                    if($tempUserInfo){
+                        $resList[$key]['user_username'] = $tempUserInfo['username'];
+                        $resList[$key]['user_mobile'] = $tempUserInfo['mobile'];
+                        $resList[$key]['user_wechat_no'] = $tempUserInfo['wechat_no'];
+                    }
+                }
+            }
+        }
+        $agentInfo = $UserModel->field('username')->find($user_id);
+//        var_dump($resList);die;
+        $this->assign('res', $resList);
+        $this->assign('agent', $agentInfo);
+        return view('see_sub_list');
     }
-
-//    /**
-//     * 查看下级代理--选择产品
-//     */
-//    public function sublistpro()
-//    {
-//        //判断参数
-//        $pro_id = $this->request->param('pro_id') ? trim($this->request->param('pro_id')) : '';
-//        if(empty($pro_id)) $this->error('选择产品参数错误！');
-//
-//        //查询用户信息
-//        $UserModel = new User;
-//        $userData = $UserModel->find(session('agent.id'))->toArray();
-//
-//        //查询下级统计数据
-//        $AgentModel = new Agent();
-//        $AgentData = $AgentModel->alias('a')->field('a.*,p.name')
-//            ->join('lx_product p', 'p.id = a.product_id')
-//            ->where('a.user_id', session('agent.id'))
-//            ->order('a.id desc')->select()->toArray();
-//
-//        $data = array();
-//        $data['userinfo'] = $userData;
-//        $data['agentinfo'] = $AgentData;
-//        $data['agenttype'] = $this->_agentType;
-//        return view('looksublist');
-//    }
-
-
-
-
 
 }

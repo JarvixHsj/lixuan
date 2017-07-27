@@ -97,7 +97,7 @@
                         <div class="i_pro_pic mui-pull-left" style="background-image: url(__PUBLIC__{$vo.image});"></div>
                         <div class="i_pro_info mui-pull-left">
                             <p class="title">{$vo.name}</p>
-                            <p class="text">{$vo.intro}</p>
+                            <p class="text">{$vo.intro|msubstr=###,0,40,'utf-8',true}</p>
                         </div>
                     </a>
 				</li>
