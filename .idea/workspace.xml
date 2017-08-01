@@ -28,12 +28,21 @@
       <file leaf-file-name="Test.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/html/controller/Test.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="0.87775064" vertical-offset="1942" max-vertical-offset="2780">
               <caret line="131" column="1" selection-start-line="131" selection-start-column="1" selection-end-line="131" selection-end-column="1" />
               <folding>
                 <element signature="e#6#86#0#PHP" expanded="true" />
                 <element signature="e#120#141#0#PHP" expanded="true" />
                 <marker date="1501558491000" expanded="true" signature="1667:1837" placeholder="INSERT INTO ..." />
+=======
+            <state vertical-scroll-proportion="0.7555012" vertical-offset="1962" max-vertical-offset="2780">
+              <caret line="127" column="24" selection-start-line="127" selection-start-column="24" selection-end-line="127" selection-end-column="24" />
+              <folding>
+                <element signature="e#6#86#0#PHP" expanded="true" />
+                <element signature="e#120#141#0#PHP" expanded="true" />
+                <marker date="1501558353000" expanded="true" signature="1667:1837" placeholder="INSERT INTO ..." />
+>>>>>>> dev
               </folding>
             </state>
           </provider>
@@ -968,12 +977,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/html/controller/Test.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.87775064" vertical-offset="1942" max-vertical-offset="2780">
           <caret line="131" column="1" selection-start-line="131" selection-start-column="1" selection-end-line="131" selection-end-column="1" />
           <folding>
             <element signature="e#6#86#0#PHP" expanded="true" />
             <element signature="e#120#141#0#PHP" expanded="true" />
             <marker date="1501558491000" expanded="true" signature="1667:1837" placeholder="INSERT INTO ..." />
+=======
+        <state vertical-scroll-proportion="0.7555012" vertical-offset="1962" max-vertical-offset="2780">
+          <caret line="127" column="24" selection-start-line="127" selection-start-column="24" selection-end-line="127" selection-end-column="24" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="true" />
+            <element signature="e#120#141#0#PHP" expanded="true" />
+            <marker date="1501558353000" expanded="true" signature="1667:1837" placeholder="INSERT INTO ..." />
+>>>>>>> dev
           </folding>
         </state>
       </provider>
