@@ -224,9 +224,6 @@ class Shipping extends BasicAgent {
         $takeRecoed['content'] = session('agent.username').'给你发了'.$sweepCount.'个货物，订单号为'.$orderSn.'。请到单号查询里面查看详情！';
         var_dump(session('agent'),$antiUpdateData,$antiRecordData);
 
-
-
-
     }
     
     
