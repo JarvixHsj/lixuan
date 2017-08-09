@@ -47,6 +47,15 @@ class AgentService {
     }
 
     /**
+     * 生成发货唯一订单号
+     * @return string
+     */
+    public static function createShipmentSn()
+    {
+        return date('Ymd').substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, 8);
+    }
+
+    /**
      * 生成用户消息记录
      * @param int $user_id
      * @param string $content
@@ -114,7 +123,13 @@ class AgentService {
     }
 
 
-    public static function agentTeamList($userId, $proId)
+    /**
+     * 代理团队列表
+     * @param $userId
+     * @param $proId
+     * @return array
+     */
+    public static function agentTeamList($userId, $proId = 0)
     {
         if(!is_numeric($userId)) return array();
 
@@ -124,12 +139,20 @@ class AgentService {
         return array();
     }
 
-
+    /**
+     * 递归查询代理团队人数
+     * @param $userId
+     * @param $list
+     * @param $proId
+     * @return array
+     */
     public static function recuesionTeamList($userId, &$list, $proId)
     {
+        $where = array();
+        if($userId) $where['super_id'] = $userId;
+        if($proId) $where['product_id'] = $proId;
         $res = Db::table('lx_agent')
-            ->where('super_id', $userId)
-            ->where('product_id', $proId)
+            ->where($where)
             ->select();
         if($res){
             $list[] = $res;
@@ -141,9 +164,50 @@ class AgentService {
     }
 
 
+    /**
+     * 查询代理直属人数
+     * @param $userId
+     */
+    public static function agentDirectlyList($userId)
+    {
+        if(!is_numeric($userId)) return false;
+        $res = Db::table('lx_agent')->alias('a')
+            ->join('lx_user u', 'u.id = a.user_id')
+            ->join("lx_product p", "p.id = a.product_id")
+            ->where('super_id', $userId)
+            ->field('a.*,u.username,u.mobile,u.wechat_no,p.name as project_name')
+            ->select();
+        if(!$res) return false;
+        return $res;
+    }
 
 
+    /**
+     * 获取代理 授权信息
+     * @param int $agent_id
+     * @param int $pro_id
+     */
+    public static function getAgentAllInfo($agent_id = 0,$pro_id = 0)
+    {
+        return Db::table('lx_agent')->alias('a')
+            ->join('lx_user u ', 'u.id = a.user_id')
+            ->join('lx_product p ', 'p.id = a.product_id')
+            ->where('a.id', $agent_id)
+            ->where('a.product_id', $pro_id)
+            ->field('a.*,u.username,u.mobile,u.wechat_no,p.name as product_name')
+            ->find();
+//        var_dump($res);die;
+    }
 
+
+    /**
+     * 获取单条代理信息
+     * @param int $agent_id
+     */
+    public static function getAgentOneInfo($agent_id = 0)
+    {
+        return Db::table('lx_agent')->find($agent_id);
+    }
 
 
 

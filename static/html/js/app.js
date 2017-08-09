@@ -13,11 +13,11 @@ $(function(){
 
 function judgeEmpty(content, msg, title, buttons,callback)
 {
-    var title = title ? totle : '提示';
+    var title = title ? title : '提示';
     var buttons = buttons ? buttons : '确定';
-    if (content == null || content == undefined || content == '') {
+    if (content == null || content == undefined || content == '' || content == 0) {
         mui.alert(msg, title, buttons);
-        //return false;
+        return false;
         throw SyntaxError();
     }
 }

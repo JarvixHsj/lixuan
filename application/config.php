@@ -226,4 +226,9 @@ return [
     'admin' => [
         'prefix_url' => 'admin.html#/',
     ],
+    //
+    'wechat' => [
+        'AppID'	=> 'wx20af038b1bd24b0a',
+        'AppSecret'	=>	'f3c6ce61d0e214b64c81df5b7a2b93f4'
+    ],
 ];

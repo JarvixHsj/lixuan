@@ -15,7 +15,9 @@
 namespace app\html\controller;
 
 use controller\BasicAgent;
+use model\Anti;
 use service\AgentService;
+use service\AntiService;
 use think\response\View;
 use think\Url;
 use model\Product;
@@ -39,12 +41,6 @@ class Shipping extends BasicAgent {
      * 发货内页--首页
      */
     public function index() {
-    	$Model = new Agent();
-    	$list = $Model->getUserAgentList(session('agent.id'));
-        if(!$list) $list = array();
-
-    	$this->assign('list', $list);
-    	$this->assign('agenttype', $this->_agentType);
     	return view();
     }
 
@@ -52,9 +48,47 @@ class Shipping extends BasicAgent {
     //新增发货
     public function add()
     {
+//        session('shipment',null);
         if (!$this->request->isPost()) {
+            if (!empty(session('shipment.agent_id')) && !empty(session('shipment.pro_id')) && !empty(session('shipment.take_user_id'))) {
+//                $UserModel = new User();
+//                $take_info = $UserModel->find(session('shipment.take_user_id'));
+//                var_dump(session('shipment'));die;
+                $take_info = AgentService::getAgentAllInfo(session('shipment.agent_id'), session('shipment.pro_id'));
+//                var_dump($take_info);die;
+                if($take_info) {
+//                    $take_info = $take_info->toArray();
+                    $this->assign('take_info', $take_info);
+                }
+            }
 
-            return view();
+
+//            $AppId = config('wechat.AppID');
+//            $AppSecret = config('wechat.AppSecret');
+//
+//            $token_access_url  = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$AppId."&secret=".$AppSecret;
+//            $access_res = file_get_contents($token_access_url);    //获取文件内容或获取网络请求的内容
+//            $access_token_data = json_decode($access_res, true);   //接受一个 JSON 格式的字符串并且把它转换为 PHP 变量
+//
+//            $jsapi_ticket = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=".$access_token_data['access_token']."&type=jsapi";
+//            $ticket_res = file_get_contents($jsapi_ticket);
+//            $jsapi_ticket_data = json_decode($ticket_res, true);
+//
+//            $nonceStr = $this->make_nonceStr();
+//            $timestamp = time();
+//            $jsapi_ticket = $jsapi_ticket_data['ticket'];
+//            $url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+//            $signature = $this->make_signature($nonceStr,$timestamp,$jsapi_ticket,$url);
+//
+//            $data['config']['appid'] = $AppId;
+//            $data['config']['timestamp'] = $timestamp;
+//            $data['config']['nonceStr'] = $nonceStr;
+//            $data['config']['signature'] = $signature;
+//            $this->assign('config', $data['config']);
+
+            $this->assign('agenttype', $this->_agentType);
+            return $this->fetch();
+//            return view();
         }
 
         $UserModel = new User();
@@ -78,7 +112,6 @@ class Shipping extends BasicAgent {
             $AgentData = array();
         }
 
-
         $data = array();
         $data['userinfo'] = $UserData;
         $data['agentinfo'] = $AgentData;
@@ -89,102 +122,200 @@ class Shipping extends BasicAgent {
     }
 
 
-    //选择查询产品代理
+    /**
+     * 选中发货人
+     */
+    public function selected()
+    {
+        //将发货人信息存入session
+        $data = $this->request->param();
+        session('shipment.agent_id', $data['agent_id']);
+        session('shipment.take_user_id', $data['user_id']);
+        session('shipment.pro_id', $data['pro_id']);
+
+        $this->redirect('Shipping/add');
+    }
+
+    /**
+     * 列出代理直属 提供选择收货人
+     * @return View
+     */
     public function consignee()
     {
-        $pro_id = $this->request->post('product_id') ? trim($this->request->post('product_id')) : '';
-        // $agent_id = $this->request->post('agent_id') ? trim($this->request->post('agent_id')) : '';
-        if (empty($pro_id) || empty(session('agent'))) {
-            return false;
+        $directlyList = AgentService::agentDirectlyList(session('agent.id'));
+        $this->assign('res', $directlyList);
+        $this->assign('agenttype', $this->_agentType);
+        return view();
+    }
+
+
+    /**
+     * 扫描发货页面
+     */
+    public function ajaxSweepIndex()
+    {
+        if($this->request->isGet()){
+
+            return $this->fetch('sweep');
         }
-        //查询该代理产品关系是否存在
-        $AgentModel = new Agent;
-        $where['product_id'] = $pro_id;
-        $where['user_id'] = session('agent.id');
-        $res = $AgentModel->where($where)->find()->toArray();
-        if (!array_key_exists($res['level'], $this->_agentType)) {
-            return false;
+
+        //判断
+        $data = array('url'=>Url::build('Shipping/ajaxSweepIndex'));
+
+        if (!empty(session('shipment.agent_id')) && !empty(session('shipment.pro_id')) && !empty(session('shipment.take_user_id'))) {
+            $this->result($data,1,'','json');
         }
-        $tempLevel = $this->_agentType;
-        foreach ($tempLevel as $key => $val) {
-            if ($key < $res['level']) {
-                unset($tempLevel[$key]);
+        $this->result($data,0,'请先选择收货人~','json');
+    }
+
+    /**
+     * 完成扫描
+     */
+    public function doneSweep()
+    {
+        $orderSn = AgentService::createShipmentSn();
+        //判断是否选择了发货人
+        if($this->checkShipmentInfo() === false){
+            $this->success('请先选择发货代理~', 'Shipping/add');
+        }
+        $takeUserId = session('shipment.take_user_id');
+        $takeUserInfo = Db::table('lx_user')->find($takeUserId);
+
+        $returnUrl = Url::build('Shipping/index');
+        $sweep = $this->request->param()['sweep'];
+        $sweepCount = count($sweep);
+        $where = '';
+        if($sweepCount > 1){
+            $sweepStr = implode(',',$sweep);
+            $where = 'id in('.$sweepStr.')';
+        }elseif($sweepCount == 1){
+            $where = array('id' => $sweep['0']);
+        }elseif($sweepCount == 0){
+            $this->success('无扫描信息~', 'Shipping/index');
+        }
+
+        $AntiModel = new Anti();
+        $res = $AntiModel->where($where)->select();
+        if(!$res){
+            $this->success('无扫描信息~', 'Shipping/index');
+        }
+        $res = $res->toArray();
+        $antiRecordData = array();  //防伪码记录
+        $antiUpdateData = array();  //防伪码更新（更新所属代理）
+        $shipmentAgentId = session('shipment.agent_id');
+        foreach($res as $key => $val){
+            $tempRecord['anti_id'] = $val['id'];
+            $tempRecord['anti_code'] = $val['code'];
+            $tempRecord['take_user_id'] = $takeUserId;
+            $tempRecord['send_user_id'] = session('agent.id');
+            $tempRecord['agent_id'] = $shipmentAgentId;
+            $antiRecordData[] = $tempRecord;
+
+            $val['user_id'] = $takeUserId;
+            $val['agent_id'] = $shipmentAgentId;
+            $val['project_id'] = session('shipment.pro_id');
+            $val['updated_at'] = time();
+            $antiUpdateData[] = $val;
+        }
+        //代理消息记录
+        $takeRecoed = array();
+        $takeRecoed['user_id'] = $takeUserId;
+        $takeRecoed['created_at'] = date('Y-m-d H:i:s',time());
+        $takeRecoed['content'] = session('agent.username').'给你发了'.$sweepCount.'个货物，订单号为'.$orderSn.'。请到单号查询里面查看详情！';
+        var_dump(session('agent'),$antiUpdateData,$antiRecordData);
+
+
+
+
+    }
+    
+    
+    
+    
+    
+
+    /**
+     * 列出选择的下级直属所有代理（可越级发货）
+     */
+    public function seeSubList()
+    {
+        $user_id = $this->request->param('user_id') ? trim($this->request->param('user_id')) : 0;
+        $agent_id = $this->request->param('agent_id') ? trim($this->request->param('agent_id')) : 0;
+        $pro_id = $this->request->param('pro_id') ? trim($this->request->param('pro_id')) : 0;
+
+        $resList = AgentService::agentTeamList($user_id ,$pro_id);
+        $UserModel = new User;
+
+        $productInfo = Db::table('lx_product')->find($pro_id);
+        //查询这个直属代理信息
+        $agentInfo = AgentService::getAgentOneInfo($agent_id);
+        //转存二维数组
+        $tempArr[] = $agentInfo;
+        //如果该代理有下级
+        if ($resList && is_array($resList)) {
+            $resList = agent_array_to_ring($resList);
+            foreach($resList as $key=>$val){
+                $tempArr[] = $val;
             }
         }
-
-        return $tempLevel;
-    }
-
-    /**
-     * 查看授权
-     * @return View
-     */
-    public function auth()
-    {
-        $agent_id = $this->request->param('id');
-        $UserData = Db::table('lx_user')->find(session('agent.id'));
-        $AgentData = Db::table('lx_agent')->alias('a')
-            ->join('lx_product p', 'p.id = a.product_id')
-            ->where('a.id = '.$agent_id)
-            ->field("a.*,p.name")
-            ->find();
-        $this->assign('user_info', $UserData);
-        $this->assign('agent_info', $AgentData);
-        $this->assign('agentType', $this->_agentType);
-        return view();
-    }
-
-    public function message()
-    {
-
-        return view();
+        foreach($tempArr as $key=>$val){
+            $tempUserInfo = $UserModel->field('username,mobile,wechat_no')->find($val['user_id']);
+            if($tempUserInfo){
+                $tempArr[$key]['user_username'] = $tempUserInfo['username'];
+                $tempArr[$key]['user_mobile'] = $tempUserInfo['mobile'];
+                $tempArr[$key]['user_wechat_no'] = $tempUserInfo['wechat_no'];
+            }
+        }
+        $this->assign('res', $tempArr);
+        $this->assign('pro_res', $productInfo);
+        $this->assign('agent', $agentInfo);
+        return view('see_sub_list');
     }
 
 
 
-    /**
-     * 修改密码页面
-     * @return View
-     */
-    public function passwd()
+
+
+    public function make_nonceStr()
     {
-        return view();
+        $codeSet = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        for ($i = 0; $i<16; $i++) {
+            $codes[$i] = $codeSet[mt_rand(0, strlen($codeSet)-1)];
+        }
+        $nonceStr = implode($codes);
+        return $nonceStr;
     }
 
-    /**
-     * 修改密码
-     * @return array
-     */
-    public function ajax_modifypasswd()
+    public function make_signature($nonceStr,$timestamp,$jsapi_ticket,$url)
     {
-        $result = array('status' => 0, 'message' => '参数有误！', 'url' => '');
-        $mobile = $this->request->param('mobile') ? trim($this->request->param('mobile')) : '';
-        $password = $this->request->param('password') ? trim($this->request->param('password')) : '';
-        $afirmpassword = $this->request->param('afirmpassword') ? trim($this->request->param('afirmpassword')) : '';
-        //判断参数
-        if (empty($mobile) || empty($password) || empty($afirmpassword)) {
-            return $result;
-        }
-        if ($mobile != session('agent.mobile')) {
-            $result['message'] = '手机号不是当前登录账号~';
-           return $result;
-        }
-        if($password !== $afirmpassword){
-            $result['message'] = '两次密码不一致！';
-            return $result;
-        }
+        $tmpArr = array(
+            'noncestr' => $nonceStr,
+            'timestamp' => $timestamp,
+            'jsapi_ticket' => $jsapi_ticket,
+            'url' => $url
+        );
+        ksort($tmpArr, SORT_STRING);
+        $string1 = http_build_query( $tmpArr );
+        $string1 = urldecode( $string1 );
+        $signature = sha1( $string1 );
+        return $signature;
+    }
 
-        $UserModel = new User();
-        $savadata = array('password' => md5($password));
-        if($UserModel->updatePassword(array('id' => session('agent.id')), $savadata) !== false) {
-            $result['message'] = '修改成功';
-            $result['status'] = 1;
-            $result['url'] = Url::build('html/Users/personal');
-            return $result;
-        }
 
-        $result['message'] = '网络出错，修改失败~';
-        return $result;
+
+//        测试方法
+    //模拟扫一个码
+    public function ajaxSingle()
+    {
+//        $id = 54; //54  108  162  216
+        $id = rand(1,216);
+        $res = AntiService::JudgeAnti(array('id' => $id));
+        if(substr($res['0']['code'], -3) == 318){
+            $res = AntiService::getABoxTotal($res['0']['code']);
+        }
+        if(!$res) $res = array();
+
+        $this->result($res,1,'ok~','json');
     }
 
 

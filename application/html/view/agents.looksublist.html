@@ -38,7 +38,6 @@
                             <a class="mui-navigate-right usdl_32">{$vo}
                                 <span class="mui-badge mui-badge-inverted usdl_28">
                                     {empty name="$data['countagent']"}
-                                    <!--name为空-->
                                         0
                                     {else /}
                                         {volist name="data.countagent" id="voo"}
@@ -46,9 +45,7 @@
                                                 {$voo.countlevel}
                                             {/if}
                                         {/volist}
-                                    <!--name不为空-->
                                     {/empty}
-
                                 </span>
                             </a>
 

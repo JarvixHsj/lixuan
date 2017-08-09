@@ -214,7 +214,8 @@ class Agents extends BasicAgent {
                 ->where('a.super_id', session('agent.id'))
                 ->where('a.product_id', $pro_id)
                 ->order('a.id desc')
-                ->select()->toArray();
+                ->select();
+            if($subData) $subData->toArray();
             if($subData){
                 //统计代理的直属人数和团队人数
                 foreach($subData as $key=>$val){

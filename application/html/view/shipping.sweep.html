@@ -1,0 +1,184 @@
+{extend name="extra@html/main"}
+{block name="style"}
+<style>
+    .foot {
+        width: 100%;
+        height: 55px;
+        background: #fff;
+        margin: 0;
+        border-top: 1px solid #e1dddd;
+    }
+    .navbar-fixed-bottom {
+        bottom: 0;
+        border-width: 1px 0 0;
+        background: #FF69B4;
+    }
+    .navbar-fixed-bottom, .navbar-fixed-top {
+        position: fixed;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+
+        font-size: large;
+        line-height: 55px;
+    }
+    .foot ul li {
+        /*line-height: ;*/
+        display: block;
+        width: 50%;
+        height: 55px;
+        float: left;
+        padding: 0px;
+        background-color: #FFF;
+        margin: 0px;
+        /*padding-top: 5px;*/
+        position: relative;
+        list-style: none;
+        line-height: 55px;
+    }
+    .foot ul li a{
+        font-size: large;
+        margin-left: 27%;
+    }
+    .cul_list_dev{
+        position: relative;
+        border-bottom: 1px solid #E0E0E0;
+        min-height: 0px;
+        padding-top: 3.5%;
+        padding-bottom: 3.5%;
+    }
+    .usck_dls_pic_style{
+        max-width: 32px;max-height: 32px;
+    }
+    .gou{
+        background-image: url(__PUBLIC__/static/html/img/tick_16_Green.png);
+    }
+    .useless{
+        background-image: url(__PUBLIC__/static/html/img/useless_16_Green.png);
+    }
+    .mgl40{
+        margin-left: 40%;
+    }
+    .ppt0{
+        padding-top: 0px;
+    }
+    .mgl0fz18{
+        margin-bottom:0%;font-size:18px;
+    }
+
+</style>
+{/block}
+{block name='body'}
+    <header class="mui-bar mui-bar-nav di_navbox">
+        <h1 class="mui-title" style="right: 70px;left: 70px;">发货扫描</h1>
+        <a href="javascript:void(0);" onclick="done()" style="z-index: 9999" class="mui-pull-right usfh_addbtn usdl_28">完成扫描</a>
+    </header>
+    <div class="mui-content">
+        <form action="{:Url('Shipping/doneSweep')}" method="post" id="forms">
+        <!-- 搜索结果显示 -->
+        <ul class="cul_list">
+            <!--<li>-->
+                <!--<div class="cul_list_dev">-->
+                    <!--<div class="usck_dls_pic usck_dls_pic_style gou"></div>-->
+                    <!--<div class="usck_dls_info ppt0">-->
+                        <!--<p class="name usdl_28 mgl0fz18">-->
+                            <!--<span>12:</span> <span>3629460328</span>-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<div class="cul_list_dev">-->
+                    <!--<div class="usck_dls_pic usck_dls_pic_style useless"></div>-->
+                    <!--<div class="usck_dls_info ppt0">-->
+                        <!--<p class="name usdl_28 mgl0fz18">-->
+                            <!--<span>12:</span> <span>3629460328</span>-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</li>-->
+
+            <!--原版-->
+            <!--<li>-->
+                <!--<div class="cul_list_dev">-->
+                    <!--&lt;!&ndash;mui-navigate-right 右箭头 列表样式类&ndash;&gt;-->
+                    <!--<a class="usck_rqbtn " data-id="1" href="customer_data.html">-->
+                        <!--<div class="usck_dls_pic"  style="max-width: 32px;max-height: 32px; background-image: url(__PUBLIC__/static/html/img/tick_16_Green.png);"></div>-->
+                        <!--<div class="usck_dls_info" style="padding-top: 0px;">-->
+
+                            <!--<p class="name usdl_28" style="margin-bottom:0%;font-size:18px;"><span>12:</span> <span>3629460328</span></p>-->
+                        <!--</div>-->
+                    <!--</a>-->
+                <!--</div>-->
+            <!--</li>-->
+        </ul>
+        </form>
+        <ul class="cul_list1">
+            <button class="single">扫单个</button>
+            <button class="double">扫一箱</button>
+        </ul>
+    </div>
+
+    <div style="width: 100%;height: 65px;clear: both;"></div>
+        <div class="row foot navbar-fixed-bottom">
+            <span class="mgl40">继续扫描</span>
+        </div>
+    </div>
+<!--<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>-->
+
+    <script type="text/javascript">
+        function done(){
+            $('#forms').submit();
+        }
+
+        var singleUrl = "{:Url('Shipping/ajaxSingle')}"
+        var doubleUrl = "{:Url('Shipping/ajaxDouble')}"
+        $('.single').click(function(){
+            $.ajax({
+                type: "POST",
+                url: singleUrl,
+                success: function(res){
+                    var icons = 'gou';
+                    $.each(res.data, function(i,n){
+                        if(n.user_id == 0){
+                            icons = 'gou'
+                        }else{
+                            icons = 'useless'
+                        }
+                        var html = '';
+                        html += '<li>';
+                        html += '<div class="cul_list_dev">';
+                        html += '<div class="usck_dls_pic usck_dls_pic_style '+ icons +'"></div>';
+                        html += '<div class="usck_dls_info ppt0">';
+                        html += '<p class="name usdl_28 mgl0fz18">';
+                        html += '<span>'+ n.qrcode +'</span>';
+                        html += '</p>';
+                        html += '</div>';
+                        html += '</div>';
+                        html += '<input type="hidden" name="sweep[]" value="'+ n.id +'"/>';
+                        html += '</li>';
+                        $('.cul_list').append(html);
+                    })
+
+                },
+                error:function(){
+                    mui.alert('系统繁忙~')
+                }
+            });
+        })
+        $('.double').click(function(){
+            var aa = $('input[name="sweep"]').val();
+            console.log(aa);
+//            $.ajax({
+//                type: "POST",
+//                url: doubleUrl,
+//                success: function(res){
+//                    console.log(res)
+//                },
+//                error:function(){
+//                    mui.alert('系统繁忙~')
+//                }
+//            });
+        })
+    </script>
+{/block}

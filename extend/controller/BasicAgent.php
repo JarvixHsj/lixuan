@@ -21,4 +21,17 @@ class BasicAgent extends Controller {
     }
 
 
+    /**
+     * 判断是否选择了发货人
+     * @return bool
+     */
+    public static function checkShipmentInfo()
+    {
+        if (empty(session('shipment.agent_id')) || empty(session('shipment.pro_id')) || empty(session('shipment.take_user_id'))) {
+            return false;
+        }
+        return true;
+    }
+
+
 }

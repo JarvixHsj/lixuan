@@ -527,6 +527,7 @@ input.usyq_twoin:last-child {
     border-bottom: 1px solid #f2f2f2;
 }
 .usck_dlson:last-child {border-bottom: none;}
+.usck_dlson.active .usck_dls_pic {background-image: url(../img/fh_xuanzhong.png) !important;}
 .usck_dls_pic {
     position: absolute;
     left: 0;
@@ -607,7 +608,8 @@ input.usyq_twoin:last-child {
     padding-right: 15px;
 }
 .usfh_list_son {
-    padding-bottom: 3%;
+    /*padding-bottom: 3%;*/
+    padding-bottom: 15%;
 }
 .usfh_lisbox {position: relative;padding-bottom: 8%;margin-bottom: 2%;}
 .usfh_lisbox .usck_dls_info {padding-top: 0;}

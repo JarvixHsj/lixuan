@@ -1,0 +1,43 @@
+{extend name="extra@html/main"}
+{block name='body'}
+    <header class="mui-bar mui-bar-nav di_navbox" style="height: 50px;;">
+        <!--<div class="mui-input-row mui-search srarch_input mui-pull-left">-->
+            <!--<input type="search" class="mui-input-clear usdl_28" placeholder="请输入搜索内容">-->
+        <!--</div>-->
+        <!--<a href="user_fahuo.html" class="mui-pull-right usfh_addbtn usdl_28">搜索</a>-->
+        <div class="mui-input-row  " style="height: 50%;text-align: center;font-size: 18px;">
+            <span class="mui-input-clear usdl_28"  > 【{$res.0.user_username}】代理的所有下级</span>
+        </div>
+        <div class="mui-input-row  " style="height: 50%;text-align: center;font-size: 18px;">
+            <span class="mui-input-clear usdl_28"  > 【{$pro_res.name}】产品</span>
+        </div>
+        <!--<a href="user_fahuo.html" class="mui-pull-right usfh_addbtn usdl_28">搜索</a>-->
+    </header>
+    <div class="mui-content">
+        <!-- 搜索结果显示 -->
+        <ul class="cul_list">
+            {volist name='res' id='vo'}
+            <li>
+                <div class="usck_dlson">
+                    <a class="usck_rqbtn" data-id="1" href="{:Url('Shipping/selected',['agent_id' => $vo.id, 'pro_id' => $vo.product_id, 'user_id' => $vo.user_id])}">
+                        <div class="usck_dls_pic"  style="background-image: url(__PUBLIC__/static/html/img/logo.png);"></div>
+                        <div class="usck_dls_info">
+                            <p class="name usdl_28">{$vo.user_username}</p>
+                            <p class="call_info">
+                                <span class="info_icon">
+                                    <i class="mui-icon mui-icon-weixin"></i>
+                                    <span class="usdl_24">{empty name="vo.user_wechat_no"}暂无{else /}{$vo.user_wechat_no}{/empty}</span>
+                                </span>
+                                <span class="info_icon">
+                                    <i class="mui-icon mui-icon-phone-filled"></i>
+                                    <span class="usdl_24">{empty  name="vo.user_mobile"}暂无{else /}{$vo.user_mobile}{/empty}</span>
+                                </span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+{/block}
