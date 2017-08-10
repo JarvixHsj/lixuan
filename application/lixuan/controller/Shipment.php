@@ -13,8 +13,8 @@
 // +----------------------------------------------------------------------
 
 namespace app\lixuan\controller;
-
 use controller\BasicAdmin;
+use model\Anti;
 use service\DataService;
 use service\LogService;
 use service\AgentService;
@@ -24,8 +24,6 @@ use model\Agent;
 use think\response\View;
 use think\Db;
 use think\Url;
-
-// use think\Config;
 
 /**
  *
@@ -39,7 +37,7 @@ class Shipment extends BasicAdmin {
      * 定义当前操作表名
      * @var string
      */
-    public $table = 'lx_user';
+    public $table = 'lx_anti';
 
     private $randStr = 'abcdefghijklmnopqrstuvwxyz1234567890';
 
@@ -48,41 +46,96 @@ class Shipment extends BasicAdmin {
      * @return View
      */
     public function index() {
-        $res = Db::table($this->table)->order('id asc')->select();
-        
-        $this->assign('title', '代理列表');
-        $this->assign('list', $res);
-        $this->assign('agenttype', $this->_agentType);
-        return view();
-    }
+        $this->title = '防伪码管理';
+        $get = $this->request->get();
+        $db = Db::name($this->table)->order('id asc');
 
-    /**
-     * 禁止
-     */
-    public function forbid()
-    {
-        $field = $this->request->param();
-        $res = Db::table($this->table)->where('id', $field['id'])->update([$field['field'] => $field['value']]);
-        if($res === false) {
-            $this->error('操作失败，请重试！');
+
+        $rowPage = intval($this->request->get('rows', cookie('rows')));
+        cookie('rows', $rowPage >= 10 ? $rowPage : 20);
+        $page = $db->paginate($rowPage, false, ['query' => $this->request->get()]);
+        $result['list'] = $page->all();
+        $result['page'] = preg_replace(['|href="(.*?)"|', '|pagination|'], ['data-open="$1" href="javascript:void(0);"', 'pagination pull-right'], $page->render());
+        if (false !== $this->_callback('_data_filter', $result['list']) && true) {
+            !empty($this->title) && $this->assign('title', $this->title);
         }
-        $successUrl = $_SERVER['HTTP_REFERER'].'#/lixuan/users/index.html?spm=m-87-'.rand(0,9).rand(0,9);
-        $this->success('操作成功~', $successUrl);
+
+        $UserModel = new User();
+        foreach($result['list'] as $key => $val){
+            if($val['user_id'] == 0){
+                $result['list'][$key]['username'] = '暂无分配~';
+                $result['list'][$key]['mobile'] = '暂无分配~';
+            }else{
+                $userInfo = $UserModel->getUserInfo($val['user_id']);
+                if($userInfo){
+                    $result['list'][$key]['username'] = $userInfo['username'];
+                    $result['list'][$key]['mobile'] = $userInfo['mobile'];
+                }else{
+                    $result['list'][$key]['username'] = '无';
+                    $result['list'][$key]['mobile'] = '无';
+                }
+            }
+        }
+
+        return $this->fetch('', $result);
+
+//        var_dump($result);die;
+//        return $result;
+
+//        foreach (['name'] as $key) {
+//            if (isset($get[$key]) && $get[$key] !== '') {
+//                $db->where($key, 'like', "%{$get[$key]}%");
+//            }
+//        }
+//        return parent::_list($db);
+
+//
+//        $res = Db::table($this->table)->order('id asc')->select();
+//
+//        $this->assign('title', '代理列表');
+//        $this->assign('list', $res);
+//        $this->assign('agenttype', $this->_agentType);
+//        return view();
     }
+
+//    /**
+//     * 分配
+//     */
+//    public function setAntiUser()
+//    {
+//        $field = $this->request->param();
+//        $res = Db::table($this->table)->where('id', $field['id'])->update([$field['field'] => $field['value']]);
+//        if($res === false) {
+//            $this->error('操作失败，请重试！');
+//        }
+//        $successUrl = $_SERVER['HTTP_REFERER'].'#/lixuan/users/index.html?spm=m-87-'.rand(0,9).rand(0,9);
+//        $this->success('操作成功~', $successUrl);
+//    }
 
 
     /**
-    * 添加产品代理
+    * 设置防伪码代理
     */
-    public function add() {
+    public function setAntiUser() {
+
         if ($this->request->isGet()) {
-            $ProModel = new product;
-            $proList = $ProModel->where('status = 1')->order('id desc')->select();
-            if(!$proList){
-                $this->error('暂无产品，请先添加产品再来授权！');
+            $anti_id = $this->request->param('anti_id');
+            if(empty($anti_id)){
+                $this->error('网络请求失败，请稍后重试~');
             }
-            $this->assign('pro_list', $proList);
-            $this->assign('agenttype', $this->_agentType);
+            $AntiModel = new Anti();
+            $UserModel = new User();
+            $userList = $UserModel->getUserList();
+            if($userList == false){
+                $this->error('获取代理用户信息失败，请稍后重试~');
+            }
+            $antiInfo = $AntiModel->find($anti_id);
+            if(!$antiInfo){
+                $this->error('获取防伪码信息失败，请稍后重试~');
+            }
+            $antiInfo = $antiInfo->toArray();
+            $this->assign('user_list', $userList);
+            $this->assign('anti', $antiInfo);
             return parent::_form($this->table, 'form', 'id');
         }
         //接收参数 用户参数
@@ -90,7 +143,7 @@ class Shipment extends BasicAdmin {
         $data['password'] = $this->request->post('password');
         $data['mobile'] = $this->request->post('mobile');
         $level = $this->request->post('level');
-        $product_id = $this->request->post('product_id') ? trim($this->request->post('product_id')) : '';
+        $product_id = $this->request->post('user_id') ? trim($this->request->post('user_id')) : '';
         //判断密码是否空
         if(!$data['password']) return $this->error('密码不能为空！');
         //判断手机号格式

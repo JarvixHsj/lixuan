@@ -48,7 +48,8 @@ class Tags extends BasicAdmin {
                 $db->where($key, 'like', "%{$get[$key]}%");
             }
         }
-        return parent::_list($db);
+        $res =  parent::_list($db);
+        var_dump($res);die;
     }
 
     /**
