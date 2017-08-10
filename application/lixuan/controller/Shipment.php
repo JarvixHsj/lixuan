@@ -15,12 +15,12 @@
 namespace app\lixuan\controller;
 use controller\BasicAdmin;
 use model\Anti;
-use service\DataService;
-use service\LogService;
+use service\AntiService;
 use service\AgentService;
 use model\Product;
 use model\User;
 use model\Agent;
+use model\Shipments;
 use think\response\View;
 use think\Db;
 use think\Url;
@@ -52,7 +52,7 @@ class Shipment extends BasicAdmin {
 
 
         $rowPage = intval($this->request->get('rows', cookie('rows')));
-        cookie('rows', $rowPage >= 10 ? $rowPage : 20);
+        cookie('rows', $rowPage >= 54 ? $rowPage : 54);
         $page = $db->paginate($rowPage, false, ['query' => $this->request->get()]);
         $result['list'] = $page->all();
         $result['page'] = preg_replace(['|href="(.*?)"|', '|pagination|'], ['data-open="$1" href="javascript:void(0);"', 'pagination pull-right'], $page->render());
@@ -98,90 +98,105 @@ class Shipment extends BasicAdmin {
 //        return view();
     }
 
-//    /**
-//     * 分配
-//     */
-//    public function setAntiUser()
-//    {
-//        $field = $this->request->param();
-//        $res = Db::table($this->table)->where('id', $field['id'])->update([$field['field'] => $field['value']]);
-//        if($res === false) {
-//            $this->error('操作失败，请重试！');
-//        }
-//        $successUrl = $_SERVER['HTTP_REFERER'].'#/lixuan/users/index.html?spm=m-87-'.rand(0,9).rand(0,9);
-//        $this->success('操作成功~', $successUrl);
-//    }
-
-
     /**
     * 设置防伪码代理
     */
     public function setAntiUser() {
-
         if ($this->request->isGet()) {
             $anti_id = $this->request->param('anti_id');
-            if(empty($anti_id)){
+            $anti_code = $this->request->param('anti_code');
+            if(empty($anti_id) || empty($anti_code)){
                 $this->error('网络请求失败，请稍后重试~');
             }
-            $AntiModel = new Anti();
-            $UserModel = new User();
-            $userList = $UserModel->getUserList();
-            if($userList == false){
+            $is_box = 0;
+            if(substr($anti_code,-3,3) == 318){
+                $antiList = AntiService::getABoxTotal($anti_code);
+                $is_box = 1;
+            }else{
+                $antiList = AntiService::JudgeAnti(array('id' => $anti_id));
+            }
+            if($antiList == false){
                 $this->error('获取代理用户信息失败，请稍后重试~');
             }
-            $antiInfo = $AntiModel->find($anti_id);
-            if(!$antiInfo){
-                $this->error('获取防伪码信息失败，请稍后重试~');
-            }
-            $antiInfo = $antiInfo->toArray();
+
+            $UserModel = new User();
+            $userList = $UserModel->getUserList();
+            $this->assign('anti_list', $antiList);
             $this->assign('user_list', $userList);
-            $this->assign('anti', $antiInfo);
+            $this->assign('anti_id', $anti_id);
+            $this->assign('is_box', $is_box);
+            $this->assign('anti_code', $anti_code);
             return parent::_form($this->table, 'form', 'id');
         }
+        /**
+         * 逻辑
+         * 1.接收参数，并判断是否存在有效
+         * 2.判断是一盒还是一箱，组合防伪码记录跟踪
+         * 3.修改防伪码所属代理
+         */
         //接收参数 用户参数
-        $data['username'] = $this->request->post('username');
-        $data['password'] = $this->request->post('password');
-        $data['mobile'] = $this->request->post('mobile');
-        $level = $this->request->post('level');
-        $product_id = $this->request->post('user_id') ? trim($this->request->post('user_id')) : '';
-        //判断密码是否空
-        if(!$data['password']) return $this->error('密码不能为空！');
-        //判断手机号格式
-        if(!preg_match("/^1[34578]{1}\d{9}$/",$data['mobile'])){  
-            $this->error('手机号格式不正确！');  
-        }  
-        //判断产品
-        if(!$product_id) $this->error('请选择要代理的产品！');
-        $ProModel = new Product;
-        $tempPro = $ProModel->find($product_id)->toArray();
-         if (!$tempPro) {
-            $this->error('选择的代理产品有误，请重新选择！');  
+//        var_dump($this->request->post());die;
+        $anti_id = $this->request->post('anti_id');
+        $anti_code = $this->request->post('anti_code');
+        $is_box = $this->request->post('is_box');
+        $user_id = $this->request->post('user_id') ? trim($this->request->post('user_id')) : '';
+        //判断用户
+        if(!$user_id) $this->error('请选择要指派的代理！');
+        $UserModel = new User();
+        $userInfo = $UserModel->getUserInfo($user_id);
+        if(!$userInfo) $this->error('要指派的代理信息不存在，请重试~');
+
+        $isBoxStr = '一盒';
+        $isBoxNum = 1;
+        if($is_box == 1){
+            $isBoxStr = '一箱';
+            $isBoxNum = 48;
         }
-        //判断手机号是否已使用
-        $UserModel = new User;
-        $tempUser = $UserModel->where(array('mobile'=>$data['mobile']))->find();
-        if ($tempUser) $this->error('手机号已使用！');  
-        //添加代理和代理关系
+        //订单号
+        $AgentService = new AgentService();
+        $sn = $AgentService->createShipmentSn();
         try{
-             //生成授权号
-            $empower_sn = AgentService::createAgentSn($tempPro['abbr']);
-            if($empower_sn === false){
-                $this->error("授权号生成失败！请刷新后重试！");
-            }
-            $data['reg_at'] = time();
-            $data['reg_ip'] = $this->request->ip(0,true);
-            $data['password'] = md5($data['password']);
-            $UserModel->data($data)->allowField(true)->save();
-            $agentData['user_id'] = $UserModel->id;
-            $agentData['product_id'] = $this->request->post('product_id');
-            $agentData['level'] = $level;
-            $agentData['created_at'] = time();
-            $agentData['invitation'] = 2;
-            $agentData['empower_sn'] = $empower_sn;
-            $agentData['super_id'] = 0;
-            $agentData['super_level'] = 0;
-            $AgentModel = new Agent;
-            $AgentModel->data($agentData)->allowField(true)->save();
+            $messageContent = '公司总部给你发了'. $isBoxStr. '产品，订单号为：'.$sn. '，请注意查收~';
+            $newTime = date('Y-m-d H:i:s', time());
+
+            //防伪码流水记录
+            $recordInfo['anti_id'] = $anti_id;
+            $recordInfo['anti_code'] = $anti_code;
+            $recordInfo['type'] = 2;
+            $recordInfo['take_user_id'] = $user_id;
+            $recordInfo['content'] = $messageContent;
+            $AgentService->createAntirecord($recordInfo);
+
+            //代理用户消息记录
+            $messageInfo['user_id'] = $user_id;
+            $messageInfo['content'] = $messageContent;
+            $messageInfo['type'] = 1;
+            $messageInfo['created_at'] = $newTime;
+            $AgentService->createMessage($messageInfo);
+
+            //发货记录
+            $shipmentsInfo['take_user_id'] = $user_id;
+            $shipmentsInfo['picking_type'] = 0;
+            $shipmentsInfo['num'] = $isBoxNum;
+            $shipmentsInfo['remark'] = '总后台管理员给代理分配防伪码';
+            $shipmentsInfo['send_user_id'] = 0;
+//            $shipmentsInfo['take_user_level'] = $userInfo[''];
+            $shipmentsInfo['take_username'] = $userInfo['username'];
+            $shipmentsInfo['take_wechat_no'] = $userInfo['wechat_no'];
+            $shipmentsInfo['take_mobile'] = $userInfo['mobile'];
+            $shipmentsInfo['send_username'] = '公司总部';
+            $shipmentsInfo['send_time'] = $newTime;
+            $shipmentsInfo['created_at'] = $newTime;
+            $ShipmentsModel = new Shipments();
+            $ShipmentsModel->data($shipmentsInfo)->allowField(true)->save();
+
+            //更新防伪码记录所属代理
+            $antiUpdate['user_id'] = $user_id;
+            $antiUpdate['updated_at'] = time();
+            $AntiModel = new Anti();
+//            var_dump($antiUpdate);die;
+            $res = $AntiModel->allowField(true)->save($antiUpdate, array('id' => $anti_id));
+
             // 提交事务
             Db::commit();  
         } catch (\Exception $e) {
@@ -189,7 +204,7 @@ class Shipment extends BasicAdmin {
             Db::rollback();
             $this->error('参数错误，请重试添加！');
         }
-        $this->success('添加成功！',$this->_createAdminUrl('agents'));
+        $this->success('指派成功！',$this->_createAdminUrl('shipment'));
     }
 
     /**

@@ -77,7 +77,7 @@
 
                 <td class='text-center nowrap'>
                     {if auth("$classuri/setAntiUser")}
-                    <a data-modal='{:url("$classuri/setAntiUser")}?anti_id={$vo.id}' href="javascript:void(0)">指派代理</a>
+                    <a data-modal='{:url("$classuri/setAntiUser")}?anti_id={$vo.id}&anti_code={$vo.code}' href="javascript:void(0)">指派代理</a>
                     <!--<span class="text-explode">|</span>-->
                     {/if}
                 </td>

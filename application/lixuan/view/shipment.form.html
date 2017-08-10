@@ -10,19 +10,18 @@
             </select>
         </div>
     </div>
+    {volist name="anti_list" id="vo" key="k"}
     <div class="layui-form-item">
-        <label class="layui-form-label">二维码</label>
+        <label class="layui-form-label">{$key+1} &nbsp;防伪码</label>
         <div class="layui-input-block">
-            <input type="text" name="username" value='{$anti.qrcode|default=""}' required="required" disabled class="layui-input">
+            <input type="text" name="code" value='{$vo.code|default=""}' style="display:initial;width:25%" required="required" disabled class="layui-input">
+            &nbsp;&nbsp;&nbsp;&nbsp;是否已有所属代理：<input type="text" name="username" value='{eq name="vo.user_id" value="0"}无{else /}有{/eq}' style="display:initial;width:25%" required="required" disabled class="layui-input">
         </div>
     </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">防伪码</label>
-        <div class="layui-input-block">
-            <input type="text" name="username" value='{$anti.code|default=""}' required="required" disabled class="layui-input">
-        </div>
-    </div>
-    {if isset($vo['id'])}<input type='hidden' value='{$anti.id}' name='id'/>{/if}
+    {/volist}
+    {if isset($anti_id)}<input type='hidden' value='{$anti_id}' name='anti_id'/>{/if}
+    {if isset($anti_code)}<input type='hidden' value='{$anti_code}' name='anti_code'/>{/if}
+    {if isset($is_box)}<input type='hidden' value='{$is_box}' name='is_box'/>{/if}
     <div class="hr-line-dashed"></div>
     <div class="layui-form-item text-center">
         <button class="layui-btn" type='submit'>保存数据</button>
