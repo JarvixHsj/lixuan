@@ -49,12 +49,12 @@ class AntiService {
         $res = Db::table('lx_anti')->where('code','like',"{$qrstr}%")->select();
         if(!$res) return false;
 
-        array_shift($res);
-        array_shift($res);
-        array_shift($res);
-        array_shift($res);
-        array_shift($res);
-        array_shift($res);
+        array_pop($res);
+        array_pop($res);
+        array_pop($res);
+        array_pop($res);
+        array_pop($res);
+        array_pop($res);
         return $res;
     }
 

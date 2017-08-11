@@ -55,6 +55,7 @@ class AgentService {
         return date('Ymd').substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, 8);
     }
 
+
     /**
      * 生成用户消息记录
      * @param int $user_id
@@ -64,6 +65,15 @@ class AgentService {
     public static function createMessage($data)
     {
         Db::table('lx_message')->insert($data);
+    }
+
+    /**
+     * 生成防伪码消息记录
+     * @param $data
+     */
+    public static function createAntirecord($data)
+    {
+        Db::table('lx_antirecord')->insert($data);
     }
 
 
