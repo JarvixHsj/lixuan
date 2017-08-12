@@ -22,7 +22,7 @@ use think\response\View;
 use think\Url;
 use model\Product;
 use model\Agent;
-use model\UserInvite;
+use model\Shipments;
 use model\User;
 use think\Db;
 
@@ -35,13 +35,39 @@ use think\Db;
  */
 class Shipping extends BasicAgent {
 
-//    private $_agentType = array('1'=>'首席CEO', '2' => '核心总监', '3' => '总代', '4'=>'一级', '5'=>'特约');
-
     /**
      * 发货内页--首页
      */
-    public function index() {
+    public function index()
+    {
+        $ShipModel = new Shipments();
+//        $where = array('take_user_id' => 1111);
+        $where = array('take_user_id' => session('agent.id'));
+        $get = $this->request->get();
+        $list = $ShipModel->getShipmentList($where, $get);
+//        array(5) {
+//        ["total"]=>
+//  int(0)
+//  ["per_page"]=>
+//  int(1)
+//  ["current_page"]=>
+//  int(1)
+//  ["last_page"]=>
+//  int(0)
+//  ["data"]=>
+//  array(0) {
+//        }
+//}
+
+        var_dump($list['data']);     die;
+
     	return view();
+    }
+
+
+    public function ajaxPage()
+    {
+
     }
 
     

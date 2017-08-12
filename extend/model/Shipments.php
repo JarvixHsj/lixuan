@@ -15,11 +15,25 @@ class Shipments extends Model
     // }
 
 
-//    public static function getCondJudgeAnti($condition)
-//    {
-//        Db::table($this->table)
-//            ->where($condition)
-//            ->
-//    }
+    /**
+     * getShipmentList
+     * @author: Jarvix
+     * @param $condition
+     * @param int $pagenum
+     * @param int $pagesize
+     * @return bool|false|\PDOStatement|string|\think\Collection
+     */
+    public static function getShipmentList($condition, $get = array(), $page = 2, $pagesize = 2)
+    {
+        $rowPage = cookie('rows');
+        cookie('rows', $rowPage >= 2 ? $rowPage : 2);
+        $list = Db::name('lx_shipments')
+            ->where($condition)
+            ->paginate($rowPage,false);
+
+
+//        $page = $db->paginate($rowPage, false, ['query' => $this->request->get()]);
+        return $list->toArray();
+    }
 
 }

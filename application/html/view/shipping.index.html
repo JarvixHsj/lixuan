@@ -68,6 +68,32 @@
             </div>
         </div>
     </div>
+
+{block name="script"}
+<script>
+    var stop=true;
+    $(window).scroll(function(){
+        totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());
+        if($(document).height() <= totalheight){
+            if(stop==true){
+                stop=false;
+                $.ajax({
+                    type: "POST",
+                    url: "some.php",
+                    data: "name=John&location=Boston",
+                    success: function(msg){
+                        alert( "Data Saved: " + msg );
+                    }
+                });
+                $.post("ajax.php", {start:1, n:50},function(txt){
+                    $("#Loading").before(txt);
+                    stop=true;
+                },"json");
+            }
+        }
+    });
+</script>
+{/block}
 {/block}
 </body>
 {/block}

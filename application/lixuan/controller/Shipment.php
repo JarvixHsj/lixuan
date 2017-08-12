@@ -155,15 +155,6 @@ class Shipment extends BasicAdmin {
             $isBoxNum = 48;
             $antiList = AntiService::getABoxTotal($anti_code);
         }
-//        $tempShipDetailArr = array();
-//        foreach($antiList as $key => $val){
-//            $tempShipDetailInfo['ship_id'] = $ship_id;
-//            $tempShipDetailInfo['anti_id'] = $val['id'];
-//            $tempShipDetailInfo['anti_code'] = $val['code'];
-//            $tempShipDetailArr[] = $tempShipDetailInfo;
-//        }
-//        var_dump($is_box);
-//        var_dump($antiList);die;
         //订单号
         $AgentService = new AgentService();
         $sn = $AgentService->createShipmentSn();
@@ -177,6 +168,7 @@ class Shipment extends BasicAdmin {
             $recordInfo['type'] = 2;
             $recordInfo['take_user_id'] = $user_id;
             $recordInfo['content'] = $messageContent;
+            $recordInfo['created_at'] = $newTime;
             $AgentService->createAntirecord($recordInfo);
 
             //代理用户消息记录
@@ -187,8 +179,30 @@ class Shipment extends BasicAdmin {
             $AgentService->createMessage($messageInfo);
 
             //发货记录
-            $shipmentsInfo['order_sn'] = $sn;
+//            `id` int(11) NOT NULL AUTO_INCREMENT,
+//          `product_id` int(11) DEFAULT NULL,
+//          `serial_sn` varchar(120) DEFAULT NULL COMMENT '流水号',
+//          `picking_type` varchar(45) DEFAULT '0' COMMENT '提货方式0=自提，1=快递',
+//          `express_sn` varchar(120) DEFAULT NULL COMMENT '快递单号',
+//          `express_company` varchar(45) DEFAULT NULL COMMENT '快递公司\n',
+//          `num` smallint(5) DEFAULT '1' COMMENT '发货数量',
+//          `product_name` varchar(45) DEFAULT NULL COMMENT '产品名称',
+//          `remark` varchar(120) DEFAULT NULL COMMENT '备注',
+//          `order_sn` varchar(60) DEFAULT NULL COMMENT '系统订单号',
+//          `status` tinyint(1) DEFAULT '0' COMMENT '状态',
+//          `send_user_id` int(11) DEFAULT NULL COMMENT '发货人id',
+//          `send_user_level` tinyint(1) DEFAULT NULL COMMENT '发货人等级',
+//          `take_user_level` tinyint(1) DEFAULT NULL COMMENT '收货人等级',
+//          `take_username` varchar(45) DEFAULT NULL COMMENT '收货人姓名',
+//          `take_wechat_no` varchar(45) DEFAULT NULL,
+//          `take_mobile` varchar(45) DEFAULT NULL,
+//          `send_username` varchar(45) DEFAULT NULL,
+//          `send_wechat_no` varchar(45) DEFAULT NULL,
+//          `send_time` datetime DEFAULT NULL COMMENT '发货时间',
+//          `created_at` datetime DEFAULT NULL,
             $shipmentsInfo['take_user_id'] = $user_id;
+            $shipmentsInfo['product_id'] = 1;
+            $shipmentsInfo['order_sn'] = $sn;
             $shipmentsInfo['picking_type'] = 0;
             $shipmentsInfo['num'] = $isBoxNum;
             $shipmentsInfo['remark'] = '总后台管理员给代理分配防伪码';
@@ -201,9 +215,9 @@ class Shipment extends BasicAdmin {
             $shipmentsInfo['send_time'] = $newTime;
             $shipmentsInfo['created_at'] = $newTime;
             $ShipmentsModel = new Shipments();
+//            $ship_id = Db::table('lx_shipments')->insert($shipmentsInfo);
             $ShipmentsModel->data($shipmentsInfo)->allowField(true)->save();
             $ship_id = $ShipmentsModel->id;
-//            var_dump($ship_id);die;
 
             $tempShipDetailArr = array();   //发货详情记录
             $tempAntiUpdateArr = array();   //防伪码更新数组
@@ -230,6 +244,7 @@ class Shipment extends BasicAdmin {
             // 提交事务
             Db::commit();  
         } catch (\Exception $e) {
+//            var_dump($ShipmentsModel->getLastSql());die;
             // 回滚事务
             Db::rollback();
             $this->error('参数错误，请重试添加！');
