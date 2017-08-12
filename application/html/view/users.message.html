@@ -8,18 +8,19 @@
 		</header>
 		<div class="mui-content">
 		    <ul class="usin_list">
-		    	<!---->
-		    	<!--<li class="mui-clearfix">-->
-		    		<!--<div class="usin_list_left">-->
-						<!--<input name="radio-3-set" type="checkbox" value="2" class="regular-radio" id="usin_checkbox_3">-->
-						<!--<label for="usin_checkbox_3"></label>-->
-					<!--</div>-->
-		    		<!--<div class="usin_list_handle">-->
-			    		<!--<p class="usin_title usdl_32">系统提示3</p>-->
-			    		<!--<p class="usin_text usdl_28">你的上家给你发货了，商品包括三包大盒两盒小包装的。</p>-->
-			    		<!--<span class="mui-pull-right usin_date usdl_22">2017/5/17 15:45:35</span>-->
-		    		<!--</div>-->
-		    	<!--</li>-->
+                {volist name="res" id="vo" empty="暂无消息"}
+		    	<li class="mui-clearfix">
+		    		<div class="usin_list_left">
+						<input name="radio-3-set" type="checkbox" value="2" class="regular-radio" id="usin_checkbox_3">
+						<label for="usin_checkbox_3"></label>
+					</div>
+		    		<div class="usin_list_handle">
+			    		<p class="usin_title usdl_32" style="color:#dd524d;">{eq name="vo.type" value='1'}系统提示{else /}公司总部{/eq}</p>
+			    		<p class="usin_text usdl_28">{$vo.content}</p>
+			    		<span class="mui-pull-right usin_date usdl_22">{$vo.created_at}</span>
+		    		</div>
+		    	</li>
+                {/volist}
 		    </ul>
 		</div>
 		<script type="text/javascript">

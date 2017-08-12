@@ -221,6 +221,21 @@ class AgentService {
 
 
 
+    public static function getMessageUnreadNum($user_id = 0)
+    {
+        if(empty($user_id)) return false;
+        $where = array();
+        $where['user_id'] = $user_id;
+        $where['is_read'] = 0;
+        $num = Db::table('lx_message')->where($where)->count();
+        if($num > 0) return $num;
+        return false;
+
+
+    }
+
+
+
 
 }
 

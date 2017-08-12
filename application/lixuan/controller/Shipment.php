@@ -146,12 +146,24 @@ class Shipment extends BasicAdmin {
         $userInfo = $UserModel->getUserInfo($user_id);
         if(!$userInfo) $this->error('要指派的代理信息不存在，请重试~');
 
+        //整理信息，查询出防伪数据
         $isBoxStr = '一盒';
         $isBoxNum = 1;
+        $antiList = AntiService::JudgeAnti(array('id' => $anti_id));
         if($is_box == 1){
             $isBoxStr = '一箱';
             $isBoxNum = 48;
+            $antiList = AntiService::getABoxTotal($anti_code);
         }
+//        $tempShipDetailArr = array();
+//        foreach($antiList as $key => $val){
+//            $tempShipDetailInfo['ship_id'] = $ship_id;
+//            $tempShipDetailInfo['anti_id'] = $val['id'];
+//            $tempShipDetailInfo['anti_code'] = $val['code'];
+//            $tempShipDetailArr[] = $tempShipDetailInfo;
+//        }
+//        var_dump($is_box);
+//        var_dump($antiList);die;
         //订单号
         $AgentService = new AgentService();
         $sn = $AgentService->createShipmentSn();
@@ -175,6 +187,7 @@ class Shipment extends BasicAdmin {
             $AgentService->createMessage($messageInfo);
 
             //发货记录
+            $shipmentsInfo['order_sn'] = $sn;
             $shipmentsInfo['take_user_id'] = $user_id;
             $shipmentsInfo['picking_type'] = 0;
             $shipmentsInfo['num'] = $isBoxNum;
@@ -189,13 +202,30 @@ class Shipment extends BasicAdmin {
             $shipmentsInfo['created_at'] = $newTime;
             $ShipmentsModel = new Shipments();
             $ShipmentsModel->data($shipmentsInfo)->allowField(true)->save();
+            $ship_id = $ShipmentsModel->id;
+//            var_dump($ship_id);die;
+
+            $tempShipDetailArr = array();   //发货详情记录
+            $tempAntiUpdateArr = array();   //防伪码更新数组
+            foreach($antiList as $key => $val){
+                $tempShipDetailInfo = array();
+                $tempShipDetailInfo['ship_id'] = $ship_id;
+                $tempShipDetailInfo['anti_id'] = $val['id'];
+                $tempShipDetailInfo['anti_code'] = $val['code'];
+                $tempShipDetailArr[] = $tempShipDetailInfo;
+
+                $tempAntiUpdateInfo = array();
+                $tempAntiUpdateInfo['user_id'] = $user_id;
+                $tempAntiUpdateInfo['updated_at'] = time();
+                $tempAntiUpdateInfo['id'] = $val['id'];
+                $tempAntiUpdateArr[] = $tempAntiUpdateInfo;
+            }
+            //插入发货详情
+            Db::table('lx_shipment_details')->insertAll($tempShipDetailArr);
 
             //更新防伪码记录所属代理
-            $antiUpdate['user_id'] = $user_id;
-            $antiUpdate['updated_at'] = time();
             $AntiModel = new Anti();
-//            var_dump($antiUpdate);die;
-            $res = $AntiModel->allowField(true)->save($antiUpdate, array('id' => $anti_id));
+            $AntiModel->allowField(true)->saveAll($tempAntiUpdateArr);
 
             // 提交事务
             Db::commit();  

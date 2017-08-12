@@ -1,9 +1,31 @@
 {extend name="extra@html/main"}
+{block name='style'}
+<style>
+    .jiaobiao{
+        display: block;
+        background: #f00;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        top: -5px;
+        right: -5px;
+        position: absolute;
+        text-align: center;
+        color: #FFF;
+        z-index: 99999;
+    }
+</style>
+{/block}
 {block name='bodyTag'}
 	<body class="bgf2f2f2">
 	{block name='body'}
 		<header class="mui-bar mui-bar-nav di_navbox">
-		    <a href="{:Url('Users/message')}" class="dl_nav_btn dl_nav_info"></a>
+		    <a href="{:Url('Users/message')}" class="dl_nav_btn dl_nav_info">
+                {present name="mess_num"}
+                <span class="jiaobiao">{$mess_num}</span>
+                {/present}
+				<!--<span class="jiaobiao">5</span>-->
+			</a>
 		    <h1 class="mui-title">经销商后台</h1>
 		    <a href="{:Url('Users/personal')}" class="dl_nav_btn dl_nav_user"></a>
 		</header>

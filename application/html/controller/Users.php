@@ -129,9 +129,19 @@ class Users extends BasicAgent {
         return view();
     }
 
+    /**
+     * 我的消息
+     * @return View
+     */
     public function message()
     {
-
+        $agentId = session('agent.id');
+        $res = Db::table('lx_message')->where('user_id', $agentId)->order('id desc')->select();
+        if($res){
+            Db::table('lx_message')->where('user_id', $agentId)->update(array('is_read'=>1));
+//            var_dump(Db::table('lx_message')->getLastSql());die;
+        }
+        $this->assign('res', $res);
         return view();
     }
 

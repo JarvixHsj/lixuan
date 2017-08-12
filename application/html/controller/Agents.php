@@ -24,15 +24,11 @@ use model\User;
 
 /**
  * 代理基础控制器
- * Class Index
  * @package app\index\controller
  * @author Jarvix <zoujingli@qq.com>
  * @date 2017/04/05 10:38
  */
 class Agents extends BasicAgent {
-
-//    private $_selectType = array('1' => '首席CEO' , '2' => '核心总监', '3' => '总代', '4'=>'一级', '5'=>'特约');
-//    private $_agentType = array('0' => '创始人','1'=>'首席CEO', '2' => '核心总监', '3' => '总代', '4'=>'一级', '5'=>'特约');
 
     /**
      * 代理入口
@@ -40,6 +36,11 @@ class Agents extends BasicAgent {
     public function index() {
     	$Model = new Product;
     	$list = $Model->order('id', 'desc')->select()->toArray();
+
+        $messNum = AgentService::getMessageUnreadNum(session('agent.id'));
+        if($messNum !== false){
+            $this->assign('mess_num', $messNum);
+        }
 
     	$this->assign('list', $list);
     	return view();
