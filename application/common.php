@@ -32,6 +32,22 @@ function p($data, $replace = false, $pathname = NULL) {
 }
 
 /**
+ * 格式化打印输出数据到页面
+ * @param mixed $data
+ * @param bool $replace
+ * @param string|null $pathname
+ */
+function dump($data) {
+    if(!$data){
+        return false;
+    }
+    echo '<pre>';
+    print_r($data);
+    echo '</pre>';
+    die;
+}
+
+/**
  * 获取微信操作对象
  * @param string $type
  * @return \Wechat\WechatReceive|\Wechat\WechatUser|\Wechat\WechatPay|\Wechat\WechatScript|\Wechat\WechatOauth|\Wechat\WechatMenu

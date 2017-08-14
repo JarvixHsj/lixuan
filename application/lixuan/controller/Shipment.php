@@ -171,6 +171,7 @@ class Shipment extends BasicAdmin {
             $recordInfo['created_at'] = $newTime;
             $AgentService->createAntirecord($recordInfo);
 
+
             //代理用户消息记录
             $messageInfo['user_id'] = $user_id;
             $messageInfo['content'] = $messageContent;
@@ -179,27 +180,6 @@ class Shipment extends BasicAdmin {
             $AgentService->createMessage($messageInfo);
 
             //发货记录
-//            `id` int(11) NOT NULL AUTO_INCREMENT,
-//          `product_id` int(11) DEFAULT NULL,
-//          `serial_sn` varchar(120) DEFAULT NULL COMMENT '流水号',
-//          `picking_type` varchar(45) DEFAULT '0' COMMENT '提货方式0=自提，1=快递',
-//          `express_sn` varchar(120) DEFAULT NULL COMMENT '快递单号',
-//          `express_company` varchar(45) DEFAULT NULL COMMENT '快递公司\n',
-//          `num` smallint(5) DEFAULT '1' COMMENT '发货数量',
-//          `product_name` varchar(45) DEFAULT NULL COMMENT '产品名称',
-//          `remark` varchar(120) DEFAULT NULL COMMENT '备注',
-//          `order_sn` varchar(60) DEFAULT NULL COMMENT '系统订单号',
-//          `status` tinyint(1) DEFAULT '0' COMMENT '状态',
-//          `send_user_id` int(11) DEFAULT NULL COMMENT '发货人id',
-//          `send_user_level` tinyint(1) DEFAULT NULL COMMENT '发货人等级',
-//          `take_user_level` tinyint(1) DEFAULT NULL COMMENT '收货人等级',
-//          `take_username` varchar(45) DEFAULT NULL COMMENT '收货人姓名',
-//          `take_wechat_no` varchar(45) DEFAULT NULL,
-//          `take_mobile` varchar(45) DEFAULT NULL,
-//          `send_username` varchar(45) DEFAULT NULL,
-//          `send_wechat_no` varchar(45) DEFAULT NULL,
-//          `send_time` datetime DEFAULT NULL COMMENT '发货时间',
-//          `created_at` datetime DEFAULT NULL,
             $shipmentsInfo['take_user_id'] = $user_id;
             $shipmentsInfo['product_id'] = 1;
             $shipmentsInfo['order_sn'] = $sn;

@@ -59,7 +59,7 @@ class Shipping extends BasicAgent {
 //        }
 //}
 
-        var_dump($list['data']);     die;
+        dump($list['data']);     die;
 
     	return view();
     }
