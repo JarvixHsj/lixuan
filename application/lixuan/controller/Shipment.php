@@ -23,6 +23,7 @@ use model\Agent;
 use model\Shipments;
 use think\response\View;
 use think\Db;
+use think\Config;
 use think\Url;
 
 /**
@@ -49,7 +50,6 @@ class Shipment extends BasicAdmin {
         $this->title = '防伪码管理';
         $get = $this->request->get();
         $db = Db::name($this->table)->order('id asc');
-
 
         $rowPage = intval($this->request->get('rows', cookie('rows')));
         cookie('rows', $rowPage >= 54 ? $rowPage : 54);
@@ -158,6 +158,7 @@ class Shipment extends BasicAdmin {
         //订单号
         $AgentService = new AgentService();
         $sn = $AgentService->createShipmentSn();
+        $company_name = Config::get('chinese_escape')['company_name'] ? Config::get('chinese_escape')['company_name'] : '公司总部';
         try{
             $messageContent = '公司总部给你发了'. $isBoxStr. '产品，订单号为：'.$sn. '，请注意查收~';
             $newTime = date('Y-m-d H:i:s', time());
@@ -191,7 +192,8 @@ class Shipment extends BasicAdmin {
             $shipmentsInfo['take_username'] = $userInfo['username'];
             $shipmentsInfo['take_wechat_no'] = $userInfo['wechat_no'];
             $shipmentsInfo['take_mobile'] = $userInfo['mobile'];
-            $shipmentsInfo['send_username'] = '公司总部';
+            $shipmentsInfo['send_username'] = $company_name;
+            $shipmentsInfo['send_wechat_no'] = $company_name;
             $shipmentsInfo['send_time'] = $newTime;
             $shipmentsInfo['created_at'] = $newTime;
             $ShipmentsModel = new Shipments();

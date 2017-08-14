@@ -20,6 +20,7 @@ use service\AgentService;
 use service\AntiService;
 use think\response\View;
 use think\Url;
+use think\Config;
 use model\Product;
 use model\Agent;
 use model\Shipments;
@@ -43,31 +44,29 @@ class Shipping extends BasicAgent {
         $ShipModel = new Shipments();
 //        $where = array('take_user_id' => 1111);
         $where = array('take_user_id' => session('agent.id'));
-        $get = $this->request->get();
-        $list = $ShipModel->getShipmentList($where, $get);
-//        array(5) {
-//        ["total"]=>
-//  int(0)
-//  ["per_page"]=>
-//  int(1)
-//  ["current_page"]=>
-//  int(1)
-//  ["last_page"]=>
-//  int(0)
-//  ["data"]=>
-//  array(0) {
-//        }
-//}
+        $list = $ShipModel->getShipmentList($where,2);
 
-        dump($list['data']);     die;
+//        $config = Config::get('chinese_escape')['company_name'] ? Config::get('chinese_escape')['company_name'] : '公司总部';
+//        dump($list);     die;
+//        Array
+//        (
+//            [total] => 6
+//    [per_page] => 1
+//    [current_page] => 2
+//    [last_page] => 6
+//    [data] => Array
 
+        $this->assign('list', $list);
     	return view();
     }
 
 
     public function ajaxPage()
     {
-
+        $ShipModel = new Shipments();
+        $where = array('take_user_id' => session('agent.id'));
+        $list = $ShipModel->getShipmentList($where,2);
+        $this->result($list, 1, '~~', 'json');
     }
 
     

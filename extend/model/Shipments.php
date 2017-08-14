@@ -23,16 +23,18 @@ class Shipments extends Model
      * @param int $pagesize
      * @return bool|false|\PDOStatement|string|\think\Collection
      */
-    public static function getShipmentList($condition, $get = array(), $page = 2, $pagesize = 2)
+    public static function getShipmentList($condition,  $pagesize = 2)
     {
         $rowPage = cookie('rows');
         cookie('rows', $rowPage >= 2 ? $rowPage : 2);
         $list = Db::name('lx_shipments')
             ->where($condition)
-            ->paginate($rowPage,false);
+            ->order('id desc')
+            ->paginate($pagesize,false,[
+            'page' => input('param.page'),
+//            'path'=>__ACTION__.'/channel/'.$channel.'/page/[PAGE].html',
+            ]);
 
-
-//        $page = $db->paginate($rowPage, false, ['query' => $this->request->get()]);
         return $list->toArray();
     }
 

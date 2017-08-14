@@ -231,4 +231,9 @@ return [
         'AppID'	=> 'wx20af038b1bd24b0a',
         'AppSecret'	=>	'f3c6ce61d0e214b64c81df5b7a2b93f4'
     ],
+    'chinese_escape' => [
+        'company_name' => '公司总部',
+        
+    ],
+
 ];
