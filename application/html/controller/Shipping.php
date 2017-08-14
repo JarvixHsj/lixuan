@@ -76,18 +76,15 @@ class Shipping extends BasicAgent {
 //        session('shipment',null);
         if (!$this->request->isPost()) {
             if (!empty(session('shipment.agent_id')) && !empty(session('shipment.pro_id')) && !empty(session('shipment.take_user_id'))) {
-//                $UserModel = new User();
-//                $take_info = $UserModel->find(session('shipment.take_user_id'));
-//                var_dump(session('shipment'));die;
                 $take_info = AgentService::getAgentAllInfo(session('shipment.agent_id'), session('shipment.pro_id'));
-//                var_dump($take_info);die;
                 if($take_info) {
-//                    $take_info = $take_info->toArray();
+                    $countAnti = count(session('shipment.sweeplist')) ? count(session('shipment.sweeplist')) : 0;
+                    $this->assign('count_anti', $countAnti);
                     $this->assign('take_info', $take_info);
                 }
             }
 
-
+//            扫一扫sdk
 //            $AppId = config('wechat.AppID');
 //            $AppSecret = config('wechat.AppSecret');
 //
@@ -161,6 +158,7 @@ class Shipping extends BasicAgent {
         $this->redirect('Shipping/add');
     }
 
+
     /**
      * 列出代理直属 提供选择收货人
      * @return View
@@ -198,7 +196,8 @@ class Shipping extends BasicAgent {
      */
     public function doneSweep()
     {
-        $orderSn = AgentService::createShipmentSn();
+        $returnUrl = Url::build('Shipping/add');
+//        $orderSn = AgentService::createShipmentSn();
         //判断是否选择了发货人
         if($this->checkShipmentInfo() === false){
             $this->success('请先选择发货代理~', 'Shipping/add');
@@ -206,48 +205,56 @@ class Shipping extends BasicAgent {
         $takeUserId = session('shipment.take_user_id');
         $takeUserInfo = Db::table('lx_user')->find($takeUserId);
 
-        $returnUrl = Url::build('Shipping/index');
         $sweep = $this->request->param()['sweep'];
-        $sweepCount = count($sweep);
-        $where = '';
-        if($sweepCount > 1){
-            $sweepStr = implode(',',$sweep);
-            $where = 'id in('.$sweepStr.')';
-        }elseif($sweepCount == 1){
-            $where = array('id' => $sweep['0']);
-        }elseif($sweepCount == 0){
-            $this->success('无扫描信息~', 'Shipping/index');
-        }
+//        if(!$sweep){
+//            $this->success('请扫描~', 'Shipping/add');
+//        }
+        session('shipment.sweeplist', $sweep);
+        $this->redirect($returnUrl);
 
-        $AntiModel = new Anti();
-        $res = $AntiModel->where($where)->select();
-        if(!$res){
-            $this->success('无扫描信息~', 'Shipping/index');
-        }
-        $res = $res->toArray();
-        $antiRecordData = array();  //防伪码记录
-        $antiUpdateData = array();  //防伪码更新（更新所属代理）
-        $shipmentAgentId = session('shipment.agent_id');
-        foreach($res as $key => $val){
-            $tempRecord['anti_id'] = $val['id'];
-            $tempRecord['anti_code'] = $val['code'];
-            $tempRecord['take_user_id'] = $takeUserId;
-            $tempRecord['send_user_id'] = session('agent.id');
-            $tempRecord['agent_id'] = $shipmentAgentId;
-            $antiRecordData[] = $tempRecord;
-
-            $val['user_id'] = $takeUserId;
-            $val['agent_id'] = $shipmentAgentId;
-            $val['project_id'] = session('shipment.pro_id');
-            $val['updated_at'] = time();
-            $antiUpdateData[] = $val;
-        }
-        //代理消息记录
-        $takeRecoed = array();
-        $takeRecoed['user_id'] = $takeUserId;
-        $takeRecoed['created_at'] = date('Y-m-d H:i:s',time());
-        $takeRecoed['content'] = session('agent.username').'给你发了'.$sweepCount.'个货物，订单号为'.$orderSn.'。请到单号查询里面查看详情！';
-        var_dump(session('agent'),$antiUpdateData,$antiRecordData);
+//        die;
+//
+////        var_dump(session('shipment'));die;
+//        $sweepCount = count($sweep);
+//        $where = '';
+//        if($sweepCount > 1){
+//            $sweepStr = implode(',',$sweep);
+//            $where = 'id in('.$sweepStr.')';
+//        }elseif($sweepCount == 1){
+//            $where = array('id' => $sweep['0']);
+//        }elseif($sweepCount == 0){
+//            $this->success('无扫描信息~', 'Shipping/index');
+//        }
+//
+//        $AntiModel = new Anti();
+//        $res = $AntiModel->where($where)->select();
+//        if(!$res){
+//            $this->success('无扫描信息~', 'Shipping/index');
+//        }
+//        $res = $res->toArray();
+//        $antiRecordData = array();  //防伪码记录
+//        $antiUpdateData = array();  //防伪码更新（更新所属代理）
+//        $shipmentAgentId = session('shipment.agent_id');
+//        foreach($res as $key => $val){
+//            $tempRecord['anti_id'] = $val['id'];
+//            $tempRecord['anti_code'] = $val['code'];
+//            $tempRecord['take_user_id'] = $takeUserId;
+//            $tempRecord['send_user_id'] = session('agent.id');
+//            $tempRecord['agent_id'] = $shipmentAgentId;
+//            $antiRecordData[] = $tempRecord;
+//
+//            $val['user_id'] = $takeUserId;
+//            $val['agent_id'] = $shipmentAgentId;
+//            $val['project_id'] = session('shipment.pro_id');
+//            $val['updated_at'] = time();
+//            $antiUpdateData[] = $val;
+//        }
+//        //代理消息记录
+//        $takeRecoed = array();
+//        $takeRecoed['user_id'] = $takeUserId;
+//        $takeRecoed['created_at'] = date('Y-m-d H:i:s',time());
+//        $takeRecoed['content'] = session('agent.username').'给你发了'.$sweepCount.'个货物，订单号为'.$orderSn.'。请到单号查询里面查看详情！';
+//        var_dump(session('agent'),$antiUpdateData,$antiRecordData);
 
     }
     
