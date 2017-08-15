@@ -73,13 +73,37 @@ class Shipping extends BasicAgent {
     //新增发货
     public function add()
     {
-//        session('shipment',null);
+//        session('shipment.sweeplist',null);
+        $countAnti = 0;
         if (!$this->request->isPost()) {
             if (!empty(session('shipment.agent_id')) && !empty(session('shipment.pro_id')) && !empty(session('shipment.take_user_id'))) {
                 $take_info = AgentService::getAgentAllInfo(session('shipment.agent_id'), session('shipment.pro_id'));
                 if($take_info) {
-                    $countAnti = count(session('shipment.sweeplist')) ? count(session('shipment.sweeplist')) : 0;
-                    $this->assign('count_anti', $countAnti);
+                    $sweep = session('shipment.sweeplist');
+                    $countSweep = count($sweep) ? count($sweep) : 0;
+                    $where = '';
+                    if($countSweep > 1){
+                        $sweepStr = implode(',',$sweep);
+                        $where = 'id in('.$sweepStr.')';
+                    }elseif($countSweep == 1){
+                        $where = array('id' => $sweep['0']);
+                    }
+                    if($where){
+                        $AntiModel = new Anti();
+                        $res = $AntiModel->where($where)->select();
+                        if($res){
+                            $res = $res->toArray();
+                            foreach($res as $key => $val){
+                                if($val['user_id'] == 0){
+                                    $countAnti += 1;
+                                }
+                            }
+                        }
+
+                    }
+
+
+
                     $this->assign('take_info', $take_info);
                 }
             }
@@ -108,6 +132,7 @@ class Shipping extends BasicAgent {
 //            $data['config']['signature'] = $signature;
 //            $this->assign('config', $data['config']);
 
+            $this->assign('count_anti', $countAnti);
             $this->assign('agenttype', $this->_agentType);
             return $this->fetch();
 //            return view();
