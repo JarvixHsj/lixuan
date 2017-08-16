@@ -45,22 +45,14 @@ class Shipping extends BasicAgent {
 //        $where = array('take_user_id' => 1111);
         $where = array('take_user_id' => session('agent.id'));
         $list = $ShipModel->getShipmentList($where,2);
-
-//        $config = Config::get('chinese_escape')['company_name'] ? Config::get('chinese_escape')['company_name'] : '公司总部';
-//        dump($list);     die;
-//        Array
-//        (
-//            [total] => 6
-//    [per_page] => 1
-//    [current_page] => 2
-//    [last_page] => 6
-//    [data] => Array
-
         $this->assign('list', $list);
     	return view();
     }
 
-
+    /**
+     * 发货列表ajax分页请求
+     * @author: Jarvix
+     */
     public function ajaxPage()
     {
         $ShipModel = new Shipments();
@@ -69,73 +61,33 @@ class Shipping extends BasicAgent {
         $this->result($list, 1, '~~', 'json');
     }
 
-    
-    //新增发货
+
+    /**
+     * 新增发货
+     * @author: Jarvix
+     * @return mixed|View
+     */
     public function add()
     {
-//        session('shipment.sweeplist',null);
+        $data = array();
+        $data['take_user_id'] = session('shipment.take_user_id') ? session('shipment.take_user_id') : 0; //收货人
         $countAnti = 0;
         if (!$this->request->isPost()) {
             if (!empty(session('shipment.agent_id')) && !empty(session('shipment.pro_id')) && !empty(session('shipment.take_user_id'))) {
                 $take_info = AgentService::getAgentAllInfo(session('shipment.agent_id'), session('shipment.pro_id'));
                 if($take_info) {
                     $sweep = session('shipment.sweeplist');
-                    $countSweep = count($sweep) ? count($sweep) : 0;
-                    $where = '';
-                    if($countSweep > 1){
-                        $sweepStr = implode(',',$sweep);
-                        $where = 'id in('.$sweepStr.')';
-                    }elseif($countSweep == 1){
-                        $where = array('id' => $sweep['0']);
-                    }
-                    if($where){
-                        $AntiModel = new Anti();
-                        $res = $AntiModel->where($where)->select();
-                        if($res){
-                            $res = $res->toArray();
-                            foreach($res as $key => $val){
-                                if($val['user_id'] == 0){
-                                    $countAnti += 1;
-                                }
-                            }
-                        }
-
-                    }
-
-
+                    $countAnti = count($sweep) ? count($sweep) : 0;
 
                     $this->assign('take_info', $take_info);
                 }
             }
 
-//            扫一扫sdk
-//            $AppId = config('wechat.AppID');
-//            $AppSecret = config('wechat.AppSecret');
-//
-//            $token_access_url  = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$AppId."&secret=".$AppSecret;
-//            $access_res = file_get_contents($token_access_url);    //获取文件内容或获取网络请求的内容
-//            $access_token_data = json_decode($access_res, true);   //接受一个 JSON 格式的字符串并且把它转换为 PHP 变量
-//
-//            $jsapi_ticket = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=".$access_token_data['access_token']."&type=jsapi";
-//            $ticket_res = file_get_contents($jsapi_ticket);
-//            $jsapi_ticket_data = json_decode($ticket_res, true);
-//
-//            $nonceStr = $this->make_nonceStr();
-//            $timestamp = time();
-//            $jsapi_ticket = $jsapi_ticket_data['ticket'];
-//            $url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-//            $signature = $this->make_signature($nonceStr,$timestamp,$jsapi_ticket,$url);
-//
-//            $data['config']['appid'] = $AppId;
-//            $data['config']['timestamp'] = $timestamp;
-//            $data['config']['nonceStr'] = $nonceStr;
-//            $data['config']['signature'] = $signature;
-//            $this->assign('config', $data['config']);
 
+            $this->assign('data', $data);
             $this->assign('count_anti', $countAnti);
             $this->assign('agenttype', $this->_agentType);
             return $this->fetch();
-//            return view();
         }
 
         $UserModel = new User();
@@ -159,7 +111,6 @@ class Shipping extends BasicAgent {
             $AgentData = array();
         }
 
-        $data = array();
         $data['userinfo'] = $UserData;
         $data['agentinfo'] = $AgentData;
 
@@ -198,12 +149,59 @@ class Shipping extends BasicAgent {
 
 
     /**
+     * 删除已扫描的防伪码记录.
+     * @author: Jarvix
+     */
+    public function ajaxDelSelectAnti()
+    {
+        $delAntiId = $this->request->param('del_id');
+        $antiArr = session('shipment.sweeplist');
+        if(!$antiArr){
+            $this->result('', 1, '删除成功~', 'json');
+        }
+
+        /**
+         * 逻辑：查询出id对应的键，unset之后重新赋值到session
+         */
+        $del_key = array_search($delAntiId, $antiArr);
+        if($del_key !== false){
+            unset($antiArr[$del_key]);
+            session('shipment.sweeplist', $antiArr);
+            $this->result('', 1, '删除成功~', 'json');
+        }else{
+            $this->result('',0,'系统繁忙~','json');
+        }
+    }
+
+    /**
      * 扫描发货页面
+     * 逻辑：如果是get请求则直接进入扫一扫发货页面
+     *          并判断之前是否有选择过。
      */
     public function ajaxSweepIndex()
     {
         if($this->request->isGet()){
+            $list = array();
+            $sweep = session('shipment.sweeplist');
+            $sweepCount = count($sweep);
+            $where = '';
+            $list = array();
+            if($sweepCount > 1){
+                $sweepStr = implode(',',$sweep);
+                $where = 'id in('.$sweepStr.')';
+            }elseif($sweepCount == 1){
+                $where = array('id' => $sweep['0']);
+            }
 
+            if($where){
+                $AntiModel = new Anti();
+                $res = $AntiModel->where($where)->select();
+                if($res){
+                    $list = $res->toArray();
+                }
+            }
+
+            $this->assign('list', $list);
             return $this->fetch('sweep');
         }
 
@@ -218,6 +216,7 @@ class Shipping extends BasicAgent {
 
     /**
      * 完成扫描
+     * 逻辑：将防伪码id存储到session.sweeplist，二维数组
      */
     public function doneSweep()
     {
@@ -231,12 +230,35 @@ class Shipping extends BasicAgent {
         $takeUserInfo = Db::table('lx_user')->find($takeUserId);
 
         $sweep = $this->request->param()['sweep'];
-//        if(!$sweep){
-//            $this->success('请扫描~', 'Shipping/add');
-//        }
-        session('shipment.sweeplist', $sweep);
-        $this->redirect($returnUrl);
+        $sweepCount = count($sweep);
+        $where = '';
+        $newSweepStr = '';
+        $newSweepArr = array();
+        if($sweepCount > 1){
+            $sweepStr = implode(',',$sweep);
+            $where = 'id in('.$sweepStr.')';
+        }elseif($sweepCount == 1){
+            $where = array('id' => $sweep['0']);
+        }
+        if($where){
+            $AntiModel = new Anti();
+            $res = $AntiModel->where($where)->select();
+            if($res){
+                $res = $res->toArray();
+                foreach($res as $key => $val){
+                    if($val['user_id'] == 0){
+                        $newSweepStr .= $val['id'] . ',';
+                    }
+                }
+            }
 
+        }
+
+        if($newSweepStr){
+            $newSweepArr = explode(',',rtrim($newSweepStr, ','));
+        }
+        session('shipment.sweeplist', $newSweepArr);
+        $this->redirect($returnUrl);
 //        die;
 //
 ////        var_dump(session('shipment'));die;
@@ -373,7 +395,29 @@ class Shipping extends BasicAgent {
     }
 
 
-
+    //            扫一扫sdk
+//            $AppId = config('wechat.AppID');
+//            $AppSecret = config('wechat.AppSecret');
+//
+//            $token_access_url  = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$AppId."&secret=".$AppSecret;
+//            $access_res = file_get_contents($token_access_url);    //获取文件内容或获取网络请求的内容
+//            $access_token_data = json_decode($access_res, true);   //接受一个 JSON 格式的字符串并且把它转换为 PHP 变量
+//
+//            $jsapi_ticket = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=".$access_token_data['access_token']."&type=jsapi";
+//            $ticket_res = file_get_contents($jsapi_ticket);
+//            $jsapi_ticket_data = json_decode($ticket_res, true);
+//
+//            $nonceStr = $this->make_nonceStr();
+//            $timestamp = time();
+//            $jsapi_ticket = $jsapi_ticket_data['ticket'];
+//            $url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+//            $signature = $this->make_signature($nonceStr,$timestamp,$jsapi_ticket,$url);
+//
+//            $data['config']['appid'] = $AppId;
+//            $data['config']['timestamp'] = $timestamp;
+//            $data['config']['nonceStr'] = $nonceStr;
+//            $data['config']['signature'] = $signature;
+//            $this->assign('config', $data['config']);
 
 
 }

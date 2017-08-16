@@ -7,7 +7,7 @@
 {block name='body'}
     <header class="mui-bar mui-bar-nav di_navbox">
         <h1 class="mui-title">发货</h1>
-        <a href="user_fahuo.html" class="mui-pull-right usfh_addbtn usdl_28">保存</a>
+        <a href="javascript:void(0)" class="mui-pull-right usfh_addbtn usdl_28">保存</a>
     </header>
     <div class="mui-content">
         <!--<div class="usfh_title usdl_28">-->
@@ -87,11 +87,10 @@
             </div>
         </div>
     </div>
+<input type="hidden" name="take_user_id" value="{$data.take_user_id}">
 <input type="hidden" name="combo" value="{present name='take_info'}{$take_info.id}{else /}0{/present}"/>
     <script type="text/javascript" src="__PUBLIC__/static/html/js/mui.picker.min.js" ></script>
     <script type="text/javascript">
-
-
 
         (function($) {
 
@@ -185,6 +184,7 @@
             }
         })
 
+//        删除
         $('#scanQRCode').click(function(){
             var ajaxUrl = "{:Url('Shipping/ajaxSweepIndex')}"
             $.ajax({
@@ -200,12 +200,22 @@
                 }
             });
         })
-        //        $("input[name='express_sn']").click(function(){
-        //            judgeEmpty(combo, '请先选择收货人再填信息~','警告' );
-        //        })
-        //        $("input[name='express_sn']").click(function(){
-        //            judgeEmpty(combo, '请先选择收货人再填信息~','警告' );
-        //        })
+
+//        保存
+        $('.usfh_addbtn').click(function(){
+            var take_user_id = $("input[name='take_user_id']").val();
+            var picking_type = $('#picking_type').val();
+            var express_sn = $("input[name='express_sn']").val();
+            var send_time = $("input[name='send_time']").val();
+            var num = $("input[name='num']").val();
+            var product_name = $("input[name='product_name']").val();
+            var remark = $('#remark').val();
+
+            judgeEmpty(take_user_id,'网络请求有误，请稍候重试~')
+
+            console.log(take_user_id,picking_type,express_sn,send_time,num,product_name,remark);
+        })
+
     </script>
 
 

@@ -77,6 +77,19 @@
         <form action="{:Url('Shipping/doneSweep')}" method="post" id="forms">
         <!-- 搜索结果显示 -->
         <ul class="cul_list">
+            {volist name='list' id='vo'}
+            <li>
+                <div class="cul_list_dev">
+                    <div class="usck_dls_pic usck_dls_pic_style {eq name='vo.user_id' value='0'}gou{else /}useless{/eq}"></div>
+                    <div class="usck_dls_info ppt0">
+                        <p class="name usdl_28 mgl0fz18">
+                            <span>{$vo.qrcode}</span>
+                        </p>
+                    </div>
+                </div>
+                <input type="hidden" name="sweep[]" value="{$vo.id}"/>
+            </li>
+            {/volist}
             <!--<li>-->
                 <!--<div class="cul_list_dev">-->
                     <!--<div class="usck_dls_pic usck_dls_pic_style gou"></div>-->
@@ -168,17 +181,34 @@
         })
         $('.double').click(function(){
             var aa = $('input[name="sweep"]').val();
-            console.log(aa);
-//            $.ajax({
-//                type: "POST",
-//                url: doubleUrl,
-//                success: function(res){
-//                    console.log(res)
-//                },
-//                error:function(){
-//                    mui.alert('系统繁忙~')
-//                }
-//            });
+        })
+
+        var delUrl = "{:Url('Shipping/ajaxDelSelectAnti')}"
+        $(document).on('click','.cul_list li', function(){
+//            mui.confirm('确定要删除吗？');
+//            return false;
+            var _this = $(this);
+            var del_id = $(this).find("input").val();
+            if(!del_id){
+                mui.alert('网络请求有误，请稍后刷新重试~');
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: delUrl,
+                data: "del_id="+del_id,
+                success: function(res){
+                    if(res.code == 1){
+                        _this.empty();
+                    }else{
+                        mui.alert(res.msg);
+                    }
+                },
+                error:function(){
+                    mui.alert('系统繁忙~')
+                }
+            });
         })
     </script>
 {/block}
