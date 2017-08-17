@@ -22,8 +22,8 @@
                     <div class="usck_dls_pic"  style="background-image: url(__PUBLIC__/static/html/img/pro-pci.png);"></div>
                     <div class="usck_dls_info">
                         <div class="usck_databox">
-                            <p class="name usdl_28">郑美玲</p>
-                            <p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">meiulin2546</span></span></p>
+                            <p class="name usdl_28">{$Think.session.agent.username}</p>
+                            <p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">{$Think.session.agent.wechat_no}</span></span></p>
                             <form action="">
                                 <div class="usfh_in mui-clearfix">
                                     <p class="mui-pull-left usdl_24">取货方式</p>
@@ -88,7 +88,7 @@
         </div>
     </div>
 <input type="hidden" name="take_user_id" value="{$data.take_user_id}">
-<input type="hidden" name="combo" value="{present name='take_info'}{$take_info.id}{else /}0{/present}"/>
+<input type="hidden" name="agent_id" value="{present name='take_info'}{$take_info.id}{else /}0{/present}"/>
     <script type="text/javascript" src="__PUBLIC__/static/html/js/mui.picker.min.js" ></script>
     <script type="text/javascript">
 
@@ -150,9 +150,9 @@
             $('#express_sn').css('display','block');
         }
 
-        var combo = $("input[name='combo']").val();
+        var take_user_id = $("input[name='take_user_id']").val();
         $("input[name='express_sn']").focus(function(){
-            if(combo == 0){
+            if(take_user_id == 0){
                 $(this).blur();
                 $(this).val('');
                 mui.alert('请先选择收货人再填信息~','警告');
@@ -160,7 +160,7 @@
             }
         })
         $("input[name='num']").focus(function(){
-            if(combo == 0){
+            if(take_user_id == 0){
                 $(this).blur();
                 $(this).val('');
                 mui.alert('请先选择收货人再填信息~','警告');
@@ -168,7 +168,7 @@
             }
         })
         $("#remark").focus(function(){
-            if(combo == 0){
+            if(take_user_id == 0){
                 $(this).blur();
                 $(this).val('');
                 mui.alert('请先选择收货人再填信息~','警告');
@@ -176,7 +176,7 @@
             }
         })
         $("input[name='product_name']").focus(function(){
-            if(combo == 0){
+            if(take_user_id == 0){
                 $(this).blur();
                 $(this).val('');
                 mui.alert('请先选择收货人再填信息~','警告');
@@ -211,9 +211,31 @@
             var product_name = $("input[name='product_name']").val();
             var remark = $('#remark').val();
 
-            judgeEmpty(take_user_id,'网络请求有误，请稍候重试~')
+            judgeEmpty(take_user_id,'请先选择发货人~');
+            judgeEmpty(num,'请先扫码发货~');
+            if(picking_type == 1){
+                judgeEmpty(express_sn,'快递单号有误！');
+            }
+            judgeEmpty(send_time,'请选择发货时间~');
+            judgeEmpty(product_name,'产品名称不能为空~');
 
-            console.log(take_user_id,picking_type,express_sn,send_time,num,product_name,remark);
+            var saveUrl = "{:Url('Shipping/ajaxSave')}"
+            $.ajax({
+                type: "POST",
+                url: saveUrl,
+                data: {"picking_type":picking_type,"express_sn":express_sn,"send_time": send_time,"product_name":product_name,"remark":remark},
+                success: function(res){
+                    if(res.code == 1){
+                        mui.toast(res.msg,{ duration:'short', type:'div' });
+                        window.location.href = res.data;
+                    }else{
+                        mui.alert(res.msg);
+                    }
+                },
+                error:function(){
+                    mui.alert('系统繁忙，请稍后重试~');
+                }
+            });
         })
 
     </script>

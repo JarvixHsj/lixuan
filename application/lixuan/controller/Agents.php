@@ -106,6 +106,7 @@ class Agents extends BasicAdmin {
         $tempUser = $UserModel->where(array('mobile'=>$data['mobile']))->find();
         if ($tempUser) $this->error('手机号已使用！');  
         //添加代理和代理关系
+        Db::startTrans();
         try{
              //生成授权号
             $empower_sn = AgentService::createAgentSn($tempPro['abbr']);

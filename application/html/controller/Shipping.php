@@ -16,12 +16,12 @@ namespace app\html\controller;
 
 use controller\BasicAgent;
 use model\Anti;
+use model\Antirecord;
 use service\AgentService;
 use service\AntiService;
 use think\response\View;
 use think\Url;
 use think\Config;
-use model\Product;
 use model\Agent;
 use model\Shipments;
 use model\User;
@@ -42,8 +42,9 @@ class Shipping extends BasicAgent {
     public function index()
     {
         $ShipModel = new Shipments();
+//        dump(session('agent'));
 //        $where = array('take_user_id' => 1111);
-        $where = array('take_user_id' => session('agent.id'));
+        $where = array('send_user_id' => session('agent.id'));
         $list = $ShipModel->getShipmentList($where,2);
         $this->assign('list', $list);
     	return view();
@@ -83,7 +84,6 @@ class Shipping extends BasicAgent {
                 }
             }
 
-
             $this->assign('data', $data);
             $this->assign('count_anti', $countAnti);
             $this->assign('agenttype', $this->_agentType);
@@ -113,6 +113,7 @@ class Shipping extends BasicAgent {
 
         $data['userinfo'] = $UserData;
         $data['agentinfo'] = $AgentData;
+        var_dump($data);die;
 
         $this->assign('agenttype', $this->_agentType);
         $this->assign('data', $data);
@@ -221,7 +222,6 @@ class Shipping extends BasicAgent {
     public function doneSweep()
     {
         $returnUrl = Url::build('Shipping/add');
-//        $orderSn = AgentService::createShipmentSn();
         //判断是否选择了发货人
         if($this->checkShipmentInfo() === false){
             $this->success('请先选择发货代理~', 'Shipping/add');
@@ -304,7 +304,143 @@ class Shipping extends BasicAgent {
 //        var_dump(session('agent'),$antiUpdateData,$antiRecordData);
 
     }
-    
+
+
+    /**
+     * 保存发货
+     * 逻辑：1.判断参数，session
+     *      2.添加防伪码跟踪记录
+     *      3.防伪码记录更新
+     *      4.添加代理消息记录
+     */
+    public function ajaxSave()
+    {
+//        $returnUrl = Url::build('Shipping/index');
+//        dump($returnUrl);die;
+//        dump(session('shipment'));
+//        die;
+        //接收参数
+        $product_name = $this->request->param('product_name');  //产品名称
+        $remark = $this->request->param('remark');  //备注
+        $send_time = $this->request->param('send_time');  //发货时间
+        $picking_type = $this->request->param('picking_type');  //取货类型
+        $express_sn = $this->request->param('express_sn');  //快递单号
+
+        $takeUserId = session('shipment.take_user_id');
+        $UserModel = new User();
+        $takeUserInfo = $UserModel->getUserInfo($takeUserId);
+        if($takeUserInfo === false){
+            $this->result('',0, '收货代理信息不存在~收货代理信息不存在~', 'json');
+        }
+        $shipmentAgentId = session('shipment.agent_id');
+        $takeProId = session('shipment.pro_id');
+        $sweep = session('shipment.sweeplist');
+        $sendUserId = session('agent.id');
+        $sweepCount = count($sweep);
+        $where = '';
+        if($sweepCount > 1){
+            $sweepStr = implode(',',$sweep);
+            $where = 'id in('.$sweepStr.')';
+        }elseif($sweepCount == 1){
+            $where = array('id' => $sweep['0']);
+        }elseif($sweepCount == 0){
+            $this->result('',0, '无扫描信息~', 'json');
+        }
+
+        $AntiModel = new Anti();
+        $res = $AntiModel->where($where)->select();
+        if(!$res){
+            $this->result('',0, '无扫描信息~', 'json');
+        }
+
+        $AgentService = new AgentService();
+        $orderSn = $AgentService::createShipmentSn();
+        $res = $res->toArray();
+        $antiRecordData = array();  //防伪码记录
+        $antiUpdateData = array();  //防伪码更新（更新所属代理）
+        $newTime = time();
+        foreach($res as $key => $val){
+            if($val['user_id'] == $takeUserId){
+                unset($res[$key]);
+                continue;
+            }
+
+            $tempRecord['anti_id'] = $val['id'];
+            $tempRecord['anti_code'] = $val['code'];
+            $tempRecord['take_user_id'] = $takeUserId;
+            $tempRecord['send_user_id'] = $sendUserId;
+            $tempRecord['agent_id'] = $shipmentAgentId;
+            $antiRecordData[] = $tempRecord;
+
+            $val['user_id'] = $takeUserId;
+            $val['agent_id'] = $shipmentAgentId;
+            $val['project_id'] = $takeProId;
+            $val['updated_at'] = $newTime;
+            $antiUpdateData[] = $val;
+        }
+        if(!$res){
+            session('shippment.sweeplist', null);
+            $this->result('',0, '这批货物已经是该代理的~~', 'json');
+        }
+//        var_dump($res);die;
+        //收货代理消息记录
+        $takeUserMessage = array();
+        $takeUserMessage['user_id'] = $takeUserId;
+        $takeUserMessage['created_at'] = date('Y-m-d H:i:s',$newTime);
+        $takeUserMessage['content'] = session('agent.username').'给你发了 '.$sweepCount.' 个货物，订单号为 '.$orderSn.' 。请到发货列表或单号查询里面查看详情！';
+
+        //发货代理消息记录
+        $sendUserMessage = array();
+        $sendUserMessage['user_id'] = $sendUserId;
+        $sendUserMessage['created_at'] = date('Y-m-d H:i:s',$newTime);
+        $sendUserMessage['content'] = "你给 ". $takeUserInfo['username']. ' 发了'.$sweepCount."个货物，订单号为： ".$orderSn.' 。';
+//        var_dump($antiUpdateData,$antiRecordData,$takeUserMessage);
+
+        //发货记录表
+
+        //发货记录
+        $shipmentsInfo['take_user_id'] = $takeUserId;
+        $shipmentsInfo['product_id'] = $takeProId;
+        $shipmentsInfo['order_sn'] = $orderSn;
+        $shipmentsInfo['picking_type'] = $picking_type;
+        $shipmentsInfo['num'] = $sweepCount;
+        $shipmentsInfo['remark'] = '给代理分配防伪码';
+        $shipmentsInfo['send_user_id'] = $sendUserId;
+        $shipmentsInfo['take_user_level'] = $shipmentAgentId;
+        $shipmentsInfo['take_username'] = $takeUserInfo['username'];
+        $shipmentsInfo['take_wechat_no'] = $takeUserInfo['wechat_no'];
+        $shipmentsInfo['take_mobile'] = $takeUserInfo['mobile'];
+        $shipmentsInfo['send_username'] = session('agent.username');
+        $shipmentsInfo['send_wechat_no'] = session('agent.wechat_no');
+        $shipmentsInfo['send_time'] = $send_time;
+        $shipmentsInfo['created_at'] = $newTime;
+        $ShipmentsModel = new Shipments();
+
+
+        // 启动事务
+        Db::startTrans();
+        try{
+            $ShipmentsModel->data($shipmentsInfo)->allowField(true)->save();
+            $ship_id = $ShipmentsModel->id;
+            var_dump($ship_id);
+
+            $res1 = $AgentService->createMessage($takeUserMessage); //新增收货人消息记录
+            $res2 = $AgentService->createMessage($sendUserMessage); //新增发货人消息记录
+
+            $AntiModel = new Anti();
+            $res3 = $AntiModel->saveAll($antiUpdateData);  //更新发货防伪码
+            $res4 = Db::table('lx_antirecord')->insertAll($antiRecordData); //添加防伪码跟踪记录
+            // 提交事务
+            Db::commit();
+        } catch (\Exception $e) {
+            // 回滚事务
+            Db::rollback();
+            $this->result('',0, '系统繁忙，请稍后重试~', 'json');
+        }
+        session('shipment.sweeplist',null);
+        $returnUrl = Url::build('Shipping/index');
+        $this->result($returnUrl,1, '发货成功！', 'json');
+    }
     
     
     

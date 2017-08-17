@@ -159,6 +159,7 @@ class Shipment extends BasicAdmin {
         $AgentService = new AgentService();
         $sn = $AgentService->createShipmentSn();
         $company_name = Config::get('chinese_escape')['company_name'] ? Config::get('chinese_escape')['company_name'] : '公司总部';
+
         try{
             $messageContent = '公司总部给你发了'. $isBoxStr. '产品，订单号为：'.$sn. '，请注意查收~';
             $newTime = date('Y-m-d H:i:s', time());

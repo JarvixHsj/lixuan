@@ -64,7 +64,7 @@ class AgentService {
      */
     public static function createMessage($data)
     {
-        Db::table('lx_message')->insert($data);
+        return Db::table('lx_message')->insert($data);
     }
 
     /**
