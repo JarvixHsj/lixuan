@@ -140,6 +140,8 @@ class Users extends BasicAgent {
         if($res){
             Db::table('lx_message')->where('user_id', $agentId)->update(array('is_read'=>1));
 //            var_dump(Db::table('lx_message')->getLastSql());die;
+        }else{
+            $res = array();
         }
         $this->assign('res', $res);
         return view();
