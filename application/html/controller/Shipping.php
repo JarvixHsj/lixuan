@@ -57,7 +57,7 @@ class Shipping extends BasicAgent {
     public function ajaxPage()
     {
         $ShipModel = new Shipments();
-        $where = array('take_user_id' => session('agent.id'));
+        $where = array('send_user_id' => session('agent.id'));
         $list = $ShipModel->getShipmentList($where,2);
         $this->result($list, 1, '~~', 'json');
     }
@@ -113,7 +113,7 @@ class Shipping extends BasicAgent {
 
         $data['userinfo'] = $UserData;
         $data['agentinfo'] = $AgentData;
-        var_dump($data);die;
+//        var_dump($data);die;
 
         $this->assign('agenttype', $this->_agentType);
         $this->assign('data', $data);
@@ -204,6 +204,21 @@ class Shipping extends BasicAgent {
 
             $this->assign('list', $list);
             return $this->fetch('sweep');
+        }
+
+        $param = $this->request->param();
+        session('shipment.picking_type',$param['picking_type']);
+        if(isset($param['express_sn'])){
+            session('shipment.express_sn', $param['express_sn']);
+        }
+        if(isset($param['send_time'])){
+            session('shipment.send_time', $param['send_time']);
+        }
+        if(isset($param['product_name'])){
+            session('shipment.product_name', $param['product_name']);
+        }
+        if(isset($param['remark'])){
+            session('shipment.remark', $param['remark']);
         }
 
         //判断
@@ -316,9 +331,6 @@ class Shipping extends BasicAgent {
     public function ajaxSave()
     {
 //        $returnUrl = Url::build('Shipping/index');
-//        dump($returnUrl);die;
-//        dump(session('shipment'));
-//        die;
         //接收参数
         $product_name = $this->request->param('product_name');  //产品名称
         $remark = $this->request->param('remark');  //备注
@@ -382,7 +394,6 @@ class Shipping extends BasicAgent {
             session('shippment.sweeplist', null);
             $this->result('',0, '这批货物已经是该代理的~~', 'json');
         }
-//        var_dump($res);die;
         //收货代理消息记录
         $takeUserMessage = array();
         $takeUserMessage['user_id'] = $takeUserId;
@@ -394,7 +405,6 @@ class Shipping extends BasicAgent {
         $sendUserMessage['user_id'] = $sendUserId;
         $sendUserMessage['created_at'] = date('Y-m-d H:i:s',$newTime);
         $sendUserMessage['content'] = "你给 ". $takeUserInfo['username']. ' 发了'.$sweepCount."个货物，订单号为： ".$orderSn.' 。';
-//        var_dump($antiUpdateData,$antiRecordData,$takeUserMessage);
 
         //发货记录表
 
@@ -404,7 +414,8 @@ class Shipping extends BasicAgent {
         $shipmentsInfo['order_sn'] = $orderSn;
         $shipmentsInfo['picking_type'] = $picking_type;
         $shipmentsInfo['num'] = $sweepCount;
-        $shipmentsInfo['remark'] = '给代理分配防伪码';
+        $shipmentsInfo['remark'] = $remark;
+        $shipmentsInfo['product_name'] = $product_name;
         $shipmentsInfo['send_user_id'] = $sendUserId;
         $shipmentsInfo['take_user_level'] = $shipmentAgentId;
         $shipmentsInfo['take_username'] = $takeUserInfo['username'];
@@ -422,7 +433,7 @@ class Shipping extends BasicAgent {
         try{
             $ShipmentsModel->data($shipmentsInfo)->allowField(true)->save();
             $ship_id = $ShipmentsModel->id;
-            var_dump($ship_id);
+//            var_dump($ship_id);
 
             $res1 = $AgentService->createMessage($takeUserMessage); //新增收货人消息记录
             $res2 = $AgentService->createMessage($sendUserMessage); //新增发货人消息记录
@@ -441,9 +452,6 @@ class Shipping extends BasicAgent {
         $returnUrl = Url::build('Shipping/index');
         $this->result($returnUrl,1, '发货成功！', 'json');
     }
-    
-    
-    
     
 
     /**

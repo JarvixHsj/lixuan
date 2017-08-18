@@ -32,13 +32,13 @@
                                         <option value="1">快递</option>
                                     </select>
                                 </div>
-                                <div class="usfh_in mui-clearfix" id="express_sn">
+                                <div class="usfh_in mui-clearfix" id="express_sn" {notempty name='Think.session.shipment.express_sn'}{$Think.session.shipment.express_sn}{/notempty} >
                                     <p class="mui-pull-left usdl_24">快递单号</p>
-                                    <input  class="usck_fhinput mui-pull-right usdl_24" type="text" value="" name="express_sn"  />
+                                    <input  class="usck_fhinput mui-pull-right usdl_24" type="text" value="{notempty name='Think.session.shipment.express_sn'}{$Think.session.shipment.express_sn}{/notempty}"  name="express_sn"  />
                                 </div>
                                 <div class="usfh_in mui-clearfix">
                                     <p class="mui-pull-left usdl_24">发货时间</p>
-                                    <input class="usck_fhinput mui-pull-right usdl_24 mui-text-left usfh-datebtn" type="button" value="" name="send_time"  />
+                                    <input class="usck_fhinput mui-pull-right usdl_24 mui-text-left usfh-datebtn" type="button" value="{notempty name='Think.session.shipment.send_time'}{$Think.session.shipment.send_time}{/notempty}" name="send_time"  />
                                 </div>
                                 <div class="usfh_in mui-clearfix">
                                     <p class="mui-pull-left usdl_24">发货数量</p>
@@ -47,11 +47,11 @@
                                 </div>
                                 <div class="usfh_in mui-clearfix">
                                     <p class="mui-pull-left usdl_24">产品名称</p>
-                                    <input  class="usck_fhinput mui-pull-right usdl_24" type="text" value="" name="product_name"  />
+                                    <input  class="usck_fhinput mui-pull-right usdl_24" type="text" name="product_name" value="{notempty name='Think.session.shipment.product_name'}{$Think.session.shipment.product_name}{/notempty}" />
                                 </div>
                                 <div class="usfh_in mui-clearfix">
                                     <p class="mui-pull-left usdl_24">备注</p>
-                                    <textarea name="remark" id='remark' class="usck_fhtext mui-pull-right usdl_24"></textarea>
+                                    <textarea name="remark" id='remark' class="usck_fhtext mui-pull-right usdl_24">{notempty name='Think.session.shipment.remark'}{$Think.session.shipment.remark}{/notempty}</textarea>
                                 </div>
                                 <!--<div class="usfh_in mui-clearfix">-->
                                     <!--<p class="mui-pull-left usdl_24">扫码结果</p>-->
@@ -184,19 +184,43 @@
             }
         })
 
-//        删除
+//        扫码发货
         $('#scanQRCode').click(function(){
+            var picking_type = $('#picking_type').val();
+            var express_sn = $("input[name='express_sn']").val();
+            var send_time = $("input[name='send_time']").val();
+            var product_name = $("input[name='product_name']").val();
+            var remark = $('#remark').val();
+
+            var data = {};
+            data.picking_type = picking_type;
+            if(express_sn){
+                data.express_sn = express_sn;
+            }
+            if(send_time){
+                data.send_time = send_time;
+            }
+            if(product_name){
+                data.product_name = product_name;
+            }
+            if(remark){
+                data.remark = remark;
+            }
+
             var ajaxUrl = "{:Url('Shipping/ajaxSweepIndex')}"
             $.ajax({
                 type: "POST",
                 url: ajaxUrl,
-//                data: "name=John&location=Boston",
+                data: data,
                 success: function(res){
                     if(res.code == 1){
                         window.location.href = res.data.url;
                     }else{
                         mui.alert('请先选择收货人再填信息~','警告');
                     }
+                },
+                error:function(){
+//                    window.
                 }
             });
         })
@@ -225,6 +249,7 @@
                 url: saveUrl,
                 data: {"picking_type":picking_type,"express_sn":express_sn,"send_time": send_time,"product_name":product_name,"remark":remark},
                 success: function(res){
+                    console.log(res);
                     if(res.code == 1){
                         mui.toast(res.msg,{ duration:'short', type:'div' });
                         window.location.href = res.data;
@@ -233,6 +258,7 @@
                     }
                 },
                 error:function(){
+                    alert('1');
                     mui.alert('系统繁忙，请稍后重试~');
                 }
             });
