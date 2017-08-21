@@ -182,6 +182,8 @@ class Shipping extends BasicAgent {
     public function ajaxSweepIndex()
     {
         if($this->request->isGet()){
+            session('shipment.sweeplist',null);
+
             $list = array();
             $sweep = session('shipment.sweeplist');
             $sweepCount = count($sweep);
@@ -241,14 +243,24 @@ class Shipping extends BasicAgent {
         if($this->checkShipmentInfo() === false){
             $this->success('请先选择发货代理~', 'Shipping/add');
         }
-        $takeUserId = session('shipment.take_user_id');
-        $takeUserInfo = Db::table('lx_user')->find($takeUserId);
+//        $takeUserId = session('shipment.take_user_id');
+//        $takeUserInfo = Db::table('lx_user')->find($takeUserId);
+
+//        if(isset($this->request->param()['sweephidden'])){
+//            $sweepHidden = $this->request->param()['sweephidden'];
+//        }else{
+//            $sweepHidden = '';
+//        }
+
+        $sweepHidden = $this->request->param()['sweephidden'] ?  $this->request->param()['sweephidden'] : '';
 
         $sweep = $this->request->param()['sweep'];
+//        dump($sweep);
         $sweepCount = count($sweep);
         $where = '';
         $newSweepStr = '';
         $newSweepArr = array();
+        $send_user_id = session('agent.id');
         if($sweepCount > 1){
             $sweepStr = implode(',',$sweep);
             $where = 'id in('.$sweepStr.')';
@@ -261,20 +273,18 @@ class Shipping extends BasicAgent {
             if($res){
                 $res = $res->toArray();
                 foreach($res as $key => $val){
-                    if($val['user_id'] == 0){
+                    if($val['user_id'] == $send_user_id){
                         $newSweepStr .= $val['id'] . ',';
                     }
                 }
             }
-
         }
-
         if($newSweepStr){
             $newSweepArr = explode(',',rtrim($newSweepStr, ','));
         }
         session('shipment.sweeplist', $newSweepArr);
+        session('shipment.sweephidden', $sweepHidden);
         $this->redirect($returnUrl);
-//        die;
 //
 ////        var_dump(session('shipment'));die;
 //        $sweepCount = count($sweep);
@@ -317,7 +327,6 @@ class Shipping extends BasicAgent {
 //        $takeRecoed['created_at'] = date('Y-m-d H:i:s',time());
 //        $takeRecoed['content'] = session('agent.username').'给你发了'.$sweepCount.'个货物，订单号为'.$orderSn.'。请到单号查询里面查看详情！';
 //        var_dump(session('agent'),$antiUpdateData,$antiRecordData);
-
     }
 
 
@@ -330,6 +339,7 @@ class Shipping extends BasicAgent {
      */
     public function ajaxSave()
     {
+        dump(session('shipment'));
 //        $returnUrl = Url::build('Shipping/index');
         //接收参数
         $product_name = $this->request->param('product_name');  //产品名称
@@ -406,8 +416,6 @@ class Shipping extends BasicAgent {
         $sendUserMessage['created_at'] = date('Y-m-d H:i:s',$newTime);
         $sendUserMessage['content'] = "你给 ". $takeUserInfo['username']. ' 发了'.$sweepCount."个货物，订单号为： ".$orderSn.' 。';
 
-        //发货记录表
-
         //发货记录
         $shipmentsInfo['take_user_id'] = $takeUserId;
         $shipmentsInfo['product_id'] = $takeProId;
@@ -427,17 +435,14 @@ class Shipping extends BasicAgent {
         $shipmentsInfo['created_at'] = $newTime;
         $ShipmentsModel = new Shipments();
 
-
         // 启动事务
         Db::startTrans();
         try{
             $ShipmentsModel->data($shipmentsInfo)->allowField(true)->save();
             $ship_id = $ShipmentsModel->id;
 //            var_dump($ship_id);
-
             $res1 = $AgentService->createMessage($takeUserMessage); //新增收货人消息记录
             $res2 = $AgentService->createMessage($sendUserMessage); //新增发货人消息记录
-
             $AntiModel = new Anti();
             $res3 = $AntiModel->saveAll($antiUpdateData);  //更新发货防伪码
             $res4 = Db::table('lx_antirecord')->insertAll($antiRecordData); //添加防伪码跟踪记录
@@ -452,7 +457,6 @@ class Shipping extends BasicAgent {
         $returnUrl = Url::build('Shipping/index');
         $this->result($returnUrl,1, '发货成功！', 'json');
     }
-    
 
     /**
      * 列出选择的下级直属所有代理（可越级发货）
@@ -492,10 +496,6 @@ class Shipping extends BasicAgent {
         return view('see_sub_list');
     }
 
-
-
-
-
     public function make_nonceStr()
     {
         $codeSet = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -522,20 +522,34 @@ class Shipping extends BasicAgent {
     }
 
 
-
 //        测试方法
     //模拟扫一个码
     public function ajaxSingle()
     {
 //        $id = 54; //54  108  162  216
-        $id = rand(1,216);
-        $res = AntiService::JudgeAnti(array('id' => $id));
-        if(substr($res['0']['code'], -3) == 318){
-            $res = AntiService::getABoxTotal($res['0']['code']);
+        $data = array();
+        $data['hidden'] = 0;
+        $AntiService = new AntiService();
+        //查询是否代理是否有防伪码（即货物）
+        $antiList = $AntiService->getUserAntiList(session('agent.id'));
+        if(!$antiList) $this->result('',0, '你还没有商品~', 'json');
+//        dump($antiList);
+//        $id = rand(0,count($antiList) - 1);
+        $id = count($antiList) - 1;
+        $res[] = $antiList[$id];
+        $anticode = $res['0']['code'];
+        $antiId = $res['0']['id'];
+//        $res = AntiService::JudgeAnti(array('id' => $id));
+        if(substr($anticode, -3) == 318){
+            $res = AntiService::getABoxTotal($anticode);
+            $data['hidden'] = 1;
+            $data['value'] = $antiId;
         }
         if(!$res) $res = array();
 
-        $this->result($res,1,'ok~','json');
+        $data['res'] = $res;
+
+        $this->result($data,1,'ok~','json');
     }
 
 

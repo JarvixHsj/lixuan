@@ -150,10 +150,13 @@ class Shipment extends BasicAdmin {
         $isBoxStr = '一盒';
         $isBoxNum = 1;
         $antiList = AntiService::JudgeAnti(array('id' => $anti_id));
+//        dump($antiList);
         if($is_box == 1){
             $isBoxStr = '一箱';
             $isBoxNum = 48;
-            $antiList = AntiService::getABoxTotal($anti_code);
+            $antiTempList = AntiService::getABoxTotal($anti_code);
+            array_unshift($antiTempList,$antiList[0]);
+            $antiList = $antiTempList;
         }
         //订单号
         $AgentService = new AgentService();
@@ -198,7 +201,6 @@ class Shipment extends BasicAdmin {
             $shipmentsInfo['send_time'] = $newTime;
             $shipmentsInfo['created_at'] = $newTime;
             $ShipmentsModel = new Shipments();
-//            $ship_id = Db::table('lx_shipments')->insert($shipmentsInfo);
             $ShipmentsModel->data($shipmentsInfo)->allowField(true)->save();
             $ship_id = $ShipmentsModel->id;
 

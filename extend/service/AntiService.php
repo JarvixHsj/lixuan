@@ -58,6 +58,25 @@ class AntiService {
         return $res;
     }
 
+    /**
+     * 获取用户 的防伪码信息
+     * @param $user_id  用户id
+     */
+    public static function getUserAntiList($user_id, $combo = false)
+    {
+        if(!is_numeric($user_id)) return false;
+        if($combo === false){
+            //获取防伪码列表
+            $res = Db::table('lx_anti')->where('user_id', $user_id)->select();
+        }else{
+            //获取逗号隔开的防伪码id 二维数组
+            $sql = "SELECT group_concat(id) as ids FROM lx_anti where user_id = {$user_id}";
+            $res = Db::query($sql);
+        }
+        if($res) return $res;
+        return false;
+    }
+
 }
 
 
