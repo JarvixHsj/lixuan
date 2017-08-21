@@ -31,7 +31,7 @@
 								<p class="usdl_24">快递单号：{empty name="vo.express_sn"}无{else /}{$vo.express_sn}{/empty}</p>
 								<p class="usdl_24">发货时间：{$vo.send_time}</p>
 								<p class="usdl_24">发货数量：{$vo.num}</p>
-								<p class="usdl_24">产品名称：{$vo.product_name}</p>
+								<p class="usdl_24">产品名称：{empty name="vo.product_name"}无{else /}{$vo.product_name}{/empty}</p>
 								<p class="usdl_24">备注：{$vo.remark}</p>
 							</div>
 			    		</div>
@@ -121,8 +121,8 @@
 								html += ' <div class="usck_dls_info"> ';
 								html += ' <div class="usck_databox"> ';
 								html += '<p class="name usdl_28">' + i.send_username + '</p> ';
-								html += '<p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">meiulin2546</span></span></p> ';
-								html += '<p class="usdl_24">快递单号：' + i.express_sn + '</p> ';
+								html += '<p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">'+ i.send_wechat_no +'</span></span></p> ';
+								html += '<p class="usdl_24">快递单号：' + express_sn + '</p> ';
 								html += '<p class="usdl_24">发货时间：' + i.send_time + '</p> ';
 								html += '<p class="usdl_24">发货数量：' + i.num + '</p> ';
 								html += '<p class="usdl_24">产品名称：' + i.product_name + '</p> ';

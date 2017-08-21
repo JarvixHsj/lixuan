@@ -252,7 +252,9 @@
                     console.log(res);
                     if(res.code == 1){
                         mui.toast(res.msg,{ duration:'short', type:'div' });
-                        window.location.href = res.data;
+                        setTimeout(function(){
+                            window.location.href = res.data;
+                        }, 2000);
                     }else{
                         mui.alert(res.msg);
                     }

@@ -47,19 +47,23 @@ class Singlequery extends BasicAgent {
         $where = array('take_user_id' => session('agent.id'));
         $list = $ShipModel->getShipmentList($where,$this->pageNum);
 
-//        dump($list);
         $this->assign('list', $list);
     	return view();
     }
 
     /**
-     * 我扫出去的列表
+     * 我扫出去的列表 （我的发货）
      * @author: Jarvix
      * @return View
      */
     public function mysend()
     {
+        $ShipModel = new Shipments();
+        $where = array('send_user_id' => session('agent.id'));
+        $list = $ShipModel->getShipmentList($where,$this->pageNum);
 
+//        dump($list);
+        $this->assign('list', $list);
         return view('mysend');
     }
 
@@ -74,6 +78,20 @@ class Singlequery extends BasicAgent {
         $list = $ShipModel->getShipmentList($where, $this->pageNum);
         $this->result($list, 1, '~~', 'json');
     }
+
+    /**
+     * 我的发货 ajax分页请求
+     * @author: Jarvix
+     */
+    public function ajaxPullPage()
+    {
+        $ShipModel = new Shipments();
+        $where = array('send_user_id' => session('agent.id'));
+        $list = $ShipModel->getShipmentList($where, $this->pageNum);
+//        dump($list);
+        $this->result($list, 1, '~~', 'json');
+    }
+
 
 
     /**
@@ -257,8 +275,14 @@ class Singlequery extends BasicAgent {
         $takeUserId = session('shipment.take_user_id');
         $takeUserInfo = Db::table('lx_user')->find($takeUserId);
 
-        $sweep = $this->request->param()['sweep'];
-        $sweepCount = count($sweep);
+        if(isset($this->request->param()['sweep'])){
+            $sweep = $this->request->param()['sweep'];
+        }else{
+            $sweep = 0;
+        }
+//        $sweep = $this->request->param()['sweep'];
+//        dump($sweep);die;
+        $sweepCount = $sweep ? count($sweep) : 0;
         $where = '';
         $newSweepStr = '';
         $newSweepArr = array();

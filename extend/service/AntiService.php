@@ -59,6 +59,25 @@ class AntiService {
     }
 
     /**
+     * 判断一箱是否都是同一个代理的
+     * @author: Jarvix
+     */
+    public static function judgeBoxBelong($res)
+    {
+        if(!is_array($res)) return false;
+        $userId = session('agent.id');
+        $step = 0;
+        foreach($res as $key=>$val){
+//            var_dump($val['user_id']. '-----'. $userId);
+            if($val['user_id'] != $userId){
+                $step = 1;
+                break;
+            }
+        }
+        return $step;
+    }
+
+    /**
      * 获取用户 的防伪码信息
      * @param $user_id  用户id
      */

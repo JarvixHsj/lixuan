@@ -23,7 +23,7 @@ class Shipments extends Model
      * @param int $pagesize
      * @return bool|false|\PDOStatement|string|\think\Collection
      */
-    public static function getShipmentList($condition,  $pagesize = 2)
+    public static function getShipmentList($condition,  $pagesize = 10)
     {
         $rowPage = cookie('rows');
         cookie('rows', $rowPage >= 2 ? $rowPage : 2);
