@@ -354,7 +354,7 @@ class Shipping extends BasicAgent {
         $remark = $this->request->param('remark');  //备注
         $send_time = $this->request->param('send_time');  //发货时间
         $picking_type = $this->request->param('picking_type');  //取货类型
-        $express_sn = $this->request->param('express_sn');  //快递单号
+        $express_sn = $this->request->param('express_sn') ? $this->request->param('express_sn') : '';   //快递单号
 
         $takeUserId = session('shipment.take_user_id');
         $UserModel = new User();
@@ -437,6 +437,7 @@ class Shipping extends BasicAgent {
         $shipmentsInfo['product_id'] = $takeProId;
         $shipmentsInfo['order_sn'] = $orderSn;
         $shipmentsInfo['picking_type'] = $picking_type;
+        $shipmentsInfo['express_sn'] = $express_sn;
         $shipmentsInfo['num'] = $sweepCount;
         $shipmentsInfo['remark'] = $remark;
         $shipmentsInfo['product_name'] = $product_name;
@@ -448,15 +449,15 @@ class Shipping extends BasicAgent {
         $shipmentsInfo['send_username'] = session('agent.username');
         $shipmentsInfo['send_wechat_no'] = session('agent.wechat_no');
         $shipmentsInfo['send_time'] = $send_time;
-        $shipmentsInfo['created_at'] = $newTime;
+        $shipmentsInfo['created_at'] = date('Y-m-d H:i:s',$newTime);
         $ShipmentsModel = new Shipments();
-
         // 启动事务
         Db::startTrans();
         try{
+//            var_dump($shipmentsInfo);die;
             $ShipmentsModel->data($shipmentsInfo)->allowField(true)->save();
             $ship_id = $ShipmentsModel->id;
-//            var_dump($ship_id);
+//            var_dump($ship_id);die;
             $AgentService->createMessage($takeUserMessage); //新增收货人消息记录
             $AgentService->createMessage($sendUserMessage); //新增发货人消息记录
             $AntiModel = new Anti();
