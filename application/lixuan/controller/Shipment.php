@@ -49,7 +49,16 @@ class Shipment extends BasicAdmin {
     public function index() {
         $this->title = '防伪码管理';
         $get = $this->request->get();
-        $db = Db::name($this->table)->order('id asc');
+        $where = array();
+        if(isset($get['qrcode']) && !empty($get['qrcode'])){
+            $where['qrcode']  = ['like',"%{$get['qrcode']}%"];
+        }
+        if(isset($get['code']) && !empty($get['code'])){
+            $where['code']  = ['like',"%{$get['code']}%"];
+        }
+//        var_dump($get);
+//        dump($get);
+        $db = Db::name($this->table)->where($where)->order('id asc');
 
         $rowPage = intval($this->request->get('rows', cookie('rows')));
         cookie('rows', $rowPage >= 54 ? $rowPage : 54);
@@ -78,24 +87,6 @@ class Shipment extends BasicAdmin {
         }
 
         return $this->fetch('', $result);
-
-//        var_dump($result);die;
-//        return $result;
-
-//        foreach (['name'] as $key) {
-//            if (isset($get[$key]) && $get[$key] !== '') {
-//                $db->where($key, 'like', "%{$get[$key]}%");
-//            }
-//        }
-//        return parent::_list($db);
-
-//
-//        $res = Db::table($this->table)->order('id asc')->select();
-//
-//        $this->assign('title', '代理列表');
-//        $this->assign('list', $res);
-//        $this->assign('agenttype', $this->_agentType);
-//        return view();
     }
 
     /**
@@ -135,7 +126,6 @@ class Shipment extends BasicAdmin {
          * 3.修改防伪码所属代理
          */
         //接收参数 用户参数
-//        var_dump($this->request->post());die;
         $anti_id = $this->request->post('anti_id');
         $anti_code = $this->request->post('anti_code');
         $is_box = $this->request->post('is_box');

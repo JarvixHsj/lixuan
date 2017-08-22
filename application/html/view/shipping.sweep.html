@@ -108,18 +108,18 @@
                 <input type="hidden" value="" name="sweephidden"/>
             </div>
         </form>
-        <ul class="cul_list1">
-            <button class="single">扫单个</button>
-            <button class="double">扫一箱</button>
-        </ul>
+        <!--<ul class="cul_list1">-->
+            <!--<button class="single">扫单个</button>-->
+            <!--<button class="double">扫一箱</button>-->
+        <!--</ul>-->
     </div>
 
-    <div style="width: 100%;height: 65px;clear: both;"></div>
-        <div class="row foot navbar-fixed-bottom">
-            <span class="mgl40">继续扫描</span>
+    <div style="width: 100%;height: 65px;clear: both;"   ></div>
+        <div class="row foot navbar-fixed-bottom" id="scanQRCode">
+            <span class="mgl40" >继续扫描</span>
         </div>
     </div>
-<!--<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
     <script type="text/javascript">
         var user_id = "{$Think.session.agent.id}";
@@ -207,5 +207,99 @@
         $('.navbar-fixed-bottom').click(function(){
 
         })
+
+//      调起微信扫一扫
+        $("#scanQRCode").click(function() {
+            var ajaxScanUrl = "{:Url('Shipping/ajaxScan')}"
+            wx.scanQRCode({
+    // 默认为0，扫描结果由微信处理，1则直接返回扫描结果
+                needResult : 1,
+    //                desc : 'scanQRCode desc',
+                success : function(res) {
+                      //获取扫描结果
+                    var codeData = res.resultStr;
+
+                    $.ajax({
+                        async:false,
+                        type: "POST",
+                        url: ajaxScanUrl,
+                        data: "res="+codeData,
+                        success: function(res){
+                            if(res.code == 0){
+                                mui.toast(res.msg,{ duration:'short', type:'div' })
+                                return false;
+                            }else if(res.code == 2){
+                                mui.alert(res.msg);
+                            }
+                            var icons = 'gou';
+                            if(res.data.hidden == 1){
+                                var hiddenHtml = '<input type="hidden" name="sweephidden[]" value="'+ res.data.value +'"/>';
+                                $('#sweephidden').append(hiddenHtml);
+                            }
+                            $.each(res.data.res, function(i,n) {
+                                if (n.user_id == user_id) {
+                                    icons = 'gou'
+                                } else {
+                                    icons = 'useless'
+                                }
+                                var html = '';
+                                html += '<li>';
+                                html += '<div class="cul_list_dev">';
+                                html += '<div class="usck_dls_pic usck_dls_pic_style ' + icons + '"></div>';
+                                html += '<div class="usck_dls_info ppt0">';
+                                html += '<p class="name usdl_28 mgl0fz18">';
+                                html += '<span>' + n.code + '</span>';
+                                html += '</p>';
+                                html += '</div>';
+                                html += '</div>';
+                                html += '<input type="hidden" name="sweep[]" value="' + n.id + '"/>';
+                                html += '</li>';
+                                $('.cul_list').append(html);
+                            })
+                        },
+                        error:function(){
+                            mui.alert('系统繁忙~')
+                        }
+                    });
+
+
+//                    alert(res);
+//                    return false;
+    //扫码后获取结果参数赋值给Input
+//                    var url = res.resultStr;
+//    //商品条形码，取","后面的
+//                    if(url.indexOf(",")>=0){
+//                        var tempArray = url.split(',');
+//                        var tempNum = tempArray[1];
+//    //                        if(tempNum.indexOf('fcode=') > 0){
+//    //                            var temptemp = tempNum.split(',');
+//    //                            var tempRes = temptemp[1];
+//    //                        }
+//
+//                        $("#id_securityCode_input").val(tempNum);
+//                    }else{
+//                        $("#id_securityCode_input").val(url);
+//                    }
+                },
+                error: function(res){
+                    if(res.errMsg.indexOf('function_not_exist') > 0){
+                        alert('版本过低请升级')
+                    }
+                }
+            });
+        });
+
+
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: '{$config.appid}', // 必填，公众号的唯一标识
+            timestamp: '{$config.timestamp}', // 必填，生成签名的时间戳
+            nonceStr: '{$config.nonceStr}', // 必填，生成签名的随机串
+            signature: '{$config.signature}',// 必填，签名，见附录1
+            jsApiList: [
+                'scanQRCode',
+            ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+
     </script>
 {/block}

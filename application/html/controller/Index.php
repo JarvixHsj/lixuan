@@ -42,7 +42,7 @@ class Index extends Controller {
     	$this->assign('list', $list);
     	$this->assign('banner_res', $bannerRes);
     	$this->assign('banner_res_count', count($bannerRes) -1);
-    	return view();
+    	return $this->fetch();
     }
 
 

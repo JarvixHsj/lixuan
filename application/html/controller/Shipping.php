@@ -206,6 +206,31 @@ class Shipping extends BasicAgent {
             }
 
             $this->assign('list', $list);
+
+            //          扫一扫sdk
+            $AppId = config('wechat.AppID');
+            $AppSecret = config('wechat.AppSecret');
+
+            $token_access_url  = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$AppId."&secret=".$AppSecret;
+            $access_res = file_get_contents($token_access_url);    //获取文件内容或获取网络请求的内容
+            $access_token_data = json_decode($access_res, true);   //接受一个 JSON 格式的字符串并且把它转换为 PHP 变量
+
+            $jsapi_ticket = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=".$access_token_data['access_token']."&type=jsapi";
+            $ticket_res = file_get_contents($jsapi_ticket);
+            $jsapi_ticket_data = json_decode($ticket_res, true);
+
+            $nonceStr = $this->make_nonceStr();
+            $timestamp = time();
+            $jsapi_ticket = $jsapi_ticket_data['ticket'];
+            $url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+            $signature = $this->make_signature($nonceStr,$timestamp,$jsapi_ticket,$url);
+
+            $data['config']['appid'] = $AppId;
+            $data['config']['timestamp'] = $timestamp;
+            $data['config']['nonceStr'] = $nonceStr;
+            $data['config']['signature'] = $signature;
+            $this->assign('config', $data['config']);
+
             return $this->fetch('sweep');
         }
 
@@ -244,14 +269,6 @@ class Shipping extends BasicAgent {
         if($this->checkShipmentInfo() === false){
             $this->success('请先选择发货代理~', 'Shipping/add');
         }
-//        $takeUserId = session('shipment.take_user_id');
-//        $takeUserInfo = Db::table('lx_user')->find($takeUserId);
-
-//        if(isset($this->request->param()['sweephidden'])){
-//            $sweepHidden = $this->request->param()['sweephidden'];
-//        }else{
-//            $sweepHidden = '';
-//        }
 
         if(isset($this->request->param()['sweep'])){
             $sweepHidden = $this->request->param()['sweephidden'];
@@ -584,35 +601,81 @@ class Shipping extends BasicAgent {
     }
 
 
-    public function ajaxAffirm()
+    /**
+     * 调用微信扫一扫
+     * @author: Jarvix
+     */
+    public function callWxScan()
     {
-//        $id = 54; //54  108  162  216
-        $data = array();
-        $data['hidden'] = 0;
-        $AntiService = new AntiService();
-        //查询是否代理是否有防伪码（即货物）
-        $antiList = $AntiService->getUserAntiList(session('agent.id'));
-        if(!$antiList) $this->result('',0, '你还没有商品~', 'json');
-        $id = rand(0,count($antiList) - 1);
-//        $id = count($antiList) - 1;
-        $res[] = $antiList[$id];
-        $anticode = $res['0']['code'];
-        $antiId = $res['0']['id'];
+//          扫一扫sdk
+        $AppId = config('wechat.AppID');
+        $AppSecret = config('wechat.AppSecret');
+
+        $token_access_url  = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$AppId."&secret=".$AppSecret;
+        $access_res = file_get_contents($token_access_url);    //获取文件内容或获取网络请求的内容
+        $access_token_data = json_decode($access_res, true);   //接受一个 JSON 格式的字符串并且把它转换为 PHP 变量
+
+        $jsapi_ticket = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=".$access_token_data['access_token']."&type=jsapi";
+        $ticket_res = file_get_contents($jsapi_ticket);
+        $jsapi_ticket_data = json_decode($ticket_res, true);
+
+        $nonceStr = $this->make_nonceStr();
+        $timestamp = time();
+        $jsapi_ticket = $jsapi_ticket_data['ticket'];
+        $url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $signature = $this->make_signature($nonceStr,$timestamp,$jsapi_ticket,$url);
+
+        $data['config']['appid'] = $AppId;
+        $data['config']['timestamp'] = $timestamp;
+        $data['config']['nonceStr'] = $nonceStr;
+        $data['config']['signature'] = $signature;
+        $this->assign('config', $data['config']);
+    }
+
+
+    public function ajaxScan()
+    {
+//        var_dump($_POST);die;
+        //接收扫码结果
+        $res = $this->request->param('res') ? trim($this->request->param('res')) : 0;
+//        $res = "http://www.savril.cn/fcode.php?fcode=9853942323";
+        //截取参数
+        $qrcode = ltrim(substr($res ,strpos($res,'fcode=')), 'fcode=');
+        //判断参数
+        if($qrcode && is_numeric($qrcode)){
+            //查询该码是否存在
+            $antiRes = AntiService::JudgeAnti(array('qrcode' => $qrcode));
+            if($antiRes === false){
+                $this->result('',0, '该码信息不存在~', 'json');
+            }else{
+                if($antiRes['0']['user_id'] != session('agent.id')){
+                    $this->result('',0, '该产品不是你的~', 'json');
+                }
+                //查询是否是一箱
+                $anticode = $antiRes['0']['code'];
+
+                $antiId = $antiRes['0']['id'];
 //        $res = AntiService::JudgeAnti(array('id' => $id));
-        if(substr($anticode, -3) == 318){
-            $res = AntiService::getABoxTotal($anticode);
-            $comboRes = AntiService::judgeBoxBelong($res);
-            if($comboRes == 1){
-                $this->result('',0, '已经拆箱了，不可整箱扫', 'json');
+//                $this->result('',2, substr($anticode, -3), 'json');
+
+//                substr($anticode, -3)
+                if(substr($anticode, -3) == 318){
+                    $antiRes = AntiService::getABoxTotal($anticode);
+                    $comboRes = AntiService::judgeBoxBelong($antiRes);
+                    if($comboRes == 1){
+                        $this->result('',0, '已经拆箱了，不可整箱扫', 'json');
+                    }
+                    $data['hidden'] = 1;
+                    $data['value'] = $antiId;
+                }
+                if(!$antiRes) $antiRes = array();
+                $data['res'] = $antiRes;
+
+                $this->result($data,1,'ok~','json');
             }
-            $data['hidden'] = 1;
-            $data['value'] = $antiId;
+        }else{
+            $this->result('',0, '该码不正确~', 'json');
         }
-        if(!$res) $res = array();
-
-        $data['res'] = $res;
-
-        $this->result($data,1,'ok~','json');
     }
     //            扫一扫sdk
 //            $AppId = config('wechat.AppID');
