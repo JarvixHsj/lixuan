@@ -1,22 +1,81 @@
 {extend name="extra@html/main"}
 
 {block name='body'}
-		<header class="mui-bar mui-bar-nav di_navbox">
-		    <h1 class="mui-title">防伪查询</h1>
-		</header>
-		<div class="mui-content">
-			<div class="log_head mui-text-center">
-		    	<div class="log_logo center_block" style="background-image: url(img/logo.png);"></div>
-		    	<p class="log_title usdl_36">加盟热线：0582-5645612</p>
-		    	<div class="fw_box center_block">
-		    		<img src="__PUBLIC__/static/html/img/fangweima.png" class="img-zsy"/>
-		    	</div>
-		    </div>	
-		    <form action="shouquanshu.html">
-			    <div class="sqcx_input">
-			    	<input class="usyq_cin usdl_28" type="text" name="" id="" value="" placeholder="请输入防伪码" />
-			    	<button class="log_btn" style="margin-top: 0;" type="button" onclick="alert('暂未开放！');" onsubmit="return false;">查询</button>
-			    </div>
-		    </form>
+	<header class="mui-bar mui-bar-nav di_navbox">
+		<h1 class="mui-title">防伪查询</h1>
+	</header>
+	<div class="mui-content">
+		<div class="log_head mui-text-center">
+			<div class="log_logo center_block" style="background-image: url(img/logo.png);"></div>
+			<p class="log_title usdl_36">加盟热线：0582-5645612</p>
+			<div class="fw_box center_block">
+				<img src="__PUBLIC__/static/html/img/fangweima.png" class="img-zsy"/>
+			</div>
 		</div>
+		<form>
+			<div class="sqcx_input">
+				<input class="usyq_cin usdl_28" type="text" name="code" id="" value="" placeholder="请输入防伪码" />
+				<button class="log_btn" style="margin-top: 0;" type="button" onclick="">查询</button>
+			</div>
+		</form>
+	</div>
+
+
+{/block}
+{block name='script'}
+<script>
+    var checkPassUrl = "{:Url('tourists/ajaxCheckAnti')}"
+    var checkCodeUrl = "__SELF__";
+
+    $('.log_btn').click(function(){
+        var code = $('input[name="code"]').val();
+        if(!code){
+            mui.alert('请输入防伪码~');
+            return false;
+        }
+        $.ajax({
+            async:false,
+            type: "POST",
+            url: checkCodeUrl,
+            data:'code='+code,
+            success: function(res){
+                if(res.code == 0){
+                    mui.alert(res.msg);
+                    return false;
+                }
+            },
+            error:function(){
+                mui.alert('系统繁忙~')
+            }
+        });
+
+
+
+
+		//修改弹出框默认input类型为password
+		mui.prompt('','请刮开涂层查看密码','请输入密码后四位',['确认','取消'],function(r){
+			if(r.index == 0){
+				var pass = r.value
+				if(!pass){
+					mui.alert('密码不能为空！')
+				}
+				$.ajax({
+					type: "POST",
+					url: checkPassUrl,
+					data: "pass="+pass,
+					success: function(res){
+						console.log(res)
+					},
+					error:function(){
+						mui.alert('系统繁忙~')
+					}
+				});
+//				alert('确认');
+				console.log(r)
+			}
+		},'div')
+		document.querySelector('.mui-popup-input input').type='text'
+	})
+
+</script>
 {/block}

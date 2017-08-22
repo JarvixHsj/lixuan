@@ -14,6 +14,7 @@
 
 namespace app\html\controller;
 
+use service\AntiService;
 use think\Controller;
 use think\Db;
 use model\UserInvite;
@@ -269,7 +270,30 @@ class Tourists extends Controller {
      */
     public function anti()
     {
+        if ($this->request->isPost()) {
+            $code = $this->request->param('code') ? $this->request->param('code') : '';
+            if($code && is_numeric($code)){
+                $res = AntiService::JudgeAnti(array('code' => $code));
+                if($res === false){
+                    $this->result('',0,'防伪码不存在~','json');
+                }
+                $this->result('', 1, '继续~', 'json');
+            }else{
+                $this->result('',0,'防伪码不能为空~','json');
+            }
+        }
         return view();
+    }
+
+    /**
+     * 防伪码查询
+     * @author: Jarvix
+     */
+    public function ajaxCheckAnti()
+    {
+        $pass = $this->request->param('pass') ? $this->request->param('pass') : '';
+        if(!$pass) $this->result('',0,'密码不能为空','json');
+
     }
     
     
