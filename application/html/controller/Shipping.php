@@ -583,6 +583,37 @@ class Shipping extends BasicAgent {
         $this->result($data,1,'ok~','json');
     }
 
+
+    public function ajaxAffirm()
+    {
+//        $id = 54; //54  108  162  216
+        $data = array();
+        $data['hidden'] = 0;
+        $AntiService = new AntiService();
+        //查询是否代理是否有防伪码（即货物）
+        $antiList = $AntiService->getUserAntiList(session('agent.id'));
+        if(!$antiList) $this->result('',0, '你还没有商品~', 'json');
+        $id = rand(0,count($antiList) - 1);
+//        $id = count($antiList) - 1;
+        $res[] = $antiList[$id];
+        $anticode = $res['0']['code'];
+        $antiId = $res['0']['id'];
+//        $res = AntiService::JudgeAnti(array('id' => $id));
+        if(substr($anticode, -3) == 318){
+            $res = AntiService::getABoxTotal($anticode);
+            $comboRes = AntiService::judgeBoxBelong($res);
+            if($comboRes == 1){
+                $this->result('',0, '已经拆箱了，不可整箱扫', 'json');
+            }
+            $data['hidden'] = 1;
+            $data['value'] = $antiId;
+        }
+        if(!$res) $res = array();
+
+        $data['res'] = $res;
+
+        $this->result($data,1,'ok~','json');
+    }
     //            扫一扫sdk
 //            $AppId = config('wechat.AppID');
 //            $AppSecret = config('wechat.AppSecret');
