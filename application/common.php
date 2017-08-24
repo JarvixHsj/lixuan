@@ -28,7 +28,6 @@ function p($data, $replace = false, $pathname = NULL) {
     is_null($pathname) && $pathname = RUNTIME_PATH . date('Ymd') . '.txt';
     $str = (is_string($data) ? $data : (is_array($data) || is_object($data)) ? print_r($data, true) : var_export($data, true)) . "\n";
     $replace ? file_put_contents($pathname, $str) : file_put_contents($pathname, $str, FILE_APPEND);
-    die;
 }
 
 /**
@@ -279,4 +278,31 @@ if (!function_exists("agent_array_to_ring")) {
         return $data;
     }
 
+}
+
+/**
+ * 获取ip地址
+ */
+if (!function_exists("get_real_ip")) {
+    function get_real_ip()
+    {
+        $ip = false;
+        if (!empty($_SERVER["HTTP_CLIENT_IP"])) {
+            $ip = $_SERVER["HTTP_CLIENT_IP"];
+        }
+        if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ips = explode(", ", $_SERVER['HTTP_X_FORWARDED_FOR']);
+            if ($ip) {
+                array_unshift($ips, $ip);
+                $ip = FALSE;
+            }
+            for ($i = 0; $i < count($ips); $i++) {
+                if (!eregi("^(10|172\.16|192\.168)\.", $ips[$i])) {
+                    $ip = $ips[$i];
+                    break;
+                }
+            }
+        }
+        return ($ip ? $ip : $_SERVER['REMOTE_ADDR']);
+    }
 }

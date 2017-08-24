@@ -249,18 +249,7 @@ class Tourists extends Controller {
         $this->assign('agent_info', $AgentData);
         $this->assign('agentType', $this->_agentType);
 
-//
-//            $agent_id = $this->request->param('id');
-//            $UserData = Db::table('lx_user')->find(session('agent.id'));
-//            $AgentData = Db::table('lx_agent')->alias('a')
-//                ->join('lx_product p', 'p.id = a.product_id')
-//                ->where('a.id = '.$agent_id)
-//                ->field("a.*,p.name")
-//                ->find();
-//            $this->assign('user_info', $UserData);
-//            $this->assign('agent_info', $AgentData);
-//            $this->assign('agentType', $this->_agentType);
-            return view('users/auth');
+        return view('users/auth');
     }
 
 
@@ -291,9 +280,37 @@ class Tourists extends Controller {
      */
     public function ajaxCheckAnti()
     {
+        $code = $this->request->param('code') ? $this->request->param('code') : '';
         $pass = $this->request->param('pass') ? $this->request->param('pass') : '';
-        if(!$pass) $this->result('',0,'密码不能为空','json');
+        //判断code防伪码
+        if(!$code) $this->result('',0,'防伪码不能为空~','json');
+        if(!is_numeric($code)) $this->result('',0,'防伪码必须是数字~','json');
+        $antiInfo = AntiService::JudgeAnti(array('code' => $code));
+        if($antiInfo === false) $this->result('',0,'防伪码不存在~','json');
+        //判断密码参数
+        if(!$pass || !is_numeric($pass) || strlen($pass) != 4) $this->result('',0,'密码不能为空且必须是4位数字','json');
 
+        $truePass = substr($antiInfo[0]['passwd'], -4,4);
+        if($truePass != $pass) $this->result('',0,'密码有误，请核对密码后输入后四位~','json');
+
+        //更新查询次数
+        Db::table('lx_anti')
+            ->where('id', $antiInfo[0]['id'])
+            ->setInc('query');
+
+//        返回参数
+        $data = array('username' => '公司总部', 'querynum' => $antiInfo[0]['query'] + 1, 'wechat_no' => '', 'mobile' => '');
+        //判断是否是公司总部
+        if($antiInfo[0]['user_id'] == 0) $this->result($data, 2, '公司总部~', 'json');
+        //查询用户信息
+//                dump($res[0]['user_id']);
+        $UserModel = new User();
+        $userInfo = $UserModel->getUserInfo($antiInfo[0]['user_id']);
+        if(!$userInfo) $this->result($data, 2, '公司总部~', 'json');
+        $data['username'] = $userInfo['username'];
+        $data['wechat_no'] = $userInfo['wechat_no'];
+        $data['mobile'] = $userInfo['mobile'];
+        $this->result($data, 1, '代理用户~', 'json');
     }
     
     

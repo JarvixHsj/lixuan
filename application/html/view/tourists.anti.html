@@ -1,12 +1,33 @@
 {extend name="extra@html/main"}
+{block name='style'}
+<style>
+    .divcontent{
+        max-width: 640px !important;
+        padding-left: 15px;
+        padding-right: 15px;
+        background: none;margin-left: auto;
+        margin-right: auto;
 
+    }
+    .content-left{
+        float:left;
+    }
+    .content-right{
+        float:right;
+    }
+    .info_icon_span{
+        color: #000000;line-height: 20px;margin-right: 10px;
+        display: none;
+    }
+</style>
+{/block}
 {block name='body'}
 	<header class="mui-bar mui-bar-nav di_navbox">
 		<h1 class="mui-title">防伪查询</h1>
 	</header>
 	<div class="mui-content">
 		<div class="log_head mui-text-center">
-			<div class="log_logo center_block" style="background-image: url(img/logo.png);"></div>
+			<div class="log_logo center_block" style="background-image: url(__PUBLIC__/static/html/img/logo.png);"></div>
 			<p class="log_title usdl_36">加盟热线：0582-5645612</p>
 			<div class="fw_box center_block">
 				<img src="__PUBLIC__/static/html/img/fangweima.png" class="img-zsy"/>
@@ -14,11 +35,19 @@
 		</div>
 		<form>
 			<div class="sqcx_input">
-				<input class="usyq_cin usdl_28" type="text" name="code" id="" value="" placeholder="请输入防伪码" />
+				<input class="usyq_cin usdl_28" type="text" name="code" id="" value="" placeholder="请输入二维码下方的防伪码" />
 				<button class="log_btn" style="margin-top: 0;" type="button" onclick="">查询</button>
 			</div>
 		</form>
 	</div>
+
+    <div class="mui-content divcontent" style="padding-top:10px;display: none">
+        <span class="content-left">所属代理：<span style="color:#ff0000;" class="username">公司总部</span></span>  <span class="content-right">查询次数：第<span class="querynum" style="color:#ff0000">111</span>次</span>
+        <p class="call_info" style="float:left;width:100%;">
+            <span class="info_icon info_icon_span content-left"><i class="mui-icon mui-icon-weixin"></i><span  class="usdl_24 wechat_no">meiulin2546</span></span>
+            <span class="info_icon info_icon_span content-right"><i class="mui-icon mui-icon-phone-filled"></i><span class="usdl_24 mobile">13800138000</span></span>
+        </p>
+    </div>
 
 
 {/block}
@@ -49,28 +78,51 @@
             }
         });
 
-
-
-
 		//修改弹出框默认input类型为password
 		mui.prompt('','请刮开涂层查看密码','请输入密码后四位',['确认','取消'],function(r){
 			if(r.index == 0){
-				var pass = r.value
+                var code = $('input[name="code"]').val();
+                if(!code){
+                    mui.alert('请输入防伪码~');
+                    return false;
+                }
+                var pass = r.value
 				if(!pass){
 					mui.alert('密码不能为空！')
 				}
 				$.ajax({
 					type: "POST",
 					url: checkPassUrl,
-					data: "pass="+pass,
+					data: 'code='+code+"&pass="+pass,
 					success: function(res){
 						console.log(res)
+                        if(res.code == 0){
+                            mui.alert(res.msg);
+                            return false;
+                        }else if(res.code == 1){
+                            $('.divcontent').css('display','block');
+                            $('.call_info').css('display','block');
+                            $('.info_icon_span').css('display','block');
+                            $('.username').html(res.data.username);
+                            $('.mobile').html(res.data.mobile);
+                            $('.wechat_no').html(res.data.wechat_no);
+                            $('.querynum').html(res.data.querynum);
+                        }else if(res.code == 2){
+                            $('.divcontent').css('display','block');
+                            $('.info_icon_span').css('display','block');
+                            $('.username').html(res.data.username);
+                            $('.querynum').html(res.data.querynum);
+                            $('.call_info').css('display','none');
+//                            $('.wechat_no').css('display','none');
+//                            $('.mobile').html(res.data.mobile);
+//                            $('.wechat_no').html(res.data.wechat_no);
+
+                        }
 					},
 					error:function(){
 						mui.alert('系统繁忙~')
 					}
 				});
-//				alert('确认');
 				console.log(r)
 			}
 		},'div')
