@@ -59,6 +59,34 @@ class AntiService {
     }
 
     /**
+     * 获取一箱未指派的数据（已指派的不算）
+     * @param $qrstr
+     */
+    public static function getNotAssignABoxTotal($qrstr)
+    {
+
+        $qrstr = rtrim($qrstr, 318);
+        $res = Db::table('lx_anti')->where('code','like',"{$qrstr}%")->select();
+
+        if(!$res) return false;
+
+        array_pop($res);
+        array_pop($res);
+        array_pop($res);
+        array_pop($res);
+        array_pop($res);
+        array_pop($res);
+        foreach($res as $key => $val){
+            if($val['user_id'] != 0){
+                unset($res[$key]);
+            }
+        }
+
+        return $res;
+    }
+
+
+    /**
      * 判断一箱是否都是同一个代理的
      * @author: Jarvix
      */
@@ -68,7 +96,6 @@ class AntiService {
         $userId = session('agent.id');
         $step = 0;
         foreach($res as $key=>$val){
-//            var_dump($val['user_id']. '-----'. $userId);
             if($val['user_id'] != $userId){
                 $step = 1;
                 break;

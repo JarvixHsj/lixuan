@@ -56,8 +56,6 @@ class Shipment extends BasicAdmin {
         if(isset($get['code']) && !empty($get['code'])){
             $where['code']  = ['like',"%{$get['code']}%"];
         }
-//        var_dump($get);
-//        dump($get);
         $db = Db::name($this->table)->where($where)->order('id asc');
 
         $rowPage = intval($this->request->get('rows', cookie('rows')));
@@ -89,6 +87,17 @@ class Shipment extends BasicAdmin {
         return $this->fetch('', $result);
     }
 
+
+    public function manual() {
+        if($this->request->isGet()){
+            $returnUrl = $_SERVER['HTTP_REFERER'].'#/lixuan/word/index.html?spm=m-87-'.rand(0,9).rand(0,9);
+            $this->assign('returnUrl', $returnUrl);
+            $result['title'] = '手动输入';
+            return view('manual', $result);
+        }
+
+    }
+
     /**
     * 设置防伪码代理
     */
@@ -101,13 +110,15 @@ class Shipment extends BasicAdmin {
             }
             $is_box = 0;
             if(substr($anti_code,-3,3) == 318){
-                $antiList = AntiService::getABoxTotal($anti_code);
+                // $antiList = AntiService::getABoxTotal($anti_code);
+                // 只筛选一箱中未指派的记录
+                $antiList = AntiService::getNotAssignABoxTotal($anti_code);
                 $is_box = 1;
             }else{
                 $antiList = AntiService::JudgeAnti(array('id' => $anti_id));
             }
             if($antiList == false){
-                $this->error('获取代理用户信息失败，请稍后重试~');
+                $this->error('产品都已指派~');
             }
 
             $UserModel = new User();
@@ -140,14 +151,22 @@ class Shipment extends BasicAdmin {
         $isBoxStr = '一盒';
         $isBoxNum = 1;
         $antiList = AntiService::JudgeAnti(array('id' => $anti_id));
-//        dump($antiList);
         if($is_box == 1){
+            //获取一箱中未指派的记录
+            $antiTempList = AntiService::getNotAssignABoxTotal($anti_code);
+            //判断是否是一箱
+            $countAntiTemp = count($antiTempList);
+            $isBoxNum = $countAntiTemp;
             $isBoxStr = '一箱';
-            $isBoxNum = 48;
-            $antiTempList = AntiService::getABoxTotal($anti_code);
-            array_unshift($antiTempList,$antiList[0]);
+            if($countAntiTemp == 48){
+                array_unshift($antiTempList,$antiList[0]);
+                $antiList = $antiTempList;
+            }else{
+                $isBoxStr = $countAntiTemp . '盒';
+            }
             $antiList = $antiTempList;
         }
+
         //订单号
         $AgentService = new AgentService();
         $sn = $AgentService->createShipmentSn();
@@ -182,7 +201,6 @@ class Shipment extends BasicAdmin {
             $shipmentsInfo['num'] = $isBoxNum;
             $shipmentsInfo['remark'] = '总后台管理员给代理分配防伪码';
             $shipmentsInfo['send_user_id'] = 0;
-//            $shipmentsInfo['take_user_level'] = $userInfo[''];
             $shipmentsInfo['take_username'] = $userInfo['username'];
             $shipmentsInfo['take_wechat_no'] = $userInfo['wechat_no'];
             $shipmentsInfo['take_mobile'] = $userInfo['mobile'];
