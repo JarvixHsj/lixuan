@@ -70,7 +70,6 @@ class Shipping extends BasicAgent {
      */
     public function add()
     {
-//        dump(session('shipment'));
         $data = array();
         $data['take_user_id'] = session('shipment.take_user_id') ? session('shipment.take_user_id') : 0; //收货人
         $countAnti = 0;
@@ -270,7 +269,7 @@ class Shipping extends BasicAgent {
             $this->success('请先选择发货代理~', 'Shipping/add');
         }
 
-        if(isset($this->request->param()['sweep'])){
+        if(isset($this->request->param()['sweephidden'])){
             $sweepHidden = $this->request->param()['sweephidden'];
         }else{
             $sweepHidden = '';

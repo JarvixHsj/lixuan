@@ -8,13 +8,6 @@ class Shipments extends Model
 {
     protected $table = 'lx_shipments';
 
-    // protected static function init()
-    // {
-    // 	parent::init();
-    // 	if( !self::$user_id)  session('user_info.user_id') ? self::$user_id = session('user_info.user_id') : '2';
-    // }
-
-
     /**
      * getShipmentList
      * @author: Jarvix
@@ -36,6 +29,23 @@ class Shipments extends Model
             ]);
 
         return $list->toArray();
+    }
+
+    /**
+     * 关键字匹配
+     */
+    public static function searchKeyword($keyword)
+    {
+        if(!$keyword) return false;
+
+        $list = Db::table('lx_anti')
+            ->field('id,qrcode,code,passwd,query,user_id,product_id')
+            ->where('code', 'like', "{$keyword}%")
+            ->order('user_id asc')
+            ->limit(0,48)
+            ->select();
+        if($list) return $list;
+        return false;
     }
 
 }

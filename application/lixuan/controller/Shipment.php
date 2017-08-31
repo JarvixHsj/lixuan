@@ -87,15 +87,137 @@ class Shipment extends BasicAdmin {
         return $this->fetch('', $result);
     }
 
-
+    /**
+     *手动输入防伪码
+     * @return View
+     */
     public function manual() {
         if($this->request->isGet()){
             $returnUrl = $_SERVER['HTTP_REFERER'].'#/lixuan/word/index.html?spm=m-87-'.rand(0,9).rand(0,9);
             $this->assign('returnUrl', $returnUrl);
             $result['title'] = '手动输入';
+
+            $UserModel = new User();
+            $userList = $UserModel->getUserList();
+            $this->assign('user_list', $userList);
+
             return view('manual', $result);
         }
 
+        $keyword = $this->request->param('keyword') ? $this->request->param('keyword') : '';
+        if(!$keyword) $this->result('', 0, '搜索信息不能为空！', 'json');
+
+        $ShipModel = new Shipments();
+        $list = $ShipModel->searchKeyword($keyword);
+        if($list){
+            $this->result($list,1, 'ok', 'json');
+        }
+        $this->result('', 0, '无搜索内容~', 'json');
+
+    }
+
+    /**
+     * 提交--手动指派防伪码
+     */
+    public function manualSubmit()
+    {
+//        $this->error('失败', '', '', 2);
+//        $this->result('', 0, '无搜索内容~', 'json');
+//
+//        var_dump($this->request->param());die;
+        $sweep = $this->request->param()['sweep'];
+        $user_id = $this->request->param()['user_id'];
+        //判断用户
+        if(!$user_id) $this->error('请选择要指派的代理！');
+        $UserModel = new User();
+        $userInfo = $UserModel->getUserInfo($user_id);
+        if(!$userInfo) $this->error('要指派的代理信息不存在，请重试~');
+
+        if(!$sweep){
+            $this->error('请先选择防伪码~', '', '', 2);
+        }
+
+
+        //整理信息，查询出防伪数据
+        $sweepCount = count($sweep);
+        if($sweepCount >= 1){
+            $sweepStr = implode(',',$sweep);
+        }elseif($sweepCount == 0){
+            $this->error('无扫描信息~', '', '', 2);
+        }
+
+        $where  = 'id in(' .$sweepStr.')';
+        $AntiModel = new Anti();
+        $res = $AntiModel->where($where)->select();
+        if(!$res){
+            $this->result('',0, '无扫描信息~', 'json');
+        }
+
+        $AgentService = new AgentService();
+        $orderSn = $AgentService::createShipmentSn();
+        $res = $res->toArray();
+        $antiRecordData = array();  //防伪码记录
+        $antiUpdateData = array();  //防伪码更新（更新所属代理）
+        $newTime = time();
+
+        foreach($res as $key => $val){
+            $tempRecord['anti_id'] = $val['id'];
+            $tempRecord['anti_code'] = $val['code'];
+            $tempRecord['take_user_id'] = $user_id;
+            $tempRecord['send_user_id'] = 0;
+            $tempRecord['agent_id'] = 0;
+            $antiRecordData[] = $tempRecord;
+
+            $val['user_id'] = $user_id;
+            $val['agent_id'] = 0;
+            $val['product_id'] = $val['product_id'];
+            $val['updated_at'] = $newTime;
+            $antiUpdateData[] = $val;
+        }
+        //收货代理消息记录
+        $messageContent = '公司总部给你发了'. $sweepCount. '盒产品，订单号为：'.$orderSn. ', ';
+
+        $takeUserMessage = array();
+        $takeUserMessage['user_id'] = $user_id;
+        $takeUserMessage['created_at'] = date('Y-m-d H:i:s',$newTime);
+        $takeUserMessage['content'] = $messageContent. '请到发货列表或单号查询里面查看详情！';
+
+        //发货记录
+        $shipmentsInfo['take_user_id'] = $user_id;
+        $shipmentsInfo['product_id'] = 0;
+        $shipmentsInfo['order_sn'] = $orderSn;
+        $shipmentsInfo['picking_type'] = 0;
+        $shipmentsInfo['express_sn'] = 0;
+        $shipmentsInfo['num'] = $sweepCount;
+        $shipmentsInfo['remark'] = '总后台管理员给代理分配防伪码';
+        $shipmentsInfo['product_name'] = 0;
+        $shipmentsInfo['send_user_id'] = 0;
+        $shipmentsInfo['take_user_level'] = 0;
+        $shipmentsInfo['take_username'] = $userInfo['username'];
+        $shipmentsInfo['take_wechat_no'] = $userInfo['wechat_no'];
+        $shipmentsInfo['take_mobile'] = $userInfo['mobile'];
+        $shipmentsInfo['send_username'] = session('agent.username');
+        $shipmentsInfo['send_wechat_no'] = session('agent.wechat_no');
+        $shipmentsInfo['send_time'] = date('Y-m-d H:i:s',$newTime);
+        $shipmentsInfo['created_at'] = date('Y-m-d H:i:s',$newTime);
+        $ShipmentsModel = new Shipments();
+        // 启动事务
+        Db::startTrans();
+        try{
+            $ShipmentsModel->data($shipmentsInfo)->allowField(true)->save();
+            $ship_id = $ShipmentsModel->id;
+            $AgentService->createMessage($takeUserMessage); //新增收货人消息记录
+            $AntiModel = new Anti();
+            $res3 = $AntiModel->saveAll($antiUpdateData);  //更新发货防伪码
+            $res4 = Db::table('lx_antirecord')->insertAll($antiRecordData); //添加防伪码跟踪记录
+            // 提交事务
+            Db::commit();
+        } catch (\Exception $e) {
+            // 回滚事务
+            Db::rollback();
+            $this->result('',0, '系统繁忙，请稍后重试~', 'json');
+        }
+        $this->success('指派成功！',$this->_createAdminUrl('shipment'));
     }
 
     /**
@@ -243,123 +365,6 @@ class Shipment extends BasicAdmin {
             $this->error('参数错误，请重试添加！');
         }
         $this->success('指派成功！',$this->_createAdminUrl('shipment'));
-    }
-
-    /**
-     * 已有代理添加产品
-     */
-    public function addExists() {
-        if ($this->request->isGet()) {
-            $userList = Db::table('lx_user')->where('status', 1)->select();
-            if(!$userList){
-                $this->error('暂无代理，请先添加代理再来授权！');
-            }
-            $ProModel = new product;
-            $proList = $ProModel->where('is_delete = 1')->order('id desc')->select();
-            if(!$proList){
-                $this->error('暂无产品，请先添加产品再来授权！');
-            }
-            $this->assign('pro_list', $proList);
-            $this->assign('user_list', $userList);
-            $this->assign('agenttype', $this->_agentType);
-            return parent::_form($this->table, 'existsform', 'id');
-        }
-        $level = $this->request->post('level');
-        $product_id = $this->request->post('product_id') ? trim($this->request->post('product_id')) : '';
-        $user_id = $this->request->post('user_id') ? trim($this->request->post('user_id')) : '';
-
-        //判断产品
-        if(!$product_id) $this->error('请选择要代理的产品！');
-        if(!$user_id) $this->error('请选择代理！');
-        $ProModel = new Product;
-        $tempPro = $ProModel->find($product_id)->toArray();
-        if (!$tempPro) {
-            $this->error('选择的代理产品有误，请重新选择！');
-        }
-        $UserModel = new User;
-        $comboUser = $UserModel->find($user_id);
-        if (!$comboUser) $this->error('代理信息有误，请刷新后重试~');
-
-        //判断该代理是否已经有该产品的代理
-        $AgentModel = new Agent;
-        $comboAgent = $AgentModel->where(array('user_id' => $user_id, 'product_id' => $product_id))->find();
-        if($comboAgent) $this->error('该代理已经有该产品的授权了，不可重复授权!');
-
-        $empower_sn = AgentService::createAgentSn($tempPro['abbr']);
-        if($empower_sn === false){
-            $this->error("授权号生成失败！请刷新后重试！");
-        }
-        $agentData['user_id'] = $user_id;
-        $agentData['product_id'] = $product_id;
-        $agentData['level'] = $level;   //授权等级
-        $agentData['created_at'] = time();  //生成时间
-        $agentData['invitation'] = 2;      //生成方式【1邀请 2后台授权】
-        $agentData['empower_sn'] = $empower_sn;
-        $agentData['super_id'] = 1;        //上级id
-        $agentData['super_level'] = 0;      //上级等级
-
-        $AgentModel->data($agentData)->allowField(true)->save();
-        $this->success('添加成功！',$this->_createAdminUrl('agents'));
-    }
-
-    public function edit(){
-        if ($this->request->isGet()) {
-            $agentId = $this->request->param('agent_id');
-            if(empty($agentId)) $this->error('参数有误，请刷新后重试！');
-
-            $agentInfo = Db::table('lx_agent')->alias('a')
-                ->join('lx_user u', 'u.id = a.user_id')
-                ->where('a.id', $agentId)
-                ->field('a.*,u.mobile,u.username')
-                ->find();
-            if(!$agentInfo) $this->error('代理信息不存在，请刷新后重试~');
-
-            $ProModel = new product;
-            $proList = $ProModel->where('status = 1 AND is_delete = 1')->order('id desc')->select();
-            if(!$proList){
-                $this->error('暂无产品，请先添加产品再来授权！');
-            }
-            $this->assign('pro_list', $proList);
-            $this->assign('agent_info', $agentInfo);
-
-            $tempLevel = $this->_agentType;
-            if($agentInfo['super_level'] != 0){
-                foreach($tempLevel as $key => $val) {
-                    if($key < $agentInfo['super_level']){
-                        unset($tempLevel[$key]);
-                    }
-                }
-            }
-            $this->assign('agenttype', $tempLevel);
-
-            return parent::_form($this->table, 'edit', 'id');
-        }
-
-        $id = $this->request->param('id');
-        $selectProId = $this->request->param('product_id');
-        $selectLevel = $this->request->param('level');
-
-        $AgentModel = new Agent();
-        //查询原数据
-        $sourceInfo = $AgentModel->find($id);
-        if(!$sourceInfo) $this->error('信息不存在！请刷新后重试~');
-        $sourceInfo = $sourceInfo->toArray();
-//        if($sourceInfo['level'] == $selectLevel && $sourceInfo['product_id'] = $selectProId) $this->success('修改成功~', '');
-
-        //判断是否更换了产品
-        if($selectProId != $sourceInfo['product_id']){
-            //判断改产品的授权是否已存在
-            $comboPro = $AgentModel->where(array('user_id' => $sourceInfo['user_id'], 'product_id' => $selectProId))->find();
-            if($comboPro) $this->error('该代理已经有该产品的授权了，不可重复授权~');
-        }
-
-        //判断是否更改了代理等级
-//        if($selectLevel != $sourceInfo['level']){
-        $comboUpdate = $AgentModel->save(array('level' => $selectLevel, 'product_id' => $selectProId), array('id' => $id));
-        if($comboUpdate !== false) $this->success('恭喜, 数据保存成功!', '');
-        $this->error('修改失败，请关闭后重试~');
-
-//        }
     }
 
 }

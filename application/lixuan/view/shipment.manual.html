@@ -15,8 +15,8 @@
         /* search css start*/
         .gover_search {position:relative;z-index:99;height:63px;padding:15px 0 0 20px;border-bottom:0;background:url(../images/gover_search_bg.gif) repeat-x 0 0;}
         .gover_search_form {height:36px;}
-        .gover_search .search_t {float:left;width:112px;line-height:26px;color:#666;}
-        .gover_search .input_search_key {float:left;width:462px;height:18px;padding:3px;margin-right:5px;border:1px solid #ccc;line-height:18px;background:#fff;}
+        .gover_search .search_t {padding-left: 3%;float:left;width:112px;line-height:26px;color:#666;}
+        .gover_search .input_search_key {float:left;width:462px;padding:3px;margin-right:5px;border:1px solid #ccc;line-height:18px;background:#fff;}
         .gover_search .search_btn {float:left;width:68px;height:26px;overflow:hidden;border:1px solid #ccc;text-align:center;color:#ff3300;letter-spacing:5px;background:url(../images/gover_search_bg.gif) no-repeat 0 -79px;cursor:pointer;font-weight:bold;}
         .gover_search .search_suggest {position:absolute;z-index:999;left:132px;top:41px;width:468px;border:1px solid #ccc;border-top:none;display:none;color:#004080;}
         .gover_search .search_suggest li {height:24px;overflow:hidden;padding-left:3px;line-height:24px;background:#fff;cursor:default;}
@@ -48,7 +48,7 @@
     <div class="panel-body">
   <!--       <form class="form-horizontal" role="form" method="post" name="news" onsubmit="return false;">
             <input type="hidden" name="id" value="{$vo.id|default=''}">
-    
+
             <div class="form-group">
                 <div class="col-md-12">
                     <textarea name='content' class="content">{$vo.value|default=""}</textarea>
@@ -63,156 +63,247 @@
                 </div>
             </div>
         </form> -->
-
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width:10%;">指派给代理</label>
+            <div class="layui-input-block" style="width: 50%;float: left;margin-left: 2%;">
+                <select name='user_id' class='layui-select full-width user_id' style='display:block' required="required" title="请选择代理">
+                    <option  value='0'>---请选择代理---</option>
+                    {volist name="user_list" id='vo' empty('暂时没有数据')}
+                    <option value="{$vo.id}">{$vo.mobile}|{empty name="vo.username"}{$vo.mobile}{else /} {$vo.username}{/empty}</option>
+                    {/volist}
+                </select>
+            </div>
+        </div>
          <div class="gover_search">
             <div class="gover_search_form clearfix"> 
                 <span class="search_t">匹配搜索</span>
                 <input type="text" class="input_search_key" id="gover_search_key" placeholder="请输入直接搜索" />
-                <button type="submit" class="search_btn">搜索</button>
+                <!--<button type="submit" class="search_btn">搜索</button>-->
                 <div class="search_suggest" id="gov_search_suggest">
                     <ul>
                     </ul>
                 </div>
             </div>
         </div>
-        <form class="layui-form layui-box" style='padding:25px 30px 20px 0' action="__SELF__" data-auto="true" method="post">
-        <div class="layui-form-item">
-            <label class="layui-form-label">1 &nbsp;防伪码</label>
-            <div class="layui-input-block">
-                <input type="text" name="code" value='{$vo.code|default=""}' style="display:initial;width:25%" required="required" disabled class="layui-input">
-                &nbsp;&nbsp;&nbsp;&nbsp;是否已有所属代理：<input type="text" name="username" value='' style="display:initial;width:25%" required="required" disabled class="layui-input">
-                <button data-update data-field='delete' data-action='{:url("classuri/del")}' class='layui-btn layui-btn-small layui-btn-danger'><i class='fa fa-remove'></i> 删除
-                </button>
-            </div>
-        </div>
-          
-        </form>
 
+        <form class="layui-form layui-box" id="submitAntiForm" style='padding:25px 30px 20px 0;display: none;' method="post" action="{:Url('Shipment/manualSubmit')}">
+            <input type="hidden" name="user_id" value=""/>
+
+        </form>
+        <!--<form class="layui-form submitForm" style="margin-left: 45%" action="{:Url('Shipment/manualSubmit')}" data-auto="true" method="post">-->
+            <input class="btn btn-default submitAnti" type="button" style="margin-left: 45%;" value="确认提交">
+        <!--</form>-->
+
+        <!--<input type="hidden" name="sweep[]" value=""/>-->
     </div>
 </div>
 <!--右侧编辑区 结束-->
 
 {/block}
-
-
 {block name='script'}
 <script>
-    function oSearchSuggest(searchFuc)
-    { 
-    var input = $('#gover_search_key'); 
-    var suggestWrap = $('#gov_search_suggest'); 
-    var key = ""; 
-    var init = function(){ 
-    input.bind('keyup',sendKeyWord); 
-    input.bind('blur',function(){setTimeout(hideSuggest,100);}) 
-    } 
-    var hideSuggest = function(){ 
-    suggestWrap.hide(); 
-    } 
-    //发送请求，根据关键字到后台查询 
-    var sendKeyWord = function(event){ 
-    //键盘选择下拉项 
-    if(suggestWrap.css('display')=='block'&&event.keyCode == 38||event.keyCode == 40)
-    { 
-    var current = suggestWrap.find('li.hover'); 
-    if(event.keyCode == 38)
-    { 
-    if(current.length>0)
-    { 
-     var prevLi = current.removeClass('hover').prev(); 
-     if(prevLi.length>0)
-     { 
-      prevLi.addClass('hover'); 
-      input.val(prevLi.html()); 
-     } 
+    $(".submitAnti").click(function(){
+        var user_id = $(".user_id").val();
+//        console.log(user_id);
+        if(!user_id  || user_id == 0){
+            alert('请先选择代理~');
+            return false;
+        }
+        $("input[name='user_id']").val(user_id);
+
+        $('#submitAntiForm').submit();
+    })
+    function delAnti(obj){
+        console.log(obj);
+//        console.log(obj.parentNode.parentNodechildNodes);
+        obj.parentNode.parentNode.remove();
     }
-    else
-    { 
-     var last = suggestWrap.find('li:last'); 
-     last.addClass('hover'); 
-     input.val(last.html()); 
-    } 
+
+    function oSearchSuggest(searchFuc) {
+        var input = $('#gover_search_key');
+        var suggestWrap = $('#gov_search_suggest');
+        var key = "";
+        var flag = true;
+        var init = function () {
+            input.on('keyup', sendKeyWord);
+        }
+
+        $(document).on('click', function (e) {
+            if (e.target.className.indexOf('li') > -1) {
+                var antiDelUrl = "{:Url('classuri/del')}";
+                $('.layui-box').css('display', 'block');
+                var code_id = e.target.dataset.id
+                var qrcode = e.target.dataset.qrcode
+                var code = e.target.dataset.code
+                //组合html
+                var html = '';
+                html += '<div class="layui-form-item">';
+                html += '<label class="layui-form-label">&nbsp;防伪码</label>';
+                html += '<div class="layui-input-block">';
+                html += '<input type="text" name="code" value="'+ code +'" style="display:initial;width:25%;margin-right: 2%;" required="required" disabled class="layui-input">';
+//                html += '<input type="text" name="code" value="'+ code +'" style="display:initial;width:25%" required="required" disabled class="layui-input"> &nbsp;&nbsp;&nbsp;&nbsp;是否已有所属代理：<input type="text" name="username" value="" style="display:initial;width:25%" required="required" disabled class="layui-input">';
+                html += '<button type="button" onclick="delAnti(this)"  class="layui-btn layui-btn-small layui-btn-danger"><i class="fa fa-remove"></i> 删除';
+                html += '</button>'
+                html += '</div>'
+                html += '<input type="hidden" name="sweep[]" value="'+ code_id +'"/>'
+                html += '</div>';
+                $('.layui-box').append(html);
+//                var hiddenInput = '';
+//                hiddenInput += '<input type="hidden" name="sweep[]" value="'+ code_id +'"/>';
+//                $('.submitForm').append(hiddenInput);
+            } else {
+                bulrInput()
+            }
+        })
+        // 失去焦点
+        var bulrInput = function () {
+            setTimeout(hideSuggest, 100);
+        }
+        var hideSuggest = function () {
+            suggestWrap.hide();
+        }
+        //发送请求，根据关键字到后台查询
+        var sendKeyWord = function (event) {
+            //键盘选择下拉项
+            if (suggestWrap.css('display') == 'block' && event.keyCode == 38 || event.keyCode == 40) {
+                var current = suggestWrap.find('li.hover');
+                if (event.keyCode == 38) {
+                    if (current.length > 0) {
+                        var prevLi = current.removeClass('hover').prev();
+                        if (prevLi.length > 0) {
+                            prevLi.addClass('hover');
+                            input.val(prevLi.html());
+                        }
+                    }
+                    else {
+                        var last = suggestWrap.find('li:last');
+                        last.addClass('hover');
+                        input.val(last.html());
+                    }
+                }
+                else if (event.keyCode == 40) {
+                    if (current.length > 0) {
+                        var nextLi = current.removeClass('hover').next();
+                        if (nextLi.length > 0) {
+                            nextLi.addClass('hover');
+                            input.val(nextLi.html());
+                        }
+                    }
+                    else {
+                        var first = suggestWrap.find('li:first');
+                        first.addClass('hover');
+                        input.val(first.html());
+                    }
+                }
+                //输入字符
+            }
+            else {
+                var valText = $.trim(input.val());
+                if (valText == '' || valText == key) {
+                    return;
+                }
+                searchFuc(valText);
+                key = valText;
+            }
+        }
+        //请求返回后，执行数据展示
+        this.dataDisplay = function (data) {
+            if (data.length <= 0) {
+                //    suggestWrap.hide();
+                return;
+            }
+            //往搜索框下拉建议显示栏中添加条目并显示
+            var li;
+            var tmpFrag = document.createDocumentFragment();
+            suggestWrap.find('ul').html('');
+            for (var i = 0; i < data.length; i++) {
+//                li = document.createElement('LI');
+//                li.innerHTML = data[i];
+//                li.className = 'li'
+//                tmpFrag.appendChild(li);
+//                tmpFrag.appendChild(data[i]);
+//                console.log(data[i]);
+                suggestWrap.find('ul').append(data[i]);
+            }
+//            suggestWrap.find('ul').append(tmpFrag);
+            suggestWrap.show();
+            //为下拉选项绑定鼠标事件
+            suggestWrap.find('li').hover(function () {
+                suggestWrap.find('li').removeClass('hover');
+                $(this).addClass('hover');
+            }, function () {
+                $(this).removeClass('hover');
+            }).bind('click', function () {
+//                var antiDelUrl = "{:Url('classuri/del')}";
+//                $('.layui-box').css('display', 'block');
+//                var code_id = $(this).data('id');
+//                var qrcode = $(this).data('qrcode');
+//                var code = $(this).data('code');
+//                //组合html
+//                var html = '';
+//                html += '<div class="layui-form-item">';
+//                html += '<label class="layui-form-label">&nbsp;防伪码</label>';
+//                html += '<div class="layui-input-block">';
+//                html += '<input type="text" name="code" value="'+ code +'" style="display:initial;width:25%" required="required" disabled class="layui-input">';
+////                html += '<input type="text" name="code" value="'+ code +'" style="display:initial;width:25%" required="required" disabled class="layui-input"> &nbsp;&nbsp;&nbsp;&nbsp;是否已有所属代理：<input type="text" name="username" value="" style="display:initial;width:25%" required="required" disabled class="layui-input">';
+//                html += '<button data-update data-field="delete" data-action="' + antiDelUrl +'" class="layui-btn layui-btn-small layui-btn-danger"><i class="fa fa-remove"></i> 删除';
+//                html += '</button>'
+//                html += '</div>'
+//                html += '</div>';
+//                html += '<input type="hidden" name="sweep[]" value="'+ code_id +'"/>';
+//                $('.layui-box').append(html);
+            });
+        }
+        init();
+    };
+    //实例化输入提示的JS,参数为进行查询操作时要调用的函数名
+    var searchSuggest = new oSearchSuggest(sendKeyWordToBack);
+    //这是一个模似函数，实现向后台发送ajax查询请求，并返回一个查询结果数据，传递给前台的JS,再由前台JS来展示数据。本函数由程序员进行修改实现查询的请求
+    //参数为一个字符串，是搜索输入框中当前的内容
+    function sendKeyWordToBack(keyword){
+        if(!keyword) {
+            alert('搜索匹配的内容不能为空~');
+            return false;
+        }
+        var searchKeyWordUrl = "__SELF__";
+        $.ajax({
+            async: false,
+            type: 'POST',
+            url : searchKeyWordUrl,
+            data: 'keyword=' + keyword,
+            success:function(res){
+                console.log(res);
+                if(res.code == 1){
+                    var aData = [];
+                    $.each(res.data, function(key, value) {
+//                        aData.push('<span class="clickanti" data-qrcode="'+ value.qrcode +'" data-id="'+ value.id +'">'+value.code+'</span>');
+                        aData.push('<li class="li clickanti" data-qrcode="'+ value.qrcode +'" data-code="'+ value.code +'" data-id="'+ value.id +'">'+value.code+'</li>');
+                    });
+                    //将返回的数据传递给实现搜索输入框的输入提示js类
+                    searchSuggest.dataDisplay(aData);
+                }else{
+                    $('#gover_search_key').val('');
+                    alert(res.msg);
+
+                }
+
+            },
+            error:function(){
+                alert('系统繁忙~');
+            }
+        })
+
+//        var aData = [];
+//        aData.push('<span class="num_right">约100个</span>'+keyword+'返回数据1');
+//        aData.push('<span class="num_right">约200个</span>'+keyword+'返回数据2');
+//        aData.push('<span class="num_right">约100个</span>'+keyword+'返回数据3');
+//        aData.push('<span class="num_right">约50000个</span>'+keyword+'返回数据4');
+//        aData.push('<span class="num_right">约1044个</span>'+keyword+'2012是真的');
+//        aData.push('<span class="num_right">约100个</span>'+keyword+'2012是假的');
+//        aData.push('<span class="num_right">约100个</span>'+keyword+'2012是真的');
+//        aData.push('<span class="num_right">约100个</span>'+keyword+'2012是假的');
+//        //将返回的数据传递给实现搜索输入框的输入提示js类
+//        searchSuggest.dataDisplay(aData);
     }
-    else if(event.keyCode == 40)
-    { 
-    if(current.length>0)
-    { 
-     var nextLi = current.removeClass('hover').next(); 
-     if(nextLi.length>0)
-     { 
-      nextLi.addClass('hover'); 
-      input.val(nextLi.html()); 
-     } 
-    }
-    else
-    { 
-     var first = suggestWrap.find('li:first'); 
-     first.addClass('hover'); 
-     input.val(first.html()); 
-    } 
-    } 
-    //输入字符 
-    }
-    else
-    { 
-    var valText = $.trim(input.val()); 
-    if(valText ==''||valText==key)
-    { 
-    return; 
-    } 
-    searchFuc(valText); 
-    key = valText; 
-    } 
-    } 
-    //请求返回后，执行数据展示 
-    this.dataDisplay = function(data){ 
-    if(data.length<=0)
-    { 
-    suggestWrap.hide(); 
-    return; 
-    } 
-    //往搜索框下拉建议显示栏中添加条目并显示 
-    var li; 
-    var tmpFrag = document.createDocumentFragment(); 
-    suggestWrap.find('ul').html(''); 
-    for(var i=0; i<data.length; i++)
-    { 
-    li = document.createElement('LI'); 
-    li.innerHTML = data[i]; 
-    tmpFrag.appendChild(li); 
-    } 
-    suggestWrap.find('ul').append(tmpFrag); 
-    suggestWrap.show(); 
-    //为下拉选项绑定鼠标事件 
-    suggestWrap.find('li').hover(function(){ 
-    suggestWrap.find('li').removeClass('hover'); 
-    $(this).addClass('hover'); 
-    },function(){ 
-    $(this).removeClass('hover'); 
-    }).bind('click',function(){ 
-    $(this).find("span").remove(); 
-    input.val(this.innerHTML); 
-    suggestWrap.hide(); 
-    }); 
-    } 
-    init(); 
-    }; 
-    //实例化输入提示的JS,参数为进行查询操作时要调用的函数名 
-    var searchSuggest = new oSearchSuggest(sendKeyWordToBack); 
-    //这是一个模似函数，实现向后台发送ajax查询请求，并返回一个查询结果数据，传递给前台的JS,再由前台JS来展示数据。本函数由程序员进行修改实现查询的请求 
-    //参数为一个字符串，是搜索输入框中当前的内容 
-    function sendKeyWordToBack(keyword){ 
-    var aData = []; 
-    aData.push('<span class="num_right">约100个</span>'+keyword+'返回数据1'); 
-    aData.push('<span class="num_right">约200个</span>'+keyword+'返回数据2'); 
-    aData.push('<span class="num_right">约100个</span>'+keyword+'返回数据3'); 
-    aData.push('<span class="num_right">约50000个</span>'+keyword+'返回数据4'); 
-    aData.push('<span class="num_right">约1044个</span>'+keyword+'2012是真的'); 
-    aData.push('<span class="num_right">约100个</span>'+keyword+'2012是假的'); 
-    aData.push('<span class="num_right">约100个</span>'+keyword+'2012是真的'); 
-    aData.push('<span class="num_right">约100个</span>'+keyword+'2012是假的'); 
-    //将返回的数据传递给实现搜索输入框的输入提示js类 
-    searchSuggest.dataDisplay(aData); 
-    } 
 </script>
 {/block}
