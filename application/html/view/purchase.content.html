@@ -1,0 +1,123 @@
+{extend name="extra@html/main"}
+{block name='body'}
+		<header class="mui-bar mui-bar-nav di_navbox">
+		    <h1 class="mui-title">采购</h1>
+		    <a href="caigou_record.html" class="mui-btn-link mui-pull-right usin_topbtn">采购记录</a>
+		</header>
+		<div class="mui-content">
+		    <div class="usfh_list_son cg_contbox">
+				<div class="usfh_lisbox usfh_lis_fhr">
+					<div class="usck_dls_pic"  style="background-image: url(__PUBLIC__/static/html/img/pro-pci.png);"></div>
+		    		<div class="usck_dls_info">
+		    			<div class="usck_databox">
+							<p class="name usdl_28">郑美玲</p>
+							<p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">meiulin2546</span></span></p>
+							<form action="">
+
+								<div class="usfh_in mui-clearfix">
+									<p class="mui-pull-left usdl_24">请选择采购产品及数量</p>
+									<a class="mui-block mui-pull-right usfh_in_numadd_btn usdl_24" id="usfh_in_numadd_btn">添加</a>
+								</div>
+								<div id="usfh_in_pronumlist">
+									<div class="usfh_in mui-clearfix">
+										<p class="mui-pull-left usdl_24">润唇膏</p>
+										<div class="mui-pull-right">
+											<div class="usfh_pronum_text">盒</div>
+											<input id=""  class="usck_fhinput mui-pull-right usdl_24 usfh_pronum_input" type="text" value="" name=""  />
+											<div class="usfh_pronum_text">箱</div>
+											<input id=""  class="usck_fhinput mui-pull-right usdl_24 usfh_pronum_input" type="text" value="" name=""  />
+										</div>
+									</div>
+								</div>
+								<div class="usfh_in mui-clearfix">
+									<p class="mui-pull-left usdl_24">备注</p>
+									<textarea class="usck_fhtext mui-pull-right usdl_24"></textarea>
+								</div>
+								<div class="usfh_in mui-clearfix">
+									<p class="mui-pull-left usdl_24">收件人</p>
+									<input id=""  class="usck_fhinput mui-pull-right usdl_24" type="text" value="" name=""  />
+								</div>
+								<div class="usfh_in mui-clearfix">
+									<p class="mui-pull-left usdl_24">电话</p>
+									<input id=""  class="usck_fhinput mui-pull-right usdl_24" type="number" value="" name=""  />
+								</div>
+								<div class="usfh_in mui-clearfix">
+									<p class="mui-pull-left usdl_24">地址</p>
+									<textarea class="usck_fhtext mui-pull-right usdl_24"></textarea>
+								</div>
+
+								<div class="usfh_in mui-clearfix">
+									<button type="submit" class="cgcont_btn mui-pull-right usdl_28">采购</button>
+								</div>
+							</form>
+						</div>
+		    		</div>
+	    		</div>
+	    		<div class="usfh_lisbox">
+		    		<div class="usck_dls_pic"  style="background-image: url(__PUBLIC__/static/html/img/pro-pci.png);"></div>
+		    		<div class="usck_dls_info">
+		    			<div class="usck_databox">
+						<p class="name usdl_28">林静</p>
+						<p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">meiulin2546</span></span></p>
+						</div>
+		    		</div>
+		    	</div>
+			</div>
+		</div>
+		<div class="c_cover" style="display: none;">
+			<div class="cg_cpro">
+				<p class="title usdl_32 mui-text-center">请选择采购产品</p>
+				<ul class="cg_cpro_list usdl_28">
+					<li class="active">润唇膏</li>
+					<li>爽肤水</li>
+					<li>沐浴露</li>
+				</ul>
+				<div class="cg_cpro_btns">
+					<a class="cg_cpro_btn mui-pull-left mui-block mui-text-center usdl_28" id="cg_cpro_close">取消</a>
+					<a class="cg_cpro_btn mui-pull-right mui-block mui-text-center usdl_28" id="cg_cpro_submit">确定</a>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(function(){
+				var cover = $(".c_cover");
+				var list = $(".cg_cpro_list");
+				var addbtn = $("#usfh_in_numadd_btn");
+				var close = $("#cg_cpro_close");
+				var _submit = $("#cg_cpro_submit");
+				var _div = $("#usfh_in_pronumlist");
+				var pro,html;			
+				
+				addbtn.bind('click',function(){
+					cover.show();
+				});
+				close.bind('click',function(){
+					cover.hide();
+				});
+				list.children('li').bind('click',function(){
+					list.find("li").removeClass('active');
+					$(this).addClass('active');
+					pro = $(this).text();
+				});
+				_submit.bind('click',function(){
+					//页面注入填写框
+					html = '<div class="usfh_in mui-clearfix">';
+					html += '<p class="mui-pull-left usdl_24">'+ pro +'</p>';
+					html += '<div class="mui-pull-right">';
+					html += '<div class="usfh_pronum_text">盒</div>';
+					html += '<input id=""  class="usck_fhinput mui-pull-right usdl_24 usfh_pronum_input" type="text" value="" name=""  />';
+					html += '<div class="usfh_pronum_text">箱</div>';
+					html += '<input id=""  class="usck_fhinput mui-pull-right usdl_24 usfh_pronum_input" type="text" value="" name=""  /></div></div>';
+					//关闭弹窗
+					cover.hide();
+					
+					//填写框打印到页面
+					_div.append(html);
+					
+				});
+			});
+
+			mui.toast("采购成功");
+			
+		</script>
+{/block}

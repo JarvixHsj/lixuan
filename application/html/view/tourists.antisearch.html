@@ -1,0 +1,137 @@
+{extend name="extra@html/main"}
+{block name='body'}
+
+<div id="slider" class="mui-slider i_banner" >
+    <div class="mui-slider-group mui-slider-loop">
+        <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+        {empty name="banner_res"}
+        <div class="mui-slider-item mui-slider-item-duplicate">
+            <a href="#">
+                <img src="__PUBLIC__/static/html/img/banner.png">
+            </a>
+        </div>
+        {else /}
+        <div class="mui-slider-item">
+            <a href="{:Url('Index/bannerDetails',['id' => $banner_res[$banner_res_count]['id']])}">
+                <img src="__PUBLIC__/{$banner_res[$banner_res_count]['image']}">
+            </a>
+        </div>
+        {/empty}
+
+        <!-- 第一张 -->
+        {empty name="banner_res"}
+        <div class="mui-slider-item">
+            <a href="#">
+                <img src="__PUBLIC__/static/html/img/banner.png">
+            </a>
+        </div>
+        {else /}
+        {volist name="banner_res" id="vo" key='k'}
+        <div class="mui-slider-item">
+            <a href="{:Url('Index/bannerDetails',['id' => $vo.id])}">
+                <img src="__PUBLIC__/{$vo.image}" data-test="{$k}" data-test1="{$banner_res_count}">
+            </a>
+        </div>
+        {/volist}
+        {/empty}
+
+        <!-- 第二张 -->
+        <!--<div class="mui-slider-item">-->
+        <!--<a href="#">-->
+        <!--<img src="__PUBLIC__/static/html/img/banner.png">-->
+        <!--</a>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; 第三张 &ndash;&gt;-->
+        <!--<div class="mui-slider-item">-->
+        <!--<a href="#">-->
+        <!--<img src="__PUBLIC__/static/html/img/banner.png">-->
+        <!--</a>-->
+        <!--</div>-->
+        <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+        {empty name="banner_res"}
+        <div class="mui-slider-item mui-slider-item-duplicate">
+            <a href="#">
+                <img src="__PUBLIC__/static/html/img/banner.png">
+            </a>
+        </div>
+        {else /}
+        <div class="mui-slider-item">
+            <a href="{:Url('Index/bannerDetails',['id' => $banner_res.0.id])}">
+                <img src="__PUBLIC__/{$banner_res.0.image}">
+            </a>
+        </div>
+        {/empty}
+
+    </div>
+    <div class="mui-slider-indicator">
+        {empty name="banner_res"}
+        <div class="mui-indicator mui-active"></div>
+        <div class="mui-indicator"></div>
+        <div class="mui-indicator"></div>
+        {else /}
+        {volist name="banner_res" id="vo" key='k'}
+        <div class="mui-indicator {eq name='k' value='1'}mui-active{/eq}"></div>
+
+        {/volist}
+        {/empty}
+
+    </div>
+</div>
+<div class="mui-content">
+    <div class="i_iconbtn mui-clearfix">
+        <div class="son"><a href="{:Url('html/Index/authorize')}" class="soncont sqcx">授权查询</a></div>
+        <div class="son"><a href="{:Url('html/Tourists/anti')}" class="soncont fwcx">防伪查询</a></div>
+        <div class="son"><a href="{:Url('html/Agents/index')}" class="soncont dlht">代理后台</a></div>
+        <div class="son"><a href="#" class="soncont jfcx">积分查询</a></div>
+        <div class="son"><a href="{:Url('html/Index/about')}" class="soncont gywm">关于我们</a></div>
+    </div>
+
+		<div class="i_ad_pic">
+			<img src="__PUBLIC__/{$product_image}" class="img-zsy" alt="" />
+		</div>
+		<ul class="i_infolist usdl_28">
+			<li>
+				<span class="t_left">代理商</span>
+				<span class="t_right mui-pull-right">{$username}</span>
+			</li>
+			<li>
+				<span class="t_left">代理微信</span>
+				<span class="t_right mui-pull-right">{$wechat_no}</span>
+			</li>
+			<li>
+				<span class="t_left">代理产品</span>
+				<span class="t_right mui-pull-right">{$product_name}</span>
+			</li>
+			<li>
+				<span class="t_left">全国统一零售价</span>
+				<span class="t_right mui-pull-right">￥{$product_price}</span>
+			</li>
+			<li>
+				<a href="tel:4009318258" class="mui-block">
+				<span class="t_left">加盟电话</span>
+				<span class="t_right mui-pull-right">400-931-8258</span>
+				</a>
+			</li>
+			<li>
+				<a href="http://www.savril.cn/index.php" class="mui-block">
+				<span class="t_left">访问官网</span>
+				<span class="t_right mui-pull-right">www.savril.cn</span>
+				</a>
+			</li>
+		</ul>
+		<div class="c_feng margin"></div>
+		<div class="i_buttom_btn">
+			<div class="mui-row mui-text-center i_buttom_btn_son usdl_32">
+				<div class="mui-col-xs-6 left"><a href="{:Url('html/Agents/index')}" class="mui-block">代理后台</a></div>
+				<div class="mui-col-xs-6"><a href="{:Url('html/Index/about')}" class="mui-block">关于我们</a></div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var gallery = mui('.mui-slider');
+		gallery.slider({
+		  interval:3500//自动轮播周期，若为0则不自动播放，默认为0；
+		});
+		
+	</script>
+{/block}

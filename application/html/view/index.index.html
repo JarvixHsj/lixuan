@@ -92,16 +92,20 @@
 		<ul class="i_prolist">
 			
 			{volist name="list" id="vo" empty="暂时没有数据" }
-				<li class="mui-clearfix">
-                    <a href="{:Url('Index/productDetails',['id'=>$vo.id])}">
-                        <div class="i_pro_pic mui-pull-left" style="background-image: url(__PUBLIC__{$vo.image});"></div>
-                        <div class="i_pro_info mui-pull-left">
-                            <p class="title">{$vo.name}</p>
-                            <p class="text">{$vo.intro|msubstr=###,0,40,'utf-8',true}</p>
-                        </div>
-                    </a>
-				</li>
-			{/volist}
+            <li class="mui-clearfix">
+                    {empty name="vo.out_link"}
+                        <a href="{:Url('Index/productDetails',['id'=>$vo.id])}">
+                    {else /}
+                        <a href="{$vo.out_link}">
+                    {/empty}
+                    <div class="i_pro_pic mui-pull-left" style="background-image: url(__PUBLIC__{$vo.image});"></div>
+                    <div class="i_pro_info mui-pull-left">
+                        <p class="title">{$vo.name}</p>
+                        <p class="text">{$vo.intro|msubstr=###,0,40,'utf-8',true}</p>
+                    </div>
+                </a>
+            </li>
+            {/volist}
 
 		</ul>
 	</div>

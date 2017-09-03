@@ -20,7 +20,8 @@ use think\Db;
 use model\UserInvite;
 use model\UserAudit;
 use model\User;
-use model\Agent;
+use model\Product;
+use model\Banner;
 use think\Url;
 
 /**
@@ -262,13 +263,17 @@ class Tourists extends Controller {
         if ($this->request->isPost()) {
             $code = $this->request->param('code') ? $this->request->param('code') : '';
             if($code && is_numeric($code)){
-                $res = AntiService::JudgeAnti(array('code' => $code));
+                $res = AntiService::JudgeAnti(array('passwd' => $code));
                 if($res === false){
-                    $this->result('',0,'防伪码不存在~','json');
+                    $this->result('',0,'防伪码不存在，查验正确后再次输入~','json');
                 }
-                $this->result('', 1, '继续~', 'json');
+                //更新查询次数
+                Db::table('lx_anti')
+                    ->where('id', $res[0]['id'])
+                    ->setInc('query');
+                $this->result('尊敬的顾客您好！您购买的是励轩的产品，属于正品，请放心使用~', 1, 'ok~', 'json');
             }else{
-                $this->result('',0,'防伪码不能为空~','json');
+                $this->result('',0,'防伪码不能为空，请输入防伪码~','json');
             }
         }
         return view();
@@ -325,6 +330,72 @@ class Tourists extends Controller {
         return view();
     }
 
+
+    public function fcode()
+    {
+        $fcode = $this->request->param('fcode') ? $this->request->param('fcode') : 0;
+        if($fcode ==0 || !is_numeric($fcode)){
+            echo "<script>alert('参数有误，请重新扫描~');</script>";
+//            echo "<script>alert('参数有误，请重新扫描~');location.href='".'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']."';</script>";
+            exit();
+        }
+
+        $antiInfo = AntiService::JudgeAnti(array('qrcode' => $fcode));
+        if($antiInfo === false){
+            echo "<script>alert('二维码信息有误~，请重新扫描或联系客服~');</script>";
+            exit();
+        }
+        //更新查询次数
+        Db::table('lx_anti')
+            ->where('id', $antiInfo[0]['id'])
+            ->setInc('query');
+
+//        返回参数
+        $data = array('username' => '公司总部', 'querynum' => $antiInfo[0]['query'] + 1, 'wechat_no' => '', 'mobile' => '');
+
+        $proInfo = Db::table('lx_product')->find($antiInfo[0]['product_id']);
+        if($proInfo){
+            $data['product_name'] = $proInfo['name'];
+            $data['product_price'] = $proInfo['price'];
+            $data['product_image'] = $proInfo['image'];
+        }else{
+            $data['product_name'] = '励轩的产品';
+            $data['product_price'] = '未定价';
+            $data['product_image'] = 'static/html/img/banner.png';
+        }
+        //判断是否是公司总部
+        if($antiInfo[0]['user_id'] == 0) {
+            $data['username'] = '励轩公司总部';
+            $data['wechat_no'] = '励轩公司总部';
+            $data['mobile'] = '400-931-8258';
+        }else{
+            //查询用户信息
+            $UserModel = new User();
+            $userInfo = $UserModel->getUserInfo($antiInfo[0]['user_id']);
+            if(!$userInfo) {
+                $data['username'] = '励轩公司总部';
+                $data['wechat_no'] = '励轩公司总部';
+//                $data['mobile'] = '400-931-8258';
+            }else{
+                $data['username'] = $userInfo['username'];
+                $data['wechat_no'] = $userInfo['wechat_no'];
+//                $data['mobile'] = $userInfo['mobile'];
+            }
+        }
+
+        //页面参数
+        $Model = new Product;
+        $BannerModel = new Banner();
+        $list = $Model->where('status = 1 AND is_delete = 1')->order('id', 'desc')->select()->toArray();
+        $bannerRes = $BannerModel->where('status = 1 AND is_delete = 1')->order('id', 'desc')->select();
+        if(!$bannerRes) $bannerRes = array();
+        $bannerRes = $bannerRes->toArray();
+        $this->assign('list', $list);
+        $this->assign('banner_res', $bannerRes);
+        $this->assign('banner_res_count', count($bannerRes) -1);
+
+        return view('antisearch', $data);
+    }
 
 
 

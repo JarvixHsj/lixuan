@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"/Library/WebServer/Documents/lixuan/application/html/view/index.index.html";i:1501161581;s:73:"/Library/WebServer/Documents/lixuan/application/extra/view/html.main.html";i:1501861937;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"/Library/WebServer/Documents/lixuan/application/html/view/index.index.html";i:1504189670;s:73:"/Library/WebServer/Documents/lixuan/application/extra/view/html.main.html";i:1501861937;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -107,16 +107,20 @@
 		<ul class="i_prolist">
 			
 			<?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "暂时没有数据" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-				<li class="mui-clearfix">
-                    <a href="<?php echo Url('Index/productDetails',['id'=>$vo['id']]); ?>">
-                        <div class="i_pro_pic mui-pull-left" style="background-image: url(__PUBLIC__<?php echo $vo['image']; ?>);"></div>
-                        <div class="i_pro_info mui-pull-left">
-                            <p class="title"><?php echo $vo['name']; ?></p>
-                            <p class="text"><?php echo msubstr($vo['intro'],0,40,'utf-8',true); ?></p>
-                        </div>
-                    </a>
-				</li>
-			<?php endforeach; endif; else: echo "暂时没有数据" ;endif; ?>
+            <li class="mui-clearfix">
+                    <?php if(empty($vo['out_link']) || (($vo['out_link'] instanceof \think\Collection || $vo['out_link'] instanceof \think\Paginator ) && $vo['out_link']->isEmpty())): ?>
+                        <a href="<?php echo Url('Index/productDetails',['id'=>$vo['id']]); ?>">
+                    <?php else: ?>
+                        <a href="<?php echo $vo['out_link']; ?>">
+                    <?php endif; ?>
+                    <div class="i_pro_pic mui-pull-left" style="background-image: url(__PUBLIC__<?php echo $vo['image']; ?>);"></div>
+                    <div class="i_pro_info mui-pull-left">
+                        <p class="title"><?php echo $vo['name']; ?></p>
+                        <p class="text"><?php echo msubstr($vo['intro'],0,40,'utf-8',true); ?></p>
+                    </div>
+                </a>
+            </li>
+            <?php endforeach; endif; else: echo "暂时没有数据" ;endif; ?>
 
 		</ul>
 	</div>

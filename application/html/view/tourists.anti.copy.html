@@ -35,7 +35,7 @@
 		</div>
 		<form>
 			<div class="sqcx_input">
-				<input class="usyq_cin usdl_28" type="text" name="code" id="" value="" placeholder="请刮开涂层输入防伪码" />
+				<input class="usyq_cin usdl_28" type="text" name="code" id="" value="" placeholder="请输入二维码下方的防伪码" />
 				<button class="log_btn" style="margin-top: 0;" type="button" onclick="">查询</button>
 			</div>
 		</form>
@@ -71,8 +71,6 @@
                 if(res.code == 0){
                     mui.alert(res.msg);
                     return false;
-                }else if(res.code == 1){
-                    mui.alert(res.data);
                 }
             },
             error:function(){
@@ -81,54 +79,54 @@
         });
 
 		//修改弹出框默认input类型为password
-//		mui.prompt('','请刮开涂层查看密码','请输入密码后四位',['确认','取消'],function(r){
-//			if(r.index == 0){
-//                var code = $('input[name="code"]').val();
-//                if(!code){
-//                    mui.alert('请输入防伪码~');
-//                    return false;
-//                }
-//                var pass = r.value
-//				if(!pass){
-//					mui.alert('密码不能为空！')
-//				}
-//				$.ajax({
-//					type: "POST",
-//					url: checkPassUrl,
-//					data: 'code='+code+"&pass="+pass,
-//					success: function(res){
-//						console.log(res)
-//                        if(res.code == 0){
-//                            mui.alert(res.msg);
-//                            return false;
-//                        }else if(res.code == 1){
-//                            $('.divcontent').css('display','block');
-//                            $('.call_info').css('display','block');
-//                            $('.info_icon_span').css('display','block');
-//                            $('.username').html(res.data.username);
+		mui.prompt('','请刮开涂层查看密码','请输入密码后四位',['确认','取消'],function(r){
+			if(r.index == 0){
+                var code = $('input[name="code"]').val();
+                if(!code){
+                    mui.alert('请输入防伪码~');
+                    return false;
+                }
+                var pass = r.value
+				if(!pass){
+					mui.alert('密码不能为空！')
+				}
+				$.ajax({
+					type: "POST",
+					url: checkPassUrl,
+					data: 'code='+code+"&pass="+pass,
+					success: function(res){
+						console.log(res)
+                        if(res.code == 0){
+                            mui.alert(res.msg);
+                            return false;
+                        }else if(res.code == 1){
+                            $('.divcontent').css('display','block');
+                            $('.call_info').css('display','block');
+                            $('.info_icon_span').css('display','block');
+                            $('.username').html(res.data.username);
+                            $('.mobile').html(res.data.mobile);
+                            $('.wechat_no').html(res.data.wechat_no);
+                            $('.querynum').html(res.data.querynum);
+                        }else if(res.code == 2){
+                            $('.divcontent').css('display','block');
+                            $('.info_icon_span').css('display','block');
+                            $('.username').html(res.data.username);
+                            $('.querynum').html(res.data.querynum);
+                            $('.call_info').css('display','none');
+//                            $('.wechat_no').css('display','none');
 //                            $('.mobile').html(res.data.mobile);
 //                            $('.wechat_no').html(res.data.wechat_no);
-//                            $('.querynum').html(res.data.querynum);
-//                        }else if(res.code == 2){
-//                            $('.divcontent').css('display','block');
-//                            $('.info_icon_span').css('display','block');
-//                            $('.username').html(res.data.username);
-//                            $('.querynum').html(res.data.querynum);
-//                            $('.call_info').css('display','none');
-////                            $('.wechat_no').css('display','none');
-////                            $('.mobile').html(res.data.mobile);
-////                            $('.wechat_no').html(res.data.wechat_no);
-//
-//                        }
-//					},
-//					error:function(){
-//						mui.alert('系统繁忙~')
-//					}
-//				});
-//				console.log(r)
-//			}
-//		},'div')
-//		document.querySelector('.mui-popup-input input').type='text'
+
+                        }
+					},
+					error:function(){
+						mui.alert('系统繁忙~')
+					}
+				});
+				console.log(r)
+			}
+		},'div')
+		document.querySelector('.mui-popup-input input').type='text'
 	})
 
 </script>
