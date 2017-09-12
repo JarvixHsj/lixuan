@@ -251,9 +251,9 @@ class Agents extends BasicAgent {
                 foreach($resList as $key=>$val){
                     $tempUserInfo = $UserModel->field('username,mobile,wechat_no')->find($val['user_id']);
                     if($tempUserInfo){
-                        $resList[$key]['user_username'] = $tempUserInfo['username'];
-                        $resList[$key]['user_mobile'] = $tempUserInfo['mobile'];
-                        $resList[$key]['user_wechat_no'] = $tempUserInfo['wechat_no'];
+                        $resList[$key]['user_username'] = $tempUserInfo['username'] ? $tempUserInfo['username'] : ' ';
+                        $resList[$key]['user_mobile'] = $tempUserInfo['mobile'] ? $tempUserInfo['mobile'] : ' ';
+                        $resList[$key]['user_wechat_no'] = $tempUserInfo['wechat_no'] ? $tempUserInfo['wechat_no'] : ' ';
                     }
                 }
             }

@@ -117,6 +117,7 @@ class Products extends BasicAdmin {
             return view('edit', $result);
         }
         $data = $this->request->param();
+
         if (!empty($data['id'])) {
             unset($data['spm']);
             //查询出原来的产品信息

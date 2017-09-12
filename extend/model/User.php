@@ -28,6 +28,20 @@ class User extends Model
 
 
     /**
+     * 根据条件获取用户列表
+     * @param $where
+     */
+    public function getUserConditionList($where)
+    {
+        if(!$where) return false;
+        $res = $this->where($where)->select();
+        if($res){
+            return $res->toArray();
+        }
+        return false;
+    }
+
+    /**
      * 获取所有可用用户
      */
     public function getUserList()

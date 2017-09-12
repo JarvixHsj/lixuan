@@ -86,8 +86,13 @@ class Index extends Controller {
     {
         $res = Db::table('lx_word')->where('key', 'about')->find();
         if(empty($res)) $this->error('整改中~~');
-        $this->assign('res', $res);
-        return view();
+        if($res['out_link']){
+            header('Refresh:0,Url='.$res['out_link']);
+//            header("Location: ".$res['out_link']);
+        }else{
+            $this->assign('res', $res);
+            return view();
+        }
     }
 
 

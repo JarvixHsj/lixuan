@@ -193,6 +193,25 @@ class AgentService {
 
 
     /**
+     * 查询代理所有上级直属代理
+     * @param $userId
+     */
+    public static function getAgentTopDirectlyList($userId)
+    {
+        if(!is_numeric($userId)) return false;
+        $res = Db::table('lx_agent')->alias('a')
+            ->join('lx_user u', 'u.id = a.super_id')
+            ->join("lx_product p", "p.id = a.product_id")
+            ->where('user_id', $userId)
+            ->field('a.*,u.username,u.mobile,u.wechat_no,p.name as project_name')
+            ->select();
+//        dump($res);die;
+        if(!$res) return false;
+        return $res;
+    }
+
+
+    /**
      * 获取代理 授权信息
      * @param int $agent_id
      * @param int $pro_id
@@ -220,7 +239,11 @@ class AgentService {
     }
 
 
-
+    /**
+     * 统计用户未读消息
+     * @param int $user_id
+     * @return bool|int|string
+     */
     public static function getMessageUnreadNum($user_id = 0)
     {
         if(empty($user_id)) return false;
@@ -230,9 +253,43 @@ class AgentService {
         $num = Db::table('lx_message')->where($where)->count();
         if($num > 0) return $num;
         return false;
-
-
     }
+
+
+    public static function getAgentSuperInfo($agent_id)
+    {
+        if(!$agent_id) return false;
+        $res = Db::table('lx_agent')->alias('a')
+            ->join('lx_user u', 'u.id = a.super_id')
+            ->join('lx_product p ', 'p.id = a.product_id')
+            ->field('a.*,u.username,u.mobile,u.wechat_no,p.name as product_name')
+            ->find($agent_id);
+        if($res) return $res;
+        return false;
+    }
+
+
+    /**
+     * 获取用户上级代理列表
+     * @param $user_id
+     * @return bool|false|\PDOStatement|string|\think\Collection
+     */
+    public static function getSuperAgentUserIDList($user_id)
+    {
+        if(!$user_id) return false;
+        $res = Db::table('lx_agent')->alias('a')
+            ->join('lx_user u', 'u.id = a.super_id')
+            ->join('lx_product p ', 'p.id = a.product_id')
+            ->distinct(true)
+            ->where('user_id', $user_id)
+            ->where('super_id != 0')
+            ->field('a.super_id')
+            ->field('a.*,u.username,u.mobile,u.wechat_no,p.name as product_name')
+            ->select();
+        if($res) return $res;
+        return false;
+    }
+
 
 
 

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"/Library/WebServer/Documents/lixuan/application/html/view/login.index.html";i:1499271854;s:73:"/Library/WebServer/Documents/lixuan/application/extra/view/html.main.html";i:1501861937;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"/Library/WebServer/Documents/lixuan/application/html/view/login.index.html";i:1499271854;s:73:"/Library/WebServer/Documents/lixuan/application/extra/view/html.main.html";i:1504282413;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,10 +8,10 @@
 
         <script type="text/javascript" src="__PUBLIC__/static/html/js/jquery_1.11.3.min.js" ></script>
         <script src="__PUBLIC__/static/html/js/mui.min.js"></script>
-        <script type="text/javascript" src="__PUBLIC__/static/html/js/app.js?ver=<?php echo date('ymdH'); ?>" ></script>
+        <script type="text/javascript" src="__PUBLIC__/static/html/js/app.js?ver=<?php echo date('ymdHs'); ?>" ></script>
 
         <link href="__PUBLIC__/static/html/css/mui.min.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="__PUBLIC__/static/html/css/app.css?ver=<?php echo date('ymdH'); ?>" />
+        <link rel="stylesheet" href="__PUBLIC__/static/html/css/app.css?ver=<?php echo date('ymdHs'); ?>" />
         
         <script type="text/javascript" charset="utf-8">
             mui.init();

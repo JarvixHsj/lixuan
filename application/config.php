@@ -233,7 +233,6 @@ return [
     ],
     'chinese_escape' => [
         'company_name' => '公司总部',
-        
     ],
 
 ];

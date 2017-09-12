@@ -50,6 +50,8 @@
                 <th class='text-center'>编号</th>
                 <th class='text-center'>产品图片</th>
                 <th class='text-center'>产品名称</th>
+                <th class='text-center'>产品价格</th>
+                <th class='text-center'>产品所得积分</th>
                 <th class='text-center'>产品简写</th>
                 <th class='text-center'>产品简介</th>
                 <th class='text-center'>最后编辑时间</th>
@@ -66,6 +68,8 @@
                 <td class='text-center'>{$vo.id}</td>
                 <td class='text-center'><img src="{$vo.image}" style="max-width:120px;max-height:120px;"/> </td>
                 <td class='text-center'>{$vo.name}</td>
+                <td class='text-center'>{$vo.price}</td>
+                <td class='text-center'>{$vo.integral}</td>
                 <td class='text-center'>{$vo.abbr}</td>
                 <td class='text-center'>{$vo.intro|substr=0,39|default="<span style='color:#ccc'>还没有编写简介</span>"}</td>
                 <!--<td class='text-center'>{$vo.login_num|default="<span style='color:#ccc'>从未登录</span>"}</td>-->

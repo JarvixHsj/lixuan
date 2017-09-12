@@ -1,0 +1,83 @@
+{extend name="extra@html/main"}
+{block name='body'}
+    <header class="mui-bar mui-bar-nav di_navbox">
+        <!--<div class="mui-input-row mui-search srarch_input mui-pull-left">-->
+            <!--<input type="search" class="mui-input-clear usdl_28" placeholder="请输入搜索内容">-->
+        <!--</div>-->
+        <!--<a href="user_fahuo.html" class="mui-pull-right usfh_addbtn usdl_28">搜索</a>-->
+        <div class="mui-input-row  " style="height: 100%;line-height: 44px;text-align: center;font-size: 18px;">
+            <span class="mui-input-clear usdl_28"  > 您的直属上级</span>
+        </div>
+        <!--<a href="user_fahuo.html" class="mui-pull-right usfh_addbtn usdl_28">搜索</a>-->
+    </header>
+    <div class="mui-content">
+        <!-- 搜索结果显示 -->
+        <ul class="cul_list">
+            {volist name='res' id='vo' empty="暂无直属上级"}
+            <li>
+                <div class="usck_dlson">
+                    <a class="usck_rqbtn"  href="javascript:void(0)">
+                        <div class="usck_dls_pic"  style="background-image: url(__PUBLIC__/static/html/img/logo.png);"></div>
+                        <div class="usck_dls_info" data-super_id="{$vo.super_id}" data-super_name="{$vo.username}" data-super_wechat="{$vo.wechat_no}">
+                            <p class="name usdl_28">{empty name="vo.username"}暂无{else /}{$vo.username}{/empty}</p>
+                            <p class="call_info">
+                                <span class="info_icon">
+                                    <i class="mui-icon mui-icon-weixin"></i>
+                                    <span class="usdl_24">{empty name="vo.wechat_no"}暂无{else /}{$vo.wechat_no}{/empty}</span>
+                                </span>
+                                <span class="info_icon">
+                                    <i class="mui-icon mui-icon-phone-filled"></i>
+                                    <span class="usdl_24">{empty  name="vo.mobile"}暂无{else /}{$vo.mobile}{/empty}</span>
+                                </span>
+                            </p>
+                            <p class="call_info">
+                                <span class="info_icon">
+                                    <i class="mui-icon mui-icon mui-icon-flag"></i>
+                                    <span class="usdl_24">{empty  name="vo.project_name"}暂无{else /}{$vo.project_name}{/empty}</span>
+                                </span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+<input type="hidden" name="p_id" value="{$p_id}"/>
+<script>
+    $(document).on('click', '.usck_dls_info', function(){
+        var p_id = $('input[name="p_id"]').val();
+        var super_id = $(this).data('super_id');
+        var super_name = $(this).data('super_name');
+        var super_wechat = $(this).data('super_wechat');
+        if(!super_id){
+            mui.alert('参数错误，请刷新页面后重新选择~');
+            return false;
+        }
+        var btnArray = ['是', '否'];
+        var url = "{:Url('Purchase/ajaxTurn')}";
+        var returnUrl = "{:Url('Purchase/record_give_me')}";
+        mui.confirm('确认是否转给 '+super_name+ ' ？', '提示', btnArray, function(e) {
+            if (e.index == 0) {
+                $.ajax({
+                    url:url,
+                    type:'POST',
+                    data: {'p_id' : p_id, 'super_id' : super_id, 'super_name' : super_name, 'super_wechat' : super_wechat},
+                    success:function(res){
+                        if(res.code == 0){
+                            mui.alert(res.msg);
+                            return false;
+                        }else{
+                            mui.toast(res.msg);
+                            setTimeout(function(){
+                                window.location.href= returnUrl;
+                            }, 1500)
+                        }
+                    }
+                })
+//                mui.toast('转上级操作成功~');
+            }
+        });
+    })
+</script>
+{/block}

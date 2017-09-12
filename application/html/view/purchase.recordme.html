@@ -1,0 +1,154 @@
+{extend name="extra@html/main"}
+{block name='bodyTag'}
+<body class="bgf2f2f2">
+{block name='body'}
+		<header class="mui-bar mui-bar-nav di_navbox">
+		    <h1 class="mui-title">采购记录</h1>
+		    <!--<button class="mui-btn-link mui-pull-right usin_topbtn" id="usin_bjbtn">操作</button>-->
+		    <button class="mui-btn-link mui-pull-right usin_topbtn" id="usin_delbtn" style="display: none;">删除</button>
+		</header>
+		<div class="mui-content">
+		    <div class="cgr_tabbox">
+		    	<div class="cgr_tabcont center_block mui-row">
+                    <div class="mui-col-xs-6 usdl_24 cgr_tabson mui-text-center ">
+                        <a href="{:Url('Purchase/record_give_to')}">我向别人采购</a>
+                    </div>
+                    <div class="mui-col-xs-6 usdl_24 cgr_tabson mui-text-center active">
+                        <a href="{:Url('Purchase/record_give_me')}">别人向我采购</a>
+                    </div>
+		    	</div>
+		    </div>
+		    <ul class="usin_list cgr_list cgtr_contbox">
+                {volist name='list' id='vo' empty='暂无申请采购记录'}
+                <li class="mui-clearfix">
+                    <div class="usin_list_left">
+                        <input name="radio-3-set" type="checkbox" value="0" class="regular-radio" id="usin_checkbox_1">
+                        <label for="usin_checkbox_1"></label>
+                    </div>
+                    <div class="usin_list_handle">
+                        <div class="usfh_list_son" style="padding-bottom: 10%;">
+                            <div class="usfh_lisbox usfh_lis_fhr">
+                                <div class="usck_dls_pic"  style="background-image: url(__PUBLIC__/static/html/img/logo.png);"></div>
+                                <div class="usck_dls_info cgr_tr_info" style="padding-bottom: 17%;">
+                                    <div class="usck_databox cgrt_databox mui-clearfix">
+                                        <p class="name usdl_28">{$vo.incept_username}</p>
+                                        <p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">{$vo.incept_user_wechat}</span></span></p>
+                                        {if condition="$vo['is_ceder'] eq 0"}
+                                            {if condition="$vo['audit'] eq 0"}
+                                                <a href="javascript:void(0)" class="usdl_28 cg_new_cgbtn mui-pull-left audit" data-id="{$vo.id}">审核</a>
+                                                <a href="{:Url('purchase/topagentlist', ['p_id' => $vo.id])}" class="usdl_28 cg_new_cgbtn mui-pull-left turn">转上级</a>
+                                            {elseif condition="$vo['audit'] eq 1"/}
+                                                <label class="i_title" style="margin-left: 0px; color: #e84444;font-weight: bold;">
+                                                    已通过
+                                                </label>
+                                            {elseif condition="$vo['audit'] eq 2"/}
+                                            <label class="i_title" style="margin-left: 0px; color: #e84444;font-weight: bold;">
+                                                    不通过
+                                                </label>
+                                            {else /}
+                                                <label class="i_title" style="margin-left: 0px; color: #e84444;font-weight: bold;">
+                                                    审核中~
+                                                </label>
+                                            {/if}
+                                        {elseif condition="$vo['is_ceder'] eq 1"/}
+                                            {if condition="$vo['super_user_id'] eq $Think.session.agent.id"}
+                                                {if condition="$vo['audit'] eq 0"}
+                                                <a href="javascript:void(0)" class="usdl_28 cg_new_cgbtn mui-pull-left audit" data-id="{$vo.id}">审核</a>
+                                                <!--<a href="{:Url('purchase/topagentlist', ['p_id' => $vo.id])}" class="usdl_28 cg_new_cgbtn mui-pull-left turn">转上级</a>-->
+                                                {elseif condition="$vo['audit'] eq 1"/}
+                                                <label class="i_title" style="margin-left: 0px; color: #e84444;font-weight: bold;">
+                                                    已通过
+                                                </label>
+                                                {elseif condition="$vo['audit'] eq 2"/}
+                                                <label class="i_title" style="margin-left: 0px; color: #e84444;font-weight: bold;">
+                                                    不通过
+                                                </label>
+                                                {else /}
+                                                <label class="i_title" style="margin-left: 0px; color: #e84444;font-weight: bold;">
+                                                    审核中~
+                                                </label>
+                                                {/if}
+                                            {else /}
+                                                已转给上级：{$vo.super_user_wechat}  <br />
+                                                目前状态：
+                                                {if condition="$vo['audit'] eq 0"}
+                                                审核中~
+                                                {elseif condition="$vo['audit'] eq 1"/}
+                                                已通过
+                                                {elseif condition="$vo['audit'] eq 2"/}
+                                                不通过
+                                                {/if}
+                                            {/if}
+                                        {/if}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="usfh_lisbox">
+                                <div class="usck_dls_pic"  style="background-image: url(__PUBLIC__/static/html/img/logo.png);"></div>
+                                <div class="usck_dls_info">
+                                    <div class="usck_databox">
+                                        <p class="name usdl_28">{$vo.sponsor_username}</p>
+                                        <p class="call_info"><span class="info_icon"><i class="mui-icon mui-icon-weixin"></i><span class="usdl_24">{$vo.sponsor_user_wechat}</span></span></p>
+                                        <!--<p class="usdl_24">采购数量：40</p>-->
+                                        {volist name='vo.details' id='voo'}
+                                        <p class="usdl_24">{$voo.product_name}：{$voo.boxful}箱 {$voo.box}盒</p>
+                                        {/volist}
+                                        <p class="usdl_24">收件人：{$vo.consignee}</p>
+                                        <p class="usdl_24">电话：{$vo.mobile}</p>
+                                        <p class="usdl_24">地址：{$vo.address}</p>
+                                        <p class="usdl_24">备注：{empty name='vo.remake'}无{else /}{$vo.remake}{/empty}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {/volist}
+		    </ul>
+    		<script type="text/javascript">
+                /**
+                 * 审核点击
+                 */
+                $(document).on('click', '.audit', function () {
+                    var id = $(this).data('id');
+                    if(!id){
+                        mui.alert('系统繁忙，请刷新后重试~');
+                        return false;
+                    }
+                    var btnArray = ['通过', '不通过', '取消'];
+                    var url = "{:Url('Purchase/ajaxModifyAudit')}";
+                    var value = 0;
+                    mui.confirm('审核之后则不可再转上级，请谨慎操作', '提示', btnArray, function(e) {
+                        var combo = e.index;
+                        if (combo == 0 || combo == 1) { //通过
+                            if(combo == 0){
+                                value = 1;
+                            }else if(combo == 1){
+                                value = 2;
+                            }
+                            $.ajax({
+                                url:url,
+                                type:'POST',
+                                data: {'id' : id, 'value' : value},
+                                success:function(res){
+                                    if(res.code == 0){
+                                        mui.alert(res.msg);
+                                    }else{
+                                        mui.toast(res.msg);
+                                        setTimeout(function(){
+                                            window.location.reload();
+                                        }, 1500)
+                                    }
+                                }
+                            })
+                        }else{
+                            mui.toast('取消了审核操作~');
+                        }
+                    })
+                })
+
+			</script>
+		</div>
+{/block}
+</body>
+{/block}
